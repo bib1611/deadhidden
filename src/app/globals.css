@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-oswald: "Oswald", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --color-background: #0a0a0a;
+  --color-foreground: #e8e0d0;
+  --color-blood: #8b0000;
+  --color-blood-bright: #a50000;
+  --color-muted: #888888;
+  --color-card: #111111;
+  --color-border: #222222;
+  --color-subtle: #555555;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+.section-rule {
+  @apply border-b border-border;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
