@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
+import { getBlobUrl } from '@/lib/blob';
 import { products } from '@/data/products';
 
 export const runtime = 'nodejs';
@@ -13,7 +14,7 @@ export const runtime = 'nodejs';
  * 2. Payment completed
  * 3. Product matches session metadata (or buyer purchased the Vault)
  *
- * Then redirects to the actual file URL (Vercel Blob / storage).
+ * Then redirects to the actual file URL in Vercel Blob.
  */
 export async function GET(
   request: NextRequest,
@@ -41,7 +42,9 @@ export async function GET(
     }
 
     // Check authorization: buyer must have purchased this specific product OR the Vault
-    const isVaultPurchase = purchasedSlug === 'the-vault' || purchasedSlug === 'thanksgiving-marriage-vault';
+    const isVaultPurchase =
+      purchasedSlug === 'the-vault' ||
+      purchasedSlug === 'thanksgiving-marriage-vault';
     const isDirectPurchase = purchasedSlug === slug;
 
     if (!isVaultPurchase && !isDirectPurchase) {
@@ -54,25 +57,23 @@ export async function GET(
       return new NextResponse('Product not found', { status: 404 });
     }
 
-    // Get the file URL from Vercel Blob or configured storage
-    const fileBaseUrl = process.env.FILE_STORAGE_URL;
+    // Look up the actual blob URL (handles hash suffixes)
+    const fileUrl = await getBlobUrl(slug);
 
-    if (!fileBaseUrl) {
+    if (!fileUrl) {
       return new NextResponse(
-        'File storage not configured. Contact support.',
+        'File not available yet. Contact thebiblicalman1611@gmail.com for help.',
         { status: 503 }
       );
     }
 
-    const fileUrl = `${fileBaseUrl}/${slug}.pdf`;
-
-    // Redirect to the actual file with a Content-Disposition header hint
-    // The blob storage URL handles the actual download
+    // Redirect to the actual blob URL
     return NextResponse.redirect(fileUrl);
   } catch (error) {
     console.error('File serve error:', error);
-    return new NextResponse('Download failed. Please try again or contact support.', {
-      status: 500,
-    });
+    return new NextResponse(
+      'Download failed. Please try again or contact support.',
+      { status: 500 }
+    );
   }
 }

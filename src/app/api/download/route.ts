@@ -80,14 +80,10 @@ export async function GET(request: NextRequest) {
       ];
     }
 
-    // Generate download URLs
-    // If using Vercel Blob, these would be signed URLs
-    // For now, use the file serve API route
+    // Generate download URLs through the serve API (handles blob URL lookup + auth)
     const downloadFiles = files.map((f) => ({
       name: f.name,
-      url: fileBaseUrl
-        ? `${fileBaseUrl}/${f.filename}`
-        : `/api/serve/${f.slug}?session_id=${sessionId}`,
+      url: `/api/serve/${f.slug}?session_id=${sessionId}`,
     }));
 
     return NextResponse.json({
