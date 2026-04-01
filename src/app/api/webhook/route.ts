@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
+import { sendPurchaseEmail } from '@/lib/email';
 import Stripe from 'stripe';
 
 export const runtime = 'nodejs';
@@ -45,8 +46,9 @@ export async function POST(request: NextRequest) {
 
       const productSlug = session.metadata?.productSlug;
       const productName = session.metadata?.productName;
-      const customerEmail = session.customer_email;
-      const amountTotal = session.amount_total;
+      const customerEmail =
+        session.customer_email || session.customer_details?.email;
+      const amountTotal = session.amount_total || 0;
 
       // Log the purchase
       console.log('Purchase completed:', {
@@ -58,8 +60,37 @@ export async function POST(request: NextRequest) {
         timestamp: new Date().toISOString(),
       });
 
-      // TODO: Send email with PDF download link
-      // Implementation: Use email service (Resend, SendGrid, etc.) to send download link to customerEmail
+      // Send the download email via Resend
+      if (customerEmail && productSlug && productName) {
+        const isVault =
+          productSlug === 'the-vault' ||
+          productSlug === 'thanksgiving-marriage-vault';
+
+        const baseUrl =
+          process.env.NEXT_PUBLIC_URL || 'https://deadhidden.org';
+        const downloadUrl = `${baseUrl}/store/${productSlug}/success?session_id=${session.id}`;
+
+        try {
+          await sendPurchaseEmail({
+            customerEmail,
+            productName,
+            productSlug,
+            isVault,
+            downloadUrl,
+            amountPaid: amountTotal,
+          });
+          console.log('Purchase email sent to:', customerEmail);
+        } catch (emailError) {
+          // Log but don't fail the webhook — buyer still has the success page
+          console.error('Failed to send purchase email:', emailError);
+        }
+      } else {
+        console.warn('Missing email or product info, skipping email:', {
+          customerEmail,
+          productSlug,
+          productName,
+        });
+      }
 
       return NextResponse.json({ received: true });
     }
