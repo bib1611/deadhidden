@@ -24,6 +24,7 @@ export function Navbar() {
   const navLinks = [
     { label: 'HOME', path: '/' },
     { label: 'THE ARCHIVE', path: '/store' },
+    { label: 'READ', path: '/read' },
     { label: 'PUBLICATIONS', path: '/publications' },
     { label: 'ABOUT', path: '/about' },
   ];
