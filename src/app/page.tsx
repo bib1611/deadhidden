@@ -12,7 +12,7 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/40 to-[#0a0a0a] bg-black">
         <div className="container max-w-3xl mx-auto px-4 py-20 text-center">
           <img
-            src="/images/logo.svg"
+            src="/images/logo.png"
             alt="Dead Hidden"
             className="w-28 h-28 md:w-36 md:h-36 mx-auto mb-8 opacity-90"
           />
