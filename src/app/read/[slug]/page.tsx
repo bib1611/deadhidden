@@ -75,10 +75,16 @@ async function fetchArticleContent(url: string): Promise<string> {
 
 function cleanHtml(html: string): string {
   return html
-    .replace(/<div[^>]*class="[^"]*subscription-widget[^"]*"[\s\S]*?<\/div>/g, '')
+    // Remove subscribe widgets (greedy — they nest deep)
+    .replace(/<div[^>]*class="[^"]*subscribe-widget[^"]*"[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/g, '')
+    .replace(/<div[^>]*class="[^"]*subscription-widget[^"]*"[\s\S]*$/g, '')
     .replace(/<div[^>]*class="[^"]*paywall[^"]*"[\s\S]*?<\/div>/g, '')
     .replace(/<button[^>]*class="[^"]*restack[^"]*"[\s\S]*?<\/button>/g, '')
     .replace(/<div[^>]*class="[^"]*like-button[^"]*"[\s\S]*?<\/div>/g, '')
+    // Remove share buttons
+    .replace(/<p[^>]*class="[^"]*button-wrapper[^"]*"[\s\S]*?<\/p>/g, '')
+    // Remove visibility-check divs
+    .replace(/<div[^>]*class="[^"]*visibility-check[^"]*"[\s\S]*?<\/div>/g, '')
     .replace(/data-attrs="[^"]*"/g, '')
     .replace(/data-component-name="[^"]*"/g, '')
     .replace(/<figcaption[^>]*>\s*<\/figcaption>/g, '')
