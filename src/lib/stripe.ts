@@ -9,7 +9,7 @@ export function getStripe(): Stripe {
       throw new Error("STRIPE_SECRET_KEY environment variable is not defined");
     }
     _stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: "2025-12-18.acacia" as Stripe.LatestApiVersion,
+      apiVersion: "2026-03-25.dahlia",
     });
   }
   return _stripe;

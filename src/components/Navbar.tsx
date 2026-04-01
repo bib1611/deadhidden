@@ -39,7 +39,7 @@ export function Navbar() {
           {/* Logo and Brand */}
           <div className="flex items-center gap-3 md:gap-4">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="Dead Hidden"
               width={40}
               height={40}
