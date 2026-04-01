@@ -118,6 +118,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
             isFree={product.isFree}
             isSubscription={false}
           />
+
+          {!product.isFree && (
+            <p className="text-xs text-[#555] mt-4">
+              Digital product. All sales are final.{' '}
+              <Link href="/refund-policy" className="text-[#8b0000] underline hover:text-[#a50000]">
+                Refund Policy
+              </Link>
+            </p>
+          )}
         </div>
 
         {/* Continue the Search */}
