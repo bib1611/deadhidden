@@ -3,9 +3,24 @@ import { FEEDS, parseRSSFeed, type Article } from '@/lib/articles';
 import { ArticleGrid } from './ArticleGrid';
 
 export const metadata: Metadata = {
-  title: 'Read | Dead Hidden',
+  title: 'Free Articles — Biblical Masculinity & Spiritual Warfare',
   description:
-    'Free articles from Dead Hidden and The Biblical Man. Biblical masculinity, spiritual warfare, and unfiltered truth.',
+    'Free articles from Dead Hidden and The Biblical Man. Biblical masculinity, spiritual warfare, marriage, and unfiltered KJV truth. No algorithm. No paywall.',
+  openGraph: {
+    title: 'Free Articles — Dead Hidden',
+    description:
+      'Free articles on biblical masculinity, spiritual warfare, and marriage from Adam Johnsson.',
+    url: 'https://deadhidden.org/read',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Articles — Dead Hidden',
+    description:
+      'Free articles on biblical masculinity, spiritual warfare, and marriage.',
+  },
+  alternates: {
+    canonical: 'https://deadhidden.org/read',
+  },
 };
 
 // Revalidate every 10 minutes

@@ -1,7 +1,9 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { products, CATEGORIES, getProductsByCategory, getProductBySlug } from '@/data/products';
 import { BuyButton } from '@/components/BuyButton';
+import { ProductJsonLd } from '@/components/JsonLd';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -12,6 +14,31 @@ export function generateStaticParams() {
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) return { title: 'Product Not Found' };
+
+  return {
+    title: product.name,
+    description: product.description.substring(0, 160),
+    openGraph: {
+      title: product.name,
+      description: product.tagline,
+      url: `https://deadhidden.org/store/${slug}`,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary',
+      title: product.name,
+      description: product.tagline,
+    },
+    alternates: {
+      canonical: `https://deadhidden.org/store/${slug}`,
+    },
+  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -29,6 +56,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <ProductJsonLd
+        name={product.name}
+        description={product.description}
+        slug={product.slug}
+        price={product.priceCents}
+      />
       {/* Breadcrumb */}
       <div className="border-b border-[#222] px-4 sm:px-6 lg:px-8 py-6">
         <div className="max-w-4xl mx-auto text-xs tracking-[0.1em] uppercase text-[#888]">

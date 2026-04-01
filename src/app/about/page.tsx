@@ -2,9 +2,24 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About | Dead Hidden',
+  title: 'About Adam Johnsson — The Biblical Man',
   description:
-    'Adam Johnsson — garbage truck driver, train conductor, father of 5, married 24 years. Teaching Sunday School 17 years. The story behind Dead Hidden.',
+    'Adam Johnsson — garbage truck driver, train conductor, father of 5, married 24 years, Sunday School teacher 17 years. Creator of Dead Hidden and The Biblical Man.',
+  openGraph: {
+    title: 'About Adam Johnsson — The Biblical Man',
+    description:
+      'The story behind Dead Hidden. Former garbage truck driver. Father of 5. 45K+ X followers. $84K ARR Substack.',
+    url: 'https://deadhidden.org/about',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'About Adam Johnsson — The Biblical Man',
+    description:
+      'Former garbage truck driver. Father of 5. Creator of Dead Hidden.',
+  },
+  alternates: {
+    canonical: 'https://deadhidden.org/about',
+  },
 };
 
 export default function AboutPage() {

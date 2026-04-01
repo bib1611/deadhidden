@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FEEDS, parseRSSFeed, type Article } from '@/lib/articles';
 import { ArticleReader } from './ArticleReader';
+import { ArticleJsonLd } from '@/components/JsonLd';
 
 export const revalidate = 600;
 
@@ -109,13 +110,23 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   }
 
   return {
-    title: `${article.title} | Dead Hidden`,
+    title: article.title,
     description: article.description,
     openGraph: {
       title: article.title,
       description: article.description,
       type: 'article',
+      url: `https://deadhidden.org/read/${slug}`,
       ...(article.imageUrl && { images: [article.imageUrl] }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+      ...(article.imageUrl && { images: [article.imageUrl] }),
+    },
+    alternates: {
+      canonical: `https://deadhidden.org/read/${slug}?source=${article.source}`,
     },
   };
 }
@@ -137,10 +148,20 @@ export default async function ArticlePage({ params, searchParams }: PageProps) {
   const contentHtml = await fetchArticleContent(substackUrl);
 
   return (
-    <ArticleReader
-      article={article}
-      contentHtml={contentHtml}
-      substackUrl={substackUrl}
-    />
+    <>
+      <ArticleJsonLd
+        title={article.title}
+        description={article.description}
+        slug={article.slug}
+        pubDate={article.pubDate}
+        imageUrl={article.imageUrl}
+        source={article.source}
+      />
+      <ArticleReader
+        article={article}
+        contentHtml={contentHtml}
+        substackUrl={substackUrl}
+      />
+    </>
   );
 }

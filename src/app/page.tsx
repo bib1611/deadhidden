@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory } from '@/data/products';
 import { EmailSignup } from '@/components/EmailSignup';
+import { OrganizationJsonLd } from '@/components/JsonLd';
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
@@ -8,6 +9,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#0a0a0a] text-[#e8e0d0]">
+      <OrganizationJsonLd />
       {/* 1. HERO SECTION */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/40 to-[#0a0a0a] bg-black">
         <div className="container max-w-3xl mx-auto px-4 py-20 text-center">
