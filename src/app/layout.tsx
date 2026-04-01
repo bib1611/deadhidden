@@ -66,6 +66,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://deadhidden.org',
   },
+  verification: {
+    google: 'dGwYJHqDIlGR3RPYwCBBE2z2JzTMYbL2P5X95jMWsBc',
+  },
 };
 
 export default function RootLayout({
