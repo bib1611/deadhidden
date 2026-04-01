@@ -30,7 +30,7 @@ function StoreContent() {
           </h1>
 
           {/* Category Filter Tabs */}
-          <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {categoryList.map((cat) => {
               const isAll = cat === 'all';
               const isActive = isAll ? !activeCategory : activeCategory === cat;
@@ -111,7 +111,7 @@ function StoreContent() {
                 href={`/store/${product.slug}`}
                 className="text-sm tracking-[0.15em] uppercase font-semibold text-[#e8e0d0] hover:text-[#8b0000] transition-colors"
               >
-                ACCESS →
+                {product.isFree ? 'FREE DOWNLOAD →' : 'BUY NOW →'}
               </Link>
             </div>
           ))}

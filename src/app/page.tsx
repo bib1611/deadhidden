@@ -26,8 +26,12 @@ export default function Home() {
             SOMETHING IS WRONG WITH MODERN CHRISTIANITY.
           </h1>
 
-          <p className="text-base md:text-lg text-[#888] max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-base md:text-lg text-[#888] max-w-2xl mx-auto mb-6 leading-relaxed">
             You've felt it your whole life. In the sermons. In the translations. In the doctrine that gets softer every year. You're not crazy. You're waking up.
+          </p>
+
+          <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-12">
+            45,000+ FOLLOWERS · 70,000+ SUBSCRIBERS · TWO SUBSTACKS · ONE MISSION
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -184,7 +188,7 @@ export default function Home() {
                       className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold"
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
-                      ACCESS
+                      BUY NOW →
                     </Link>
                   </div>
                 </div>
@@ -402,7 +406,7 @@ export default function Home() {
                     className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
-                    ACCESS
+                    FREE DOWNLOAD →
                   </Link>
                 </div>
               </div>
