@@ -55,7 +55,15 @@ export async function GET(
     const isEssentialArsenalPurchase =
       purchasedSlug === 'essential-arsenal' && essentialArsenalSlugs.has(slug);
 
-    if (!isVaultPurchase && !isDirectPurchase && !isEssentialArsenalPurchase) {
+    const womanhoodBundleSlugs = new Set([
+      'villains-valiant-virtuous', 'scriptural-prayers', '31-days-in-proverbs',
+      'titus-2-older-womans-calling', 'seasons-blur', 'before-the-world-does-student-workbook',
+      'walking-together-devotional', 'biblical-womanhood-2026-reading-plan',
+    ]);
+    const isWomanhoodBundlePurchase =
+      purchasedSlug === 'biblical-womanhood-bundle' && womanhoodBundleSlugs.has(slug);
+
+    if (!isVaultPurchase && !isDirectPurchase && !isEssentialArsenalPurchase && !isWomanhoodBundlePurchase) {
       return new NextResponse('Not authorized for this file', { status: 403 });
     }
 

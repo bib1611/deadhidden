@@ -59,6 +59,7 @@ export async function GET(request: NextRequest) {
     // For the Vault, return ALL product files
     const isVault = productSlug === 'the-vault' || productSlug === 'thanksgiving-marriage-vault';
     const isEssentialArsenal = productSlug === 'essential-arsenal';
+    const isWomanhoodBundle = productSlug === 'biblical-womanhood-bundle';
 
     // Essential Arsenal includes these 10 core products
     const essentialArsenalSlugs = new Set([
@@ -72,6 +73,18 @@ export async function GET(request: NextRequest) {
       'fourth-answer',
       'kings-conquest',
       'absalom-protocol',
+    ]);
+
+    // Biblical Womanhood Bundle includes all 8 of Christie's products
+    const womanhoodBundleSlugs = new Set([
+      'villains-valiant-virtuous',
+      'scriptural-prayers',
+      '31-days-in-proverbs',
+      'titus-2-older-womans-calling',
+      'seasons-blur',
+      'before-the-world-does-student-workbook',
+      'walking-together-devotional',
+      'biblical-womanhood-2026-reading-plan',
     ]);
 
     let files: Array<{ name: string; filename: string; slug: string }>;
@@ -89,6 +102,15 @@ export async function GET(request: NextRequest) {
       // Essential Arsenal buyers get the 10 curated products
       files = products
         .filter((p) => essentialArsenalSlugs.has(p.slug))
+        .map((p) => ({
+          name: p.name,
+          filename: `${p.slug}.pdf`,
+          slug: p.slug,
+        }));
+    } else if (isWomanhoodBundle) {
+      // Womanhood Bundle buyers get all 8 of Christie's products
+      files = products
+        .filter((p) => womanhoodBundleSlugs.has(p.slug))
         .map((p) => ({
           name: p.name,
           filename: `${p.slug}.pdf`,

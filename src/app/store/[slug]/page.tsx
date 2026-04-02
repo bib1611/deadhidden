@@ -236,6 +236,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             priceLabel={product.priceLabel}
             isFree={product.isFree}
             isSubscription={false}
+            stripePaymentLink={product.stripePaymentLink}
           />
 
           {!product.isFree && (

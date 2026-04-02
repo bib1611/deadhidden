@@ -7,6 +7,7 @@ interface BuyButtonProps {
   priceLabel: string;
   isFree: boolean;
   isSubscription: boolean;
+  stripePaymentLink?: string;
 }
 
 export function BuyButton({
@@ -14,11 +15,18 @@ export function BuyButton({
   priceLabel,
   isFree,
   isSubscription,
+  stripePaymentLink,
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleClick = async () => {
+    // Direct Stripe payment link — skip /api/checkout entirely
+    if (stripePaymentLink) {
+      window.location.href = stripePaymentLink;
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
