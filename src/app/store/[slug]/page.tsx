@@ -117,8 +117,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {CATEGORIES[product.category].label}
         </div>
 
-        {/* Social Proof — moved to top for Vault pages */}
-        {product.extendedContent?.socialProof && isVaultProduct && (
+        {/* Social Proof — moved to top for The Vault page */}
+        {product.extendedContent?.socialProof && product.slug === 'the-vault' && (
           <div className="mb-12 bg-[#111] border border-[#8b0000]/30 p-6">
             <p className="text-base text-[#e8e0d0] font-bold leading-relaxed">
               {product.extendedContent.socialProof}
@@ -210,11 +210,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </ul>
         </div>
 
-        {/* Vault Value Stack — itemized pricing for every product */}
-        {isVaultProduct && <VaultValueStack />}
+        {/* Vault Value Stack — itemized pricing for every product (full Vault only) */}
+        {product.slug === 'the-vault' && <VaultValueStack />}
 
-        {/* Social Proof — for non-vault products only (vault has it at top) */}
-        {product.extendedContent?.socialProof && !isVaultProduct && (
+        {/* Social Proof — for non-vault products (vault has it at top) */}
+        {product.extendedContent?.socialProof && product.slug !== 'the-vault' && (
           <div className="mb-12 bg-[#111] border border-[#222] p-6">
             <p className="text-sm text-[#888] italic leading-relaxed">
               {product.extendedContent.socialProof}
