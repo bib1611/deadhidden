@@ -253,7 +253,7 @@ const CATEGORY_SEO: Record<
     pillarContent: [
       'You have no excuse. These resources cost nothing. They require no credit card. They are instant downloads that will either wake you up or prove you were never serious in the first place.',
       'The free resources on Dead Hidden are not watered-down teasers. They are real tools that stand on their own. The Submission Fraud — grabbed by nearly 200 people — decodes the most misunderstood word in the Bible and exposes why the modern church has it completely backwards.',
-      '30 Biblical Rebels Your Pastor Skips gives you thirty men and women from scripture who broke every rule, defied every authority, and changed history — the ones your pastor never mentions because they do not fit the safe, respectable Christianity he is selling.',
+      '30 Biblical Rebels gives you thirty men and women from scripture who broke every rule, defied every authority, and changed history — the ones most churches never mention because they do not fit safe, respectable Christianity.',
       '5 Scriptures That Forge Men of Steel delivers five verses that will put iron in your spine. Memorize them. Meditate on them. Let them forge you into the man God designed you to be.',
       'The Warrior\'s Bible Conquest is a 30/60/90-day scripture immersion challenge. Over 100 warriors have taken it. Choose your tier and immerse yourself in the Word with military-grade discipline.',
       'The Wind-Watcher Checklist is a practical tool based on Ecclesiastes 11:4 for the man paralyzed by overthinking. Memento Mori is a daily reminder that your time is running out — not morbid, but motivating.',

@@ -391,7 +391,7 @@ export default function Home() {
                 Dead Hidden
               </h3>
               <p className="text-xs text-[#888] mb-4">
-                The things your pastor won't preach.
+                Biblical truth on camera. No filter.
               </p>
               <div className="text-right text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors">
                 →
