@@ -166,6 +166,16 @@ export function Footer() {
                   The Biblical Man Substack
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://open.substack.com/pub/biblicalwomanhood?r=2t2o3r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#888] hover:text-[#e8e0d0] transition-colors"
+                >
+                  Biblical Womanhood Substack
+                </a>
+              </li>
             </ul>
           </div>
 
