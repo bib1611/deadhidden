@@ -58,13 +58,37 @@ export async function GET(request: NextRequest) {
 
     // For the Vault, return ALL product files
     const isVault = productSlug === 'the-vault' || productSlug === 'thanksgiving-marriage-vault';
+    const isEssentialArsenal = productSlug === 'essential-arsenal';
+
+    // Essential Arsenal includes these 10 core products
+    const essentialArsenalSlugs = new Set([
+      'kings-marriage-manual-red',
+      'caged-porn',
+      'how-to-study-bible',
+      'before-the-world-does',
+      'exposing-the-enemy',
+      'when-she-stopped-asking',
+      'darkest-proverbs',
+      'fourth-answer',
+      'kings-conquest',
+      'absalom-protocol',
+    ]);
 
     let files: Array<{ name: string; filename: string; slug: string }>;
 
     if (isVault) {
       // Vault buyers get everything
       files = products
-        .filter((p) => !p.isFree && p.slug !== 'the-vault' && p.slug !== 'thanksgiving-marriage-vault' && p.slug !== 'the-table' && p.slug !== 'vault-sampler')
+        .filter((p) => !p.isFree && p.slug !== 'the-vault' && p.slug !== 'thanksgiving-marriage-vault' && p.slug !== 'the-table' && p.slug !== 'vault-sampler' && p.slug !== 'essential-arsenal')
+        .map((p) => ({
+          name: p.name,
+          filename: `${p.slug}.pdf`,
+          slug: p.slug,
+        }));
+    } else if (isEssentialArsenal) {
+      // Essential Arsenal buyers get the 10 curated products
+      files = products
+        .filter((p) => essentialArsenalSlugs.has(p.slug))
         .map((p) => ({
           name: p.name,
           filename: `${p.slug}.pdf`,

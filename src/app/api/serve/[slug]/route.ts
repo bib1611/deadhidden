@@ -41,13 +41,21 @@ export async function GET(
       return new NextResponse('Invalid session', { status: 403 });
     }
 
-    // Check authorization: buyer must have purchased this specific product OR the Vault
+    // Check authorization: buyer must have purchased this specific product, the Vault, or Essential Arsenal (for its 10 products)
     const isVaultPurchase =
       purchasedSlug === 'the-vault' ||
       purchasedSlug === 'thanksgiving-marriage-vault';
     const isDirectPurchase = purchasedSlug === slug;
 
-    if (!isVaultPurchase && !isDirectPurchase) {
+    const essentialArsenalSlugs = new Set([
+      'kings-marriage-manual-red', 'caged-porn', 'how-to-study-bible',
+      'before-the-world-does', 'exposing-the-enemy', 'when-she-stopped-asking',
+      'darkest-proverbs', 'fourth-answer', 'kings-conquest', 'absalom-protocol',
+    ]);
+    const isEssentialArsenalPurchase =
+      purchasedSlug === 'essential-arsenal' && essentialArsenalSlugs.has(slug);
+
+    if (!isVaultPurchase && !isDirectPurchase && !isEssentialArsenalPurchase) {
       return new NextResponse('Not authorized for this file', { status: 403 });
     }
 

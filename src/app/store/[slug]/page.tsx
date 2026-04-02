@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { products, CATEGORIES, getProductsByCategory, getProductBySlug, type Category } from '@/data/products';
 import { BuyButton } from '@/components/BuyButton';
 import { ProductJsonLd } from '@/components/JsonLd';
+import VaultValueStack from '@/components/VaultValueStack';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -49,6 +50,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     notFound();
   }
+
+  const isVaultProduct = product.slug === 'the-vault' || product.slug === 'essential-arsenal';
 
   // Get related products from same category
   const relatedProducts = getProductsByCategory(product.category)
@@ -114,6 +117,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {CATEGORIES[product.category].label}
         </div>
 
+        {/* Social Proof — moved to top for Vault pages */}
+        {product.extendedContent?.socialProof && isVaultProduct && (
+          <div className="mb-12 bg-[#111] border border-[#8b0000]/30 p-6">
+            <p className="text-base text-[#e8e0d0] font-bold leading-relaxed">
+              {product.extendedContent.socialProof}
+            </p>
+          </div>
+        )}
+
         {/* Full Description */}
         <div className="prose prose-invert max-w-none mb-12">
           <p className="text-base md:text-lg text-[#c0b8a8] leading-relaxed whitespace-pre-line">
@@ -121,7 +133,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
 
-        {/* Extended: Long Description (if available) */}
+        {/* Extended: Long Description — origin story (moved up for Vault) */}
         {product.extendedContent?.longDescription && (
           <div className="prose prose-invert max-w-none mb-12">
             {product.extendedContent.longDescription.split('\n\n').map((para, i) => (
@@ -198,8 +210,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </ul>
         </div>
 
-        {/* Extended: Social Proof (if available) */}
-        {product.extendedContent?.socialProof && (
+        {/* Vault Value Stack — itemized pricing for every product */}
+        {isVaultProduct && <VaultValueStack />}
+
+        {/* Social Proof — for non-vault products only (vault has it at top) */}
+        {product.extendedContent?.socialProof && !isVaultProduct && (
           <div className="mb-12 bg-[#111] border border-[#222] p-6">
             <p className="text-sm text-[#888] italic leading-relaxed">
               {product.extendedContent.socialProof}
@@ -230,6 +245,32 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 Refund Policy
               </Link>
             </p>
+          )}
+
+          {/* Not ready for the full Vault? — Essential Arsenal upsell */}
+          {product.slug === 'the-vault' && (
+            <div className="mt-8 p-6 border border-[#222] bg-[#111]">
+              <p className="text-sm text-[#888] mb-2">Not ready for the full Vault?</p>
+              <Link
+                href="/store/essential-arsenal"
+                className="text-[#8b0000] hover:text-[#e8e0d0] text-sm font-bold uppercase tracking-wide transition-colors"
+              >
+                GET THE ESSENTIAL ARSENAL — 10 CORE RESOURCES FOR $97 →
+              </Link>
+            </div>
+          )}
+
+          {/* Vault upsell on Essential Arsenal */}
+          {product.slug === 'essential-arsenal' && (
+            <div className="mt-8 p-6 border border-[#222] bg-[#111]">
+              <p className="text-sm text-[#888] mb-2">Want everything?</p>
+              <Link
+                href="/store/the-vault"
+                className="text-[#8b0000] hover:text-[#e8e0d0] text-sm font-bold uppercase tracking-wide transition-colors"
+              >
+                GET THE FULL VAULT — ALL 50+ RESOURCES FOR $365 →
+              </Link>
+            </div>
           )}
         </div>
 
