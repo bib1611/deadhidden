@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Oswald, Inter } from 'next/font/google';
+import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@/components/Navbar';
@@ -109,6 +110,11 @@ export default function RootLayout({
         <RadioPlayer />
         <Analytics />
         <SpeedInsights />
+        <Script
+          id="klaviyo-onsite"
+          src="https://static.klaviyo.com/onsite/js/YhqDQ8/klaviyo.js?company_id=YhqDQ8"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
