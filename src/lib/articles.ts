@@ -7,7 +7,7 @@ export interface Article {
   pubDate: string;
   description: string;
   imageUrl: string | null;
-  source: 'dead-hidden' | 'biblical-man';
+  source: 'dead-hidden' | 'biblical-man' | 'biblical-womanhood';
   sourceName: string;
   contentHtml?: string;
 }
@@ -28,6 +28,11 @@ export const FEEDS: FeedConfig[] = [
     url: 'https://biblicalman.substack.com/feed',
     source: 'biblical-man',
     sourceName: 'The Biblical Man',
+  },
+  {
+    url: 'https://biblicalwomanhood.substack.com/feed',
+    source: 'biblical-womanhood',
+    sourceName: 'Biblical Womanhood',
   },
 ];
 

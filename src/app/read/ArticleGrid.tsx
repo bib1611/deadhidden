@@ -39,6 +39,8 @@ function ArticleCard({ article }: { article: Article }) {
             className={`text-[10px] tracking-[0.15em] uppercase font-semibold px-2 py-0.5 ${
               article.source === 'dead-hidden'
                 ? 'bg-[#8b0000]/20 text-[#cc3333]'
+                : article.source === 'biblical-womanhood'
+                ? 'bg-[#2a1a2a]/40 text-[#b07ab0]'
                 : 'bg-[#1a3a1a]/40 text-[#6b9b6b]'
             }`}
           >
@@ -72,7 +74,7 @@ function ArticleCard({ article }: { article: Article }) {
 }
 
 export function ArticleGrid({ articles }: { articles: Article[] }) {
-  const [filter, setFilter] = useState<'all' | 'dead-hidden' | 'biblical-man'>('all');
+  const [filter, setFilter] = useState<'all' | 'dead-hidden' | 'biblical-man' | 'biblical-womanhood'>('all');
 
   const filtered =
     filter === 'all' ? articles : articles.filter((a) => a.source === filter);
@@ -81,11 +83,12 @@ export function ArticleGrid({ articles }: { articles: Article[] }) {
     <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="max-w-5xl mx-auto">
         {/* Filter tabs */}
-        <div className="flex gap-1 mb-10 border-b border-[#222] pb-4">
+        <div className="flex flex-wrap gap-1 mb-10 border-b border-[#222] pb-4">
           {[
             { key: 'all' as const, label: 'ALL' },
             { key: 'dead-hidden' as const, label: 'DEAD HIDDEN' },
             { key: 'biblical-man' as const, label: 'THE BIBLICAL MAN' },
+            { key: 'biblical-womanhood' as const, label: 'BIBLICAL WOMANHOOD' },
           ].map((tab) => (
             <button
               key={tab.key}

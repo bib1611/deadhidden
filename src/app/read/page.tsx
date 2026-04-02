@@ -3,20 +3,20 @@ import { FEEDS, parseRSSFeed, type Article } from '@/lib/articles';
 import { ArticleGrid } from './ArticleGrid';
 
 export const metadata: Metadata = {
-  title: 'Free Articles — Biblical Masculinity & Spiritual Warfare',
+  title: 'Free Articles — Biblical Truth, Masculinity & Womanhood',
   description:
-    'Free articles from Dead Hidden and The Biblical Man. Biblical masculinity, spiritual warfare, marriage, and unfiltered KJV truth. No algorithm. No paywall.',
+    'Free articles from Dead Hidden, The Biblical Man, and Biblical Womanhood. Biblical masculinity, biblical womanhood, spiritual warfare, marriage, and KJV truth.',
   openGraph: {
     title: 'Free Articles — Dead Hidden',
     description:
-      'Free articles on biblical masculinity, spiritual warfare, and marriage from Adam Johnsson.',
+      'Free articles on biblical masculinity, biblical womanhood, spiritual warfare, and marriage from Adam & Christie Johnsson.',
     url: 'https://deadhidden.org/read',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Free Articles — Dead Hidden',
     description:
-      'Free articles on biblical masculinity, spiritual warfare, and marriage.',
+      'Free articles on biblical masculinity, biblical womanhood, spiritual warfare, and marriage.',
   },
   alternates: {
     canonical: 'https://deadhidden.org/read',
@@ -66,7 +66,7 @@ export default async function ReadPage() {
             READ
           </h1>
           <p className="text-base md:text-lg text-[#888] leading-relaxed max-w-2xl">
-            Every free article from both publications. No algorithm. No paywall nags.
+            Every free article from all three publications. No algorithm. No paywall nags.
             No pop-ups. Just the words.
           </p>
         </div>

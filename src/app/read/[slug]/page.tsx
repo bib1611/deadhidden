@@ -11,6 +11,9 @@ function getSubstackUrl(slug: string, source: string): string {
   if (source === 'dead-hidden') {
     return `https://followme419.substack.com/p/${slug}`;
   }
+  if (source === 'biblical-womanhood') {
+    return `https://biblicalwomanhood.substack.com/p/${slug}`;
+  }
   return `https://biblicalman.substack.com/p/${slug}`;
 }
 
