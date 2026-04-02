@@ -228,6 +228,8 @@ export function Footer() {
           </p>
         </div>
       </div>
+      {/* Spacer for fixed radio player */}
+      <div className="h-12" />
     </footer>
   );
 }

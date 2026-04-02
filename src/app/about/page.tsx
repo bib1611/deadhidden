@@ -24,7 +24,6 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const testimonyParagraphs = [
-    "My name is Adam. Garbage truck driver. Train conductor. Father of five. Married twenty-four years. Teaching Sunday School for seventeen. Preaching since I was fourteen years old.",
     "I grew up in the system. Did everything they told me to do. Read the Bible versions they handed me. Sat under the teaching they approved. Believed the doctrines they packaged.",
     "Then I saw the cracks.",
     "Verses missing. Doctrines softened. The deity of Christ undermined in translation after translation. The modern Bible versions weren't just different — they were corrupted. Systematically. Deliberately. By people with documented agendas.",
@@ -52,8 +51,35 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Photo + Intro */}
+      <div className="px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-start">
+          <div className="w-full md:w-1/3 flex-shrink-0">
+            <img
+              src="/images/adam-christie.jpg"
+              alt="Adam and Christie Johnsson"
+              className="w-full grayscale border border-[#222]"
+            />
+            <p className="text-xs text-[#555] mt-3 text-center uppercase tracking-[0.1em]">
+              Adam & Christie — 24 years married
+            </p>
+          </div>
+          <div className="w-full md:w-2/3">
+            <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              My name is Adam. Garbage truck driver. Train conductor. Father of five. Married twenty-four years.
+            </p>
+            <p className="text-sm text-[#888] leading-relaxed mb-3">
+              Christie runs <span className="text-[#e8e0d0]">Biblical Womanhood</span> — because the men aren't the only ones who need to hear the truth. She's been beside me through every season of this fight.
+            </p>
+            <p className="text-sm text-[#888] leading-relaxed">
+              Teaching Sunday School for seventeen years. Preaching since I was fourteen years old. KJV only. No compromise. No apology.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Testimony */}
-      <div className="px-4 sm:px-6 lg:px-8 py-24">
+      <div className="px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto space-y-6">
           {testimonyParagraphs.map((paragraph, index) => {
             // Calculate opacity based on position
