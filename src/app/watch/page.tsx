@@ -67,7 +67,7 @@ export default function WatchPage() {
           </h1>
           <p className="text-base md:text-lg text-[#888] leading-relaxed max-w-2xl">
             Featured videos and curated playlists from the Dead Hidden YouTube channel.
-            The things your pastor won't preach — now on camera.
+            Biblical truth on camera. No filter. No compromise.
           </p>
         </div>
       </div>
