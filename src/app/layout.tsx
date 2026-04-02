@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Oswald, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@/components/Navbar';
@@ -6,14 +7,34 @@ import { Footer } from '@/components/Footer';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import './globals.css';
 
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-heading',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-body',
+});
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://deadhidden.org'),
   title: {
-    default: 'Dead Hidden — Biblical Truth They Can\'t Bury',
+    default: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
     template: '%s | Dead Hidden',
   },
   description:
-    'Biblical masculinity, marriage, spiritual warfare, and KJV Bible study. 50+ guides and resources for Christian men. By Adam Johnsson.',
+    'Biblical masculinity resources for Christian men. KJV Bible study guides, marriage manuals, spiritual warfare protocols, and parenting frameworks. 50+ resources by Adam Johnsson.',
   keywords: [
     'biblical masculinity',
     'christian men',
@@ -29,9 +50,9 @@ export const metadata: Metadata = {
   creator: 'Adam Johnsson',
   publisher: 'Dead Hidden',
   openGraph: {
-    title: 'Dead Hidden — Biblical Truth They Can\'t Bury',
+    title: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
     description:
-      'Biblical masculinity, marriage, spiritual warfare, and KJV Bible study. 50+ guides and resources for Christian men.',
+      'Biblical masculinity resources for Christian men. KJV Bible study guides, marriage manuals, spiritual warfare protocols. 50+ resources by Adam Johnsson.',
     url: 'https://deadhidden.org',
     siteName: 'Dead Hidden',
     type: 'website',
@@ -49,9 +70,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@SlayStupidity',
     creator: '@SlayStupidity',
-    title: 'Dead Hidden — Biblical Truth They Can\'t Bury',
+    title: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
     description:
-      'Biblical masculinity, marriage, spiritual warfare, and KJV Bible study. 50+ guides for Christian men.',
+      'Biblical masculinity resources for Christian men. KJV Bible study, marriage, spiritual warfare. 50+ guides by Adam Johnsson.',
   },
   robots: {
     index: true,
@@ -78,19 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
-        <style>{`
-          :root {
-            --font-heading: "Oswald", sans-serif;
-            --font-body: "Inter", sans-serif;
-          }
-        `}</style>
-      </head>
+    <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
       <body className="bg-background text-foreground font-inter">
         <Navbar />
         {children}

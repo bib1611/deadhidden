@@ -23,11 +23,11 @@ export default function Home() {
             className="text-4xl md:text-6xl lg:text-7xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            SOMETHING IS WRONG WITH MODERN CHRISTIANITY.
+            BIBLICAL MASCULINITY THEY TRIED TO BURY.
           </h1>
 
           <p className="text-base md:text-lg text-[#888] max-w-2xl mx-auto mb-6 leading-relaxed">
-            You've felt it your whole life. In the sermons. In the translations. In the doctrine that gets softer every year. You're not crazy. You're waking up.
+            KJV Bible study, marriage resources, and spiritual warfare guides for Christian men who refuse to be softened. 50+ resources built in the fire — not a seminary classroom.
           </p>
 
           <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-12">
@@ -76,6 +76,52 @@ export default function Home() {
             <p className="text-[#888] leading-relaxed">
               Dead Hidden exists to lay the documents on the table. What you do with them is your choice.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 2B. WHO THIS IS FOR — SEO content section */}
+      <section className="py-24 md:py-32 border-b border-[#222]">
+        <div className="container max-w-3xl mx-auto px-4">
+          <p
+            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase text-center mb-10 font-bold"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            WHO THIS IS FOR
+          </p>
+
+          <div className="space-y-6">
+            <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
+              Dead Hidden is a biblical masculinity resource library for Christian men who know something is missing from the modern church.
+            </p>
+            <p className="text-[#c0b8a8] leading-relaxed">
+              If you are a husband trying to lead your family with a King James Bible in one hand and no roadmap in the other — these resources were written for you. Marriage manuals for men whose wives have gone silent. Bible study systems for men who were never taught how to read Scripture with precision. Spiritual warfare protocols for men who feel the attack but can't name the source.
+            </p>
+            <p className="text-[#a09888] leading-relaxed">
+              Every guide on this site was forged in real life — not theory. Adam Johnsson drove garbage trucks, conducted trains, taught Sunday School for 17 years, raised five children, and stayed married for 24 years. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
+            </p>
+            <p className="text-[#888] leading-relaxed">
+              This is KJV Bible study without the seminary filter. Biblical headship without the apology. Parenting without the cultural compromise. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth that sets men free — you are in the right place.
+            </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="border border-[#222] bg-[#111] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>50+</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Resources</p>
+            </div>
+            <div className="border border-[#222] bg-[#111] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>9</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Categories</p>
+            </div>
+            <div className="border border-[#222] bg-[#111] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>KJV</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Only</p>
+            </div>
+            <div className="border border-[#222] bg-[#111] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>24</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Years Married</p>
+            </div>
           </div>
         </div>
       </section>
