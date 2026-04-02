@@ -116,6 +116,39 @@ function StoreContent() {
             </div>
           ))}
         </div>
+
+        {/* Browse by Category — SEO internal links */}
+        <div className="mt-16 border-t border-[#222] pt-16">
+          <h2
+            className="text-2xl uppercase font-bold text-[#e8e0d0] mb-8"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            BROWSE BY CATEGORY
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {(Object.keys(CATEGORIES) as Category[]).map((cat) => {
+              const catProducts = getProductsByCategory(cat);
+              return (
+                <Link
+                  key={cat}
+                  href={`/store/category/${cat}`}
+                  className="border border-[#222] bg-[#111] p-6 hover:border-[#8b0000] transition-colors"
+                >
+                  <div className="text-xs tracking-[0.12em] uppercase text-[#8b0000] mb-2">
+                    {catProducts.length} RESOURCES
+                  </div>
+                  <h3
+                    className="text-lg uppercase font-bold text-[#e8e0d0] mb-2"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {CATEGORIES[cat].label}
+                  </h3>
+                  <p className="text-sm text-[#888]">{CATEGORIES[cat].description}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </main>
   );

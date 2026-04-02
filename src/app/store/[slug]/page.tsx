@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { products, CATEGORIES, getProductsByCategory, getProductBySlug } from '@/data/products';
+import { products, CATEGORIES, getProductsByCategory, getProductBySlug, type Category } from '@/data/products';
 import { BuyButton } from '@/components/BuyButton';
 import { ProductJsonLd } from '@/components/JsonLd';
 
@@ -54,6 +54,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .filter((p) => p.slug !== product.slug)
     .slice(0, 3);
 
+  // Cross-category recommendations — pick from different categories
+  const crossCategoryMap: Record<Category, Category[]> = {
+    vault: ['marriage-family', 'masculinity', 'spiritual-warfare'],
+    'marriage-family': ['parenting', 'women', 'masculinity'],
+    'bible-study': ['spiritual-warfare', 'masculinity', 'free-resources'],
+    'spiritual-warfare': ['masculinity', 'bible-study', 'marriage-family'],
+    masculinity: ['spiritual-warfare', 'marriage-family', 'bible-study'],
+    parenting: ['marriage-family', 'masculinity', 'women'],
+    women: ['marriage-family', 'parenting', 'free-resources'],
+    bundles: ['vault', 'masculinity', 'spiritual-warfare'],
+    'free-resources': ['bible-study', 'masculinity', 'spiritual-warfare'],
+  };
+  const crossCategories = crossCategoryMap[product.category] || [];
+  const crossCategoryProducts = crossCategories
+    .flatMap((cat) => {
+      const catProducts = getProductsByCategory(cat).filter((p) => p.isFeatured);
+      return catProducts.length > 0 ? [catProducts[0]] : [getProductsByCategory(cat)[0]];
+    })
+    .filter(Boolean)
+    .slice(0, 3);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
       <ProductJsonLd
@@ -69,7 +90,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             THE ARCHIVE
           </Link>
           <span className="mx-2 text-[#555]">/</span>
-          <span>{CATEGORIES[product.category].label}</span>
+          <Link href={`/store/category/${product.category}`} className="hover:text-[#e8e0d0] transition-colors">
+            {CATEGORIES[product.category].label}
+          </Link>
           <span className="mx-2 text-[#555]">/</span>
           <span className="text-[#e8e0d0]">{product.name}</span>
         </div>
@@ -190,6 +213,48 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <p className="text-xs text-[#888]">{relatedProduct.priceLabel}</p>
                 </Link>
               ))}
+            </div>
+          </div>
+        )}
+        {/* Cross-Category: You Might Also Need */}
+        {crossCategoryProducts.length > 0 && (
+          <div className="border-t border-[#222] pt-12 mt-12">
+            <h3
+              className="text-2xl uppercase font-bold text-[#e8e0d0] mb-8"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              YOU MIGHT ALSO NEED
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {crossCategoryProducts.map((cp) => (
+                <Link
+                  key={cp.slug}
+                  href={`/store/${cp.slug}`}
+                  className="border border-[#222] bg-[#111] p-4 hover:border-[#8b0000] transition-colors"
+                >
+                  <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-2">
+                    {CATEGORIES[cp.category].label}
+                  </div>
+                  <h4
+                    className="text-sm uppercase font-bold text-[#e8e0d0] mb-2 line-clamp-2"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {cp.name}
+                  </h4>
+                  <p className="text-xs text-[#888]">{cp.priceLabel}</p>
+                </Link>
+              ))}
+            </div>
+
+            {/* Link to category pillar page */}
+            <div className="mt-6 text-center">
+              <Link
+                href={`/store/category/${product.category}`}
+                className="text-xs tracking-[0.15em] uppercase text-[#8b0000] hover:text-[#e8e0d0] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                VIEW ALL {CATEGORIES[product.category].label} RESOURCES →
+              </Link>
             </div>
           </div>
         )}
