@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { products, CATEGORIES, getProductsByCategory, getProductBySlug, type Category } from '@/data/products';
 import { BuyButton } from '@/components/BuyButton';
+import { ShareButtons } from '@/components/ShareButtons';
 import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
 
@@ -273,6 +274,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </Link>
             </div>
           )}
+
+          <ShareButtons
+            url={`https://deadhidden.org/store/${product.slug}`}
+            title={product.name}
+            description={product.tagline}
+          />
         </div>
 
         {/* Continue the Search */}
