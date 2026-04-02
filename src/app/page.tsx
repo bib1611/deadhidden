@@ -31,7 +31,7 @@ export default function Home() {
           </p>
 
           <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-12">
-            45,000+ FOLLOWERS · 70,000+ SUBSCRIBERS · TWO SUBSTACKS · ONE MISSION
+            45,000+ FOLLOWERS · 70,000+ SUBSCRIBERS · THREE SUBSTACKS · ONE MISSION
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -281,16 +281,15 @@ export default function Home() {
             <p className="text-[#888]">Find the one that speaks to you.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Top row: 3 Substacks */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             {/* Dead Hidden Substack */}
             <a
               href="https://open.substack.com/pub/deadhidden?r=2t2o3r"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#222] bg-[#111] p-6 hover:border-[#333] transition-colors group"
-              style={{
-                borderTop: '2px solid #8b0000',
-              }}
+              style={{ borderTop: '2px solid #8b0000' }}
             >
               <p
                 className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
@@ -318,9 +317,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#222] bg-[#111] p-6 hover:border-[#333] transition-colors group"
-              style={{
-                borderTop: '2px solid #8b0000',
-              }}
+              style={{ borderTop: '2px solid #8b0000' }}
             >
               <p
                 className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
@@ -335,22 +332,51 @@ export default function Home() {
                 The Biblical Man
               </h3>
               <p className="text-xs text-[#888] mb-4">
-                Faith. Family. Fight. The daily frontline.
+                Biblical masculinity. Marriage. Headship. The daily frontline.
               </p>
               <div className="text-right text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors">
                 →
               </div>
             </a>
 
+            {/* Biblical Womanhood Substack */}
+            <a
+              href="https://open.substack.com/pub/biblicalwomanhood?r=2t2o3r"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[#222] bg-[#111] p-6 hover:border-[#333] transition-colors group"
+              style={{ borderTop: '2px solid #8b0000' }}
+            >
+              <p
+                className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Substack
+              </p>
+              <h3
+                className="text-[#e8e0d0] uppercase tracking-[0.08em] font-bold mb-2 text-sm group-hover:text-[#8b0000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Biblical Womanhood
+              </h3>
+              <p className="text-xs text-[#888] mb-4">
+                God's design for women in a world that's lost its way. By Christie Johnsson.
+              </p>
+              <div className="text-right text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors">
+                →
+              </div>
+            </a>
+          </div>
+
+          {/* Bottom row: YouTube + X */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* YouTube */}
             <a
               href="https://www.youtube.com/@DeadHidden-k5y"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#222] bg-[#111] p-6 hover:border-[#333] transition-colors group"
-              style={{
-                borderTop: '2px solid #8b0000',
-              }}
+              style={{ borderTop: '2px solid #8b0000' }}
             >
               <p
                 className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
@@ -378,9 +404,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="border border-[#222] bg-[#111] p-6 hover:border-[#333] transition-colors group"
-              style={{
-                borderTop: '2px solid #8b0000',
-              }}
+              style={{ borderTop: '2px solid #8b0000' }}
             >
               <p
                 className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"

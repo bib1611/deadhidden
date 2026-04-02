@@ -4,21 +4,27 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Publications | Dead Hidden',
   description:
-    'Two Substack publications reaching 70,000+ subscribers with unfiltered biblical truth, spiritual warfare, and confessional testimony.',
+    'Three Substack publications reaching 70,000+ subscribers with unfiltered biblical truth, biblical masculinity, biblical womanhood, and spiritual warfare.',
 };
 
 const publications = [
   {
     name: 'DEAD HIDDEN SUBSTACK',
     description:
-      'Raw, unfiltered testimony. Spiritual warfare. Documents you won\'t find anywhere else. The publication for men who\'ve seen the cracks and refuse to go back to sleep.',
+      'Raw, unfiltered testimony. Spiritual warfare. Documents you won\'t find anywhere else. The publication for those who\'ve seen the cracks and refuse to go back to sleep.',
     url: 'https://open.substack.com/pub/deadhidden?r=2t2o3r',
   },
   {
     name: 'THE BIBLICAL MAN SUBSTACK',
     description:
-      'Biblical masculinity, marriage, headship, and faith. The content that gets shared in group chats and whispered about in church lobbies.',
-    url: 'https://open.substack.com/pub/biblicalman?r=2t2o3r',
+      'Biblical masculinity, marriage, headship, and faith. The content that gets shared in group chats and whispered about in church lobbies. By Adam Johnsson.',
+    url: 'https://open.substack.com/pub/thebiblicalman?r=2t2o3r',
+  },
+  {
+    name: 'BIBLICAL WOMANHOOD SUBSTACK',
+    description:
+      'Biblical womanhood, motherhood, marriage, and femininity. Equipping women to embrace God\'s design in a world that\'s lost its way. By Christie Johnsson.',
+    url: 'https://open.substack.com/pub/biblicalwomanhood?r=2t2o3r',
   },
   {
     name: 'YOUTUBE',
@@ -50,8 +56,8 @@ export default function PublicationsPage() {
             PUBLICATIONS
           </h1>
           <p className="text-base md:text-lg text-[#888] leading-relaxed max-w-2xl">
-            Four platforms. One message. 70,000+ people reading unfiltered truth about marriage,
-            masculinity, spiritual warfare, and the preservation of God's Word.
+            Five platforms. One mission. 70,000+ people reading unfiltered truth about marriage,
+            masculinity, womanhood, spiritual warfare, and the preservation of God's Word.
           </p>
         </div>
       </div>
