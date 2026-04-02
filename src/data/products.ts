@@ -22,6 +22,8 @@ export type Product = {
   badge?: string;
   purchaseType: "stripe";
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
+  // SEO keywords for meta tags and search targeting
+  seoKeywords?: string[];
   // Extended SEO content (optional — renders on product detail page for 500+ word pages)
   extendedContent?: {
     whoIsThisFor: string[];      // bullet points for "WHO THIS IS FOR" section
@@ -48,6 +50,7 @@ export const products: Product[] = [
     slug: "the-vault",
     name: "THE BIBLICAL MAN VAULT",
     tagline: "50+ resources. One price. No excuses.",
+    seoKeywords: ["christian resources bundle", "biblical guides for men and women", "KJV bible study collection", "christian marriage parenting resources", "biblical masculinity womanhood library", "digital christian resources download"],
     description: "Every PDF, guide, framework, protocol, and manual I've ever created — all in one place. This is the complete arsenal for the man who's done playing church and ready to wage war for his family, his faith, and his future. Over $1,500 worth of resources for a fraction of the cost.",
     priceCents: 36500,
     priceLabel: "$365",
@@ -95,6 +98,7 @@ export const products: Product[] = [
     slug: "kings-marriage-manual-red",
     name: "THE KING'S MARRIAGE MANUAL (RED VERSION)",
     tagline: "Your marriage is a battlefield. This is your field manual.",
+    seoKeywords: ["biblical marriage guide for husbands", "christian headship manual", "how to lead your wife biblically KJV", "marriage rescue plan christian", "christian marriage book for men", "biblical authority in marriage"],
     description: "The uncut, uncensored version. Biblical headship, sexual intimacy, conflict resolution, and leading your wife the way Christ leads the church — without apology. This isn't couples therapy. This is war doctrine for your covenant.",
     priceCents: 4700,
     priceLabel: "$47",
@@ -207,6 +211,7 @@ export const products: Product[] = [
     slug: "find-godly-man",
     name: "HOW TO FIND A GODLY MAN",
     tagline: "Among the Neverland Lost Boys.",
+    seoKeywords: ["how to find a godly husband", "christian dating advice for women", "signs of a godly man to marry", "christian woman looking for husband", "biblical qualities of a good husband", "how to find a christian man"],
     description: "Most 'Christian' men are boys in dress shirts. This guide helps women identify the real ones — the men who fear God more than they fear being alone.",
     priceCents: 2700,
     priceLabel: "$27",
@@ -233,6 +238,7 @@ export const products: Product[] = [
     slug: "how-to-study-bible",
     name: "HOW TO STUDY THE BIBLE LIKE YOUR LIFE DEPENDS ON IT",
     tagline: "Because it does.",
+    seoKeywords: ["how to study the bible for beginners", "KJV bible study method", "bible study guide for men", "how to study the bible effectively", "king james bible study system", "inductive bible study guide"],
     description: "318 men bought this. It's the most popular resource I've ever made. Not a devotional. Not a reading plan. A system for extracting the living Word of God from the page and driving it into your bones.",
     priceCents: 700,
     priceLabel: "$7+",
@@ -358,6 +364,7 @@ export const products: Product[] = [
     slug: "blood-and-bandwidth",
     name: "BLOOD AND BANDWIDTH",
     tagline: "The digital age of Christian martyrdom.",
+    seoKeywords: ["modern christian persecution", "christian censorship social media", "christians being silenced", "digital age persecution of christians", "christian deplatforming", "war on christianity"],
     description: "84 men invested in this. Persecution isn't ancient history — it's livestreamed. This resource exposes the modern war on Christians and arms you with the truth they're trying to censor.",
     priceCents: 5000,
     priceLabel: "$50",
@@ -392,6 +399,7 @@ export const products: Product[] = [
     slug: "exposing-the-enemy",
     name: "EXPOSING THE ENEMY: SATAN'S 5 DEADLIEST LIES TO CHRISTIAN MEN",
     tagline: "Know your enemy or become his casualty.",
+    seoKeywords: ["spiritual warfare guide for christians", "satans lies to christian men", "how to fight spiritual attacks", "spiritual warfare prayers and strategies", "overcoming spiritual deception bible", "christian spiritual warfare book"],
     description: "213 men armed themselves with this. The devil doesn't need you to worship him — he just needs you to believe his lies. This guide exposes the five most effective deceptions keeping Christian men in chains.",
     priceCents: 700,
     priceLabel: "$7+",
@@ -426,6 +434,7 @@ export const products: Product[] = [
     slug: "overcoming-mental-torment",
     name: "OVERCOMING MENTAL TORMENT",
     tagline: "What the Bible says about 10 common mental health struggles.",
+    seoKeywords: ["bible verses for anxiety and depression", "christian guide to overcoming anxiety", "what does the bible say about mental health", "spiritual warfare against depression", "christian mental health resources", "overcoming fear with scripture KJV"],
     description: "The world gives you pills. God gives you power. This resource addresses anxiety, depression, fear, and more through the lens of scripture — not psychology, not self-help, not medication.",
     priceCents: 5999,
     priceLabel: "$59.99",
@@ -517,6 +526,7 @@ export const products: Product[] = [
     slug: "loneliness-lie",
     name: "THE LONELINESS LIE",
     tagline: "You're not alone. You're just surrounded by the wrong people.",
+    seoKeywords: ["christian men loneliness", "male loneliness epidemic bible", "christian brotherhood guide", "how to find christian friends", "overcoming loneliness as a christian man", "biblical friendship and accountability"],
     description: "72 men broke free. The epidemic of male loneliness isn't about being alone — it's about being surrounded by people who don't know you. This guide exposes the lie and gives you the biblical path to real brotherhood.",
     priceCents: 700,
     priceLabel: "$7+",
@@ -530,6 +540,7 @@ export const products: Product[] = [
     slug: "caged-porn",
     name: "CAGED: WHY CHRISTIAN MEN TURN TO PORN",
     tagline: "And how to get out.",
+    seoKeywords: ["overcoming pornography addiction christian", "christian men porn struggle bible", "how to quit porn as a christian", "biblical guide to freedom from pornography", "christian porn addiction recovery", "sexual purity for christian men"],
     description: "You don't have a porn problem. You have a worship problem. This guide goes deeper than accountability software and browser filters — it targets the root of sexual sin in Christian men.",
     priceCents: 3700,
     priceLabel: "$37+",
@@ -700,6 +711,7 @@ export const products: Product[] = [
     slug: "before-the-world-does",
     name: "BEFORE THE WORLD DOES",
     tagline: "Get to your kids before the culture does.",
+    seoKeywords: ["christian parenting guide protect children", "how to talk to kids about gender biblically", "protect children from secular culture", "biblical parenting book", "christian family guide against woke culture", "teaching kids about bodies bible"],
     description: "The world is coming for your children. Social media, public school, and the entertainment industry are discipling your kids 24/7. This resource arms you to get there first.",
     priceCents: 4999,
     priceLabel: "$49.99",
@@ -837,6 +849,7 @@ export const products: Product[] = [
     slug: "traditional-homemaking",
     name: "TRADITIONAL BIBLICAL HOMEMAKING",
     tagline: "A counter-revolutionary guide.",
+    seoKeywords: ["traditional homemaking christian", "biblical homemaking guide", "christian stay at home mom", "proverbs 31 woman guide", "traditional wife christian", "biblical womanhood homemaker"],
     description: "In a world that mocks homemakers, this guide celebrates the woman who chooses to build her home instead of her LinkedIn profile. Biblical. Practical. Unapologetic.",
     priceCents: 3295,
     priceLabel: "$32.95",
@@ -889,6 +902,7 @@ export const products: Product[] = [
     slug: "submission-fraud",
     name: "THE SUBMISSION FRAUD",
     tagline: "195 people grabbed this. It's free.",
+    seoKeywords: ["biblical submission explained", "what does submission mean in the bible", "wife submission husband KJV", "biblical submission is not abuse", "ephesians 5 submission meaning", "christian marriage roles explained"],
     description: "The most misunderstood word in the Bible, decoded. What submission actually means, what it doesn't mean, and why the modern church has it completely backwards.",
     priceCents: 0,
     priceLabel: "FREE",

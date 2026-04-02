@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title: `${product.name} | Dead Hidden`,
     description: product.description.substring(0, 160),
+    keywords: product.seoKeywords || [],
     openGraph: {
       title: product.name,
       description: product.tagline,
