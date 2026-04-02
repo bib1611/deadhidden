@@ -1245,6 +1245,7 @@ export const products: Product[] = [
     badge: "SAVE 51%",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
+    stripePaymentLink: "https://buy.stripe.com/28E14odde8jUer24V8frW0S",
     seoKeywords: ["biblical womanhood bundle", "christian women resources", "KJV women study bundle", "biblical femininity resources"],
   },
 ];
