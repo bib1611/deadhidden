@@ -25,6 +25,7 @@ export function Navbar() {
     { label: 'HOME', path: '/' },
     { label: 'THE ARCHIVE', path: '/store' },
     { label: 'READ', path: '/read' },
+    { label: 'WATCH', path: '/watch' },
     { label: 'PUBLICATIONS', path: '/publications' },
     { label: 'ABOUT', path: '/about' },
   ];
