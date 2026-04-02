@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   if (!product) return { title: 'Product Not Found' };
 
   return {
-    title: product.name,
+    title: `${product.name} | Dead Hidden`,
     description: product.description.substring(0, 160),
     openGraph: {
       title: product.name,
@@ -120,16 +120,54 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </p>
         </div>
 
+        {/* Extended: Long Description (if available) */}
+        {product.extendedContent?.longDescription && (
+          <div className="prose prose-invert max-w-none mb-12">
+            {product.extendedContent.longDescription.split('\n\n').map((para, i) => (
+              <p key={i} className="text-base md:text-lg text-[#c0b8a8] leading-relaxed mb-6">
+                {para}
+              </p>
+            ))}
+          </div>
+        )}
+
+        {/* Extended: Who Is This For (if available) */}
+        {product.extendedContent?.whoIsThisFor && (
+          <div className="mb-12 border-t border-[#222] pt-12">
+            <h2
+              className="text-2xl uppercase font-bold text-[#e8e0d0] mb-6"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              WHO THIS IS FOR
+            </h2>
+            <ul className="space-y-3 text-[#c0b8a8]">
+              {product.extendedContent.whoIsThisFor.map((item, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-[#8b0000] font-bold flex-shrink-0">→</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {/* What's Inside */}
         <div className="mb-12 border-t border-[#222] pt-12">
           <h2
             className="text-2xl uppercase font-bold text-[#e8e0d0] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            WHAT'S INSIDE
+            WHAT&apos;S INSIDE
           </h2>
           <ul className="space-y-3 text-[#c0b8a8]">
-            {product.isFree ? (
+            {product.extendedContent?.whatsInside ? (
+              product.extendedContent.whatsInside.map((item, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-[#8b0000] font-bold flex-shrink-0">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))
+            ) : product.isFree ? (
               <>
                 <li className="flex gap-3">
                   <span className="text-[#8b0000] font-bold flex-shrink-0">✓</span>
@@ -158,6 +196,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
             )}
           </ul>
         </div>
+
+        {/* Extended: Social Proof (if available) */}
+        {product.extendedContent?.socialProof && (
+          <div className="mb-12 bg-[#111] border border-[#222] p-6">
+            <p className="text-sm text-[#888] italic leading-relaxed">
+              {product.extendedContent.socialProof}
+            </p>
+          </div>
+        )}
 
         {/* Price and Buy Button */}
         <div className="border-t border-[#222] pt-12 mb-16">

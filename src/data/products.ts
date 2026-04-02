@@ -22,6 +22,13 @@ export type Product = {
   badge?: string;
   purchaseType: "stripe";
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
+  // Extended SEO content (optional — renders on product detail page for 500+ word pages)
+  extendedContent?: {
+    whoIsThisFor: string[];      // bullet points for "WHO THIS IS FOR" section
+    whatsInside: string[];       // detailed bullet points for "WHAT'S INSIDE"
+    longDescription?: string;    // additional paragraphs of content
+    socialProof?: string;        // testimonial or stat-based proof line
+  };
 };
 
 export const CATEGORIES: Record<Category, { label: string; description: string }> = {
@@ -50,6 +57,26 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "huyrp",
+    extendedContent: {
+      whoIsThisFor: [
+        "The man who is done buying resources one at a time and wants the complete library",
+        "The husband whose marriage is on life support and needs every tool available",
+        "The father who realizes the culture is discipling his kids and he needs to catch up fast",
+        "The new believer who wants to build his entire biblical foundation in one purchase",
+        "The man who has been following The Biblical Man and is ready to go all in",
+      ],
+      whatsInside: [
+        "50+ PDF guides, manuals, protocols, and frameworks — instant download",
+        "Complete marriage collection: The King's Marriage Manual, Headship Manual, When She Stopped Asking, and more",
+        "Full spiritual warfare arsenal: Exposing the Enemy, Overcoming Mental Torment, Break Free from Modern Demons",
+        "Biblical masculinity library: CAGED, The Loneliness Lie, The Uncomfortable Christ, and 10+ more",
+        "Bible study collection: How to Study the Bible, The Darkest Proverbs, Romans, Esther studies",
+        "Parenting resources: Before The World Does, The 12 Conversations, The Absalom Protocol",
+        "Lifetime access — buy once, download forever, no subscriptions",
+      ],
+      longDescription: "The Vault exists because I got tired of watching men buy one guide, apply it halfway, then come back six months later broken in a different area. Your marriage is connected to your masculinity. Your masculinity is connected to your spiritual warfare. Your spiritual warfare is connected to your Bible study. You cannot fix one and ignore the rest.\n\nThis is over $1,500 worth of resources — every single product on Dead Hidden — for a fraction of that cost. I built each one of these from personal experience. Twenty-four years of marriage. Five children. Seventeen years of Sunday School. A career driving garbage trucks and conducting trains before going full-time as a creator. Every guide in The Vault was forged in the fire of real life, not seminary theory.\n\nWhen you purchase The Vault, you get instant access to everything. Every PDF downloads immediately. No drip content. No waiting. No upsells. The complete arsenal, delivered to your inbox the moment you hit purchase.",
+      socialProof: "The Vault is the bestselling product on Dead Hidden. Men keep buying it because it works — and because buying everything separately costs over four times as much.",
+    },
   },
   {
     slug: "vault-sampler",
@@ -77,6 +104,26 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "jkfak",
+    extendedContent: {
+      whoIsThisFor: [
+        "The husband who knows his marriage is in trouble but does not know where to start",
+        "The man whose wife has emotionally checked out and he can feel the distance growing",
+        "The newlywed who wants to establish biblical headship from day one instead of learning it after damage is done",
+        "The Christian man tired of watered-down marriage advice that sounds like a therapist wrote it",
+        "The husband who tried counseling and date nights and still feels like a stranger in his own home",
+      ],
+      whatsInside: [
+        "Biblical framework for headship — what Ephesians 5 actually demands of you as a husband",
+        "Sexual intimacy protocols — what the Bible says about the marriage bed, without the church-lady filter",
+        "Conflict resolution doctrine — how to lead through disagreement without becoming a tyrant or a pushover",
+        "Communication frameworks for the conversations your marriage cannot survive without",
+        "Practical daily leadership rhythms that establish your authority through service, not domination",
+        "The difference between biblical headship and secular control — and why most men confuse the two",
+        "Instant PDF download — read it tonight, start applying it tomorrow morning",
+      ],
+      longDescription: "I wrote the Red Version because the original was too safe. Not wrong — just too careful. The church has made Christian marriage advice so sanitized that it is useless for the man whose wife has already stopped caring. That man does not need another book about love languages. He needs war doctrine.\n\nThis manual covers the things your pastor will never preach from the pulpit. Biblical authority in the bedroom. How to lead a wife who does not want to be led. How to rebuild trust after you have destroyed it. How to stop being the passive husband who outsources spiritual leadership to his wife while calling it partnership.\n\nThe Red Version is the uncensored edition. It is written for adults. It assumes you can handle direct language about sex, authority, conflict, and the hard realities of covenant marriage. If you want something softer, the original version exists. But if your marriage is bleeding out and you need a tourniquet — this is it.",
+      socialProof: "The King's Marriage Manual is the bestselling marriage resource on Dead Hidden. Husbands keep coming back to say it saved their covenant when nothing else worked.",
+    },
   },
   {
     slug: "headship-manual",
@@ -195,6 +242,26 @@ export const products: Product[] = [
     badge: "MOST POPULAR",
     purchaseType: "stripe",
     legacyGumroadSlug: "ellmoq",
+    extendedContent: {
+      whoIsThisFor: [
+        "The man who reads his Bible out of guilt but gets nothing from it",
+        "The believer who has tried reading plans and devotionals and always quits by February",
+        "The Christian who knows the Bible is important but has never been taught HOW to study it",
+        "The man who wants to teach his family scripture but does not feel equipped to explain what he reads",
+        "The new believer who is overwhelmed by where to even begin",
+      ],
+      whatsInside: [
+        "A complete Bible study SYSTEM — not a reading plan, not a devotional, a repeatable method",
+        "How to extract meaning from any passage using observation, interpretation, and application",
+        "The difference between reading the Bible and studying the Bible — and why most men only do the first",
+        "Practical tools for cross-referencing, word study, and context analysis using only a KJV Bible",
+        "How to move from passive reading to active engagement with the living Word of God",
+        "Daily and weekly rhythms that make Bible study a non-negotiable habit, not a New Year's resolution",
+        "Instant PDF download — start studying tonight",
+      ],
+      longDescription: "This is the most popular resource on Dead Hidden for a reason. Over 300 men have bought it because it solves the problem nobody else addresses: most Christian men do not know how to study their Bible. They read it. They skim it. They highlight verses that make them feel good. But they do not study it.\n\nStudying the Bible is a skill. Like any skill, it requires a system. This guide gives you that system — a repeatable method for approaching any passage of scripture and extracting the truth God put there for you. Not someone else's interpretation. Not a commentary's opinion. The actual meaning of the text, discovered through your own disciplined engagement with the Word.\n\nI built this system over seventeen years of teaching Sunday School. It is how I prepare every lesson. It is how I write every post. It is the foundation of everything I produce at Dead Hidden. And at $7, there is no excuse not to own it.",
+      socialProof: "318 men bought this guide. It is the most popular resource on Dead Hidden — and the one most buyers say they wish they had found years ago.",
+    },
   },
   {
     slug: "real-jesus-audio",
@@ -300,6 +367,26 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "pprfjq",
+    extendedContent: {
+      whoIsThisFor: [
+        "The Christian who thinks persecution is ancient history and only happens in other countries",
+        "The believer who feels something shifting in the culture but cannot articulate what",
+        "The man who wants to prepare his family for increasing hostility toward biblical faith",
+        "The pastor or church leader who needs to equip his congregation for what is coming",
+        "The Christian content creator who has felt the sting of censorship and deplatforming",
+      ],
+      whatsInside: [
+        "Documented cases of modern Christian persecution — not from the first century, from this one",
+        "How digital platforms are being weaponized against biblical speech",
+        "The connection between cultural tolerance and the silencing of Christian conviction",
+        "Biblical framework for understanding persecution as a sign of faithfulness, not failure",
+        "Practical preparation for a world that increasingly labels biblical truth as hate speech",
+        "How to stand firm without becoming a victim or a conspiracy theorist",
+        "Instant PDF download — 84 men have already armed themselves with this",
+      ],
+      longDescription: "Persecution is not something that happened to the apostles. It is happening right now. Christians are being killed, imprisoned, deplatformed, fired, sued, and silenced — and the Western church is asleep because it has not touched them yet.\n\nBlood and Bandwidth connects the dots between ancient martyrdom and modern censorship. It shows you that the same spirit that fed Christians to lions is now feeding algorithms that suppress biblical content. The same governments that outlawed scripture are now outlawing 'hate speech' — defined as anything the Bible clearly teaches about sin, gender, sexuality, and the exclusivity of Christ.\n\nThis is not a conspiracy theory. It is documented reality. And the man who pretends it is not coming is the man whose family will be blindsided when it arrives at his door.",
+      socialProof: "84 men invested in this resource. It is the bestselling spiritual warfare guide on Dead Hidden.",
+    },
   },
   {
     slug: "exposing-the-enemy",
@@ -314,6 +401,26 @@ export const products: Product[] = [
     badge: "MOST POPULAR",
     purchaseType: "stripe",
     legacyGumroadSlug: "naoba",
+    extendedContent: {
+      whoIsThisFor: [
+        "The Christian man who keeps falling into the same sin cycle and cannot figure out why",
+        "The believer who feels spiritually stuck — praying, reading, going to church, but getting nowhere",
+        "The husband or father who senses something is attacking his family but cannot identify it",
+        "The man who was raised in church but never taught about spiritual warfare",
+        "The new believer who wants to understand the enemy before the enemy understands him",
+      ],
+      whatsInside: [
+        "Five specific lies Satan uses against Christian men — identified, exposed, and dismantled with scripture",
+        "How to recognize deception in real time — the warning signs most men miss until it is too late",
+        "Biblical counter-weapons for each lie — specific scriptures that destroy each deception",
+        "Why accountability groups and willpower fail against spiritual attacks — and what actually works",
+        "The connection between unrecognized lies and patterns of sin, depression, and passivity",
+        "A practical framework for daily spiritual warfare that takes minutes, not hours",
+        "Instant PDF download — arm yourself tonight",
+      ],
+      longDescription: "Over 200 men have armed themselves with this guide because it names the attacks they have been suffering under without knowing it. The devil's greatest weapon is not temptation — it is deception. Temptation you can resist. A lie you believe? That rewires how you think, pray, and live.\n\nEach of the five lies in this guide is one I have personally believed. I did not find them in a theology textbook. I found them in the wreckage of my own failures. The lie that told me God was done with me. The lie that told me my sin disqualified me. The lie that told me I was alone in this fight. They are common because they work — and they work because nobody exposes them.\n\nThis guide does not just identify the lies. It gives you the specific KJV scriptures that destroy each one. Not platitudes. Not motivational quotes. The living Word of God aimed at the specific deception keeping you in chains.",
+      socialProof: "213 men have used this guide to identify and destroy the lies holding them captive. The most common feedback: 'I didn't even realize I believed that until I read this.'",
+    },
   },
   {
     slug: "overcoming-mental-torment",
@@ -601,6 +708,26 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "cdsnv",
+    extendedContent: {
+      whoIsThisFor: [
+        "The father who just realized his kids spend more time being discipled by screens than by him",
+        "The parent whose child is asking questions about gender, sexuality, or identity and you do not know what to say",
+        "The homeschool family that needs a biblical framework for topics the world refuses to leave alone",
+        "The father of young children who wants to build the foundation before the culture starts cracking it",
+        "The parent who lost an older child to the world and refuses to let it happen again with the younger ones",
+      ],
+      whatsInside: [
+        "Age-appropriate frameworks for talking to your children about bodies, gender, and biblical sexuality",
+        "How to identify and counter the specific lies your children are hearing from school, media, and peers",
+        "Biblical parenting authority — how to establish a home where God's Word is the final authority, not the culture",
+        "Scripts and conversation starters for the hardest topics Christian parents face today",
+        "A chapter-by-chapter approach that builds progressively as your children grow",
+        "How to teach your children to think critically about what they see and hear without making them fearful",
+        "Instant PDF download — start equipping yourself tonight",
+      ],
+      longDescription: "Every day your children are being taught. The question is not whether someone is discipling them — the question is who. Social media, YouTube, public schools, their friends, the entertainment industry — these are all preaching a gospel to your children. And that gospel says there is no God, there are no absolutes, gender is a choice, and your parents are outdated.\n\nBefore The World Does is a comprehensive framework for getting to your children before these forces do. It is not a theoretical book about parenting philosophy. It is a practical guide that tells you what to say, when to say it, and how to build the kind of home where your children hear the truth from you first — not from a TikTok algorithm.\n\nI wrote this as a father of five. My oldest has watched friends walk away from the faith because their parents never equipped them to stand. My youngest are growing up in a world that is more hostile to biblical truth than anything my generation faced. This resource is what I am using to get to them first. And it is what I am giving you so you can do the same.",
+      socialProof: "A free chapter — God's Design for Bodies — is available in our free resources section. Download it and see the quality before investing in the full guide.",
+    },
   },
   {
     slug: "12-conversations",
@@ -771,6 +898,25 @@ export const products: Product[] = [
     badge: "FREE",
     purchaseType: "stripe",
     legacyGumroadSlug: "ozuoy",
+    extendedContent: {
+      whoIsThisFor: [
+        "The woman who has been told submission means becoming a doormat — and knows something is wrong with that teaching",
+        "The husband who wants to understand biblical headship but keeps hearing conflicting definitions",
+        "The couple fighting about roles because neither one has actually studied what the Bible says",
+        "The single person who wants to understand biblical marriage roles before entering a covenant",
+        "Anyone who has been confused by the modern church's contradictory teaching on submission",
+      ],
+      whatsInside: [
+        "What the Greek word 'hupotasso' actually means — and what it does not mean",
+        "The difference between biblical submission and cultural doormat theology",
+        "How the modern church reversed the meaning of submission to appease feminist culture",
+        "What Christ's relationship with the church actually teaches about marriage roles",
+        "Why submission is a position of strength, not weakness — backed by KJV scripture",
+        "Free instant download — no credit card, no email sequence, just the truth",
+      ],
+      longDescription: "Submission is the most weaponized word in the modern church. Feminists use it as proof that the Bible oppresses women. Weak pastors avoid it entirely. And abusive men twist it into something God never intended.\n\nThe Submission Fraud cuts through all of it. It goes back to the original language, examines the full context of every passage the modern church cherry-picks, and presents what the Bible actually teaches about submission — which is radically different from what you have been told.\n\nThis is the most downloaded resource on Dead Hidden. Nearly 200 people have grabbed it because the truth about submission is the foundation everything else is built on. Get this wrong, and your marriage, your family, and your theology will be built on sand.\n\nIt is free. It will take you twenty minutes to read. And it will change how you understand biblical marriage forever.",
+      socialProof: "195 people have downloaded The Submission Fraud. It is the most popular free resource on Dead Hidden and the #1 entry point for new readers.",
+    },
   },
   {
     slug: "30-biblical-rebels",
