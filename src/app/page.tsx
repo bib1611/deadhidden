@@ -23,11 +23,11 @@ export default function Home() {
             className="text-4xl md:text-6xl lg:text-7xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            BIBLICAL MASCULINITY THEY TRIED TO BURY.
+            BIBLICAL TRUTH THEY TRIED TO BURY.
           </h1>
 
           <p className="text-base md:text-lg text-[#888] max-w-2xl mx-auto mb-6 leading-relaxed">
-            KJV Bible study, marriage resources, and spiritual warfare guides for Christian men who refuse to be softened. 50+ resources built in the fire — not a seminary classroom.
+            KJV Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides built in the fire — not a seminary classroom.
           </p>
 
           <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-12">
@@ -92,16 +92,19 @@ export default function Home() {
 
           <div className="space-y-6">
             <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
-              Dead Hidden is a biblical masculinity resource library for Christian men who know something is missing from the modern church.
+              Dead Hidden is a KJV Bible study resource library for Christian men and women who know something is missing from the modern church.
             </p>
             <p className="text-[#c0b8a8] leading-relaxed">
-              If you are a husband trying to lead your family with a King James Bible in one hand and no roadmap in the other — these resources were written for you. Marriage manuals for men whose wives have gone silent. Bible study systems for men who were never taught how to read Scripture with precision. Spiritual warfare protocols for men who feel the attack but can't name the source.
+              For men: biblical masculinity resources, marriage manuals for husbands whose wives have gone silent, Bible study systems for men who were never taught how to read Scripture with precision, and spiritual warfare protocols for men who feel the attack but can't name the source.
+            </p>
+            <p className="text-[#c0b8a8] leading-relaxed">
+              For women: biblical womanhood guides, resources on finding a godly man, traditional homemaking frameworks, and the unfiltered truth about submission that the modern church either waters down or weaponizes.
             </p>
             <p className="text-[#a09888] leading-relaxed">
-              Every guide on this site was forged in real life — not theory. Adam Johnsson drove garbage trucks, conducted trains, taught Sunday School for 17 years, raised five children, and stayed married for 24 years. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
+              Every guide on this site was forged in real life — not theory. Adam and Christie Johnsson have been married 24 years, raised five children, and taught Sunday School for 17 years straight. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
             </p>
             <p className="text-[#888] leading-relaxed">
-              This is KJV Bible study without the seminary filter. Biblical headship without the apology. Parenting without the cultural compromise. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth that sets men free — you are in the right place.
+              This is KJV Bible study without the seminary filter. Biblical headship without the apology. Biblical womanhood without the feminism. Parenting without the cultural compromise. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
             </p>
           </div>
 

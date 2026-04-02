@@ -30,15 +30,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://deadhidden.org'),
   title: {
-    default: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
+    default: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
     template: '%s | Dead Hidden',
   },
   description:
-    'Biblical masculinity resources for Christian men. KJV Bible study guides, marriage manuals, spiritual warfare protocols, and parenting frameworks. 50+ resources by Adam Johnsson.',
+    'KJV Bible study guides, biblical masculinity, biblical womanhood, marriage manuals, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
   keywords: [
-    'biblical masculinity',
-    'christian men',
     'KJV bible study',
+    'biblical masculinity',
+    'biblical womanhood',
+    'christian men',
+    'christian women',
     'marriage guide',
     'spiritual warfare',
     'biblical headship',
@@ -50,9 +52,9 @@ export const metadata: Metadata = {
   creator: 'Adam Johnsson',
   publisher: 'Dead Hidden',
   openGraph: {
-    title: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
+    title: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'Biblical masculinity resources for Christian men. KJV Bible study guides, marriage manuals, spiritual warfare protocols. 50+ resources by Adam Johnsson.',
+      'KJV Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
     url: 'https://deadhidden.org',
     siteName: 'Dead Hidden',
     type: 'website',
@@ -70,9 +72,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@SlayStupidity',
     creator: '@SlayStupidity',
-    title: 'Dead Hidden — Biblical Masculinity, KJV Bible Study & Spiritual Warfare',
+    title: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'Biblical masculinity resources for Christian men. KJV Bible study, marriage, spiritual warfare. 50+ guides by Adam Johnsson.',
+      'KJV Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare. 50+ guides by Adam & Christie Johnsson.',
   },
   robots: {
     index: true,
