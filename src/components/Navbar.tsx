@@ -71,6 +71,17 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/support"
+              className={`text-sm tracking-[0.12em] uppercase font-bold px-4 py-1.5 border transition-colors ${
+                isActive('/support')
+                  ? 'bg-[#8b0000] border-[#8b0000] text-[#e8e0d0]'
+                  : 'border-[#8b0000] text-[#8b0000] hover:bg-[#8b0000] hover:text-[#e8e0d0]'
+              }`}
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              SUPPORT
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -116,6 +127,14 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href="/support"
+                onClick={() => setIsOpen(false)}
+                className="mx-4 text-center text-sm tracking-[0.12em] uppercase font-bold px-4 py-2 border border-[#8b0000] text-[#8b0000] hover:bg-[#8b0000] hover:text-[#e8e0d0] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                SUPPORT THE MISSION
+              </Link>
             </div>
           </div>
         )}

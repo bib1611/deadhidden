@@ -1,0 +1,102 @@
+import type { Metadata } from 'next';
+import { SupportButtons } from '@/components/SupportButtons';
+
+export const metadata: Metadata = {
+  title: 'Support The Mission | Dead Hidden',
+  description:
+    'No sponsors. No ads. No denomination. Keep the fire lit with a one-time gift to Dead Hidden.',
+  openGraph: {
+    title: 'Support The Mission | Dead Hidden',
+    description: 'No sponsors. No ads. No denomination. Keep the fire lit.',
+    url: 'https://deadhidden.org/support',
+  },
+};
+
+export default function SupportPage() {
+  return (
+    <main className="min-h-screen bg-[#0a0a0a] text-[#e8e0d0]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-24 md:py-32">
+        {/* Title */}
+        <h1
+          className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold mb-6"
+          style={{ fontFamily: 'var(--font-heading)' }}
+        >
+          KEEP THE FIRE LIT.
+        </h1>
+        <div className="h-1 bg-[#8b0000] w-16 mb-12" />
+
+        {/* The Story */}
+        <div className="space-y-6 text-base md:text-lg text-[#c0b8a8] leading-relaxed mb-16">
+          <p>
+            I drove a garbage truck. Then I conducted trains. Then God told me to write.
+          </p>
+          <p>
+            I walked away from a steady paycheck with five kids and a mortgage because the words wouldn&apos;t stop. The posts at 2 AM that men said saved their marriage. The Bible studies that made comfortable Christians squirm. The truth that the modern church buried under committee meetings and coffee bars.
+          </p>
+          <p>
+            There are no sponsors behind this. No denomination funding it. No publishing house. No corporate money. No ads. Not one.
+          </p>
+          <p>
+            Every guide, every post, every tweet, every Substack article — it comes from a man with a Bible, five children, a wife of 24 years, and a mouth God won&apos;t let him shut.
+          </p>
+          <p className="text-[#e8e0d0] font-bold">
+            If this ministry has fed you — even once — you can keep it alive.
+          </p>
+        </div>
+
+        {/* Gift Amounts */}
+        <div className="mb-16">
+          <h2
+            className="text-2xl uppercase font-bold mb-2"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            FUND THE WAR CHEST
+          </h2>
+          <p className="text-sm text-[#888] mb-8">
+            One-time gift. No strings. No subscription. Just war funding.
+          </p>
+
+          <SupportButtons />
+        </div>
+
+        {/* What It Funds */}
+        <div className="border-t border-[#222] pt-12 mb-16">
+          <h2
+            className="text-xl uppercase font-bold mb-6"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            WHERE IT GOES
+          </h2>
+          <div className="space-y-4 text-[#c0b8a8]">
+            <div className="flex gap-3">
+              <span className="text-[#8b0000] font-bold flex-shrink-0">→</span>
+              <span>Daily content — free Substack posts, tweets, and Bible studies reaching 70,000+ subscribers</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[#8b0000] font-bold flex-shrink-0">→</span>
+              <span>New guides and manuals — the research, writing, and design of every resource in The Archive</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[#8b0000] font-bold flex-shrink-0">→</span>
+              <span>Infrastructure — hosting, email delivery, and the tools that keep Dead Hidden running 24/7</span>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-[#8b0000] font-bold flex-shrink-0">→</span>
+              <span>A family of seven — five kids who watch their father choose obedience over comfort every single day</span>
+            </div>
+          </div>
+        </div>
+
+        {/* The Verse */}
+        <div className="border border-[#222] bg-[#111] p-8 text-center">
+          <p className="text-[#888] italic text-sm leading-relaxed mb-3">
+            &ldquo;Even so hath the Lord ordained that they which preach the gospel should live of the gospel.&rdquo;
+          </p>
+          <p className="text-xs text-[#555] tracking-[0.15em] uppercase">
+            — 1 Corinthians 9:14 KJV
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+}
