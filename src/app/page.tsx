@@ -467,7 +467,7 @@ export default function Home() {
             >
               <p className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold" style={{ fontFamily: 'var(--font-heading)' }}>Substack</p>
               <h3 className="text-[#e8e0d0] uppercase tracking-[0.08em] font-bold mb-1 text-sm group-hover:text-[#8b0000] transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>Biblical Womanhood</h3>
-              <p className="text-xs text-[#888]">God&apos;s design for women. By Christie Johnsson.</p>
+              <p className="text-xs text-[#888]">God&apos;s design for women. By Christie Johnson.</p>
             </a>
           </div>
 

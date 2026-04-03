@@ -15,7 +15,7 @@ export function OrganizationJsonLd() {
         },
         founder: {
           '@type': 'Person',
-          name: 'Adam Johnsson',
+          name: 'Adam Johnson',
           alternateName: 'The Biblical Man',
           url: 'https://deadhidden.org/about',
           jobTitle: 'Founder & Teacher',
@@ -115,7 +115,7 @@ export function ArticleJsonLd({
     ...(imageUrl && { image: imageUrl }),
     author: {
       '@type': 'Person',
-      name: 'Adam Johnsson',
+      name: 'Adam Johnson',
       url: 'https://deadhidden.org/about',
     },
     publisher: {

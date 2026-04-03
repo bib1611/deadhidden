@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: '%s | Dead Hidden Ministries',
   },
   description:
-    'A Bible study ministry and friend to churches. Bible study guides, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
+    'A Bible study ministry and friend to churches. Bible study guides, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnson.',
   keywords: [
     'KJV bible study',
     'biblical masculinity',
@@ -46,15 +46,15 @@ export const metadata: Metadata = {
     'biblical headship',
     'dead hidden',
     'the biblical man',
-    'Adam Johnsson',
+    'Adam Johnson',
   ],
-  authors: [{ name: 'Adam Johnsson', url: 'https://deadhidden.org/about' }],
-  creator: 'Adam Johnsson',
+  authors: [{ name: 'Adam Johnson', url: 'https://deadhidden.org/about' }],
+  creator: 'Adam Johnson',
   publisher: 'Dead Hidden Ministries',
   openGraph: {
     title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'A Bible study ministry and friend to churches. 50+ guides on marriage, parenting, spiritual warfare, and Scripture by Adam & Christie Johnsson.',
+      'A Bible study ministry and friend to churches. 50+ guides on marriage, parenting, spiritual warfare, and Scripture by Adam & Christie Johnson.',
     url: 'https://deadhidden.org',
     siteName: 'Dead Hidden Ministries',
     type: 'website',
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     creator: '@SlayStupidity',
     title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'A Bible study ministry and friend to churches. 50+ resources by Adam & Christie Johnsson.',
+      'A Bible study ministry and friend to churches. 50+ resources by Adam & Christie Johnson.',
   },
   robots: {
     index: true,

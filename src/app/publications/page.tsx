@@ -17,13 +17,13 @@ const publications = [
   {
     name: 'THE BIBLICAL MAN SUBSTACK',
     description:
-      'Biblical masculinity, marriage, headship, and faith. The content that gets shared in group chats and whispered about in church lobbies. By Adam Johnsson.',
+      'Biblical masculinity, marriage, headship, and faith. The content that gets shared in group chats and whispered about in church lobbies. By Adam Johnson.',
     url: 'https://open.substack.com/pub/thebiblicalman?r=2t2o3r',
   },
   {
     name: 'BIBLICAL WOMANHOOD SUBSTACK',
     description:
-      'Biblical womanhood, motherhood, marriage, and femininity. Equipping women to embrace God\'s design in a world that\'s lost its way. By Christie Johnsson.',
+      'Biblical womanhood, motherhood, marriage, and femininity. Equipping women to embrace God\'s design in a world that\'s lost its way. By Christie Johnson.',
     url: 'https://open.substack.com/pub/biblicalwomanhood?r=2t2o3r',
   },
   {

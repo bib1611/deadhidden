@@ -89,7 +89,7 @@ export function Footer() {
               A Bible study ministry and friend to churches. Serving Christians, families, and congregations with the resources the modern church stopped providing.
             </p>
             <p className="text-xs text-[#666]">
-              Adam & Christie Johnsson
+              Adam & Christie Johnson
             </p>
           </div>
 

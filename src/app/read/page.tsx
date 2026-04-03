@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Free Articles — Dead Hidden',
     description:
-      'Free articles on biblical masculinity, biblical womanhood, spiritual warfare, and marriage from Adam & Christie Johnsson.',
+      'Free articles on biblical masculinity, biblical womanhood, spiritual warfare, and marriage from Adam & Christie Johnson.',
     url: 'https://deadhidden.org/read',
   },
   twitter: {

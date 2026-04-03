@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Dead Hidden Ministries — Adam & Christie Johnsson',
+  title: 'About Dead Hidden Ministries — Adam & Christie Johnson',
   description:
-    'Dead Hidden Ministries — a Bible study ministry and friend to churches. Adam & Christie Johnsson: married 24 years, 5 children, 17 years teaching Sunday School. Three publications serving 70,000+ subscribers.',
+    'Dead Hidden Ministries — a Bible study ministry and friend to churches. Adam & Christie Johnson: married 24 years, 5 children, 17 years teaching Sunday School. Three publications serving 70,000+ subscribers.',
   openGraph: {
-    title: 'About Dead Hidden Ministries — Adam & Christie Johnsson',
+    title: 'About Dead Hidden Ministries — Adam & Christie Johnson',
     description:
-      'A Bible study ministry and friend to churches. Adam & Christie Johnsson — married 24 years, 5 children, three publications, 70,000+ subscribers.',
+      'A Bible study ministry and friend to churches. Adam & Christie Johnson — married 24 years, 5 children, three publications, 70,000+ subscribers.',
     url: 'https://deadhidden.org/about',
   },
   twitter: {
     card: 'summary',
     title: 'About Dead Hidden Ministries',
     description:
-      'A Bible study ministry and friend to churches by Adam & Christie Johnsson.',
+      'A Bible study ministry and friend to churches by Adam & Christie Johnson.',
   },
   alternates: {
     canonical: 'https://deadhidden.org/about',
@@ -57,7 +57,7 @@ export default function AboutPage() {
           <div className="w-full md:w-1/3 flex-shrink-0">
             <img
               src="/images/adam-christie.jpg"
-              alt="Adam and Christie Johnsson"
+              alt="Adam and Christie Johnson"
               className="w-full grayscale border border-[#222]"
             />
             <p className="text-xs text-[#555] mt-3 text-center uppercase tracking-[0.1em]">
@@ -69,7 +69,7 @@ export default function AboutPage() {
               Dead Hidden Ministries exists to serve the body of Christ with the Bible study resources the modern church stopped providing.
             </p>
             <p className="text-sm text-[#888] leading-relaxed mb-3">
-              Adam and Christie Johnsson. Married twenty-four years. Five children. Teaching Sunday School for seventeen years straight. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools and runs <span className="text-[#e8e0d0]">Biblical Womanhood</span> — because the women need the truth just as much as the men.
+              Adam and Christie Johnson. Married twenty-four years. Five children. Teaching Sunday School for seventeen years straight. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools and runs <span className="text-[#e8e0d0]">Biblical Womanhood</span> — because the women need the truth just as much as the men.
             </p>
             <p className="text-sm text-[#888] leading-relaxed">
               Three publications. 70,000+ subscribers. 50+ Bible study resources. A friend to churches and Christians everywhere who refuse to settle for watered-down faith.

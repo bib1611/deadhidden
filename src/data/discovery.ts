@@ -106,7 +106,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'for-women',
     headline: 'BIBLICAL WOMANHOOD WITHOUT THE FEMINIST FILTER.',
     shortName: 'For Women',
-    description: "Christie Johnsson's collection. Prayer, Proverbs, motherhood, mentoring, and the women of Scripture.",
+    description: "Christie Johnson's collection. Prayer, Proverbs, motherhood, mentoring, and the women of Scripture.",
     startHere: 'biblical-womanhood-2026-reading-plan',
     productSlugs: [
       'biblical-womanhood-2026-reading-plan', '31-days-in-proverbs', 'scriptural-prayers',
