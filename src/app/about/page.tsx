@@ -102,6 +102,46 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Featured Video */}
+      <div className="border-t border-[#222] px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-4xl mx-auto">
+          <p
+            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-6 font-bold"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            WATCH
+          </p>
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/uf1C7sEIlLI?rel=0"
+              title="What's the Big Deal About the KJV? — Episode 1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          <div className="mt-4 flex items-center justify-between">
+            <div>
+              <h3
+                className="text-sm uppercase font-bold text-[#e8e0d0]"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                WHAT&apos;S THE BIG DEAL ABOUT THE KJV? — EP. 1
+              </h3>
+              <p className="text-xs text-[#555] mt-1">The series that started it all</p>
+            </div>
+            <Link
+              href="/watch"
+              className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold flex-shrink-0"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              MORE VIDEOS →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Stats Grid */}
       <div className="border-t border-[#222] px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">

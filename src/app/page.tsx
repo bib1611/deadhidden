@@ -362,6 +362,103 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 7b. WATCH — embedded YouTube videos to increase time on site */}
+      <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
+        <div className="container max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              VIDEO ARCHIVE
+            </p>
+            <h2
+              className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              WATCH. LEARN. FIGHT.
+            </h2>
+            <p className="text-[#888] text-sm">Biblical truth on camera. No filter. No compromise.</p>
+          </div>
+
+          {/* Featured Video — large */}
+          <div className="mb-8">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/eu8pXtSXbvg?rel=0"
+                title="The Mark of the Beast Is Already Here"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-4">
+              <h3
+                className="text-lg md:text-xl uppercase font-bold text-[#e8e0d0]"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                THE MARK OF THE BEAST IS ALREADY HERE
+              </h3>
+              <p className="text-xs text-[#555] mt-1">Featured — 1.5K views</p>
+            </div>
+          </div>
+
+          {/* Playlist Embeds — 2 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <div>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/videoseries?list=PLiHaOYX3u49EhXzIEdx0fVbgBa8OEtFrH&rel=0"
+                  title="What's the Big Deal About the KJV?"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+              <h3
+                className="text-sm uppercase font-bold text-[#e8e0d0] mt-3"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                WHAT&apos;S THE BIG DEAL ABOUT THE KJV?
+              </h3>
+              <p className="text-xs text-[#555] mt-1">9-part series</p>
+            </div>
+
+            <div>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/videoseries?list=PLiHaOYX3u49EkJQC9pIRxF6sqKNJoq6rp&rel=0"
+                  title="Antichrist and the Endtimes"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+              <h3
+                className="text-sm uppercase font-bold text-[#e8e0d0] mt-3"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                ANTICHRIST AND THE ENDTIMES
+              </h3>
+              <p className="text-xs text-[#555] mt-1">5-part series</p>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/watch"
+              className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              VIEW FULL VIDEO ARCHIVE →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 8. THE ARCHIVE - CATEGORIES GRID */}
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
