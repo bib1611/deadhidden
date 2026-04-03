@@ -58,6 +58,7 @@ export async function GET(request: NextRequest) {
 
     // For the Vault, return ALL product files
     const isVault = productSlug === 'the-vault' || productSlug === 'thanksgiving-marriage-vault';
+    const isVaultSampler = productSlug === 'vault-sampler';
     const isEssentialArsenal = productSlug === 'essential-arsenal';
     const isWomanhoodBundle = productSlug === 'biblical-womanhood-bundle';
 
@@ -73,6 +74,14 @@ export async function GET(request: NextRequest) {
       'fourth-answer',
       'kings-conquest',
       'absalom-protocol',
+    ]);
+
+    // Vault Sampler includes these 4 products
+    const vaultSamplerSlugs = new Set([
+      'warriors-bible-conquest',
+      'kings-marriage-manual-red',
+      'break-free-modern-demons',
+      'warriors-bible-blueprint',
     ]);
 
     // Biblical Womanhood Bundle includes all 8 of Christie's products
@@ -93,6 +102,15 @@ export async function GET(request: NextRequest) {
       // Vault buyers get everything
       files = products
         .filter((p) => !p.isFree && p.slug !== 'the-vault' && p.slug !== 'thanksgiving-marriage-vault' && p.slug !== 'the-table' && p.slug !== 'vault-sampler' && p.slug !== 'essential-arsenal')
+        .map((p) => ({
+          name: p.name,
+          filename: `${p.slug}.pdf`,
+          slug: p.slug,
+        }));
+    } else if (isVaultSampler) {
+      // Vault Sampler buyers get the 4 sampler products
+      files = products
+        .filter((p) => vaultSamplerSlugs.has(p.slug))
         .map((p) => ({
           name: p.name,
           filename: `${p.slug}.pdf`,
