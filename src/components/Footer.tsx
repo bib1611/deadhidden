@@ -83,13 +83,13 @@ export function Footer() {
               className="text-xs tracking-[0.3em] uppercase text-[#8b0000] mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              DEAD HIDDEN
+              DEAD HIDDEN MINISTRIES
             </h3>
             <p className="text-sm text-[#888] mb-4 leading-relaxed">
-              The things they buried. The documents they don't want you to read. The Bible they couldn't corrupt.
+              A Bible study ministry and friend to churches. Serving Christians, families, and congregations with the resources the modern church stopped providing.
             </p>
             <p className="text-xs text-[#666]">
-              "For to be carnally minded is death — Romans 8:6"
+              Adam & Christie Johnsson
             </p>
           </div>
 
@@ -228,7 +228,7 @@ export function Footer() {
             className="text-xs text-[#888]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            © 2026 Dead Hidden
+            © 2026 Dead Hidden Ministries
           </p>
           <p
             className="text-xs tracking-[0.12em] uppercase text-[#8b0000]"

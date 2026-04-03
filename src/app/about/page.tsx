@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Adam Johnsson — The Biblical Man',
+  title: 'About Dead Hidden Ministries — Adam & Christie Johnsson',
   description:
-    'Adam Johnsson — garbage truck driver, train conductor, father of 5, married 24 years, Sunday School teacher 17 years. Creator of Dead Hidden and The Biblical Man.',
+    'Dead Hidden Ministries — a Bible study ministry and friend to churches. Adam & Christie Johnsson: married 24 years, 5 children, 17 years teaching Sunday School. Three publications serving 70,000+ subscribers.',
   openGraph: {
-    title: 'About Adam Johnsson — The Biblical Man',
+    title: 'About Dead Hidden Ministries — Adam & Christie Johnsson',
     description:
-      'The story behind Dead Hidden. Former garbage truck driver. Father of 5. 45K+ X followers. $84K ARR Substack.',
+      'A Bible study ministry and friend to churches. Adam & Christie Johnsson — married 24 years, 5 children, three publications, 70,000+ subscribers.',
     url: 'https://deadhidden.org/about',
   },
   twitter: {
     card: 'summary',
-    title: 'About Adam Johnsson — The Biblical Man',
+    title: 'About Dead Hidden Ministries',
     description:
-      'Former garbage truck driver. Father of 5. Creator of Dead Hidden.',
+      'A Bible study ministry and friend to churches by Adam & Christie Johnsson.',
   },
   alternates: {
     canonical: 'https://deadhidden.org/about',
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const testimonyParagraphs = [
-    "I grew up in the system. Did everything they told me to do. Read the Bible versions they handed me. Sat under the teaching they approved. Believed the doctrines they packaged.",
-    "Then I saw the cracks.",
-    "Verses missing. Doctrines softened. The deity of Christ undermined in translation after translation. The modern Bible versions weren't just different — they were corrupted. Systematically. Deliberately. By people with documented agendas.",
-    "I found the King James Bible. Not as a preference. Not as a tradition. As the preserved word of God in English. The one line they couldn't corrupt because God promised to preserve His words. And He did.",
-    "Once you see it, you can't unsee it. The constructed matrix of modern Christianity — the watered-down doctrine, the carnal churches, the spiritual children they produce instead of warriors — it all traces back to one thing: they changed the Book.",
-    "Dead Hidden exists because someone has to say it. Someone has to lay the documents on the table and let people read them for themselves.",
-    "I'm not a seminary graduate. I'm not a theologian with letters after my name. I'm a man who reads his Bible, believes what it says, and won't apologize for teaching it the way God wrote it.",
-    "The King James Bible says what it says. They changed it because it was too dangerous. Dead Hidden is here to hand it back to you.",
+    "I started driving a garbage truck at 4 AM and reading my Bible on break. Christie was home with the kids, teaching them Scripture before the school system could get to them. We weren't building a ministry. We were just trying to survive and stay faithful.",
+    "But we kept running into the same problem. The church wasn't teaching what the Bible actually said. Marriages were falling apart in the pews. Men had no idea how to lead. Women were being fed feminism dressed in Christian language. Kids were being handed to the culture without a fight.",
+    "So we started writing. Not for an audience. For the people sitting next to us in Sunday School who had the same questions we did.",
+    "I wrote what I wish someone had handed me when I was twenty years old and clueless. Christie wrote what she wished older women in the church had told her instead of the watered-down advice she got.",
+    "Then strangers found it. Then thousands. Then tens of thousands. People who felt the same gap — the distance between what Scripture says and what the modern church teaches.",
+    "Dead Hidden Ministries is not a replacement for the local church. It is a friend to the church. The resources here exist to strengthen what the church is supposed to be doing — teaching families how to study Scripture, fight spiritual battles, raise children, and stay married.",
+    "We're not seminary graduates. We're not theologians with letters after our names. We're a family that reads the Bible, believes what it says, and serves the body of Christ with everything we've got.",
+    "If your church needs resources, we built them. If your family needs truth, we wrote it down. If you need a friend in the fight — you found one.",
   ];
 
   return (
@@ -40,13 +40,13 @@ export default function AboutPage() {
       <div className="border-b border-[#222] px-4 sm:px-6 lg:px-8 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-xs tracking-[0.2em] uppercase text-[#8b0000] font-semibold mb-4">
-            WHO WE ARE
+            A FRIEND TO CHURCHES
           </div>
           <h1
             className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            THE PEOPLE BEHIND THE ARCHIVE
+            ABOUT THE MINISTRY
           </h1>
         </div>
       </div>
@@ -66,13 +66,13 @@ export default function AboutPage() {
           </div>
           <div className="w-full md:w-2/3">
             <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-              My name is Adam. Garbage truck driver. Train conductor. Father of five. Married twenty-four years.
+              Dead Hidden Ministries exists to serve the body of Christ with the Bible study resources the modern church stopped providing.
             </p>
             <p className="text-sm text-[#888] leading-relaxed mb-3">
-              Christie runs <span className="text-[#e8e0d0]">Biblical Womanhood</span> — because the men aren't the only ones who need to hear the truth. She's been beside me through every season of this fight.
+              Adam and Christie Johnsson. Married twenty-four years. Five children. Teaching Sunday School for seventeen years straight. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools and runs <span className="text-[#e8e0d0]">Biblical Womanhood</span> — because the women need the truth just as much as the men.
             </p>
             <p className="text-sm text-[#888] leading-relaxed">
-              Teaching Sunday School for seventeen years. Preaching since I was fourteen years old. KJV only. No compromise. No apology.
+              Three publications. 70,000+ subscribers. 50+ Bible study resources. A friend to churches and Christians everywhere who refuse to settle for watered-down faith.
             </p>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
             className="inline-block px-8 py-4 bg-[#8b0000] text-[#e8e0d0] font-semibold tracking-[0.15em] uppercase hover:bg-[#a80000] transition-colors"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            ENTER THE ARCHIVE
+            EXPLORE OUR RESOURCES
           </Link>
         </div>
       </div>

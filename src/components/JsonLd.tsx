@@ -7,7 +7,7 @@ export function OrganizationJsonLd() {
       {
         '@type': 'Organization',
         '@id': 'https://deadhidden.org/#organization',
-        name: 'Dead Hidden',
+        name: 'Dead Hidden Ministries',
         url: 'https://deadhidden.org',
         logo: {
           '@type': 'ImageObject',
@@ -18,7 +18,7 @@ export function OrganizationJsonLd() {
           name: 'Adam Johnsson',
           alternateName: 'The Biblical Man',
           url: 'https://deadhidden.org/about',
-          jobTitle: 'Creator & Author',
+          jobTitle: 'Founder & Teacher',
           sameAs: [
             'https://x.com/SlayStupidity',
             'https://www.youtube.com/@thebiblicalman',
@@ -36,7 +36,7 @@ export function OrganizationJsonLd() {
       {
         '@type': 'WebSite',
         '@id': 'https://deadhidden.org/#website',
-        name: 'Dead Hidden',
+        name: 'Dead Hidden Ministries',
         url: 'https://deadhidden.org',
         publisher: { '@id': 'https://deadhidden.org/#organization' },
       },

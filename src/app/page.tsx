@@ -29,11 +29,11 @@ export default function Home() {
           </h1>
 
           <p className="text-sm md:text-base text-[#888] max-w-2xl mx-auto mb-4 leading-relaxed">
-            50+ Bible study guides. Biblical masculinity. Biblical womanhood. Marriage. Spiritual warfare. Built in the fire — not a seminary classroom.
+            A Bible study ministry for Christians, families, and churches. 50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
           </p>
 
           <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-8">
-            45,000+ FOLLOWERS · 70,000+ SUBSCRIBERS · THREE SUBSTACKS
+            A FRIEND TO CHURCHES · 70,000+ SUBSCRIBERS · THREE PUBLICATIONS
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -307,22 +307,22 @@ export default function Home() {
 
           <div className="space-y-4 mb-10">
             <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
-              A Bible study ecosystem built by Adam and Christie Johnsson for Christians who refuse to settle for watered-down faith.
+              Dead Hidden is a Bible study ministry — a friend to churches, families, and every Christian who knows the modern church is missing something.
             </p>
             <p className="text-[#a09888] leading-relaxed">
-              Three publications. 70,000+ subscribers. 50+ downloadable guides. One mission: get the unfiltered Word of God into the hands of believers who are starving for it.
+              We exist to serve the body of Christ with resources the pulpit used to provide. Bible study systems. Marriage frameworks. Parenting guides. Spiritual warfare protocols. The kind of material that used to come from the local church — before the church stopped teaching it.
             </p>
           </div>
 
           <div className="space-y-4 mb-10">
             <p className="text-[#c0b8a8] leading-relaxed">
-              <strong className="text-[#e8e0d0]">The Biblical Man</strong> — for men who are done playing church. Biblical masculinity, headship, spiritual warfare, and the hard truths the modern pulpit abandoned. <strong className="text-[#e8e0d0]">Biblical Womanhood</strong> — Christie&apos;s publication for women who want God&apos;s design without the feminist filter. Submission, virtue, prayer, and the strength the world calls weakness. <strong className="text-[#e8e0d0]">Dead Hidden</strong> — the archive itself. Bible study systems, marriage resources, parenting frameworks, and the passages your pastor skipped.
+              <strong className="text-[#e8e0d0]">The Biblical Man</strong> — Adam&apos;s publication for men ready to lead their homes and fight for their faith. Biblical masculinity, headship, and the hard truths the modern pulpit abandoned. <strong className="text-[#e8e0d0]">Biblical Womanhood</strong> — Christie&apos;s publication for women who want God&apos;s design without the feminist filter. Virtue, prayer, and the strength the world calls weakness. <strong className="text-[#e8e0d0]">Dead Hidden</strong> — the ministry itself. 50+ downloadable resources, three publications, and 70,000+ subscribers across all platforms.
             </p>
             <p className="text-[#c0b8a8] leading-relaxed">
-              Every guide here was forged in real life. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools five children. They&apos;ve been married 24 years and taught Sunday School for 17 straight. This is not seminary theory. It&apos;s tested faith from the trenches.
+              This ministry was forged in real life — not a classroom. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools five children. They&apos;ve been married 24 years, taught Sunday School for 17 straight, and serve their local church every week. Every resource on this site comes from the trenches of lived obedience.
             </p>
             <p className="text-[#888] leading-relaxed">
-              Bible study without the seminary filter. Marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the sideshow. If you want comfortable Christianity, this is the wrong site. If you want truth — you found it.
+              Whether you&apos;re a pastor looking for small group material, a father trying to lead his family, a wife who wants biblical truth without compromise, or a new believer who doesn&apos;t know where to start — this ministry was built to serve you.
             </p>
           </div>
 

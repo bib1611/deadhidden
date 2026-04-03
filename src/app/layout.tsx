@@ -30,11 +30,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://deadhidden.org'),
   title: {
-    default: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
-    template: '%s | Dead Hidden',
+    default: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
+    template: '%s | Dead Hidden Ministries',
   },
   description:
-    'Bible study guides, biblical masculinity, biblical womanhood, marriage manuals, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
+    'A Bible study ministry and friend to churches. Bible study guides, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
   keywords: [
     'KJV bible study',
     'biblical masculinity',
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Adam Johnsson', url: 'https://deadhidden.org/about' }],
   creator: 'Adam Johnsson',
-  publisher: 'Dead Hidden',
+  publisher: 'Dead Hidden Ministries',
   openGraph: {
-    title: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
+    title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
+      'A Bible study ministry and friend to churches. 50+ guides on marriage, parenting, spiritual warfare, and Scripture by Adam & Christie Johnsson.',
     url: 'https://deadhidden.org',
-    siteName: 'Dead Hidden',
+    siteName: 'Dead Hidden Ministries',
     type: 'website',
     locale: 'en_US',
     images: [
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: '/images/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Dead Hidden — Bible Study, Biblical Masculinity & Spiritual Warfare',
+        alt: 'Dead Hidden Ministries — Bible Study Resources for Christians, Families & Churches',
       },
     ],
   },
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@SlayStupidity',
     creator: '@SlayStupidity',
-    title: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
+    title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare. 50+ guides by Adam & Christie Johnsson.',
+      'A Bible study ministry and friend to churches. 50+ resources by Adam & Christie Johnsson.',
   },
   robots: {
     index: true,
