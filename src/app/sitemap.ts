@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { products } from '@/data/products';
+import { discoveryCategories } from '@/data/discovery';
 import { FEEDS, parseRSSFeed } from '@/lib/articles';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/publications`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/refund-policy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${base}/where-to-begin`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${base}/support`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // Product pages
@@ -21,6 +24,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: p.isFeatured ? 0.8 : 0.7,
+  }));
+
+  // Discovery category pages
+  const discoveryPages: MetadataRoute.Sitemap = discoveryCategories.map((cat) => ({
+    url: `${base}/where-to-begin/${cat.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
   }));
 
   // Article pages from RSS feeds
@@ -44,5 +55,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...staticPages, ...productPages, ...articlePages];
+  return [...staticPages, ...productPages, ...discoveryPages, ...articlePages];
 }

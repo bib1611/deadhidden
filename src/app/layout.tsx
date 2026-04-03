@@ -62,10 +62,10 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/images/logo.png',
-        width: 512,
-        height: 512,
-        alt: 'Dead Hidden',
+        url: '/images/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Dead Hidden — KJV Bible Study, Biblical Masculinity & Spiritual Warfare',
       },
     ],
   },
