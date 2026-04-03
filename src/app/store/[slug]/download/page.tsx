@@ -97,6 +97,9 @@ export default async function DownloadPage({ params }: DownloadPageProps) {
   );
 }
 
+// Revalidate every 60 seconds so new blob uploads are picked up
+export const revalidate = 60;
+
 // Generate static paths for all free products
 export async function generateStaticParams() {
   return products
