@@ -26,7 +26,7 @@ export function MobileProductCTA({ productSlug, priceLabel, isFree, stripePaymen
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#0a0a0a]/95 backdrop-blur-sm border-t border-[#8b0000]/50 px-4 py-3">
+    <div className="fixed bottom-[3.25rem] left-0 right-0 z-50 md:hidden bg-[#0a0a0a]/95 backdrop-blur-sm border-t border-[#8b0000]/50 px-4 py-3">
       <div className="flex items-center gap-3">
         <div className="flex-shrink-0">
           <span className="text-lg font-bold text-[#e8e0d0]">{priceLabel}</span>

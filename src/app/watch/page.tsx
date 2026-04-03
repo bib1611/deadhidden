@@ -4,18 +4,18 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Watch — Dead Hidden Video Archive',
   description:
-    'Watch Dead Hidden videos on KJV Bible defense, end times prophecy, and biblical truth. Featured playlists and curated content from the Dead Hidden YouTube channel.',
+    'Watch Dead Hidden videos on Bible defense, end times prophecy, and biblical truth. Featured playlists and curated content from the Dead Hidden YouTube channel.',
   openGraph: {
     title: 'Watch — Dead Hidden Video Archive',
     description:
-      'KJV Bible defense, end times prophecy, and biblical truth. Videos from the Dead Hidden YouTube channel.',
+      'Bible defense, end times prophecy, and biblical truth. Videos from the Dead Hidden YouTube channel.',
     url: 'https://deadhidden.org/watch',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Watch — Dead Hidden Video Archive',
     description:
-      'KJV Bible defense, end times prophecy, and biblical truth from Dead Hidden.',
+      'Bible defense, end times prophecy, and biblical truth from Dead Hidden.',
   },
   alternates: {
     canonical: 'https://deadhidden.org/watch',

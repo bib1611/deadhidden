@@ -5,7 +5,7 @@ import { ArticleGrid } from './ArticleGrid';
 export const metadata: Metadata = {
   title: 'Free Articles — Biblical Truth, Masculinity & Womanhood',
   description:
-    'Free articles from Dead Hidden, The Biblical Man, and Biblical Womanhood. Biblical masculinity, biblical womanhood, spiritual warfare, marriage, and KJV truth.',
+    'Free articles from Dead Hidden, The Biblical Man, and Biblical Womanhood. Biblical masculinity, biblical womanhood, spiritual warfare, marriage, and biblical truth.',
   openGraph: {
     title: 'Free Articles — Dead Hidden',
     description:

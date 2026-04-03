@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'The Archive — Biblical Guides & Resources',
   description:
-    '50+ biblical masculinity guides, marriage manuals, spiritual warfare frameworks, and KJV Bible study resources. Digital downloads by Adam Johnsson.',
+    '50+ biblical masculinity guides, marriage manuals, spiritual warfare frameworks, and Bible study resources. Digital downloads by Adam Johnsson.',
   openGraph: {
     title: 'The Archive — Biblical Guides & Resources',
     description:

@@ -234,12 +234,12 @@ export function Footer() {
             className="text-xs tracking-[0.12em] uppercase text-[#8b0000]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            KJV. NO COMPROMISE. NO APOLOGY.
+            SCRIPTURE. NO COMPROMISE. NO APOLOGY.
           </p>
         </div>
       </div>
       {/* Spacer for fixed radio player */}
-      <div className="h-12" />
+      <div className="h-14" />
     </footer>
   );
 }

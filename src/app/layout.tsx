@@ -31,11 +31,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://deadhidden.org'),
   title: {
-    default: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
+    default: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
     template: '%s | Dead Hidden',
   },
   description:
-    'KJV Bible study guides, biblical masculinity, biblical womanhood, marriage manuals, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
+    'Bible study guides, biblical masculinity, biblical womanhood, marriage manuals, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
   keywords: [
     'KJV bible study',
     'biblical masculinity',
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
   creator: 'Adam Johnsson',
   publisher: 'Dead Hidden',
   openGraph: {
-    title: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
+    title: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'KJV Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
+      'Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnsson.',
     url: 'https://deadhidden.org',
     siteName: 'Dead Hidden',
     type: 'website',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
         url: '/images/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Dead Hidden — KJV Bible Study, Biblical Masculinity & Spiritual Warfare',
+        alt: 'Dead Hidden — Bible Study, Biblical Masculinity & Spiritual Warfare',
       },
     ],
   },
@@ -73,9 +73,9 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@SlayStupidity',
     creator: '@SlayStupidity',
-    title: 'Dead Hidden — KJV Bible Study, Biblical Truth & Spiritual Warfare',
+    title: 'Dead Hidden — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'KJV Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare. 50+ guides by Adam & Christie Johnsson.',
+      'Bible study, biblical masculinity, biblical womanhood, marriage, spiritual warfare. 50+ guides by Adam & Christie Johnsson.',
   },
   robots: {
     index: true,

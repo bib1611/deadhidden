@@ -29,7 +29,7 @@ export default function Home() {
           </h1>
 
           <p className="text-sm md:text-base text-[#888] max-w-2xl mx-auto mb-4 leading-relaxed">
-            50+ KJV Bible study guides. Biblical masculinity. Biblical womanhood. Marriage. Spiritual warfare. Built in the fire — not a seminary classroom.
+            50+ Bible study guides. Biblical masculinity. Biblical womanhood. Marriage. Spiritual warfare. Built in the fire — not a seminary classroom.
           </p>
 
           <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-8">
@@ -316,7 +316,7 @@ export default function Home() {
 
           <div className="space-y-4 mb-10">
             <p className="text-[#c0b8a8] leading-relaxed">
-              Dead Hidden is a KJV Bible study resource library for Christians who know something is missing from the modern church. Bible study systems for believers who were never taught how to read Scripture with precision. Spiritual warfare protocols for anyone who feels the attack but can&apos;t name the source. Marriage resources for husbands and wives who refuse to let the covenant die.
+              Dead Hidden is a Bible study resource library for Christians who know something is missing from the modern church. Bible study systems for believers who were never taught how to read Scripture with precision. Spiritual warfare protocols for anyone who feels the attack but can&apos;t name the source. Marriage resources for husbands and wives who refuse to let the covenant die.
             </p>
             <p className="text-[#c0b8a8] leading-relaxed">
               For men: biblical masculinity resources and headship frameworks the modern church won&apos;t preach. For women: biblical womanhood guides, resources on finding a godly man, and the unfiltered truth about submission that the church either waters down or weaponizes. By Adam and Christie Johnsson.
@@ -325,7 +325,7 @@ export default function Home() {
               Every guide on this site was forged in real life — not theory. Adam and Christie have been married 24 years, raised five children, and taught Sunday School for 17 years straight. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
             </p>
             <p className="text-[#888] leading-relaxed">
-              This is KJV Bible study without the seminary filter. Biblical marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
+              This is Bible study without the seminary filter. Biblical marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
             </p>
           </div>
 
@@ -339,8 +339,8 @@ export default function Home() {
               <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Categories</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
-              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>KJV</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Only</p>
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>17</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Years Teaching</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>24</p>

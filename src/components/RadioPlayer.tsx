@@ -58,7 +58,7 @@ export function RadioPlayer() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50">
+    <div className="fixed bottom-0 left-0 right-0 z-[60]">
       {/* Expanded info panel */}
       {isExpanded && (
         <div className="bg-[#111] border-t border-[#222] px-4 py-3">

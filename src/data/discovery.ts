@@ -56,7 +56,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'bible-study',
     headline: 'THE WORD OF GOD — UNFILTERED, UNDILUTED.',
     shortName: 'Bible Study',
-    description: 'KJV Bible study methods, book studies, and reading protocols. Not devotionals. Weapons training.',
+    description: 'Bible study methods, book studies, and reading protocols. Not devotionals. Weapons training.',
     startHere: '5-scriptures-forge-men',
     productSlugs: [
       '5-scriptures-forge-men', 'how-to-study-bible', 'darkest-proverbs',
@@ -82,7 +82,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'hidden-truths',
     headline: 'WHAT YOUR BIBLE ACTUALLY SAYS.',
     shortName: 'Hidden Truths',
-    description: 'Giants, Nephilim, Hell, and everything churches skip. The hard passages in the KJV.',
+    description: 'Giants, Nephilim, Hell, and everything churches skip. The hard passages your pastor skips.',
     startHere: '30-biblical-rebels',
     productSlugs: [
       '30-biblical-rebels', 'hellbound-and-down', 'real-jesus-audio',
