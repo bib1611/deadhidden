@@ -316,16 +316,16 @@ export default function Home() {
 
           <div className="space-y-4 mb-10">
             <p className="text-[#c0b8a8] leading-relaxed">
-              Dead Hidden is a KJV Bible study resource library for Christian men and women who know something is missing from the modern church. For men: biblical masculinity resources, marriage manuals for husbands whose wives have gone silent, Bible study systems for men who were never taught how to read Scripture with precision, and spiritual warfare protocols for men who feel the attack but can't name the source.
+              Dead Hidden is a KJV Bible study resource library for Christians who know something is missing from the modern church. Bible study systems for believers who were never taught how to read Scripture with precision. Spiritual warfare protocols for anyone who feels the attack but can&apos;t name the source. Marriage resources for husbands and wives who refuse to let the covenant die.
             </p>
             <p className="text-[#c0b8a8] leading-relaxed">
-              For women: biblical womanhood guides, resources on finding a godly man, traditional homemaking frameworks, and the unfiltered truth about submission that the modern church either waters down or weaponizes.
+              For men: biblical masculinity resources and headship frameworks the modern church won&apos;t preach. For women: biblical womanhood guides, resources on finding a godly man, and the unfiltered truth about submission that the church either waters down or weaponizes. By Adam and Christie Johnsson.
             </p>
             <p className="text-[#a09888] leading-relaxed">
-              Every guide on this site was forged in real life — not theory. Adam and Christie Johnsson have been married 24 years, raised five children, and taught Sunday School for 17 years straight. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
+              Every guide on this site was forged in real life — not theory. Adam and Christie have been married 24 years, raised five children, and taught Sunday School for 17 years straight. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
             </p>
             <p className="text-[#888] leading-relaxed">
-              This is KJV Bible study without the seminary filter. Biblical headship without the apology. Biblical womanhood without the feminism. Parenting without the cultural compromise. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
+              This is KJV Bible study without the seminary filter. Biblical marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
             </p>
           </div>
 

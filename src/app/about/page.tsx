@@ -46,7 +46,7 @@ export default function AboutPage() {
             className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0]"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            THE MAN BEHIND THE ARCHIVE
+            THE PEOPLE BEHIND THE ARCHIVE
           </h1>
         </div>
       </div>

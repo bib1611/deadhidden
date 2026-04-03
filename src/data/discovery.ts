@@ -31,7 +31,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'marriage',
     headline: 'STOP PLAYING HOUSE. START LEADING YOUR HOME.',
     shortName: 'Marriage & Headship',
-    description: 'Biblical headship. Marriage rescue. Covenant conversation. For husbands done negotiating.',
+    description: 'Biblical headship. Marriage rescue. Covenant conversation. For couples done compromising.',
     startHere: 'submission-fraud',
     productSlugs: [
       'submission-fraud', 'covenant-conversation-guide', 'when-she-stopped-asking',
@@ -69,7 +69,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'parenting',
     headline: 'GET TO YOUR KIDS BEFORE THE CULTURE DOES.',
     shortName: 'Parenting',
-    description: 'Biblical parenting for fathers. Protect your children from cultural corruption. Raise warriors.',
+    description: 'Biblical parenting for parents. Protect your children from cultural corruption. Raise warriors.',
     startHere: 'gods-design-for-bodies',
     productSlugs: [
       'gods-design-for-bodies', 'before-the-world-does', '12-conversations',
@@ -94,7 +94,7 @@ export const discoveryCategories: DiscoveryCategory[] = [
     id: 'faith-doubt',
     headline: 'WHEN FAITH FEELS LIKE A LIE.',
     shortName: 'Faith & Doubt',
-    description: "Wrestling with God. Unanswered prayers. Silence. For the man who can't feel God anymore.",
+    description: "Wrestling with God. Unanswered prayers. Silence. For the believer who can't feel God anymore.",
     startHere: 'fourth-answer',
     productSlugs: [
       'fourth-answer', 'letting-go-costs-everything', 'give-me-something-to-believe-in',
