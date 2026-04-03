@@ -58,62 +58,64 @@ function StoreContent() {
           </div>
         </div>
 
-        {/* Product Grid */}
+        {/* Product Grid — every card is fully clickable */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedProducts.map((product) => (
-            <div
+            <Link
               key={product.slug}
-              className="border border-[#222] bg-[#111] p-6 flex flex-col h-full"
+              href={`/store/${product.slug}`}
+              className="border border-[#222] bg-[#111] p-6 flex flex-col h-full hover:border-[#8b0000] transition-colors group"
             >
-              {/* Category Badge */}
-              <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-3">
-                {CATEGORIES[product.category].label}
+              {/* Top row: Category + Badge */}
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-xs tracking-[0.12em] uppercase text-[#555]">
+                  {CATEGORIES[product.category].label}
+                </div>
+                {product.category === 'vault' && (
+                  <span className="text-xs px-2 py-0.5 bg-[#8b0000]/20 text-[#a50000] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                    FULL ACCESS
+                  </span>
+                )}
+                {product.isFree && (
+                  <span className="text-xs px-2 py-0.5 bg-[#1a3a1a] text-[#4ade80] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                    FREE
+                  </span>
+                )}
+                {product.slug === 'how-to-study-bible' && (
+                  <span className="text-xs px-2 py-0.5 bg-[#1a3a1a] text-[#4ade80] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                    MOST POPULAR
+                  </span>
+                )}
               </div>
 
               {/* Title */}
               <h2
-                className="text-lg md:text-xl uppercase font-bold text-[#e8e0d0] mb-3 line-clamp-2"
+                className="text-lg md:text-xl uppercase font-bold text-[#e8e0d0] mb-2 line-clamp-2 group-hover:text-[#8b0000] transition-colors"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {product.name}
               </h2>
 
               {/* Description */}
-              <p className="text-sm text-[#888] line-clamp-3 mb-4 flex-grow">
+              <p className="text-sm text-[#888] line-clamp-2 mb-4 flex-grow">
                 {product.tagline}
               </p>
 
-              {/* Badges */}
-              <div className="flex gap-2 mb-4">
-                {product.category === 'vault' && (
-                  <span className="text-xs px-3 py-1 bg-[#8b0000] text-[#e8e0d0] tracking-[0.1em] uppercase">
-                    FULL ACCESS
-                  </span>
-                )}
-                {product.isFree && (
-                  <span className="text-xs px-3 py-1 bg-[#2d5a2d] text-[#b8d9b8] tracking-[0.1em] uppercase">
-                    DECLASSIFIED
-                  </span>
-                )}
-              </div>
-
-              {/* Price */}
-              <div className="mb-4">
+              {/* Price + CTA */}
+              <div className="flex items-center justify-between pt-4 border-t border-[#222]">
                 {product.isFree ? (
-                  <span className="text-lg font-semibold text-[#5cb85c]">FREE</span>
+                  <span className="text-lg font-bold text-[#4ade80]">FREE</span>
                 ) : (
-                  <span className="text-lg font-semibold text-[#e8e0d0]">{product.priceLabel}</span>
+                  <span className="text-lg font-bold text-[#e8e0d0]">{product.priceLabel}</span>
                 )}
+                <span
+                  className="text-xs tracking-[0.15em] uppercase font-bold text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {product.isFree ? 'DOWNLOAD →' : 'VIEW →'}
+                </span>
               </div>
-
-              {/* CTA Link */}
-              <Link
-                href={`/store/${product.slug}`}
-                className="text-sm tracking-[0.15em] uppercase font-semibold text-[#e8e0d0] hover:text-[#8b0000] transition-colors"
-              >
-                {product.isFree ? 'FREE DOWNLOAD →' : 'BUY NOW →'}
-              </Link>
-            </div>
+            </Link>
           ))}
         </div>
 

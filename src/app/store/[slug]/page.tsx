@@ -6,6 +6,7 @@ import { BuyButton } from '@/components/BuyButton';
 import { ShareButtons } from '@/components/ShareButtons';
 import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
+import { MobileProductCTA } from '@/components/MobileProductCTA';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -114,8 +115,39 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h1>
 
         {/* Category Badge */}
-        <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-8">
+        <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-6">
           {CATEGORIES[product.category].label}
+        </div>
+
+        {/* Price + Quick Buy — visible immediately, no scrolling */}
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-4 p-6 bg-[#111] border border-[#222]" style={{ borderLeft: '3px solid #8b0000' }}>
+          <div className="flex-grow">
+            <div className="flex items-baseline gap-3">
+              <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{product.priceLabel}</span>
+              {product.slug === 'the-vault' && (
+                <span className="text-sm text-[#555] line-through">$1,500+</span>
+              )}
+              {product.isFree && (
+                <span className="text-sm text-[#4ade80] font-bold uppercase">No email required</span>
+              )}
+            </div>
+            {product.slug === 'how-to-study-bible' && (
+              <p className="text-xs text-[#4ade80] font-bold mt-1">318 believers bought this</p>
+            )}
+            {product.slug === 'the-vault' && (
+              <p className="text-xs text-[#4ade80] font-bold mt-1">Save 76% — all 50+ resources, one price</p>
+            )}
+            <p className="text-xs text-[#888] mt-1">Instant PDF download. Buy once, keep forever.</p>
+          </div>
+          <div className="sm:w-48 flex-shrink-0">
+            <BuyButton
+              productSlug={product.slug}
+              priceLabel={product.priceLabel}
+              isFree={product.isFree}
+              isSubscription={false}
+              stripePaymentLink={product.stripePaymentLink}
+            />
+          </div>
         </div>
 
         {/* Social Proof — moved to top for The Vault page */}
@@ -356,6 +388,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         )}
       </div>
+
+      {/* Sticky mobile buy bar */}
+      <MobileProductCTA
+        productSlug={product.slug}
+        priceLabel={product.priceLabel}
+        isFree={product.isFree}
+        stripePaymentLink={product.stripePaymentLink}
+      />
     </main>
   );
 }
