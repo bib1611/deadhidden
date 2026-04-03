@@ -307,40 +307,37 @@ export default function Home() {
 
           <div className="space-y-4 mb-10">
             <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
-              The Bible you grew up on wasn't the Bible your great-grandparents read.
+              A Bible study ecosystem built by Adam and Christie Johnsson for Christians who refuse to settle for watered-down faith.
             </p>
             <p className="text-[#a09888] leading-relaxed">
-              Verses were removed. Doctrine was softened. The deity of Christ was undermined — not by atheists, but by the translators themselves. The church didn't decline by accident. It was engineered.
+              Three publications. 70,000+ subscribers. 50+ downloadable guides. One mission: get the unfiltered Word of God into the hands of believers who are starving for it.
             </p>
           </div>
 
           <div className="space-y-4 mb-10">
             <p className="text-[#c0b8a8] leading-relaxed">
-              Dead Hidden is a Bible study resource library for Christians who know something is missing from the modern church. Bible study systems for believers who were never taught how to read Scripture with precision. Spiritual warfare protocols for anyone who feels the attack but can&apos;t name the source. Marriage resources for husbands and wives who refuse to let the covenant die.
+              <strong className="text-[#e8e0d0]">The Biblical Man</strong> — for men who are done playing church. Biblical masculinity, headship, spiritual warfare, and the hard truths the modern pulpit abandoned. <strong className="text-[#e8e0d0]">Biblical Womanhood</strong> — Christie&apos;s publication for women who want God&apos;s design without the feminist filter. Submission, virtue, prayer, and the strength the world calls weakness. <strong className="text-[#e8e0d0]">Dead Hidden</strong> — the archive itself. Bible study systems, marriage resources, parenting frameworks, and the passages your pastor skipped.
             </p>
             <p className="text-[#c0b8a8] leading-relaxed">
-              For men: biblical masculinity resources and headship frameworks the modern church won&apos;t preach. For women: biblical womanhood guides, resources on finding a godly man, and the unfiltered truth about submission that the church either waters down or weaponizes. By Adam and Christie Johnsson.
-            </p>
-            <p className="text-[#a09888] leading-relaxed">
-              Every guide on this site was forged in real life — not theory. Adam and Christie have been married 24 years, raised five children, and taught Sunday School for 17 years straight. The frameworks here come from the fire of lived obedience, tested against the same failures, temptations, and silence that you face right now.
+              Every guide here was forged in real life. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools five children. They&apos;ve been married 24 years and taught Sunday School for 17 straight. This is not seminary theory. It&apos;s tested faith from the trenches.
             </p>
             <p className="text-[#888] leading-relaxed">
-              This is Bible study without the seminary filter. Biblical marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the charismatic sideshow. If you want comfortable Christianity, this is the wrong site. If you want the truth — you are in the right place.
+              Bible study without the seminary filter. Marriage without the compromise. Parenting without the cultural surrender. Spiritual warfare without the sideshow. If you want comfortable Christianity, this is the wrong site. If you want truth — you found it.
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>3</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Publications</p>
+            </div>
+            <div className="border border-[#222] bg-[#0a0a0a] p-4">
+              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>70K+</p>
+              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Subscribers</p>
+            </div>
+            <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>50+</p>
               <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Resources</p>
-            </div>
-            <div className="border border-[#222] bg-[#0a0a0a] p-4">
-              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>9</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Categories</p>
-            </div>
-            <div className="border border-[#222] bg-[#0a0a0a] p-4">
-              <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>17</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Years Teaching</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>24</p>
