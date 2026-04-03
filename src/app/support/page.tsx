@@ -87,6 +87,26 @@ export default function SupportPage() {
           </div>
         </div>
 
+        {/* Contact */}
+        <div className="border-t border-[#222] pt-12 mb-16">
+          <h2
+            className="text-xl uppercase font-bold mb-4"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            QUESTIONS? CALL US.
+          </h2>
+          <p className="text-[#888] text-sm mb-4">
+            If you have questions about a purchase, need help with a download, or just want to talk — call or text.
+          </p>
+          <a
+            href="tel:+17014262175"
+            className="text-2xl text-[#e8e0d0] font-bold hover:text-[#8b0000] transition-colors"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            (701) 426-2175
+          </a>
+        </div>
+
         {/* The Verse */}
         <div className="border border-[#222] bg-[#111] p-8 text-center">
           <p className="text-[#888] italic text-sm leading-relaxed mb-3">

@@ -157,6 +157,28 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Contact */}
+      <div className="border-t border-[#222] px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <p
+            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-4 font-bold"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            QUESTIONS OR INQUIRIES
+          </p>
+          <p className="text-[#888] text-sm mb-2">
+            Call or text us directly.
+          </p>
+          <a
+            href="tel:+17014262175"
+            className="text-xl md:text-2xl text-[#e8e0d0] font-bold hover:text-[#8b0000] transition-colors"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            (701) 426-2175
+          </a>
+        </div>
+      </div>
+
       {/* Scripture */}
       <div className="border-t border-[#222] px-4 sm:px-6 lg:px-8 py-16 bg-[#111]">
         <div className="max-w-4xl mx-auto text-center">

@@ -190,6 +190,14 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
+                  href="tel:+17014262175"
+                  className="text-sm text-[#888] hover:text-[#e8e0d0] transition-colors"
+                >
+                  (701) 426-2175
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://x.com/Biblicalman"
                   target="_blank"
                   rel="noopener noreferrer"

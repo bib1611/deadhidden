@@ -62,8 +62,10 @@ export default function RefundPolicyPage() {
               >
                 thebiblicalman1611@gmail.com
               </a>{' '}
-              with your receipt and we will make sure you get your files. We
-              stand behind delivery — not refunds.
+              with your receipt and we will make sure you get your files. You
+              can also call or text us at{' '}
+              <a href="tel:+17014262175" className="text-[#8b0000] underline">(701) 426-2175</a>.
+              We stand behind delivery — not refunds.
             </p>
           </div>
 
