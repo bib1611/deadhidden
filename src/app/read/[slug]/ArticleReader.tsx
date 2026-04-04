@@ -1,7 +1,12 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 import type { Article } from '@/lib/articles';
+import { ArticleCTA, VaultBanner } from '@/components/ArticleCTA';
+import { ArticleEmailCapture } from '@/components/ArticleEmailCapture';
+import { useScrollDepth } from '@/hooks/useScrollDepth';
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
@@ -22,6 +27,23 @@ export function ArticleReader({
   contentHtml: string;
   substackUrl: string;
 }) {
+  const trackedRef = useRef(false);
+
+  useScrollDepth(`/read/${article.slug}`);
+
+  useEffect(() => {
+    if (!trackedRef.current) {
+      trackedRef.current = true;
+      track('article_read', {
+        article: article.slug,
+        source: article.source,
+      });
+    }
+  }, [article.slug, article.source]);
+
+  // Split content at ~40% for mid-article CTA insertion
+  const midCTAHtml = contentHtml ? splitContentAtPercent(contentHtml, 40) : null;
+
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
       {/* Back nav */}
@@ -88,10 +110,34 @@ export function ArticleReader({
       <article className="px-4 sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-3xl mx-auto">
           {contentHtml ? (
-            <div
-              className="article-content"
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+            midCTAHtml ? (
+              <>
+                {/* First ~40% of content */}
+                <div
+                  className="article-content"
+                  dangerouslySetInnerHTML={{ __html: midCTAHtml.before }}
+                />
+
+                {/* Mid-article CTA */}
+                <ArticleCTA
+                  title={article.title}
+                  description={article.description}
+                  source={article.source}
+                  position="mid"
+                />
+
+                {/* Remaining content */}
+                <div
+                  className="article-content"
+                  dangerouslySetInnerHTML={{ __html: midCTAHtml.after }}
+                />
+              </>
+            ) : (
+              <div
+                className="article-content"
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
+              />
+            )
           ) : (
             <div className="text-center py-16">
               <p className="text-[#888] mb-6">
@@ -107,6 +153,24 @@ export function ArticleReader({
                 READ ON SUBSTACK →
               </a>
             </div>
+          )}
+
+          {/* End-of-article CTA */}
+          {contentHtml && (
+            <>
+              <ArticleCTA
+                title={article.title}
+                description={article.description}
+                source={article.source}
+                position="end"
+              />
+
+              {/* Inline email capture */}
+              <ArticleEmailCapture />
+
+              {/* Vault banner */}
+              <VaultBanner />
+            </>
           )}
         </div>
       </article>
@@ -282,4 +346,29 @@ export function ArticleReader({
       `}</style>
     </main>
   );
+}
+
+/**
+ * Split HTML content at approximately the given percentage of top-level elements.
+ * This is a rough heuristic — it counts closing tags for p, h2, h3, blockquote, figure, ul, ol
+ * to find a good split point near the target percentage.
+ */
+function splitContentAtPercent(html: string, percent: number): { before: string; after: string } | null {
+  // Find all top-level block element boundaries
+  const blockEndRegex = /<\/(p|h[1-6]|blockquote|figure|ul|ol|div)>/gi;
+  const positions: number[] = [];
+  let m;
+  while ((m = blockEndRegex.exec(html)) !== null) {
+    positions.push(m.index + m[0].length);
+  }
+
+  if (positions.length < 4) return null; // Too short to split
+
+  const targetIdx = Math.floor(positions.length * (percent / 100));
+  const splitPos = positions[Math.max(1, Math.min(targetIdx, positions.length - 2))];
+
+  return {
+    before: html.slice(0, splitPos),
+    after: html.slice(splitPos),
+  };
 }

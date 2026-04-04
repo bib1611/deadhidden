@@ -4,8 +4,10 @@ import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { products, CATEGORIES, getProductsByCategory, type Category } from '@/data/products';
+import { useScrollDepth } from '@/hooks/useScrollDepth';
 
 function StoreContent() {
+  useScrollDepth('/store');
   const searchParams = useSearchParams();
   const initialCategory = (searchParams.get('category') as Category) || undefined;
   const [activeCategory, setActiveCategory] = useState<Category | undefined>(initialCategory);

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { track } from '@vercel/analytics';
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -28,6 +29,7 @@ export function Footer() {
 
       setStatus('success');
       setEmail('');
+      track('email_signup', { source: 'footer' });
       setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
       setStatus('error');
