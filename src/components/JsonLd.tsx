@@ -90,6 +90,66 @@ export function ProductJsonLd({
   );
 }
 
+export function BlogPostJsonLd({
+  title,
+  description,
+  slug,
+  publishDate,
+  updatedDate,
+  author,
+  keywords,
+  wordCount,
+}: {
+  title: string;
+  description: string;
+  slug: string;
+  publishDate: string;
+  updatedDate?: string;
+  author: string;
+  keywords: string[];
+  wordCount: number;
+}) {
+  const postUrl = `https://deadhidden.org/blog/${slug}`;
+  const ogImage = `https://deadhidden.org/api/og?title=${encodeURIComponent(title)}&publication=dead-hidden&type=article`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    datePublished: new Date(publishDate).toISOString(),
+    dateModified: new Date(updatedDate || publishDate).toISOString(),
+    url: postUrl,
+    image: ogImage,
+    wordCount,
+    keywords: keywords.join(', '),
+    author: {
+      '@type': 'Organization',
+      name: 'Dead Hidden Team',
+      url: 'https://deadhidden.org/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Dead Hidden Ministries',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://deadhidden.org/images/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function ArticleJsonLd({
   title,
   description,
@@ -114,8 +174,8 @@ export function ArticleJsonLd({
     url: `https://deadhidden.org/read/${slug}?source=${source}`,
     ...(imageUrl && { image: imageUrl }),
     author: {
-      '@type': 'Person',
-      name: 'Adam Johnson',
+      '@type': 'Organization',
+      name: 'Dead Hidden Team',
       url: 'https://deadhidden.org/about',
     },
     publisher: {
