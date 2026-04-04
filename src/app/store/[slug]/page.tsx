@@ -7,6 +7,7 @@ import { ShareButtons } from '@/components/ShareButtons';
 import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
 import { MobileProductCTA } from '@/components/MobileProductCTA';
+import { ProductFAQ } from '@/components/ProductFAQ';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -155,6 +156,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               isFree={product.isFree}
               isSubscription={false}
               stripePaymentLink={product.stripePaymentLink}
+              ctaText={product.ctaText}
             />
           </div>
         </div>
@@ -264,6 +266,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         )}
 
+        {/* FAQ Section */}
+        {product.extendedContent?.faq && product.extendedContent.faq.length > 0 && (
+          <ProductFAQ items={product.extendedContent.faq} />
+        )}
+
         {/* Price and Buy Button */}
         <div className="border-t border-[#222] pt-12 mb-16">
           <div className="text-sm tracking-[0.12em] uppercase text-[#888] mb-3">
@@ -279,6 +286,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             isFree={product.isFree}
             isSubscription={false}
             stripePaymentLink={product.stripePaymentLink}
+            ctaText={product.ctaText}
           />
 
           {!product.isFree && (
@@ -288,6 +296,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 Refund Policy
               </Link>
             </p>
+          )}
+
+          {/* Comparison line — objection-handling one-liner */}
+          {product.comparisonLine && (
+            <div className="mt-6 p-4 border-l-2 border-[#8b0000] bg-[#111]">
+              <p className="text-sm text-[#888] italic leading-relaxed">
+                {product.comparisonLine}
+              </p>
+            </div>
           )}
 
           {/* Not ready for the full Vault? — Essential Arsenal upsell */}
@@ -404,6 +421,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         priceLabel={product.priceLabel}
         isFree={product.isFree}
         stripePaymentLink={product.stripePaymentLink}
+        ctaText={product.ctaText}
       />
     </main>
   );

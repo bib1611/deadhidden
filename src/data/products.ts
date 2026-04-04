@@ -26,12 +26,17 @@ export type Product = {
   stripePaymentLink?: string;
   // SEO keywords for meta tags and search targeting
   seoKeywords?: string[];
+  // Custom CTA button text (overrides default "BUY NOW" / "GET FREE")
+  ctaText?: string;
+  // Comparison line shown below the buy button (objection-handling one-liner)
+  comparisonLine?: string;
   // Extended SEO content (optional — renders on product detail page for 500+ word pages)
   extendedContent?: {
     whoIsThisFor: string[];      // bullet points for "WHO THIS IS FOR" section
     whatsInside: string[];       // detailed bullet points for "WHAT'S INSIDE"
     longDescription?: string;    // additional paragraphs of content
     socialProof?: string;        // testimonial or stat-based proof line
+    faq?: Array<{ q: string; a: string }>;  // FAQ section for objection handling
   };
 };
 
@@ -51,7 +56,7 @@ export const products: Product[] = [
   {
     slug: "the-vault",
     name: "THE BIBLICAL MAN VAULT",
-    tagline: "50+ resources. One price. No excuses.",
+    tagline: "The complete armory. 76 resources. Everything Adam & Christie built. One price. No retreats — only advancement.",
     seoKeywords: ["christian resources bundle", "biblical guides for men and women", "KJV bible study collection", "christian marriage parenting resources", "biblical masculinity womanhood library", "digital christian resources download"],
     description: "Every PDF, guide, framework, protocol, and manual I've ever created — all in one place. This is the complete arsenal for the believer who's done playing church and ready to wage war for their family, their faith, and their future. Over $1,500 worth of resources for a fraction of the cost.",
     priceCents: 36500,
@@ -62,25 +67,33 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "huyrp",
+    ctaText: "CLAIM THE FULL ARSENAL →",
+    comparisonLine: "Most couples spend $365 on a single weekend retreat and come home with a notebook full of notes they never open again. The Vault is still working five years from now.",
     extendedContent: {
       whoIsThisFor: [
-        "The believer who is done buying resources one at a time and wants the complete library",
-        "The husband or wife whose marriage is on life support and needs every tool available",
-        "The parent who realizes the culture is discipling their kids and needs to catch up fast",
-        "The new Christian who wants to build their entire biblical foundation in one purchase",
-        "Anyone who has been following The Biblical Man or Biblical Womanhood and is ready to go all in",
+        "you've read the devotionals, you've attended the conferences, and none of it moved the needle",
+        "spiritually passive, biblically illiterate, and running out of time to fix it",
+        "not just one guide, not a sampler, but every weapon in the arsenal in a single mission package",
+        "the Vault saves you hundreds of dollars over buying individually",
       ],
       whatsInside: [
-        "50+ PDF guides, manuals, protocols, and frameworks — instant download",
-        "Complete marriage collection: The King's Marriage Manual, Headship Manual, When She Stopped Asking, and more",
-        "Full spiritual warfare arsenal: Exposing the Enemy, Overcoming Mental Torment, Break Free from Modern Demons",
-        "Biblical masculinity library: CAGED, The Loneliness Lie, The Uncomfortable Christ, and 10+ more",
-        "Bible study collection: How to Study the Bible, The Darkest Proverbs, Romans, Esther studies",
-        "Parenting resources: Before The World Does, The 12 Conversations, The Absalom Protocol",
-        "Lifetime access — buy once, download forever, no subscriptions",
+        "All 76 resources across every category — marriage, headship, parenting, Bible study, spiritual warfare, biblical womanhood, and more",
+        "Every framework, protocol, and field manual ever published by The Biblical Man and Biblical Womanhood — nothing held back",
+        "Christie's complete women's library included — Traditional Homemaking, the Womanhood Bundle, devotionals, and beyond",
+        "The marriage manuals that have rebuilt covenants other resources couldn't touch — including the uncut Red Version",
+        "Bible study systems that don't require a seminary degree — just a willingness to pick up the sword",
+        "Parenting resources that equip you to build a household the culture cannot penetrate",
+        "Instant digital access to everything — no waiting, no shipping, no gatekeeping",
       ],
       longDescription: "The Vault exists because I got tired of watching men buy one guide, apply it halfway, then come back six months later broken in a different area. Your marriage is connected to your masculinity. Your masculinity is connected to your spiritual warfare. Your spiritual warfare is connected to your Bible study. You cannot fix one and ignore the rest.\n\nThis is over $1,500 worth of resources — every single product on Dead Hidden — for a fraction of that cost. I built each one of these from personal experience. Twenty-four years of marriage. Five children. Seventeen years of Sunday School. A career driving garbage trucks and conducting trains before going full-time as a creator. Every guide in The Vault was forged in the fire of real life, not seminary theory.\n\nWhen you purchase The Vault, you get instant access to everything. Every PDF downloads immediately. No drip content. No waiting. No upsells. The complete arsenal, delivered to your inbox the moment you hit purchase.",
       socialProof: "The Vault is the bestselling product on Dead Hidden. Believers keep buying it because it works — and because buying everything separately costs over four times as much.",
+      faq: [
+        { q: "This is a lot of content. Will I actually use it all?", a: "Probably not all at once — and that's the point. This is a reference library, not a reading marathon. You pull what you need for the battle in front of you today, and you come back when the next one starts." },
+        { q: "Is this only for men?", a: "No. The Vault contains both Adam's complete Biblical Man library and Christie's complete Biblical Womanhood library. Husbands and wives have bought this together. It is the full household arsenal." },
+        { q: "Why $365 when I can piece it together myself?", a: "You could. Individual resources total well over $1,500. The Vault saves you 76% — and it's all there the day you need it, not when you finally get around to buying it." },
+        { q: "What format are the resources?", a: "All digital. Instant delivery. PDFs, guides, and manuals you can access on any device — no apps, no subscriptions, no expiration." },
+        { q: "Is there a guarantee?", a: "The guarantee is the Word of God: \"The entrance of thy words giveth light; it giveth understanding unto the simple\" (Psalm 119:130). Buy it, open it, work it. If you do that and get nothing, contact us." },
+      ],
     },
   },
   {
@@ -99,7 +112,7 @@ export const products: Product[] = [
   {
     slug: "essential-arsenal",
     name: "THE ESSENTIAL ARSENAL",
-    tagline: "The 10 resources that change everything. No fluff. No filler.",
+    tagline: "Not ready for the full Vault? Start with the 10 resources that have already changed the most lives. Ranked. Curated. No dead weight.",
     description: "You don't need 50 guides. You need the right 10. This is the curated collection of the highest-impact resources from The Biblical Man — the ones believers come back and say changed their marriage, their faith, and their walk with God. If you're not ready for the full Vault, start here.",
     priceCents: 9700,
     priceLabel: "$97",
@@ -109,25 +122,23 @@ export const products: Product[] = [
     badge: "BEST VALUE",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
+    ctaText: "DEPLOY THE ESSENTIAL 10 →",
+    comparisonLine: "One counseling session runs $150–$250 and often sends you home with more questions. The Essential Arsenal gives you 10 proven tools and a framework to use them — for $97.",
     extendedContent: {
       whoIsThisFor: [
-        "The believer who needs help but isn't ready to go all-in on the full Vault",
-        "The husband or wife whose marriage is hurting and needs the core tools NOW",
-        "The Christian who wants a curated starting point instead of choosing from 50+ resources",
-        "Anyone who bought one guide, saw it work, and wants the next level",
+        "you don't need 76 resources yet, but you need the right 10 now",
+        "but wants to test the water with something focused and proven",
+        "real change in marriage, parenting, and personal walk within days, not a year-long curriculum",
+        "this is the right front door",
       ],
       whatsInside: [
-        "The King's Marriage Manual (Red Version) — the #1 marriage resource on Dead Hidden ($47 value)",
-        "CAGED: Why Christian Men Turn to Porn — break the cycle for good ($37 value)",
-        "How to Study the Bible Like Your Life Depends on It — the most popular resource ever made ($7 value)",
-        "Before The World Does — protect your kids before the culture gets them ($49.99 value)",
-        "Exposing the Enemy — Satan's 5 deadliest lies to Christian men ($7 value)",
-        "When She Stopped Asking — the return protocol for husbands whose wives gave up ($27 value)",
-        "The Darkest Proverbs — the verses your pastor skips ($17 value)",
-        "The Fourth Answer — spiritual warfare doctrine ($37 value)",
-        "The King's Conquest — reclaim your masculinity ($47 value)",
-        "The Absalom Protocol — don't lose your children ($27 value)",
-        "10 resources worth $303+ — yours for $97",
+        "The 10 highest-impact resources hand-picked from the full library — these are the ones buyers return to reference most",
+        "The core marriage material: headship, intimacy, and conflict frameworks that work on a real covenant, not a Hollywood script",
+        "The foundational Bible study system that turns a passive reader into an active soldier in the Word",
+        "The spiritual warfare resources that name the enemy and give you a battle plan — not a therapy session",
+        "The parenting material that closes the gap before the culture does",
+        "A curated entry point that won't overwhelm — 10 weapons, properly sequenced, ready to deploy",
+        "Instant digital access — the same day you decide you're serious",
       ],
       longDescription: "I built The Essential Arsenal because people kept asking me the same question: 'Where do I start?'\n\nThe full Vault has over 50 resources. That's the complete arsenal. But some believers don't need everything — they need the right things. The ten resources in this collection are the ones that get mentioned most in my DMs. The ones people say saved their marriage. Changed how they read their Bible. Woke them up as parents.\n\nIf you buy this and it works — and it will — the Vault is waiting. And I'll credit this $97 toward your Vault purchase. No risk. Just results.",
       socialProof: "These 10 resources represent the most purchased and most recommended guides on Dead Hidden. They cover marriage, masculinity, womanhood, Bible study, spiritual warfare, and parenting — the pillars every Christian needs.",
@@ -136,7 +147,7 @@ export const products: Product[] = [
   {
     slug: "kings-marriage-manual-red",
     name: "THE KING'S MARRIAGE MANUAL (RED VERSION)",
-    tagline: "Your marriage is a battlefield. This is your field manual.",
+    tagline: "The uncut, uncensored marriage manual your pastor didn't write — because he was afraid to. Biblical headship, sexual intimacy, and covenant conflict handled the way Scripture actually handles them.",
     seoKeywords: ["biblical marriage guide for husbands", "christian headship manual", "how to lead your wife biblically KJV", "marriage rescue plan christian", "christian marriage book for men", "biblical authority in marriage"],
     description: "The uncut, uncensored version. Biblical headship, sexual intimacy, conflict resolution, and leading your wife the way Christ leads the church — without apology. This isn't couples therapy. This is war doctrine for your covenant.",
     priceCents: 4700,
@@ -147,31 +158,37 @@ export const products: Product[] = [
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "jkfak",
+    ctaText: "GET THE FIELD MANUAL →",
+    comparisonLine: "Marriage counseling at $200/session will average 12 sessions before you see a shift — if the counselor even believes what the Bible says about marriage. This is $47 and it starts tonight.",
     extendedContent: {
       whoIsThisFor: [
-        "The husband who knows his marriage is in trouble but does not know where to start",
-        "The man whose wife has emotionally checked out and he can feel the distance growing",
-        "The newlywed who wants to establish biblical headship from day one instead of learning it after damage is done",
-        "The Christian man tired of watered-down marriage advice that sounds like a therapist wrote it",
-        "The husband who tried counseling and date nights and still feels like a stranger in his own home",
+        "you're not angry, you're convicted",
+        "tried counseling, read the books, and watched the YouTube series and still feel like something is missing",
+        "no father to learn from, no pastor willing to teach it",
+        "this manual lands differently than a conversation",
       ],
       whatsInside: [
-        "Biblical framework for headship — what Ephesians 5 actually demands of you as a husband",
-        "Sexual intimacy protocols — what the Bible says about the marriage bed, without the church-lady filter",
-        "Conflict resolution doctrine — how to lead through disagreement without becoming a tyrant or a pushover",
-        "Communication frameworks for the conversations your marriage cannot survive without",
-        "Practical daily leadership rhythms that establish your authority through service, not domination",
-        "The difference between biblical headship and secular control — and why most men confuse the two",
-        "Instant PDF download — read it tonight, start applying it tomorrow morning",
+        "The full biblical case for headship — not the watered-down version, not the complementarian compromise, but the Scripture itself",
+        "Sexual intimacy from a scriptural framework — what the marriage bed is designed for and how to steward it",
+        "Conflict resolution that doesn't require a neutral third party — because \"a house divided against itself cannot stand\"",
+        "How to lead your wife the way Christ leads the church — serving, protecting, and providing spiritual coverage",
+        "The practical protocols for restoring order in a marriage that has drifted — with real conversations, real timelines, real results",
+        "The \"Red Version\" distinction — this is the uncut edition with nothing softened or removed for comfort",
+        "Scripts, frameworks, and real conversations — not theological theory you can't apply tonight",
       ],
       longDescription: "I wrote the Red Version because the original was too safe. Not wrong — just too careful. The church has made Christian marriage advice so sanitized that it is useless for the man whose wife has already stopped caring. That man does not need another book about love languages. He needs war doctrine.\n\nThis manual covers the things your pastor will never preach from the pulpit. Biblical authority in the bedroom. How to lead a wife who does not want to be led. How to rebuild trust after you have destroyed it. How to stop being the passive husband who outsources spiritual leadership to his wife while calling it partnership.\n\nThe Red Version is the uncensored edition. It is written for adults. It assumes you can handle direct language about sex, authority, conflict, and the hard realities of covenant marriage. If you want something softer, the original version exists. But if your marriage is bleeding out and you need a tourniquet — this is it.",
       socialProof: "The King's Marriage Manual is the bestselling marriage resource on Dead Hidden. Husbands keep coming back to say it saved their covenant when nothing else worked.",
+      faq: [
+        { q: "Is this counseling material or confrontation material?", a: "It's battle doctrine. If your marriage is already broken, you need counseling and prayer first. If your marriage is drifting and you need to take the helm, this is your guide." },
+        { q: "My wife won't read it with me. Can I use this alone?", a: "Yes. This is written for husbands. You read it, you change, and your wife will notice. The Red Version is built to convert thinking first and behavior second." },
+        { q: "Is this just for newly married couples?", a: "No. This applies to any marriage in any stage. The principles don't age." },
+      ],
     },
   },
   {
     slug: "headship-manual",
     name: "THE HEADSHIP MANUAL",
-    tagline: "Biblical authority for passive men.",
+    tagline: "You were designed to lead. Not to suggest, not to negotiate, not to wait for permission. This is the doctrine of biblical headship for men who are ready to own it.",
     description: "You were designed to lead. Not suggest. Not negotiate. Lead. This manual strips away the feminist programming and gives you the biblical framework for headship that your pastor was too scared to preach.",
     priceCents: 3700,
     priceLabel: "$37+",
@@ -180,6 +197,29 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "xpect",
+    ctaText: "TAKE THE MANUAL →",
+    comparisonLine: "Modern Christianity tells men to be \"servant leaders\" — which usually means letting everyone else decide. This is $37 for the doctrine that tells you what you were actually designed for.",
+    extendedContent: {
+      whoIsThisFor: [
+        "you know you're supposed to lead but nobody has explained what that actually means in your household",
+        "you've tried to be the \"nice\" husband and your marriage is drowning",
+        "you want the biblical case from Scripture — not from Wilson, not from Piper, straight from the text",
+        "you're ready to own your role without apology",
+      ],
+      whatsInside: [
+        "The scriptural doctrine of headship — what it is, what it isn't, and why culture hates it",
+        "Authority without authoritarianism — leading your wife and family with strength and wisdom, not control and contempt",
+        "The distinction between leadership and lordship — Christ is our model, not a dictator",
+        "How to lead when you don't feel like a leader — the manual starts with conviction, not confidence",
+        "Practical frameworks for decision-making, conflict, and spiritual covering",
+        "How to reclaim headship if you've been passive — the recovery protocol from paralysis to leadership",
+        "Built for any man at any stage — new believer, new husband, or 20 years deep and needing to reset",
+      ],
+      faq: [
+        { q: "Is this about dominating your wife?", a: "No. It's about providing spiritual covering, making the hard decisions, and protecting your household. Domination is tyranny. Leadership is sacrifice." },
+        { q: "What if my wife resists my leadership?", a: "That's addressed directly in the manual. Leadership doesn't require permission — but it does require humility, wisdom, and the willingness to lay your life down like Christ did." },
+      ],
+    },
   },
   {
     slug: "when-she-stopped-asking",
@@ -276,7 +316,7 @@ export const products: Product[] = [
   {
     slug: "how-to-study-bible",
     name: "HOW TO STUDY THE BIBLE LIKE YOUR LIFE DEPENDS ON IT",
-    tagline: "Because it does.",
+    tagline: "318 believers have already deployed this system. The Bible hasn't changed. Your approach to it has to.",
     seoKeywords: ["how to study the bible for beginners", "KJV bible study method", "bible study guide for christians", "how to study the bible effectively", "king james bible study system", "inductive bible study guide"],
     description: "318 believers bought this. It's the most popular resource I've ever made. Not a devotional. Not a reading plan. A system for extracting the living Word of God from the page and driving it into your bones.",
     priceCents: 700,
@@ -287,6 +327,8 @@ export const products: Product[] = [
     badge: "MOST POPULAR",
     purchaseType: "stripe",
     legacyGumroadSlug: "ellmoq",
+    ctaText: "START STUDYING FOR $7 →",
+    comparisonLine: "A 12-week Bible study group will cost you $40–$60 and leave you dependent on a study guide written by someone else. This is $7 and it teaches you to dig the gold yourself.",
     extendedContent: {
       whoIsThisFor: [
         "The Christian who reads their Bible out of guilt but gets nothing from it",
@@ -472,7 +514,7 @@ export const products: Product[] = [
   {
     slug: "overcoming-mental-torment",
     name: "OVERCOMING MENTAL TORMENT",
-    tagline: "What the Bible says about 10 common mental health struggles.",
+    tagline: "Anxiety, depression, fear, shame — the enemy knows exactly which chains to put on you. This is the biblical battle plan for men and women who are done letting their mind be the battleground.",
     seoKeywords: ["bible verses for anxiety and depression", "christian guide to overcoming anxiety", "what does the bible say about mental health", "spiritual warfare against depression", "christian mental health resources", "overcoming fear with scripture KJV"],
     description: "The world gives you pills. God gives you power. This resource addresses anxiety, depression, fear, and more through the lens of scripture — not psychology, not self-help, not medication.",
     priceCents: 5999,
@@ -482,6 +524,31 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "rrqjg",
+    ctaText: "TAKE THE BATTLEFIELD BACK →",
+    comparisonLine: "Therapy averages $150–$200/session and rarely opens a Bible. This is $59.99 and it is entirely built on the one book that has actual authority over the enemy you're fighting.",
+    extendedContent: {
+      whoIsThisFor: [
+        "fighting the same mental battles over and over without gaining ground — you need a different strategy, not more willpower",
+        "been told to \"just pray more\" but knows something deeper is broken and nobody in their church has answered it biblically",
+        "tried therapy but left feeling like the root was never touched — because therapists don't have authority over what's actually behind the door",
+        "watching someone they love fight this battle — you need to understand the terrain before you can help them navigate it",
+      ],
+      whatsInside: [
+        "The biblical framework for 10 of the most common mental and emotional struggles: anxiety, depression, fear, shame, grief, anger, loneliness, hopelessness, obsessive thought patterns, and identity confusion",
+        "What Scripture actually says — not what Christian culture has softened it into — about the warfare taking place in the mind",
+        "The distinction between spiritual warfare and medical reality — this guide takes both seriously and tells you which category you're dealing with",
+        "\"For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind\" (2 Timothy 1:7) — a sound mind is your inheritance; this is the battle plan to claim it",
+        "Practical, daily protocols for standing in the truth when the torment is loudest",
+        "How to use Scripture as an offensive weapon, not just a comforting quote — because defense alone doesn't win wars",
+        "Resources for both men and women — the struggles are shared even when the presentation looks different",
+      ],
+      faq: [
+        { q: "Is this a replacement for professional mental health care?", a: "No, and it doesn't claim to be. It is the biblical dimension that professional care almost always leaves out — and for many believers, that missing piece is the one that matters most." },
+        { q: "What if I don't believe my struggle is spiritual — I think it's just clinical?", a: "Then read it and decide for yourself. The Bible doesn't separate the spiritual and physical the way Western medicine does. You may find more overlap than you expected." },
+        { q: "Is this for men only?", a: "No. Mental torment does not discriminate, and neither does this resource. It is written for any believer — male or female — fighting this war." },
+        { q: "I've been in this battle for years. Can this actually help?", a: "Length of the battle doesn't determine the outcome — strategy does. \"The LORD is a man of war\" (Exodus 15:3). He has not forgotten your battle. This resource helps you fight it His way." },
+      ],
+    },
   },
   {
     slug: "break-free-modern-demons",
@@ -578,7 +645,7 @@ export const products: Product[] = [
   {
     slug: "caged-porn",
     name: "CAGED: WHY CHRISTIAN MEN TURN TO PORN",
-    tagline: "And how to get out.",
+    tagline: "The cage isn't the porn. The cage is everything the porn is feeding. This is the biblical intelligence gathering and battle plan.",
     seoKeywords: ["overcoming pornography addiction christian", "christian men porn struggle bible", "how to quit porn as a christian", "biblical guide to freedom from pornography", "christian porn addiction recovery", "sexual purity for christian men"],
     description: "You don't have a porn problem. You have a worship problem. This guide goes deeper than accountability software and browser filters — it targets the root of sexual sin in Christian men.",
     priceCents: 3700,
@@ -588,6 +655,30 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "laaexc",
+    ctaText: "BREAK OUT OF THE CAGE →",
+    comparisonLine: "Porn addiction therapy costs $100–$200/session and focuses on managing the symptom. This is $37 and it cuts at the root — because you're not addicted to porn, you're addicted to what it's promising you.",
+    extendedContent: {
+      whoIsThisFor: [
+        "you've been in this cycle for years and tried everything — accountability partners, filters, prayer, fasting — and nothing stuck",
+        "you want to understand why the pull is so strong and what you're actually searching for",
+        "you're ready to see porn not as a moral failure but as a symptom of a deeper war",
+        "you want a biblical framework that names the real enemy and gives you a real strategy",
+      ],
+      whatsInside: [
+        "Why you turn to it — the lie it's selling and what legitimate need it's counterfeiting",
+        "The spiritual warfare dimension — porn is a weapon in Satan's arsenal against your authority and identity",
+        "How to break the cycle without white-knuckling willpower — the system that rewires your response",
+        "Rebuilding what porn destroyed — your wife's trust, your self-respect, your authority in your household",
+        "The difference between lust and love, fantasy and covenant, counterfeit intimacy and the real thing",
+        "The 30-day protocol for dismantling the stronghold from the inside",
+        "Includes resources for wives — how to support your husband through the breakthrough without becoming his accountability manager",
+      ],
+      faq: [
+        { q: "I've tried to quit a hundred times. Why would this be different?", a: "Because most quit attempts are about willpower. This is about warfare — understanding what you're actually fighting and why you keep losing the same battle." },
+        { q: "Do I have to tell my wife?", a: "That's between you and the Spirit. But the guide addresses the wife conversation directly — because hiding it is part of the cage." },
+        { q: "Is this just Bible verses or does it actually work?", a: "It's Scripture applied to the specific battle you're in. Hundreds of men have gone through this guide and messaged saying the same thing: \"Finally someone explained why I keep coming back.\"" },
+      ],
+    },
   },
   {
     slug: "body-not-designed-for-hand",
@@ -749,7 +840,7 @@ export const products: Product[] = [
   {
     slug: "before-the-world-does",
     name: "BEFORE THE WORLD DOES",
-    tagline: "Get to your kids before the culture does.",
+    tagline: "The culture is already in your child's classroom, phone, and friend group. This is the resource for parents — mothers and fathers — who refuse to let someone else answer the questions that matter most.",
     seoKeywords: ["christian parenting guide protect children", "how to talk to kids about gender biblically", "protect children from secular culture", "biblical parenting book", "christian family guide against woke culture", "teaching kids about bodies bible"],
     description: "The world is coming for your children. Social media, public school, and the entertainment industry are discipling your kids 24/7. This resource arms you to get there first.",
     priceCents: 4999,
@@ -759,6 +850,8 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "cdsnv",
+    ctaText: "PROTECT YOUR KIDS →",
+    comparisonLine: "Public school curricula are already answering these questions for your children. This is the $49.99 resource that makes sure they heard your answer first.",
     extendedContent: {
       whoIsThisFor: [
         "The father who just realized his kids spend more time being discipled by screens than by him",
@@ -887,7 +980,7 @@ export const products: Product[] = [
   {
     slug: "traditional-homemaking",
     name: "TRADITIONAL BIBLICAL HOMEMAKING",
-    tagline: "A counter-revolutionary guide.",
+    tagline: "The culture told you the home was a cage. Christie built this because she found it to be a kingdom. A no-nonsense, biblically grounded guide to homemaking that actually dignifies the woman doing it.",
     seoKeywords: ["traditional homemaking christian", "biblical homemaking guide", "christian stay at home mom", "proverbs 31 woman guide", "traditional wife christian", "biblical womanhood homemaker"],
     description: "In a world that mocks homemakers, this guide celebrates the woman who chooses to build her home instead of her LinkedIn profile. Biblical. Practical. Unapologetic.",
     priceCents: 3295,
@@ -897,6 +990,31 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "pfwky",
+    ctaText: "CLAIM YOUR KINGDOM →",
+    comparisonLine: "Women's empowerment books will charge $25 to tell you that you can have everything. This is $32.95 and it tells you the truth: the home you are building is one of the most powerful things a woman can do.",
+    extendedContent: {
+      whoIsThisFor: [
+        "chose home and keeps waiting for someone to validate that choice — this is that validation, wrapped in Scripture and delivered without sentimentality",
+        "wants to embrace biblical homemaking but has no model for what that looks like in the modern world — her mother worked, her friends work, and she's building this from scratch",
+        "overwhelmed by the home she's trying to run and needs a framework, not another Pinterest board",
+        "being told by her culture that she's wasting herself — this resource arms her for that argument and settles it from the Word",
+      ],
+      whatsInside: [
+        "The biblical case for homemaking as a calling, not a compromise — why \"she looketh well to the ways of her household\" (Proverbs 31:27) is a description of strength, not submission to smallness",
+        "The practical systems for running a home with order, intention, and peace — not the Pinterest version, the real version",
+        "How to anchor your home to Scripture instead of culture — so what you build lasts beyond the next trend",
+        "The mindset shift that separates a woman who is trapped in domesticity from one who has claimed it as mission",
+        "Hospitality, rhythm, and household management from a woman who actually does it — not a thought leader who theorizes about it",
+        "How to handle the voices — inside your head and outside your house — that tell you this life isn't enough",
+        "A counter-revolutionary framework built for women who are tired of apologizing for choosing their home",
+      ],
+      faq: [
+        { q: "Is this just a cleaning and cooking guide?", a: "No. It's a biblical framework for the vocation of homemaking — mindset, purpose, systems, and spiritual grounding. The practical elements are there, but they sit on a doctrinal foundation." },
+        { q: "What if I also work outside the home? Is this still for me?", a: "Yes. A biblical approach to the home doesn't require perfect circumstances. It requires intentionality. This resource meets you where you are." },
+        { q: "Is this preachy?", a: "Christie's voice is warm but direct — not soft, not scolding. She's done this herself, she respects the women reading it, and it shows. Expect honesty, not lectures." },
+        { q: "My husband wants me to do this but I'm not convinced. Will this book talk me into it?", a: "It won't try to manipulate you. It will lay out the biblical case and let you decide. Most women who have read it say the conviction came from the Word — not from Christie pushing it." },
+      ],
+    },
   },
   {
     slug: "warrior-bundle",
@@ -1235,7 +1353,7 @@ export const products: Product[] = [
   {
     slug: "biblical-womanhood-bundle",
     name: "THE BIBLICAL WOMANHOOD BUNDLE",
-    tagline: "Every resource Christie built. One price. No excuses.",
+    tagline: "Every resource Christie built for the woman who wants the full biblical picture — not a curated highlight reel, the entire library.",
     description: "The complete Biblical Womanhood collection — all 8 of Christie Johnson's resources in one bundle. Character studies, prayer guides, devotionals, Bible reading plans, and more. Over $196 worth of resources for less than half the price. For the woman who is done with the feminist filter and ready to build her life on Scripture.",
     priceCents: 9700,
     priceLabel: "$97",
@@ -1247,6 +1365,32 @@ export const products: Product[] = [
     legacyGumroadSlug: "",
     stripePaymentLink: "https://buy.stripe.com/28E14odde8jUer24V8frW0S",
     seoKeywords: ["biblical womanhood bundle", "christian women resources", "KJV women study bundle", "biblical femininity resources"],
+    ctaText: "TAKE THE FULL LIBRARY →",
+    comparisonLine: "A women's Bible study group can run 12 weeks and cover one book with a study guide that cost $18. This is $97 for Christie's complete library — every tool, every season, no schedule required.",
+    extendedContent: {
+      whoIsThisFor: [
+        "consuming Christian women's content that leaves her feeling good but unchanged — Christie's work is built to change you, not comfort you",
+        "wants to understand the biblical picture of womanhood from the full canvas — not one corner, not the sanitized version, but all of it",
+        "trying to pass something real to her daughters but isn't sure she has a solid foundation herself yet — this builds the foundation",
+        "already bought one or two of Christie's resources and knows the rest of the library is worth having — the Bundle is the most efficient way to get there",
+      ],
+      whatsInside: [
+        "Christie's complete library — Traditional Biblical Homemaking, the Womanhood devotionals, the mother-daughter devotional, the Proverbs study, the Titus 2 calling guide, and every other resource she's built",
+        "The marriage resources for women — covering submission, respect, and covenant from the wife's side of the covenant",
+        "The motherhood material — from the early exhaustion of young children to the longer war of raising teenagers in a hostile culture",
+        "Scriptural studies built for women who want depth — \"She openeth her mouth with wisdom; and in her tongue is the law of kindness\" (Proverbs 31:26) — that kind of woman is forged, not stumbled into",
+        "The women of the Bible studies that reveal what God actually says about womanhood through the lives of the women He chose to record",
+        "Prayer and Scripture frameworks for women who want to pray with power, not just feelings",
+        "Everything in one place — so you're not purchasing one resource at a time when the war doesn't give you time to wait",
+      ],
+      faq: [
+        { q: "Is this bundle just for married women?", a: "No. The Bundle includes resources for single women, young women, mothers, wives, and older women stepping into the Titus 2 calling. There is something applicable regardless of season." },
+        { q: "How is this different from generic Christian women's content?", a: "Christie doesn't write to make you feel good about where you are. She writes to show you where the Word calls you to go. That is not a popular posture — and it's exactly why it works." },
+        { q: "I'm a husband who wants to give this to my wife. Is that appropriate?", a: "Yes. Many husbands have purchased this for their wives. Lay it down without an agenda and let Christie's voice carry it." },
+        { q: "What if my wife isn't interested in \"biblical womanhood\" content?", a: "Start with one resource — the Bible study guide or the Proverbs study — rather than the full bundle. Meet her where she is and let the Word do the work." },
+        { q: "Is there overlap with the full Biblical Man Vault?", a: "Yes — Christie's resources are included in the Biblical Man Vault. If you've purchased the Vault, you already have this content. The Bundle is for women who want Christie's library specifically, without the men's resources." },
+      ],
+    },
   },
 ];
 

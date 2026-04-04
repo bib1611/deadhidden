@@ -8,6 +8,7 @@ interface BuyButtonProps {
   isFree: boolean;
   isSubscription: boolean;
   stripePaymentLink?: string;
+  ctaText?: string;
 }
 
 export function BuyButton({
@@ -16,6 +17,7 @@ export function BuyButton({
   isFree,
   isSubscription,
   stripePaymentLink,
+  ctaText,
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +67,7 @@ export function BuyButton({
     }
   };
 
-  const buttonText = isFree ? 'GET FREE' : isSubscription ? 'JOIN' : 'BUY NOW';
+  const buttonText = ctaText || (isFree ? 'GET FREE' : isSubscription ? 'JOIN' : 'BUY NOW');
 
   return (
     <button
