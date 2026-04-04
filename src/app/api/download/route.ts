@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
 import { products } from '@/data/products';
+import { MULTI_PART_PRODUCTS } from '@/lib/multi-part';
 
 export const runtime = 'nodejs';
 
@@ -106,13 +107,23 @@ export async function GET(request: NextRequest) {
 
     if (isVault) {
       // Vault buyers get everything except bundles and non-downloadable items
+      // Multi-part products are expanded into their individual parts
       files = products
         .filter((p) => !p.isFree && !bundleSlugs.has(p.slug))
-        .map((p) => ({
-          name: p.name,
-          filename: `${p.slug}.pdf`,
-          slug: p.slug,
-        }));
+        .flatMap((p) => {
+          if (MULTI_PART_PRODUCTS[p.slug]) {
+            return MULTI_PART_PRODUCTS[p.slug].map((part) => ({
+              name: part.name,
+              filename: `${part.slug}.pdf`,
+              slug: part.slug,
+            }));
+          }
+          return [{
+            name: p.name,
+            filename: `${p.slug}.pdf`,
+            slug: p.slug,
+          }];
+        });
     } else if (isVaultSampler) {
       // Vault Sampler buyers get the 4 sampler products
       files = products
@@ -140,6 +151,13 @@ export async function GET(request: NextRequest) {
           filename: `${p.slug}.pdf`,
           slug: p.slug,
         }));
+    } else if (MULTI_PART_PRODUCTS[productSlug]) {
+      // Multi-part products (e.g. loneliness-lie) expand into multiple PDFs
+      files = MULTI_PART_PRODUCTS[productSlug].map((part) => ({
+        name: part.name,
+        filename: `${part.slug}.pdf`,
+        slug: part.slug,
+      }));
     } else {
       files = [
         {
