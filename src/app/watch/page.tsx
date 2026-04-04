@@ -108,7 +108,7 @@ export default function WatchPage() {
               <p className="text-sm text-[#888] leading-relaxed mb-4">
                 {FEATURED_VIDEO.description}
               </p>
-              <div className="flex items-center gap-4 text-xs text-[#555]">
+              <div className="flex items-center gap-4 text-xs text-[#777]">
                 <span>{FEATURED_VIDEO.views} views</span>
                 <span>•</span>
                 <span>{FEATURED_VIDEO.date}</span>
@@ -158,7 +158,7 @@ export default function WatchPage() {
                       {playlist.description}
                     </p>
                     <div className="flex items-center gap-4">
-                      <span className="text-xs text-[#555]">
+                      <span className="text-xs text-[#777]">
                         {playlist.videoCount} VIDEOS
                       </span>
                       <a

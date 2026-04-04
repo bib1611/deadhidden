@@ -67,7 +67,7 @@ export function SupportButtons() {
             >
               {loading === i ? '...' : gift.label}
             </div>
-            <div className="text-xs text-[#555] uppercase tracking-wider">
+            <div className="text-xs text-[#777] uppercase tracking-wider">
               {gift.tagline}
             </div>
           </button>
@@ -77,7 +77,7 @@ export function SupportButtons() {
       {/* Custom amount */}
       <div className="flex gap-3">
         <div className="relative flex-1">
-          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#555] text-lg">$</span>
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#777] text-lg">$</span>
           <input
             type="number"
             min="1"
@@ -98,7 +98,7 @@ export function SupportButtons() {
         </button>
       </div>
 
-      <p className="text-xs text-[#555] mt-4">
+      <p className="text-xs text-[#777] mt-4">
         Secure payment via Stripe. Not tax-deductible — this is support for an independent creator, not a 501(c)(3).
       </p>
     </div>

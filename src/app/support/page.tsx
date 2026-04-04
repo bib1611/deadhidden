@@ -112,7 +112,7 @@ export default function SupportPage() {
           <p className="text-[#888] italic text-sm leading-relaxed mb-3">
             &ldquo;Even so hath the Lord ordained that they which preach the gospel should live of the gospel.&rdquo;
           </p>
-          <p className="text-xs text-[#555] tracking-[0.15em] uppercase">
+          <p className="text-xs text-[#777] tracking-[0.15em] uppercase">
             — 1 Corinthians 9:14 KJV
           </p>
         </div>

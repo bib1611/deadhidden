@@ -33,11 +33,20 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       description: product.tagline,
       url: `https://deadhidden.org/store/${slug}`,
       type: 'website',
+      images: [
+        {
+          url: '/images/og-default.jpg',
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: product.name,
       description: product.tagline,
+      images: ['/images/og-default.jpg'],
     },
     alternates: {
       canonical: `https://deadhidden.org/store/${slug}`,
@@ -95,11 +104,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <Link href="/store" className="hover:text-[#e8e0d0] transition-colors">
             THE ARCHIVE
           </Link>
-          <span className="mx-2 text-[#555]">/</span>
+          <span className="mx-2 text-[#777]">/</span>
           <Link href={`/store/category/${product.category}`} className="hover:text-[#e8e0d0] transition-colors">
             {CATEGORIES[product.category].label}
           </Link>
-          <span className="mx-2 text-[#555]">/</span>
+          <span className="mx-2 text-[#777]">/</span>
           <span className="text-[#e8e0d0]">{product.name}</span>
         </div>
       </div>
@@ -115,7 +124,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </h1>
 
         {/* Category Badge */}
-        <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-6">
+        <div className="text-xs tracking-[0.12em] uppercase text-[#777] mb-6">
           {CATEGORIES[product.category].label}
         </div>
 
@@ -125,7 +134,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="flex items-baseline gap-3">
               <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{product.priceLabel}</span>
               {product.slug === 'the-vault' && (
-                <span className="text-sm text-[#555] line-through">$1,500+</span>
+                <span className="text-sm text-[#777] line-through">$1,500+</span>
               )}
               {product.isFree && (
                 <span className="text-sm text-[#4ade80] font-bold uppercase">No email required</span>
@@ -273,7 +282,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           />
 
           {!product.isFree && (
-            <p className="text-xs text-[#555] mt-4">
+            <p className="text-xs text-[#777] mt-4">
               Digital product. All sales are final.{' '}
               <Link href="/refund-policy" className="text-[#8b0000] underline hover:text-[#a50000]">
                 Refund Policy
@@ -330,7 +339,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   href={`/store/${relatedProduct.slug}`}
                   className="border border-[#222] bg-[#111] p-4 hover:border-[#8b0000] transition-colors"
                 >
-                  <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-2">
+                  <div className="text-xs tracking-[0.12em] uppercase text-[#777] mb-2">
                     {CATEGORIES[relatedProduct.category].label}
                   </div>
                   <h4
@@ -361,7 +370,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   href={`/store/${cp.slug}`}
                   className="border border-[#222] bg-[#111] p-4 hover:border-[#8b0000] transition-colors"
                 >
-                  <div className="text-xs tracking-[0.12em] uppercase text-[#555] mb-2">
+                  <div className="text-xs tracking-[0.12em] uppercase text-[#777] mb-2">
                     {CATEGORIES[cp.category].label}
                   </div>
                   <h4

@@ -86,7 +86,7 @@ export default function VaultValueStack() {
                 >
                   {CATEGORIES[category].label}
                 </h3>
-                <span className="text-xs text-[#555]">
+                <span className="text-xs text-[#777]">
                   {fmt(categoryTotal)} value
                 </span>
               </div>

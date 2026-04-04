@@ -60,7 +60,7 @@ export default function AboutPage() {
               alt="Adam and Christie Johnson"
               className="w-full grayscale border border-[#222]"
             />
-            <p className="text-xs text-[#555] mt-3 text-center uppercase tracking-[0.1em]">
+            <p className="text-xs text-[#777] mt-3 text-center uppercase tracking-[0.1em]">
               Adam & Christie — 24 years married
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               >
                 WHAT&apos;S THE BIG DEAL ABOUT THE KJV? — EP. 1
               </h3>
-              <p className="text-xs text-[#555] mt-1">The series that started it all</p>
+              <p className="text-xs text-[#777] mt-1">The series that started it all</p>
             </div>
             <Link
               href="/watch"
@@ -226,7 +226,7 @@ export default function AboutPage() {
             "But the natural man receiveth not the things of the Spirit of God: for they are
             foolishness unto him: neither can he know them, because they are spiritually discerned."
           </p>
-          <p className="text-xs tracking-[0.1em] uppercase text-[#555]">1 CORINTHIANS 2:14 (KJV)</p>
+          <p className="text-xs tracking-[0.1em] uppercase text-[#777]">1 CORINTHIANS 2:14 (KJV)</p>
         </div>
       </div>
     </main>

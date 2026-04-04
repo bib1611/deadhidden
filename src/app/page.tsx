@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory } from '@/data/products';
 import { EmailSignup } from '@/components/EmailSignup';
 import { OrganizationJsonLd } from '@/components/JsonLd';
@@ -15,10 +16,13 @@ export default function Home() {
       {/* 1. HERO — shorter, punchier, both CTAs go somewhere that converts */}
       <section className="flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/40 to-[#0a0a0a] bg-black py-16 md:py-24">
         <div className="container max-w-3xl mx-auto px-4 text-center">
-          <img
+          <Image
             src="/images/logo.png"
             alt="Dead Hidden"
+            width={112}
+            height={112}
             className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-6 opacity-90"
+            priority
           />
 
           <h1
@@ -32,7 +36,7 @@ export default function Home() {
             A Bible study ministry for Christians, families, and churches. 50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
           </p>
 
-          <p className="text-xs tracking-[0.2em] uppercase text-[#555] mb-8">
+          <p className="text-xs tracking-[0.2em] uppercase text-[#777] mb-8">
             A FRIEND TO CHURCHES · 70,000+ SUBSCRIBERS · THREE PUBLICATIONS
           </p>
 
@@ -113,12 +117,12 @@ export default function Home() {
 
                   {isVault && (
                     <p className="text-xs text-[#888] mb-2">
-                      <span className="line-through text-[#555]">$1,500+</span>{' '}
+                      <span className="line-through text-[#777]">$1,500+</span>{' '}
                       <span className="text-[#4ade80] font-bold">Save 76%</span>
                     </p>
                   )}
 
-                  <p className="text-[#555] text-sm line-clamp-2 mb-4 flex-grow">
+                  <p className="text-[#777] text-sm line-clamp-2 mb-4 flex-grow">
                     {product.description}
                   </p>
 
@@ -153,19 +157,19 @@ export default function Home() {
               <p className="text-[#e8e0d0] text-sm italic leading-relaxed mb-4">
                 &ldquo;I was checking all the Christian boxes and felt completely dead inside. This Bible study system cracked something open in me that 20 years of church couldn&rsquo;t reach.&rdquo;
               </p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em]">— Paid subscriber, 4 months</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em]">— Paid subscriber, 4 months</p>
             </div>
             <div className="border border-[#222] bg-[#111] p-6">
               <p className="text-[#e8e0d0] text-sm italic leading-relaxed mb-4">
                 &ldquo;The Marriage Manual saved my marriage. Not exaggerating. My wife and I read it together and it was the first time we&rsquo;d been on the same page in years.&rdquo;
               </p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em]">— Husband &amp; wife, married 12 years</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em]">— Husband &amp; wife, married 12 years</p>
             </div>
             <div className="border border-[#222] bg-[#111] p-6">
               <p className="text-[#e8e0d0] text-sm italic leading-relaxed mb-4">
                 &ldquo;The Submission Fraud guide was the first time I read something about biblical womanhood that didn&rsquo;t feel like a guilt trip or a cage. Finally, someone who gets it right.&rdquo;
               </p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em]">— Woman, homeschool mother of 3</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em]">— Woman, homeschool mother of 3</p>
             </div>
           </div>
         </div>
@@ -266,7 +270,7 @@ export default function Home() {
                   {product.name}
                 </h3>
 
-                <p className="text-[#555] text-sm line-clamp-2 mb-4 flex-grow">
+                <p className="text-[#777] text-sm line-clamp-2 mb-4 flex-grow">
                   {product.description}
                 </p>
 
@@ -329,19 +333,19 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>3</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Publications</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em] mt-1">Publications</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>70K+</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Subscribers</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em] mt-1">Subscribers</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>50+</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Resources</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em] mt-1">Resources</p>
             </div>
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
               <p className="text-2xl md:text-3xl text-[#8b0000] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>24</p>
-              <p className="text-xs text-[#555] uppercase tracking-[0.1em] mt-1">Years Married</p>
+              <p className="text-xs text-[#777] uppercase tracking-[0.1em] mt-1">Years Married</p>
             </div>
           </div>
         </div>
@@ -400,7 +404,7 @@ export default function Home() {
               >
                 THE MARK OF THE BEAST IS ALREADY HERE
               </h3>
-              <p className="text-xs text-[#555] mt-1">Featured — 1.5K views</p>
+              <p className="text-xs text-[#777] mt-1">Featured — 1.5K views</p>
             </div>
           </div>
 
@@ -423,7 +427,7 @@ export default function Home() {
               >
                 WHAT&apos;S THE BIG DEAL ABOUT THE KJV?
               </h3>
-              <p className="text-xs text-[#555] mt-1">9-part series</p>
+              <p className="text-xs text-[#777] mt-1">9-part series</p>
             </div>
 
             <div>
@@ -443,7 +447,7 @@ export default function Home() {
               >
                 ANTICHRIST AND THE ENDTIMES
               </h3>
-              <p className="text-xs text-[#555] mt-1">5-part series</p>
+              <p className="text-xs text-[#777] mt-1">5-part series</p>
             </div>
           </div>
 
@@ -498,7 +502,7 @@ export default function Home() {
                   >
                     {category.label}
                   </h3>
-                  <p className="text-xs text-[#555] mb-3">
+                  <p className="text-xs text-[#777] mb-3">
                     {isVault ? '$365 — FULL CLEARANCE' : `${count} DOCUMENT${count !== 1 ? 'S' : ''}`}
                   </p>
                   <div className="text-right text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors text-sm">

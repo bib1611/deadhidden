@@ -66,7 +66,7 @@ export function EmailSignup() {
         <p className="text-red-500 text-sm">{message}</p>
       )}
 
-      <p className="text-xs text-[#555]">
+      <p className="text-xs text-[#777]">
         No spam. No selling your data. Just the things they tried to bury.
       </p>
     </form>

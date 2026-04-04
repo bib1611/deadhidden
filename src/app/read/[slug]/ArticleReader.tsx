@@ -29,7 +29,7 @@ export function ArticleReader({
         <div className="max-w-3xl mx-auto">
           <Link
             href="/read"
-            className="text-xs tracking-[0.15em] uppercase text-[#555] hover:text-[#8b0000] transition-colors"
+            className="text-xs tracking-[0.15em] uppercase text-[#777] hover:text-[#8b0000] transition-colors"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             ← BACK TO ARTICLES
@@ -51,7 +51,7 @@ export function ArticleReader({
             >
               {article.sourceName}
             </span>
-            <span className="text-[12px] text-[#555]">
+            <span className="text-[12px] text-[#777]">
               {formatDate(article.pubDate)}
             </span>
           </div>
@@ -114,7 +114,7 @@ export function ArticleReader({
       {/* Bottom CTA */}
       <div className="border-t border-[#222] px-4 sm:px-6 py-12 sm:py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm text-[#555] mb-4">Originally published on</p>
+          <p className="text-sm text-[#777] mb-4">Originally published on</p>
           <a
             href={substackUrl}
             target="_blank"

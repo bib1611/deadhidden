@@ -68,7 +68,7 @@ export function RadioPlayer() {
                 style={{ fontFamily: 'var(--font-heading)' }}>
                 Final Fight Bible Radio
               </p>
-              <p className="text-[#555] text-xs mt-1">
+              <p className="text-[#777] text-xs mt-1">
                 24/7 KJV Bible preaching, teaching & gospel music
               </p>
             </div>
@@ -143,7 +143,7 @@ export function RadioPlayer() {
 
           {/* Right: 24/7 badge */}
           <div className="flex items-center gap-2">
-            <span className="text-[10px] uppercase tracking-[0.15em] text-[#555] hidden sm:inline">
+            <span className="text-[10px] uppercase tracking-[0.15em] text-[#777] hidden sm:inline">
               24/7 KJV PREACHING & MUSIC
             </span>
             {isPlaying && (

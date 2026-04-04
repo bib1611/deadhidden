@@ -107,7 +107,7 @@ export default function SuccessPage() {
             </p>
 
             {data.customerEmail && (
-              <p className="text-sm text-[#555] mb-10">
+              <p className="text-sm text-[#777] mb-10">
                 Receipt sent to {data.customerEmail}
               </p>
             )}
@@ -138,7 +138,7 @@ export default function SuccessPage() {
               </a>
             ))}
 
-            <p className="text-xs text-[#555] mt-8">
+            <p className="text-xs text-[#777] mt-8">
               Bookmark this page. Your download link is tied to your purchase and won&apos;t expire.
             </p>
 
@@ -168,13 +168,13 @@ export default function SuccessPage() {
                 Everything. Every guide, manual, protocol, and framework. It&apos;s all yours.
               </p>
               {data.customerEmail && (
-                <p className="text-sm text-[#555] mt-2">
+                <p className="text-sm text-[#777] mt-2">
                   Receipt sent to {data.customerEmail}
                 </p>
               )}
             </div>
 
-            <p className="text-xs text-[#555] text-center mb-8">
+            <p className="text-xs text-[#777] text-center mb-8">
               Bookmark this page. Your downloads are tied to your purchase and won&apos;t expire.
             </p>
 

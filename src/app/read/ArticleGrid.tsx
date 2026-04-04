@@ -46,7 +46,7 @@ function ArticleCard({ article }: { article: Article }) {
           >
             {article.sourceName}
           </span>
-          <span className="text-[11px] text-[#555]">{formatDate(article.pubDate)}</span>
+          <span className="text-[11px] text-[#777]">{formatDate(article.pubDate)}</span>
         </div>
 
         {/* Title */}
@@ -65,7 +65,7 @@ function ArticleCard({ article }: { article: Article }) {
         )}
 
         {/* Read indicator */}
-        <div className="mt-4 text-xs tracking-[0.15em] uppercase text-[#555] group-hover:text-[#8b0000] transition-colors">
+        <div className="mt-4 text-xs tracking-[0.15em] uppercase text-[#777] group-hover:text-[#8b0000] transition-colors">
           READ →
         </div>
       </div>
@@ -96,7 +96,7 @@ export function ArticleGrid({ articles }: { articles: Article[] }) {
               className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold transition-colors ${
                 filter === tab.key
                   ? 'text-[#e8e0d0] bg-[#8b0000]/20 border border-[#8b0000]/40'
-                  : 'text-[#555] hover:text-[#888] border border-transparent'
+                  : 'text-[#777] hover:text-[#888] border border-transparent'
               }`}
               style={{ fontFamily: 'var(--font-heading)' }}
             >
@@ -113,7 +113,7 @@ export function ArticleGrid({ articles }: { articles: Article[] }) {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20 text-[#555]">
+          <div className="text-center py-20 text-[#777]">
             <p className="text-lg">No articles found.</p>
           </div>
         )}

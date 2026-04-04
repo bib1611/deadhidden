@@ -370,7 +370,7 @@ export default async function CategoryPillarPage({ params }: CategoryPageProps) 
           <Link href="/store" className="hover:text-[#e8e0d0] transition-colors">
             THE ARCHIVE
           </Link>
-          <span className="mx-2 text-[#555]">/</span>
+          <span className="mx-2 text-[#777]">/</span>
           <span className="text-[#e8e0d0]">{CATEGORIES[category].label}</span>
         </div>
       </div>
@@ -414,7 +414,7 @@ export default async function CategoryPillarPage({ params }: CategoryPageProps) 
           <p className="text-sm md:text-base text-[#888] leading-relaxed italic mb-2">
             &ldquo;{seo.scripture.text}&rdquo;
           </p>
-          <p className="text-xs tracking-[0.1em] uppercase text-[#555]">
+          <p className="text-xs tracking-[0.1em] uppercase text-[#777]">
             {seo.scripture.reference}
           </p>
         </div>

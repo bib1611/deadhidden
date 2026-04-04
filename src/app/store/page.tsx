@@ -68,7 +68,7 @@ function StoreContent() {
             >
               {/* Top row: Category + Badge */}
               <div className="flex items-center justify-between mb-3">
-                <div className="text-xs tracking-[0.12em] uppercase text-[#555]">
+                <div className="text-xs tracking-[0.12em] uppercase text-[#777]">
                   {CATEGORIES[product.category].label}
                 </div>
                 {product.category === 'vault' && (

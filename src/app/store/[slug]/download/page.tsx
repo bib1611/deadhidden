@@ -31,7 +31,7 @@ export default async function DownloadPage({ params }: DownloadPageProps) {
         <div className="h-1 bg-[#8b0000] w-16 mx-auto mb-8" />
 
         <p className="text-lg text-[#888] mb-2">{product.name}</p>
-        <p className="text-sm text-[#555] mb-10">Free download. No strings attached.</p>
+        <p className="text-sm text-[#777] mb-10">Free download. No strings attached.</p>
 
         {fileUrl ? (
           <a
@@ -61,7 +61,7 @@ export default async function DownloadPage({ params }: DownloadPageProps) {
             <p className="text-[#888] mb-4">
               File is being prepared. Please try again in a moment.
             </p>
-            <p className="text-sm text-[#555]">
+            <p className="text-sm text-[#777]">
               If the problem persists, call or text us at{' '}
               <a href="tel:+17014262175" className="text-[#8b0000] underline">
                 (701) 426-2175
@@ -74,7 +74,7 @@ export default async function DownloadPage({ params }: DownloadPageProps) {
           </div>
         )}
 
-        <p className="text-xs text-[#555] mt-8">
+        <p className="text-xs text-[#777] mt-8">
           Bookmark this page to download again anytime.
         </p>
 
