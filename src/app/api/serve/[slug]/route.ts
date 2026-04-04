@@ -5,6 +5,9 @@ import { products } from '@/data/products';
 
 export const runtime = 'nodejs';
 
+// Download links expire after 7 days — prevents permanent link sharing
+const MAX_SESSION_AGE_DAYS = 7;
+
 /**
  * Serve a PDF file after verifying Stripe session.
  * GET /api/serve/[slug]?session_id=cs_live_xxx
@@ -12,9 +15,10 @@ export const runtime = 'nodejs';
  * Checks:
  * 1. Valid Stripe session ID
  * 2. Payment completed
- * 3. Product matches session metadata (or buyer purchased the Vault)
+ * 3. Session is not older than MAX_SESSION_AGE_DAYS
+ * 4. Product matches session metadata (or buyer purchased the Vault)
  *
- * Then redirects to the actual file URL in Vercel Blob.
+ * Proxies the file through the API so blob URLs are never exposed to the browser.
  */
 export async function GET(
   request: NextRequest,
@@ -34,6 +38,17 @@ export async function GET(
 
     if (session.payment_status !== 'paid') {
       return new NextResponse('Payment not completed', { status: 403 });
+    }
+
+    // Check session age — reject sessions older than 7 days
+    const sessionCreatedAt = new Date(session.created * 1000);
+    const now = new Date();
+    const daysSinceCreation = (now.getTime() - sessionCreatedAt.getTime()) / (1000 * 60 * 60 * 24);
+    if (daysSinceCreation > MAX_SESSION_AGE_DAYS) {
+      return new NextResponse(
+        'Download link expired. Contact thebiblicalman1611@gmail.com for a fresh link.',
+        { status: 410 }
+      );
     }
 
     const purchasedSlug = session.metadata?.productSlug;
@@ -90,8 +105,25 @@ export async function GET(
       );
     }
 
-    // Redirect to the actual blob URL
-    return NextResponse.redirect(fileUrl);
+    // Proxy the file — never expose the blob URL to the browser
+    const fileResponse = await fetch(fileUrl);
+    if (!fileResponse.ok || !fileResponse.body) {
+      return new NextResponse('File download failed', { status: 502 });
+    }
+
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/pdf');
+    headers.set('Content-Disposition', `attachment; filename="${slug}.pdf"`);
+    headers.set('Cache-Control', 'private, no-store, no-cache');
+    headers.set('X-Content-Type-Options', 'nosniff');
+
+    // Pass through content length if available
+    const contentLength = fileResponse.headers.get('content-length');
+    if (contentLength) {
+      headers.set('Content-Length', contentLength);
+    }
+
+    return new NextResponse(fileResponse.body, { headers });
   } catch (error) {
     console.error('File serve error:', error);
     return new NextResponse(

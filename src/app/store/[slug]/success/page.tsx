@@ -139,7 +139,7 @@ export default function SuccessPage() {
             ))}
 
             <p className="text-xs text-[#777] mt-8">
-              Bookmark this page. Your download link is tied to your purchase and won&apos;t expire.
+              Download now — this link expires in 7 days. Contact us if you need a fresh link.
             </p>
 
             <div className="mt-12">
@@ -175,7 +175,7 @@ export default function SuccessPage() {
             </div>
 
             <p className="text-xs text-[#777] text-center mb-8">
-              Bookmark this page. Your downloads are tied to your purchase and won&apos;t expire.
+              Download now — this link expires in 7 days. Contact us if you need a fresh link.
             </p>
 
             {/* File Grid */}
