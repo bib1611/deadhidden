@@ -26,6 +26,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const product = getProductBySlug(slug);
   if (!product) return { title: 'Product Not Found' };
 
+  const ogImage = `https://deadhidden.org/api/og?title=${encodeURIComponent(product.name)}&type=product&price=${encodeURIComponent(product.priceLabel)}${product.tagline ? `&subtitle=${encodeURIComponent(product.tagline)}` : ''}`;
+
   return {
     title: `${product.name} | Dead Hidden`,
     description: product.description.substring(0, 160),
@@ -35,20 +37,18 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       description: product.tagline,
       url: `https://deadhidden.org/store/${slug}`,
       type: 'website',
-      images: [
-        {
-          url: '/images/og-default.jpg',
-          width: 1200,
-          height: 630,
-          alt: product.name,
-        },
-      ],
+      images: [{
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: product.name,
+      }],
     },
     twitter: {
       card: 'summary_large_image',
       title: product.name,
       description: product.tagline,
-      images: ['/images/og-default.jpg'],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://deadhidden.org/store/${slug}`,
