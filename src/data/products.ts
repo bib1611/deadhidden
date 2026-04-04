@@ -142,6 +142,12 @@ export const products: Product[] = [
       ],
       longDescription: "I built The Essential Arsenal because people kept asking me the same question: 'Where do I start?'\n\nThe full Vault has over 50 resources. That's the complete arsenal. But some believers don't need everything — they need the right things. The ten resources in this collection are the ones that get mentioned most in my DMs. The ones people say saved their marriage. Changed how they read their Bible. Woke them up as parents.\n\nIf you buy this and it works — and it will — the Vault is waiting. And I'll credit this $97 toward your Vault purchase. No risk. Just results.",
       socialProof: "These 10 resources represent the most purchased and most recommended guides on Dead Hidden. They cover marriage, masculinity, womanhood, Bible study, spiritual warfare, and parenting — the pillars every Christian needs.",
+      faq: [
+        { q: "How do I know these are actually the best 10?", a: "Buyer behavior decides it. These are the resources that get purchased most, referenced most, and mentioned most in testimonials. The market voted." },
+        { q: "Is this a good starting point or do I need the full Vault?", a: "It's the right starting point. If after working through these 10 you want everything else, apply what you paid here toward the Vault — you'll already know the investment is worth it." },
+        { q: "What if I've already bought one or two of these individually?", a: "At $97 for 10 resources, the math still works. Contact us if you have a concern — we'd rather arm you than lose you over a pricing question." },
+        { q: "Is this for men only?", a: "No. The 10 resources span both Adam's and Christie's work — marriage, Bible study, and spiritual foundations that matter regardless of which chair you sit in." },
+      ],
     },
   },
   {
@@ -179,9 +185,10 @@ export const products: Product[] = [
       longDescription: "I wrote the Red Version because the original was too safe. Not wrong — just too careful. The church has made Christian marriage advice so sanitized that it is useless for the man whose wife has already stopped caring. That man does not need another book about love languages. He needs war doctrine.\n\nThis manual covers the things your pastor will never preach from the pulpit. Biblical authority in the bedroom. How to lead a wife who does not want to be led. How to rebuild trust after you have destroyed it. How to stop being the passive husband who outsources spiritual leadership to his wife while calling it partnership.\n\nThe Red Version is the uncensored edition. It is written for adults. It assumes you can handle direct language about sex, authority, conflict, and the hard realities of covenant marriage. If you want something softer, the original version exists. But if your marriage is bleeding out and you need a tourniquet — this is it.",
       socialProof: "The King's Marriage Manual is the bestselling marriage resource on Dead Hidden. Husbands keep coming back to say it saved their covenant when nothing else worked.",
       faq: [
-        { q: "Is this counseling material or confrontation material?", a: "It's battle doctrine. If your marriage is already broken, you need counseling and prayer first. If your marriage is drifting and you need to take the helm, this is your guide." },
-        { q: "My wife won't read it with me. Can I use this alone?", a: "Yes. This is written for husbands. You read it, you change, and your wife will notice. The Red Version is built to convert thinking first and behavior second." },
-        { q: "Is this just for newly married couples?", a: "No. This applies to any marriage in any stage. The principles don't age." },
+        { q: "Is this just a headship lecture?", a: "No. It covers headship, sexual intimacy, and conflict. It's the full picture — not one chapter of a seminary textbook stretched into a guide." },
+        { q: "What makes the Red Version different from the standard version?", a: "The Red Version is uncut. Nothing is softened, reframed, or edited for an audience that might push back. If you want the full doctrine without the hedge, this is the one." },
+        { q: "My wife is the one who wants to fix things. Will this work if she buys it and hands it to me?", a: "Yes. It's written to the husband, but the truth isn't conditional on who started the conversation. Pick it up, read it, and decide what to do with it." },
+        { q: "We've been married 20+ years. Is this still relevant for us?", a: "Especially for you. Two decades of accumulated drift, role confusion, and unspoken resentment — this manual addresses all of it. \"Iron sharpeneth iron\" (Proverbs 27:17). It's never too late to sharpen." },
       ],
     },
   },
@@ -216,8 +223,10 @@ export const products: Product[] = [
         "Built for any man at any stage — new believer, new husband, or 20 years deep and needing to reset",
       ],
       faq: [
-        { q: "Is this about dominating your wife?", a: "No. It's about providing spiritual covering, making the hard decisions, and protecting your household. Domination is tyranny. Leadership is sacrifice." },
-        { q: "What if my wife resists my leadership?", a: "That's addressed directly in the manual. Leadership doesn't require permission — but it does require humility, wisdom, and the willingness to lay your life down like Christ did." },
+        { q: "What if my wife doesn't respond well to me stepping into this role?", a: "Lead anyway. Your obedience to God's design is not conditioned on your wife's initial response. The manual addresses the transition period — it's not a switch you flip overnight." },
+        { q: "Is headship just about making decisions?", a: "No, and if that's what you've been told, that's part of why you're here. The manual covers the full scope — spiritual covering, sacrificial love, discipline, and direction. Decision-making is one tool, not the definition." },
+        { q: "I've been passive for years. Is it too late to change this?", a: "No. But it will cost you something — pride, comfort, and the low-maintenance version of your marriage. \"Be strong, and quit yourselves like men\" (1 Samuel 4:9). The time is now." },
+        { q: "Does my wife need to read this too?", a: "She doesn't have to. But many wives have read it alongside their husbands and said it helped them understand what they were waiting for. It's written to men — use your judgment." },
       ],
     },
   },
@@ -348,6 +357,12 @@ export const products: Product[] = [
       ],
       longDescription: "This is the most popular resource on Dead Hidden for a reason. Over 300 believers have bought it because it solves the problem nobody else addresses: most Christians do not know how to study their Bible. They read it. They skim it. They highlight verses that make them feel good. But they do not study it.\n\nStudying the Bible is a skill. Like any skill, it requires a system. This guide gives you that system — a repeatable method for approaching any passage of scripture and extracting the truth God put there for you. Not someone else's interpretation. Not a commentary's opinion. The actual meaning of the text, discovered through your own disciplined engagement with the Word.\n\nI built this system over seventeen years of teaching Sunday School. It is how I prepare every lesson. It is how I write every post. It is the foundation of everything I produce at Dead Hidden. And at $7, there is no excuse not to own it.",
       socialProof: "318 believers bought this guide. It is the most popular resource on Dead Hidden — and the one most buyers say they wish they had found years ago.",
+      faq: [
+        { q: "I'm not a scholar. Will this be over my head?", a: "No. It was built for working people with real lives — not academics. If you can read, you can use this system." },
+        { q: "Is this for men only? The site leans masculine.", a: "No. This resource is explicitly for both men and women. 318 people have used it — the system works regardless of who's holding the Bible." },
+        { q: "I already read my Bible every day. Do I need this?", a: "Reading and studying are not the same thing. If you can't explain what you just read — doctrine, context, application — you're reading, not studying. This fixes that." },
+        { q: "Why is it only $7?", a: "Because the barrier to getting into the Word should be as low as possible. Price is not the reason you won't study your Bible. This removes that excuse entirely." },
+      ],
     },
   },
   {
@@ -871,6 +886,12 @@ export const products: Product[] = [
       ],
       longDescription: "Every day your children are being taught. The question is not whether someone is discipling them — the question is who. Social media, YouTube, public schools, their friends, the entertainment industry — these are all preaching a gospel to your children. And that gospel says there is no God, there are no absolutes, gender is a choice, and your parents are outdated.\n\nBefore The World Does is a comprehensive framework for getting to your children before these forces do. It is not a theoretical book about parenting philosophy. It is a practical guide that tells you what to say, when to say it, and how to build the kind of home where your children hear the truth from you first — not from a TikTok algorithm.\n\nI wrote this as a father of five. My oldest has watched friends walk away from the faith because their parents never equipped them to stand. My youngest are growing up in a world that is more hostile to biblical truth than anything my generation faced. This resource is what I am using to get to them first. And it is what I am giving you so you can do the same.",
       socialProof: "A free chapter — God's Design for Bodies — is available in our free resources section. Download it and see the quality before investing in the full guide.",
+      faq: [
+        { q: "Is this just for parents of young children?", a: "No. It covers every stage — early childhood through the teenage years. The conversations evolve as the child does, and this guide walks you through each stage." },
+        { q: "Is this for moms or dads specifically?", a: "Both. This is designed for both parents to use, individually or together. A unified front is the goal." },
+        { q: "What if my kids are already older and I've missed some of these conversations?", a: "Then you start now. It's not too late — it's just more urgent. The guide includes protocols for catching up with older children." },
+        { q: "I'm a single parent. Is this still useful for me?", a: "Yes. You carry both roles. This resource equips you for that reality without requiring a spouse to implement it." },
+      ],
     },
   },
   {
