@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${post.title} | Dead Hidden`,
     description: post.metaDescription,
     keywords: [post.primaryKeyword, ...post.secondaryKeywords],
-    authors: [{ name: AUTHOR_DISPLAY[post.author] }],
+    authors: [{ name: 'Dead Hidden Team' }],
     openGraph: {
       title: post.title,
       description: post.metaDescription,
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: postUrl,
       publishedTime: post.publishDate,
       modifiedTime: post.updatedDate || post.publishDate,
-      authors: [AUTHOR_DISPLAY[post.author]],
+      authors: ['Dead Hidden Team'],
       images: [
         {
           url: ogImage,

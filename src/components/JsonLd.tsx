@@ -124,8 +124,8 @@ export function BlogPostJsonLd({
     wordCount,
     keywords: keywords.join(', '),
     author: {
-      '@type': 'Person',
-      name: author,
+      '@type': 'Organization',
+      name: 'Dead Hidden Team',
       url: 'https://deadhidden.org/about',
     },
     publisher: {
@@ -174,8 +174,8 @@ export function ArticleJsonLd({
     url: `https://deadhidden.org/read/${slug}?source=${source}`,
     ...(imageUrl && { image: imageUrl }),
     author: {
-      '@type': 'Person',
-      name: 'Adam Johnson',
+      '@type': 'Organization',
+      name: 'Dead Hidden Team',
       url: 'https://deadhidden.org/about',
     },
     publisher: {
