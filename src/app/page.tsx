@@ -127,7 +127,7 @@ export default function Home() {
                   </p>
 
                   <div className="flex items-center justify-between pt-4 border-t border-[#222]">
-                    <span className="text-[#8b0000] font-bold">{product.priceLabel}</span>
+                    <span className="text-[#8b0000] font-bold">{product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel}</span>
                     <span
                       className="text-xs uppercase tracking-[0.15em] text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors font-bold"
                       style={{ fontFamily: 'var(--font-heading)' }}

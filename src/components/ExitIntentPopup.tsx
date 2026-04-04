@@ -1,38 +1,78 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+
+const POPUP_SEEN_KEY = 'dh_popup_seen';
+const POPUP_SEEN_TTL = 30 * 24 * 60 * 60 * 1000; // 30 days
+const SUBSCRIBER_KEY = 'dh_subscribed';
+
+const EXCLUDED_PATHS = ['/checkout', '/thank-you', '/order', '/success'];
+
+function hasSeenPopup(): boolean {
+  try {
+    const item = localStorage.getItem(POPUP_SEEN_KEY);
+    if (!item) return false;
+    const { timestamp } = JSON.parse(item);
+    return Date.now() - timestamp < POPUP_SEEN_TTL;
+  } catch {
+    return false;
+  }
+}
+
+function markPopupSeen(): void {
+  try {
+    localStorage.setItem(POPUP_SEEN_KEY, JSON.stringify({ timestamp: Date.now() }));
+  } catch {
+    // localStorage not available
+  }
+}
+
+function isSubscribed(): boolean {
+  try {
+    return localStorage.getItem(SUBSCRIBER_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function markSubscribed(): void {
+  try {
+    localStorage.setItem(SUBSCRIBER_KEY, '1');
+  } catch {
+    // localStorage not available
+  }
+}
+
+function isExcludedPage(pathname: string): boolean {
+  return EXCLUDED_PATHS.some((path) => pathname.startsWith(path));
+}
 
 export function ExitIntentPopup() {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [dismissed, setDismissed] = useState(false);
+  const [suppressed, setSuppressed] = useState(false);
+  const pathname = usePathname();
 
   const dismiss = useCallback(() => {
     setShow(false);
-    setDismissed(true);
-    try {
-      sessionStorage.setItem('dh_exit_dismissed', '1');
-    } catch {
-      // sessionStorage not available
-    }
+    setSuppressed(true);
+    markPopupSeen();
   }, []);
 
   useEffect(() => {
-    // Don't show if already dismissed this session
-    try {
-      if (sessionStorage.getItem('dh_exit_dismissed') === '1') {
-        setDismissed(true);
-        return;
-      }
-      // Don't show if already subscribed
-      if (localStorage.getItem('dh_subscribed') === '1') {
-        setDismissed(true);
-        return;
-      }
-    } catch {
-      // storage not available
+    // Don't show on excluded pages
+    if (isExcludedPage(pathname)) {
+      setSuppressed(true);
+      return;
+    }
+
+    // Don't show if already seen within 30 days or already subscribed
+    if (hasSeenPopup() || isSubscribed()) {
+      setSuppressed(true);
+      return;
     }
 
     let hasTriggered = false;
@@ -40,7 +80,7 @@ export function ExitIntentPopup() {
 
     // Desktop: mouse leaves viewport (exit intent)
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasTriggered && !dismissed) {
+      if (e.clientY <= 0 && !hasTriggered && !suppressed) {
         hasTriggered = true;
         setShow(true);
       }
@@ -60,7 +100,7 @@ export function ExitIntentPopup() {
       lastScrollY = currentY;
 
       // Trigger after sustained scroll-up
-      if (scrollUpCount > 8 && !hasTriggered && !dismissed) {
+      if (scrollUpCount > 8 && !hasTriggered && !suppressed) {
         hasTriggered = true;
         // Small delay so it doesn't feel jarring
         scrollTimeout = setTimeout(() => setShow(true), 500);
@@ -79,7 +119,7 @@ export function ExitIntentPopup() {
       document.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [dismissed]);
+  }, [suppressed, pathname]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,18 +129,15 @@ export function ExitIntentPopup() {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'exit-popup' }),
       });
 
       if (res.ok) {
         setStatus('success');
-        try {
-          localStorage.setItem('dh_subscribed', '1');
-        } catch {
-          // storage not available
-        }
+        markSubscribed();
+        markPopupSeen();
         // Auto-dismiss after success
-        setTimeout(dismiss, 3000);
+        setTimeout(dismiss, 4000);
       } else {
         setStatus('error');
       }
@@ -111,7 +148,7 @@ export function ExitIntentPopup() {
     }
   };
 
-  if (!show || dismissed) return null;
+  if (!show || suppressed) return null;
 
   return (
     <div
@@ -142,10 +179,10 @@ export function ExitIntentPopup() {
               className="text-2xl uppercase tracking-[0.08em] text-[#e8e0d0] mb-4"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              YOU&apos;RE IN.
+              IT&apos;S ON ITS WAY.
             </h3>
-            <p className="text-sm text-[#888]">
-              Check your inbox. The signal is on its way.
+            <p className="text-sm text-[#888] leading-relaxed">
+              Check your inbox. The guide is heading there now. Mark us as safe so it doesn&apos;t end up in spam.
             </p>
           </>
         ) : (
@@ -155,17 +192,16 @@ export function ExitIntentPopup() {
               className="text-2xl md:text-3xl uppercase tracking-[0.08em] text-[#e8e0d0] mb-3"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              BEFORE YOU GO.
+              THE CHURCH LIED TO HER ABOUT SUBMISSION.
             </h3>
             <p className="text-sm text-[#888] mb-6 leading-relaxed">
-              Most Christians read content and forget it by Tuesday.<br />
-              The ones who change get it delivered to their inbox — raw, unfiltered, weekly.
+              195 believers downloaded this free guide. It&apos;s the most misunderstood word in the Bible — and the modern church has it completely backwards. Get <em className="text-[#e8e0d0] not-italic">The Submission Fraud</em> free.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="email"
-                placeholder="Your email"
+                placeholder="Your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -178,7 +214,7 @@ export function ExitIntentPopup() {
                 className="w-full bg-[#8b0000] text-[#e8e0d0] px-8 py-3.5 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors disabled:opacity-50"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {loading ? 'SENDING...' : 'GET THE SIGNAL'}
+                {loading ? 'SENDING...' : 'SEND ME THE GUIDE'}
               </button>
             </form>
 
@@ -187,14 +223,14 @@ export function ExitIntentPopup() {
             )}
 
             <p className="text-xs text-[#555] mt-4">
-              No spam. No selling your data. Just the things they tried to bury.
+              No spam. No selling your data. Just the truth they buried.
             </p>
 
             <button
               onClick={dismiss}
               className="text-xs text-[#444] hover:text-[#888] mt-4 transition-colors"
             >
-              No thanks, I&apos;ll pass
+              No thanks — I already know what the Bible says about this.
             </button>
           </>
         )}

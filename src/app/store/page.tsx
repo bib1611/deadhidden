@@ -106,7 +106,7 @@ function StoreContent() {
                 {product.isFree ? (
                   <span className="text-lg font-bold text-[#4ade80]">FREE</span>
                 ) : (
-                  <span className="text-lg font-bold text-[#e8e0d0]">{product.priceLabel}</span>
+                  <span className="text-lg font-bold text-[#e8e0d0]">{product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel}</span>
                 )}
                 <span
                   className="text-xs tracking-[0.15em] uppercase font-bold text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors"

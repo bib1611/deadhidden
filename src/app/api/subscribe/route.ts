@@ -5,7 +5,7 @@ const AUDIENCE_ID = '853ea354-ef8b-4781-86cd-1b1032ad247e';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    const { email, source } = await req.json();
 
     if (!email || typeof email !== 'string') {
       return NextResponse.json({ error: 'Email required' }, { status: 400 });
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       unsubscribed: false,
     });
 
-    console.log('New subscriber added:', email);
+    console.log('New subscriber added:', email, source ? `(source: ${source})` : '');
 
     return NextResponse.json({ success: true });
   } catch (error) {

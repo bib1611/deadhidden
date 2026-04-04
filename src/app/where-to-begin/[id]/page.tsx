@@ -80,7 +80,7 @@ export default async function CategoryPage({
                     {startProduct.name}
                   </h3>
                   <span className={`text-sm font-bold ${startProduct.isFree ? 'text-blood' : 'text-foreground'}`}>
-                    {startProduct.isFree ? 'FREE' : startProduct.priceLabel}
+                    {startProduct.isFree ? 'FREE' : (startProduct.priceLabel.endsWith('+') ? startProduct.priceLabel.slice(0, -1) : startProduct.priceLabel)}
                   </span>
                 </div>
                 <p className="text-sm text-muted">{startProduct.tagline}</p>
@@ -109,7 +109,7 @@ export default async function CategoryPage({
                       <p className="text-xs text-muted mt-1">{product.tagline}</p>
                     </div>
                     <span className={`text-sm font-bold whitespace-nowrap ${product.isFree ? 'text-blood' : 'text-foreground'}`}>
-                      {product.isFree ? 'FREE' : product.priceLabel}
+                      {product.isFree ? 'FREE' : (product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel)}
                     </span>
                   </Link>
                 );
