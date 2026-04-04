@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { RadioPlayer } from '@/components/RadioPlayer';
+import { ExitIntentPopup } from '@/components/ExitIntentPopup';
 import './globals.css';
 
 const oswald = Oswald({
@@ -107,6 +108,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <RadioPlayer />
+        <ExitIntentPopup />
         <Analytics />
         <SpeedInsights />
       </body>
