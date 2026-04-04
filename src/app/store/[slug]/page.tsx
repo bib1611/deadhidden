@@ -8,6 +8,7 @@ import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
 import { MobileProductCTA } from '@/components/MobileProductCTA';
 import { ProductFAQ } from '@/components/ProductFAQ';
+import { ProductViewTracker } from '@/components/ProductViewTracker';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -104,6 +105,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <ProductViewTracker slug={product.slug} price={product.priceLabel} />
       <ProductJsonLd
         name={product.name}
         description={product.description}

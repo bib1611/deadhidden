@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@vercel/analytics';
 
 interface BuyButtonProps {
   productSlug: string;
@@ -25,6 +26,10 @@ export function BuyButton({
   const handleClick = async () => {
     // Direct Stripe payment link — skip /api/checkout entirely
     if (stripePaymentLink) {
+      track('checkout_click', {
+        product: productSlug,
+        price: priceLabel.replace('$', '').replace('+', ''),
+      });
       window.location.href = stripePaymentLink;
       return;
     }
@@ -50,12 +55,17 @@ export function BuyButton({
 
       // For free products, redirect to download page
       if (data.isFree) {
+        track('free_download', { resource: productSlug });
         window.location.href = data.url;
         return;
       }
 
       // For paid products, redirect to Stripe
       if (data.url) {
+        track('checkout_click', {
+          product: productSlug,
+          price: priceLabel.replace('$', '').replace('+', ''),
+        });
         window.location.href = data.url;
       }
     } catch (err) {

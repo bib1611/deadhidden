@@ -4,6 +4,7 @@ import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory
 import { EmailSignup } from '@/components/EmailSignup';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import { MobileCTA } from '@/components/MobileCTA';
+import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
@@ -11,6 +12,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#0a0a0a] text-[#e8e0d0]">
+      <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
 
       {/* 1. HERO — shorter, punchier, both CTAs go somewhere that converts */}

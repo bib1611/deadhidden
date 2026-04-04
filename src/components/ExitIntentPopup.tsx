@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
+import { track } from '@vercel/analytics';
 
 const POPUP_SEEN_KEY = 'dh_popup_seen';
 const POPUP_SEEN_TTL = 30 * 24 * 60 * 60 * 1000; // 30 days
@@ -60,6 +61,7 @@ export function ExitIntentPopup() {
     setShow(false);
     setSuppressed(true);
     markPopupSeen();
+    track('exit_popup', { action: 'dismissed' });
   }, []);
 
   useEffect(() => {
@@ -83,6 +85,7 @@ export function ExitIntentPopup() {
       if (e.clientY <= 0 && !hasTriggered && !suppressed) {
         hasTriggered = true;
         setShow(true);
+        track('exit_popup', { action: 'shown' });
       }
     };
 
@@ -103,7 +106,10 @@ export function ExitIntentPopup() {
       if (scrollUpCount > 8 && !hasTriggered && !suppressed) {
         hasTriggered = true;
         // Small delay so it doesn't feel jarring
-        scrollTimeout = setTimeout(() => setShow(true), 500);
+        scrollTimeout = setTimeout(() => {
+          setShow(true);
+          track('exit_popup', { action: 'shown' });
+        }, 500);
       }
     };
 
@@ -136,6 +142,8 @@ export function ExitIntentPopup() {
         setStatus('success');
         markSubscribed();
         markPopupSeen();
+        track('email_signup', { source: 'exit_popup' });
+        track('exit_popup', { action: 'submitted' });
         // Auto-dismiss after success
         setTimeout(dismiss, 4000);
       } else {
