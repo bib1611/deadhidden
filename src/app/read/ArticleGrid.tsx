@@ -47,6 +47,9 @@ function ArticleCard({ article }: { article: Article }) {
             {article.sourceName}
           </span>
           <span className="text-[11px] text-[#777]">{formatDate(article.pubDate)}</span>
+          {article.readingTime && (
+            <span className="text-[11px] text-[#777]">· {article.readingTime} min</span>
+          )}
         </div>
 
         {/* Title */}

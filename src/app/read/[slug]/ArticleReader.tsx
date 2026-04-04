@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { track } from '@vercel/analytics';
 import type { Article } from '@/lib/articles';
 import { ArticleCTA, VaultBanner } from '@/components/ArticleCTA';
 import { ArticleEmailCapture } from '@/components/ArticleEmailCapture';
+import { ShareButtons } from '@/components/ShareButtons';
 import { useScrollDepth } from '@/hooks/useScrollDepth';
 
 function formatDate(dateStr: string): string {
@@ -18,14 +19,58 @@ function formatDate(dateStr: string): string {
   });
 }
 
+function formatDateShort(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+/** Estimate reading time from HTML content (225 wpm) */
+function estimateReadingTime(html: string): number {
+  const text = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  const wordCount = text.split(' ').filter(Boolean).length;
+  return Math.max(1, Math.round(wordCount / 225));
+}
+
+/** Reading progress bar — thin red bar at top of viewport */
+function ReadingProgressBar() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        setProgress(Math.min(100, (scrollTop / docHeight) * 100));
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-transparent">
+      <div
+        className="h-full bg-[#8b0000] transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
+}
+
 export function ArticleReader({
   article,
   contentHtml,
   substackUrl,
+  relatedArticles,
 }: {
   article: Article;
   contentHtml: string;
   substackUrl: string;
+  relatedArticles: Article[];
 }) {
   const trackedRef = useRef(false);
 
@@ -41,11 +86,26 @@ export function ArticleReader({
     }
   }, [article.slug, article.source]);
 
+  const readingTime = contentHtml ? estimateReadingTime(contentHtml) : null;
+
   // Split content at ~40% for mid-article CTA insertion
   const midCTAHtml = contentHtml ? splitContentAtPercent(contentHtml, 40) : null;
 
+  const articleUrl = `https://deadhidden.org/read/${article.slug}?source=${article.source}`;
+
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      {/* Reading progress bar */}
+      <ReadingProgressBar />
+
+      {/* Floating share buttons */}
+      <ShareButtons
+        url={articleUrl}
+        title={article.title}
+        slug={article.slug}
+        floating
+      />
+
       {/* Back nav */}
       <div className="border-b border-[#1a1a1a] px-4 sm:px-6 pt-20 pb-4">
         <div className="max-w-3xl mx-auto">
@@ -59,10 +119,10 @@ export function ArticleReader({
         </div>
       </div>
 
-      {/* Article header */}
-      <header className="px-4 sm:px-6 pt-10 sm:pt-14 pb-8 sm:pb-10">
+      {/* Article header — Task 5: mobile padding px-[22px] */}
+      <header className="px-[22px] sm:px-6 pt-10 sm:pt-14 pb-8 sm:pb-10">
         <div className="max-w-3xl mx-auto">
-          {/* Source + Date */}
+          {/* Source + Date + Reading Time */}
           <div className="flex items-center gap-3 mb-6">
             <span
               className={`text-[10px] tracking-[0.15em] uppercase font-semibold px-2 py-0.5 ${
@@ -76,11 +136,16 @@ export function ArticleReader({
             <span className="text-[12px] text-[#777]">
               {formatDate(article.pubDate)}
             </span>
+            {readingTime && (
+              <span className="text-[12px] text-[#777]">
+                · {readingTime} min read
+              </span>
+            )}
           </div>
 
-          {/* Title */}
+          {/* Title — Task 5: mobile leading-[1.25] */}
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#e8e0d0] leading-[1.1] mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#e8e0d0] leading-[1.25] sm:leading-[1.1] mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {article.title}
@@ -106,8 +171,8 @@ export function ArticleReader({
         </div>
       )}
 
-      {/* Article body */}
-      <article className="px-4 sm:px-6 pb-16 sm:pb-24">
+      {/* Article body — Task 5: mobile padding px-[22px] */}
+      <article className="px-[22px] sm:px-6 pb-16 sm:pb-24">
         <div className="max-w-3xl mx-auto">
           {contentHtml ? (
             midCTAHtml ? (
@@ -168,6 +233,60 @@ export function ArticleReader({
               {/* Inline email capture */}
               <ArticleEmailCapture />
 
+              {/* Related articles — Task 6 */}
+              {relatedArticles.length > 0 && (
+                <div className="mt-12 pt-10 border-t border-[#222]">
+                  <h3
+                    className="text-sm tracking-[0.15em] uppercase text-[#777] mb-6"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    KEEP READING
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {relatedArticles.map((related) => (
+                      <Link
+                        key={`${related.source}-${related.slug}`}
+                        href={`/read/${related.slug}?source=${related.source}`}
+                        className="group block border border-[#222] bg-[#111] hover:border-[#8b0000] transition-all duration-300"
+                      >
+                        {related.imageUrl && (
+                          <div className="aspect-[16/9] overflow-hidden bg-[#0a0a0a]">
+                            <img
+                              src={related.imageUrl}
+                              alt=""
+                              className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+                        <div className="p-3 sm:p-4">
+                          <span
+                            className={`inline-block text-[9px] tracking-[0.15em] uppercase font-semibold px-1.5 py-0.5 mb-2 ${
+                              related.source === 'dead-hidden'
+                                ? 'bg-[#8b0000]/20 text-[#cc3333]'
+                                : related.source === 'biblical-womanhood'
+                                ? 'bg-[#2a1a2a]/40 text-[#b07ab0]'
+                                : 'bg-[#1a3a1a]/40 text-[#6b9b6b]'
+                            }`}
+                          >
+                            {related.sourceName}
+                          </span>
+                          <h4
+                            className="text-sm font-bold text-[#e8e0d0] leading-tight group-hover:text-[#8b0000] transition-colors line-clamp-2"
+                            style={{ fontFamily: 'var(--font-heading)' }}
+                          >
+                            {related.title}
+                          </h4>
+                          <span className="text-[10px] text-[#666] mt-1.5 block">
+                            {formatDateShort(related.pubDate)}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Vault banner */}
               <VaultBanner />
             </>
@@ -219,7 +338,7 @@ export function ArticleReader({
 
         @media (max-width: 640px) {
           .article-content {
-            font-size: 1.05rem;
+            font-size: 18px;
             line-height: 1.75;
           }
         }
@@ -270,12 +389,22 @@ export function ArticleReader({
           font-style: italic;
         }
 
+        /* Task 4: Scripture/blockquote styling */
         .article-content blockquote {
           border-left: 3px solid #8b0000;
-          padding-left: 1.25em;
+          padding-left: 20px;
           margin: 1.5em 0;
-          color: #888;
+          background: rgba(139, 0, 0, 0.05);
+          padding-top: 0.75em;
+          padding-bottom: 0.75em;
+          padding-right: 1em;
+          color: #b8b0a0;
           font-style: italic;
+          font-size: 1.05rem;
+        }
+
+        .article-content blockquote p:last-child {
+          margin-bottom: 0;
         }
 
         .article-content hr {
