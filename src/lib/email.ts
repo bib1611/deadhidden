@@ -131,7 +131,7 @@ function buildPurchaseEmailHtml(params: {
           <tr>
             <td align="center" style="padding-bottom:40px;">
               <p style="color:#555555; font-size:13px; line-height:1.5; margin:0;">
-                Bookmark the download page. Your link is tied to your purchase and won't expire.
+                Download now &mdash; your link expires in 7 days. Reply to this email if you need a fresh link.
               </p>
             </td>
           </tr>
