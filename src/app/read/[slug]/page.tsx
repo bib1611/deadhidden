@@ -150,6 +150,11 @@ export default async function ArticlePage({ params, searchParams }: PageProps) {
   const substackUrl = getSubstackUrl(slug, article.source);
   const contentHtml = await fetchArticleContent(substackUrl);
 
+  // Task 6: Get related articles from the same publication
+  const relatedArticles = articles
+    .filter((a) => a.source === article.source && a.slug !== article.slug)
+    .slice(0, 3);
+
   return (
     <>
       <ArticleJsonLd
@@ -164,6 +169,7 @@ export default async function ArticlePage({ params, searchParams }: PageProps) {
         article={article}
         contentHtml={contentHtml}
         substackUrl={substackUrl}
+        relatedArticles={relatedArticles}
       />
     </>
   );
