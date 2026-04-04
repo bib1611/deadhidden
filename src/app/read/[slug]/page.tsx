@@ -112,6 +112,8 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     return { title: 'Article Not Found | Dead Hidden' };
   }
 
+  const ogImage = `https://deadhidden.org/api/og?title=${encodeURIComponent(article.title)}&publication=${article.source}&type=article`;
+
   return {
     title: article.title,
     description: article.description,
@@ -120,13 +122,18 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
       description: article.description,
       type: 'article',
       url: `https://deadhidden.org/read/${slug}`,
-      ...(article.imageUrl && { images: [article.imageUrl] }),
+      images: [{
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: article.title,
+      }],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.description,
-      ...(article.imageUrl && { images: [article.imageUrl] }),
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://deadhidden.org/read/${slug}?source=${article.source}`,

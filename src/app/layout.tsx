@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/images/og-default.jpg',
+        url: '/api/og?title=BIBLICAL+TRUTH+THEY+TRIED+TO+BURY.&subtitle=deadhidden.org',
         width: 1200,
         height: 630,
         alt: 'Dead Hidden Ministries — Bible Study Resources for Christians, Families & Churches',
