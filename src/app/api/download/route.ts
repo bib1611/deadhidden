@@ -98,10 +98,16 @@ export async function GET(request: NextRequest) {
 
     let files: Array<{ name: string; filename: string; slug: string }>;
 
+    // Slugs that are bundles/containers — not individual downloadable PDFs
+    const bundleSlugs = new Set([
+      'the-vault', 'thanksgiving-marriage-vault', 'the-table',
+      'vault-sampler', 'essential-arsenal', 'biblical-womanhood-bundle',
+    ]);
+
     if (isVault) {
-      // Vault buyers get everything
+      // Vault buyers get everything except bundles and non-downloadable items
       files = products
-        .filter((p) => !p.isFree && p.slug !== 'the-vault' && p.slug !== 'thanksgiving-marriage-vault' && p.slug !== 'the-table' && p.slug !== 'vault-sampler' && p.slug !== 'essential-arsenal')
+        .filter((p) => !p.isFree && !bundleSlugs.has(p.slug))
         .map((p) => ({
           name: p.name,
           filename: `${p.slug}.pdf`,
