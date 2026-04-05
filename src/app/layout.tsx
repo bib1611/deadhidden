@@ -6,6 +6,8 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { ExitIntentPopup } from '@/components/ExitIntentPopup';
+import { SmartNudge } from '@/components/SmartNudge';
+import { CheckoutRecovery } from '@/components/CheckoutRecovery';
 import './globals.css';
 
 const oswald = Oswald({
@@ -109,6 +111,8 @@ export default function RootLayout({
         <Footer />
         <RadioPlayer />
         <ExitIntentPopup />
+        <SmartNudge />
+        <CheckoutRecovery />
         <Analytics />
         <SpeedInsights />
       </body>
