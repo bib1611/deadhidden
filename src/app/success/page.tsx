@@ -38,6 +38,10 @@ export default function SuccessPage() {
           setError(result.error);
         } else {
           setData(result);
+          // Mark as purchased so smart nudges stop showing
+          try { sessionStorage.setItem('dh_purchased', '1'); } catch {}
+          // Clear abandoned checkout state
+          try { sessionStorage.removeItem('dh_checkout_abandoned'); } catch {}
         }
       })
       .catch(() => {
