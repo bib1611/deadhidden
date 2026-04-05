@@ -227,6 +227,11 @@ export function BlogReader({
                 position="end"
               />
 
+              {/* Author attribution note */}
+              <p className="text-sm text-[#555] leading-relaxed mt-8 mb-8">
+                This article was written by the Dead Hidden team using AI writing tools and reviewed for biblical accuracy. Our Substack publications are written personally by Adam and Christie. The blog exists to help believers find us through search — and to give them something worth finding.
+              </p>
+
               {/* Inline email capture */}
               <ArticleEmailCapture />
 

@@ -33,8 +33,7 @@ export function BlogContent() {
             BLOG
           </h1>
           <p className="text-base md:text-lg text-[#888] leading-relaxed max-w-2xl">
-            SEO-focused articles on Bible study, biblical masculinity, marriage, and more.
-            Written to go deep — not to get likes.
+            Articles on Scripture, marriage, masculinity, and the Christian life — written by the Dead Hidden team with the help of AI tools. The Substacks are Adam and Christie. The blog is the team. Every word checked against the KJV.
           </p>
         </div>
       </div>
