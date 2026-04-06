@@ -5,13 +5,14 @@ import { BuyButton } from './BuyButton';
 
 interface MobileProductCTAProps {
   productSlug: string;
+  productName?: string;
   priceLabel: string;
   isFree: boolean;
   stripePaymentLink?: string;
   ctaText?: string;
 }
 
-export function MobileProductCTA({ productSlug, priceLabel, isFree, stripePaymentLink, ctaText }: MobileProductCTAProps) {
+export function MobileProductCTA({ productSlug, productName, priceLabel, isFree, stripePaymentLink, ctaText }: MobileProductCTAProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export function MobileProductCTA({ productSlug, priceLabel, isFree, stripePaymen
         <div className="flex-grow">
           <BuyButton
             productSlug={productSlug}
+            productName={productName}
             priceLabel={priceLabel}
             isFree={isFree}
             isSubscription={false}

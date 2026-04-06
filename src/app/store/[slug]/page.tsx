@@ -154,7 +154,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <span className="text-sm text-[#777] line-through">$1,500+</span>
               )}
               {product.isFree && (
-                <span className="text-sm text-[#4ade80] font-bold uppercase">No email required</span>
+                <span className="text-sm text-[#4ade80] font-bold uppercase">Free download</span>
               )}
             </div>
             {product.slug === 'how-to-study-bible' && (
@@ -168,6 +168,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="sm:w-48 flex-shrink-0">
             <BuyButton
               productSlug={product.slug}
+              productName={product.name}
               priceLabel={product.priceLabel}
               isFree={product.isFree}
               isSubscription={false}
@@ -298,6 +299,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <BuyButton
             productSlug={product.slug}
+            productName={product.name}
             priceLabel={product.priceLabel}
             isFree={product.isFree}
             isSubscription={false}
@@ -434,6 +436,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Sticky mobile buy bar */}
       <MobileProductCTA
         productSlug={product.slug}
+        productName={product.name}
         priceLabel={product.priceLabel}
         isFree={product.isFree}
         stripePaymentLink={product.stripePaymentLink}
