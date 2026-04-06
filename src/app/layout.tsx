@@ -5,9 +5,11 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { RadioPlayer } from '@/components/RadioPlayer';
-import { ExitIntentPopup } from '@/components/ExitIntentPopup';
 import { SmartNudge } from '@/components/SmartNudge';
 import { CheckoutRecovery } from '@/components/CheckoutRecovery';
+import { TwoStepPopup } from '@/components/TwoStepPopup';
+import { MobileSlideIn } from '@/components/MobileSlideIn';
+import { DesktopExitIntent } from '@/components/DesktopExitIntent';
 import './globals.css';
 
 const oswald = Oswald({
@@ -110,7 +112,9 @@ export default function RootLayout({
         {children}
         <Footer />
         <RadioPlayer />
-        <ExitIntentPopup />
+        <TwoStepPopup />
+        <MobileSlideIn />
+        <DesktopExitIntent />
         <SmartNudge />
         <CheckoutRecovery />
         <Analytics />

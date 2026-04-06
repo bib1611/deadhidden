@@ -15,7 +15,7 @@ export function Footer() {
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch('/api/email-signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

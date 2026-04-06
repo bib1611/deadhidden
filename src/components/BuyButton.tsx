@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { track } from '@vercel/analytics';
+import { EmailGateModal } from '@/components/EmailGateModal';
 
 interface BuyButtonProps {
   productSlug: string;
+  productName?: string;
   priceLabel: string;
   isFree: boolean;
   isSubscription: boolean;
@@ -14,6 +16,7 @@ interface BuyButtonProps {
 
 export function BuyButton({
   productSlug,
+  productName,
   priceLabel,
   isFree,
   isSubscription,
@@ -22,8 +25,16 @@ export function BuyButton({
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showEmailGate, setShowEmailGate] = useState(false);
 
   const handleClick = async () => {
+    // Free products — show email gate modal
+    if (isFree) {
+      track('free_download_click', { resource: productSlug });
+      setShowEmailGate(true);
+      return;
+    }
+
     // Direct Stripe payment link — skip /api/checkout entirely
     if (stripePaymentLink) {
       track('checkout_click', {
@@ -53,13 +64,6 @@ export function BuyButton({
 
       const data = await response.json();
 
-      // For free products, redirect to download page
-      if (data.isFree) {
-        track('free_download', { resource: productSlug });
-        window.location.href = data.url;
-        return;
-      }
-
       // For paid products, redirect to Stripe
       if (data.url) {
         track('checkout_click', {
@@ -77,15 +81,25 @@ export function BuyButton({
     }
   };
 
-  const buttonText = ctaText || (isFree ? 'GET FREE' : isSubscription ? 'JOIN' : 'BUY NOW');
+  const buttonText = ctaText || (isFree ? 'GET FREE DOWNLOAD' : isSubscription ? 'JOIN' : 'BUY NOW');
 
   return (
-    <button
-      onClick={handleClick}
-      disabled={loading}
-      className="w-full px-6 py-4 bg-blood text-white hover:bg-blood-bright transition-colors text-lg font-semibold tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {loading ? 'PROCESSING...' : buttonText}
-    </button>
+    <>
+      <button
+        onClick={handleClick}
+        disabled={loading}
+        className="w-full px-6 py-4 bg-blood text-white hover:bg-blood-bright transition-colors text-lg font-semibold tracking-wider disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {loading ? 'PROCESSING...' : buttonText}
+      </button>
+
+      {showEmailGate && (
+        <EmailGateModal
+          productName={productName || productSlug}
+          productSlug={productSlug}
+          onClose={() => setShowEmailGate(false)}
+        />
+      )}
+    </>
   );
 }
