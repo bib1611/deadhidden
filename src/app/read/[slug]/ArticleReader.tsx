@@ -165,7 +165,7 @@ export function ArticleReader({
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10">
           <img
             src={article.imageUrl}
-            alt=""
+            alt={article.title}
             className="w-full max-h-[500px] object-cover"
           />
         </div>
@@ -253,7 +253,7 @@ export function ArticleReader({
                           <div className="aspect-[16/9] overflow-hidden bg-[#0a0a0a]">
                             <img
                               src={related.imageUrl}
-                              alt=""
+                              alt={related.title}
                               className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                               loading="lazy"
                             />

@@ -10,6 +10,24 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Where to Begin — Dead Hidden',
     description: 'Pick your battle. Find exactly the resource you need.',
+    url: 'https://deadhidden.org/where-to-begin',
+    images: [
+      {
+        url: 'https://deadhidden.org/api/og?title=Where+to+Begin&subtitle=Find+Your+Fight+in+60+Seconds',
+        width: 1200,
+        height: 630,
+        alt: 'Dead Hidden — Where to Begin',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Where to Begin — Find Exactly What You Need | Dead Hidden',
+    description: 'Pick your battle. Free starting points for every topic.',
+    creator: '@Biblicalman',
+  },
+  alternates: {
+    canonical: 'https://deadhidden.org/where-to-begin',
   },
 };
 

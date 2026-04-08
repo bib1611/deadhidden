@@ -1,29 +1,39 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The Archive — Biblical Guides & Resources',
+  title: 'The Archive — 76 Biblical Resources | Dead Hidden',
   description:
-    '50+ biblical masculinity guides, marriage manuals, spiritual warfare frameworks, and Bible study resources. Digital downloads by Adam Johnson.',
+    'Browse 76 downloadable resources on Bible study, marriage, parenting, biblical masculinity, biblical womanhood, and spiritual warfare. Guides, manuals, and protocols — all KJV-grounded.',
+  keywords: [
+    'christian resources download',
+    'bible study guide PDF',
+    'biblical marriage guide',
+    'spiritual warfare resources',
+    'KJV study materials',
+    'biblical masculinity resources',
+    'christian parenting guide',
+  ],
   openGraph: {
-    title: 'The Archive — Biblical Guides & Resources',
+    title: 'The Archive — 76 Biblical Resources | Dead Hidden',
     description:
-      '50+ biblical masculinity guides, marriage manuals, and spiritual warfare resources for Christian men.',
+      'Browse 76 downloadable guides on Bible study, marriage, parenting, and spiritual warfare. KJV only.',
+    type: 'website',
     url: 'https://deadhidden.org/store',
     images: [
       {
-        url: '/images/og-default.jpg',
+        url: 'https://deadhidden.org/api/og?title=The+Archive&subtitle=76+Biblical+Resources',
         width: 1200,
         height: 630,
-        alt: 'The Archive — Biblical Guides & Resources | Dead Hidden',
+        alt: 'Dead Hidden — The Archive',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Archive — Biblical Guides & Resources',
+    title: 'The Archive — 76 Biblical Resources | Dead Hidden',
     description:
-      '50+ biblical masculinity guides, marriage manuals, and spiritual warfare resources.',
-    images: ['/images/og-default.jpg'],
+      'Browse 76 downloadable guides on Bible study, marriage, parenting, and spiritual warfare.',
+    creator: '@Biblicalman',
   },
   alternates: {
     canonical: 'https://deadhidden.org/store',

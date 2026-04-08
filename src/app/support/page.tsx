@@ -9,6 +9,23 @@ export const metadata: Metadata = {
     title: 'Support The Mission | Dead Hidden',
     description: 'No sponsors. No ads. No denomination. Keep the fire lit.',
     url: 'https://deadhidden.org/support',
+    images: [
+      {
+        url: 'https://deadhidden.org/api/og?title=Support+The+Mission&subtitle=Keep+the+Fire+Lit',
+        width: 1200,
+        height: 630,
+        alt: 'Support Dead Hidden Ministries',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Support The Mission | Dead Hidden',
+    description: 'No sponsors. No ads. No denomination. Keep the fire lit.',
+    creator: '@Biblicalman',
+  },
+  alternates: {
+    canonical: 'https://deadhidden.org/support',
   },
 };
 

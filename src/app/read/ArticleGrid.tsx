@@ -24,7 +24,7 @@ function ArticleCard({ article }: { article: Article }) {
         <div className="aspect-[16/9] overflow-hidden bg-[#0a0a0a]">
           <img
             src={article.imageUrl}
-            alt=""
+            alt={article.title}
             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             loading="lazy"
           />

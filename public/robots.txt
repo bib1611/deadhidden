@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /success
+Disallow: /store/*/success
+Disallow: /store/*/download
+Disallow: /support/thank-you
+
+Sitemap: https://deadhidden.org/sitemap.xml

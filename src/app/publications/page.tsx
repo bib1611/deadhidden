@@ -5,6 +5,28 @@ export const metadata: Metadata = {
   title: 'Publications | Dead Hidden',
   description:
     'Three Substack publications reaching 70,000+ subscribers with unfiltered biblical truth, biblical masculinity, biblical womanhood, and spiritual warfare.',
+  openGraph: {
+    title: 'Publications — Dead Hidden Ministries',
+    description: '3 Substacks. 70,000+ subscribers. Biblical truth without compromise.',
+    url: 'https://deadhidden.org/publications',
+    images: [
+      {
+        url: 'https://deadhidden.org/api/og?title=Publications&subtitle=3+Substacks.+70%2C000%2B+Subscribers',
+        width: 1200,
+        height: 630,
+        alt: 'Dead Hidden Publications',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Publications | Dead Hidden',
+    description: '3 Substacks. 70,000+ subscribers. Biblical truth without compromise.',
+    creator: '@Biblicalman',
+  },
+  alternates: {
+    canonical: 'https://deadhidden.org/publications',
+  },
 };
 
 const publications = [
