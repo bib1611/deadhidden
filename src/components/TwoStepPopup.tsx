@@ -113,7 +113,7 @@ export function TwoStepPopup() {
       <div
         className={`relative w-full bg-[#0a0a0a] border border-[#8b0000] text-center ${
           isMobile
-            ? 'max-h-[85vh] overflow-y-auto rounded-t-lg animate-slideUp'
+            ? 'max-h-[85vh] overflow-y-auto animate-slideUp'
             : 'max-w-lg mx-4 animate-fadeIn'
         }`}
         onClick={(e) => e.stopPropagation()}

@@ -132,7 +132,7 @@ export function RadioPlayer() {
                 <button
                   onClick={togglePlay}
                   disabled={isLoading}
-                  className="w-9 h-9 flex items-center justify-center bg-[#8b0000] hover:bg-[#a50000] transition-colors rounded-sm flex-shrink-0"
+                  className="w-9 h-9 flex items-center justify-center bg-[#8b0000] hover:bg-[#a50000] transition-colors flex-shrink-0"
                   aria-label={isPlaying ? 'Pause radio' : 'Play radio'}
                 >
                   {isLoading ? (

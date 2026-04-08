@@ -16,7 +16,7 @@ renderer.paragraph = (token: any) => {
   // Check if this is a CTA block
   if (text.includes(':::cta')) {
     const ctaContent = text.replace(/:::cta\s*/g, '').replace(/:::/g, '');
-    return `<div class="cta-block bg-[#1a1a1a] border border-[#8b0000] p-6 rounded-sm my-8 text-[#e8e0d0]">
+    return `<div class="cta-block bg-[#1a1a1a] border border-[#8b0000] p-6 my-8 text-[#e8e0d0]">
       ${marked(ctaContent)}
     </div>`;
   }

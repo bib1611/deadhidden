@@ -159,7 +159,7 @@ export function ShareButtons({ url, title, slug, description, floating = false }
   if (!visible) return null;
 
   const btnClass =
-    'flex items-center justify-center w-9 h-9 text-[#777] hover:text-[#e8e0d0] hover:bg-[#8b0000]/20 transition-colors rounded';
+    'flex items-center justify-center w-9 h-9 text-[#777] hover:text-[#e8e0d0] hover:bg-[#8b0000]/20 transition-colors';
 
   // Mobile: fixed bottom bar
   if (isMobile) {
@@ -186,7 +186,7 @@ export function ShareButtons({ url, title, slug, description, floating = false }
 
   // Desktop: floating left sidebar
   return (
-    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 bg-[#111]/90 backdrop-blur-sm border border-[#222] rounded p-1.5">
+    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 bg-[#111]/90 backdrop-blur-sm border border-[#222] p-1.5">
       <button onClick={handleCopy} className={btnClass} title="Copy link">
         <CopyIcon copied={copied} />
       </button>
