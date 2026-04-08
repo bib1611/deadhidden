@@ -46,23 +46,14 @@ export default function Home() {
             50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
           </p>
 
-          {/* CTA — one primary button */}
-          <div className="flex flex-col sm:flex-row items-start gap-4">
-            <Link
-              href="/where-to-begin"
-              className="bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors text-sm md:text-base"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              WHERE TO BEGIN
-            </Link>
-            <Link
-              href="/store"
-              className="text-[#888] hover:text-[#e8e0d0] transition-colors text-sm uppercase tracking-[0.15em] font-bold py-4"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              BROWSE ALL 76 RESOURCES →
-            </Link>
-          </div>
+          {/* CTA — one primary button, nothing competing */}
+          <Link
+            href="/where-to-begin"
+            className="inline-block bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors text-sm md:text-base"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            WHERE TO BEGIN
+          </Link>
         </div>
       </section>
 
