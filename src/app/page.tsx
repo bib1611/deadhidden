@@ -281,36 +281,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. THE SPLINTER + WHO THIS IS FOR — combined, compressed, SEO preserved */}
+      {/* 6. CREDIBILITY — prove who built this and why it matters */}
       <section id="splinter" className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-3xl mx-auto px-4">
           <h2
-            className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-8"
+            className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             BUILT IN THE FIRE. NOT A SEMINARY.
           </h2>
-
-          <div className="space-y-4 mb-10">
-            <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
-              Dead Hidden is a Bible study ministry — a friend to churches, families, and every Christian who knows the modern church is missing something.
-            </p>
-            <p className="text-[#a09888] leading-relaxed">
-              We exist to serve the body of Christ with resources the pulpit used to provide. Bible study systems. Marriage frameworks. Parenting guides. Spiritual warfare protocols. The kind of material that used to come from the local church — before the church stopped teaching it.
-            </p>
-          </div>
-
-          <div className="space-y-4 mb-10">
-            <p className="text-[#c0b8a8] leading-relaxed">
-              <strong className="text-[#e8e0d0]">The Biblical Man</strong> — Adam&apos;s publication for men ready to lead their homes and fight for their faith. Biblical masculinity, headship, and the hard truths the modern pulpit abandoned. <strong className="text-[#e8e0d0]">Biblical Womanhood</strong> — Christie&apos;s publication for women who want God&apos;s design without the feminist filter. Virtue, prayer, and the strength the world calls weakness. <strong className="text-[#e8e0d0]">Dead Hidden</strong> — the ministry itself. 50+ downloadable resources, three publications, and 70,000+ subscribers across all platforms.
-            </p>
-            <p className="text-[#c0b8a8] leading-relaxed">
-              This ministry was forged in real life — not a classroom. Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools five children. They&apos;ve been married 24 years, taught Sunday School for 17 straight, and serve their local church every week. Every resource on this site comes from the trenches of lived obedience.
-            </p>
-            <p className="text-[#888] leading-relaxed">
-              Whether you&apos;re a pastor looking for small group material, a father trying to lead his family, a wife who wants biblical truth without compromise, or a new believer who doesn&apos;t know where to start — this ministry was built to serve you.
-            </p>
-          </div>
+          <p className="text-[#a09888] leading-relaxed mb-10">
+            Adam drove garbage trucks and conducted trains before going full-time. Christie homeschools five children. Married 24 years, teaching Sunday School 17 straight. Every resource comes from lived obedience — not a classroom.
+          </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="border border-[#222] bg-[#0a0a0a] p-4">
@@ -333,25 +315,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. SCRIPTURE BREAK */}
-      <section className="py-16 md:py-24 text-center border-t border-[#222]">
+      {/* 7. SCRIPTURE — brand identity anchor (Mark 4:22 = "Dead Hidden") */}
+      <section className="py-8 md:py-12 text-center border-t border-[#222]">
         <div className="container max-w-3xl mx-auto px-4">
-          <p className="text-xl md:text-2xl italic text-[#e8e0d0]/80 mb-4 leading-relaxed">
+          <p className="text-lg md:text-xl italic text-[#e8e0d0]/60 mb-2 leading-relaxed">
             For there is nothing hid, which shall not be manifested; neither was any thing kept secret, but that it should come abroad.
           </p>
-          <p
-            className="text-[#8b0000] uppercase tracking-[0.15em] font-bold"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
+          <p className="text-xs text-[#8b0000] uppercase tracking-[0.15em] font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
             MARK 4:22 (KJV)
           </p>
         </div>
       </section>
 
-      {/* 7b. WATCH — embedded YouTube videos to increase time on site */}
+      {/* 8. WATCH — one featured video, link to full archive */}
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="mb-10">
+        <div className="container max-w-4xl mx-auto px-4">
+          <div className="mb-8">
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
@@ -361,8 +340,7 @@ export default function Home() {
             <p className="text-[#888] text-sm">Video series on spiritual warfare, the KJV, and the end times.</p>
           </div>
 
-          {/* Featured Video — large */}
-          <div className="mb-8">
+          <div className="mb-6">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute inset-0 w-full h-full"
@@ -373,73 +351,19 @@ export default function Home() {
                 loading="lazy"
               />
             </div>
-            <div className="mt-4">
-              <h3
-                className="text-lg md:text-xl uppercase font-bold text-[#e8e0d0]"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                THE MARK OF THE BEAST IS ALREADY HERE
-              </h3>
-              <p className="text-xs text-[#777] mt-1">Featured — 1.5K views</p>
-            </div>
           </div>
 
-          {/* Playlist Embeds — 2 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            <div>
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/videoseries?list=PLiHaOYX3u49EhXzIEdx0fVbgBa8OEtFrH&rel=0"
-                  title="What's the Big Deal About the KJV?"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-              <h3
-                className="text-sm uppercase font-bold text-[#e8e0d0] mt-3"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                WHAT&apos;S THE BIG DEAL ABOUT THE KJV?
-              </h3>
-              <p className="text-xs text-[#777] mt-1">9-part series</p>
-            </div>
-
-            <div>
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/videoseries?list=PLiHaOYX3u49EkJQC9pIRxF6sqKNJoq6rp&rel=0"
-                  title="Antichrist and the Endtimes"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-              <h3
-                className="text-sm uppercase font-bold text-[#e8e0d0] mt-3"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                ANTICHRIST AND THE ENDTIMES
-              </h3>
-              <p className="text-xs text-[#777] mt-1">5-part series</p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Link
-              href="/watch"
-              className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              VIEW FULL VIDEO ARCHIVE →
-            </Link>
-          </div>
+          <Link
+            href="/watch"
+            className="text-xs uppercase tracking-[0.15em] text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            VIEW ALL VIDEO SERIES →
+          </Link>
         </div>
       </section>
 
-      {/* 8. THE ARCHIVE - CATEGORIES GRID */}
+      {/* 9. BROWSE — full category grid */}
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
@@ -485,7 +409,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. THE SIGNAL - PUBLICATIONS */}
+      {/* 10. PLATFORMS — follow on every channel */}
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
@@ -565,7 +489,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. EMAIL SIGNUP — primary on-site capture */}
+      {/* 11. EMAIL CAPTURE — final conversion push */}
       <section className="py-16 md:py-24 border-t border-[#222]">
         <div className="container max-w-xl mx-auto px-4">
           <h2
@@ -575,11 +499,8 @@ export default function Home() {
             JOIN 70,000+ WHO GET THE SIGNAL
           </h2>
 
-          <p className="text-[#888] mb-2 text-sm">
-            Platforms throttle everything I publish.
-          </p>
-          <p className="text-[#e8e0d0] mb-8 text-sm font-bold">
-            The email list is the only line they can&apos;t cut.
+          <p className="text-[#a09888] mb-8 text-sm">
+            Platforms throttle everything I publish — the email list is the only line they can&apos;t cut.
           </p>
 
           <HomepageEmailForm />
