@@ -57,7 +57,7 @@ export function Footer() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'footer' }),
       });
 
       if (!response.ok) {
