@@ -61,18 +61,13 @@ export default function Home() {
       <section className="py-12 md:py-20">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              MOST POPULAR
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              START HERE
+              THE 4 RESOURCES THAT CHANGE EVERYTHING
             </h2>
+            <p className="text-[#888] text-sm mt-2">Most purchased. Most highlighted. Most dog-eared.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -143,12 +138,12 @@ export default function Home() {
       {/* 3. TESTIMONIALS — social proof right after products */}
       <section className="py-12 md:py-16 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
-          <p
-            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-8 font-bold"
+          <h2
+            className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-8"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            FROM THE FRONT LINES
-          </p>
+            REAL CHRISTIANS. REAL MARRIAGES SAVED.
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="border border-[#222] bg-[#111] p-6">
@@ -177,19 +172,13 @@ export default function Home() {
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-4xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              DON&apos;T KNOW WHERE TO START?
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              PICK YOUR BATTLE
+              FIND YOUR FIGHT IN 60 SECONDS
             </h2>
-            <p className="text-[#888] text-sm">Choose the fight you&apos;re in. We&apos;ll show you where to start.</p>
+            <p className="text-[#888] text-sm">Choose the battle you&apos;re in. We&apos;ll hand you the weapon.</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -233,18 +222,13 @@ export default function Home() {
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              DECLASSIFIED
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              FREE DOWNLOADS
+              START FREE. NO EMAIL REQUIRED.
             </h2>
+            <p className="text-[#888] text-sm mt-2">Download these now. Zero commitment. Zero catch.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -300,12 +284,12 @@ export default function Home() {
       {/* 6. THE SPLINTER + WHO THIS IS FOR — combined, compressed, SEO preserved */}
       <section id="splinter" className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-3xl mx-auto px-4">
-          <p
-            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-8 font-bold"
+          <h2
+            className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-8"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            WHAT IS DEAD HIDDEN?
-          </p>
+            BUILT IN THE FIRE. NOT A SEMINARY.
+          </h2>
 
           <div className="space-y-4 mb-10">
             <p className="text-lg md:text-xl text-[#e8e0d0] leading-relaxed">
@@ -368,19 +352,13 @@ export default function Home() {
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              VIDEO ARCHIVE
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              WATCH. LEARN. FIGHT.
+              WATCH THE TEACHING NOBODY ELSE WILL GIVE YOU
             </h2>
-            <p className="text-[#888] text-sm">Biblical truth on camera. No filter. No compromise.</p>
+            <p className="text-[#888] text-sm">Video series on spiritual warfare, the KJV, and the end times.</p>
           </div>
 
           {/* Featured Video — large */}
@@ -465,19 +443,13 @@ export default function Home() {
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              THE ARCHIVE
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              76 RESOURCES. NINE CATEGORIES.
+              BROWSE 76 RESOURCES BY CATEGORY
             </h2>
-            <p className="text-[#888] text-sm">The things they buried.</p>
+            <p className="text-[#888] text-sm">Bible study, marriage, parenting, spiritual warfare, and more.</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
@@ -517,18 +489,13 @@ export default function Home() {
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
-            <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              THE SIGNAL
-            </p>
             <h2
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              MULTIPLE FREQUENCIES. ONE MISSION.
+              READ US ON EVERY PLATFORM
             </h2>
+            <p className="text-[#888] text-sm mt-2">Three Substacks, YouTube, and X. 70,000+ subscribers across all.</p>
           </div>
 
           {/* Top row: 3 Substacks */}
@@ -605,11 +572,11 @@ export default function Home() {
             className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            GET THE SIGNAL
+            JOIN 70,000+ WHO GET THE SIGNAL
           </h2>
 
           <p className="text-[#888] mb-2 text-sm">
-            Most of what I publish gets throttled by platforms.
+            Platforms throttle everything I publish.
           </p>
           <p className="text-[#e8e0d0] mb-8 text-sm font-bold">
             The email list is the only line they can&apos;t cut.
