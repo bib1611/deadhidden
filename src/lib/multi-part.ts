@@ -23,6 +23,12 @@ export const MULTI_PART_PRODUCTS: Record<
     { slug: 'biblical-man-field-manual-bonus-02', name: 'Bonus 2 — Read-the-Text Like a Man Card' },
     { slug: 'biblical-man-field-manual-bonus-03', name: 'Bonus 3 — The Good Man Loop Interrupt Sheet' },
   ],
+  'biblical-woman-field-manual': [
+    { slug: 'biblical-woman-field-manual', name: 'Biblical Woman Field Manual — Main Manual' },
+    { slug: 'womens-bonus-01-quiet-inventory', name: 'Bonus 1 — The Quiet Little Inventory' },
+    { slug: 'womens-bonus-02-field-card', name: 'Bonus 2 — Field Card for the Hard Day' },
+    { slug: 'womens-bonus-03-sigh-rises', name: 'Bonus 3 — When the Sigh Rises' },
+  ],
 };
 
 /**
