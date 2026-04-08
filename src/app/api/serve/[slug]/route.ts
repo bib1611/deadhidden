@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
 import { getBlobUrl } from '@/lib/blob';
 import { products } from '@/data/products';
+import { getMultiPartParent, MULTI_PART_PRODUCTS } from '@/lib/multi-part';
 
 export const runtime = 'nodejs';
 
@@ -56,11 +57,16 @@ export async function GET(
       return new NextResponse('Invalid session', { status: 403 });
     }
 
-    // Check authorization: buyer must have purchased this specific product, the Vault, or Essential Arsenal (for its 10 products)
+    // Check authorization: buyer must have purchased this specific product, the Vault, or a bundle containing it
     const isVaultPurchase =
       purchasedSlug === 'the-vault' ||
       purchasedSlug === 'thanksgiving-marriage-vault';
     const isDirectPurchase = purchasedSlug === slug;
+
+    // Multi-part: if slug is a part (e.g. "loneliness-lie-part-1"),
+    // check if the parent product (e.g. "loneliness-lie") was purchased
+    const multiPartParent = getMultiPartParent(slug);
+    const isMultiPartPurchase = multiPartParent !== null && purchasedSlug === multiPartParent;
 
     const essentialArsenalSlugs = new Set([
       'kings-marriage-manual-red', 'caged-porn', 'how-to-study-bible',
@@ -85,13 +91,14 @@ export async function GET(
     const isWomanhoodBundlePurchase =
       purchasedSlug === 'biblical-womanhood-bundle' && womanhoodBundleSlugs.has(slug);
 
-    if (!isVaultPurchase && !isDirectPurchase && !isEssentialArsenalPurchase && !isVaultSamplerPurchase && !isWomanhoodBundlePurchase) {
+    if (!isVaultPurchase && !isDirectPurchase && !isMultiPartPurchase && !isEssentialArsenalPurchase && !isVaultSamplerPurchase && !isWomanhoodBundlePurchase) {
       return new NextResponse('Not authorized for this file', { status: 403 });
     }
 
-    // Verify the product exists
+    // Verify the product exists (part slugs won't be in products array, so also check multi-part mappings)
     const product = products.find((p) => p.slug === slug);
-    if (!product) {
+    const isMultiPartFile = multiPartParent !== null;
+    if (!product && !isMultiPartFile) {
       return new NextResponse('Product not found', { status: 404 });
     }
 

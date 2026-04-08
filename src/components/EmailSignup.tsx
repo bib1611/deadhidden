@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@vercel/analytics';
 
 export function EmailSignup() {
   const [email, setEmail] = useState('');
@@ -24,6 +25,7 @@ export function EmailSignup() {
         setStatus('success');
         setMessage('Check your email. The signal is on its way.');
         setEmail('');
+        track('email_signup', { source: 'homepage' });
       } else {
         const data = await res.json();
         setStatus('error');

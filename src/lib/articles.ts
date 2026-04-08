@@ -10,6 +10,7 @@ export interface Article {
   source: 'dead-hidden' | 'biblical-man' | 'biblical-womanhood';
   sourceName: string;
   contentHtml?: string;
+  readingTime?: number;
 }
 
 export interface FeedConfig {
@@ -77,6 +78,9 @@ export function parseRSSFeed(xml: string, config: FeedConfig): Article[] {
     const pubDate = extractTag(itemXml, 'pubDate');
     const description = extractCDATA(itemXml, 'description') || extractTag(itemXml, 'description');
 
+    // Get full content for reading time estimation
+    const contentEncoded = extractCDATA(itemXml, 'content:encoded');
+
     // Get image from enclosure
     const enclosureMatch = itemXml.match(/<enclosure[^>]+url="([^"]+)"[^>]*type="image/);
     const imageUrl = enclosureMatch ? enclosureMatch[1] : null;
@@ -84,6 +88,14 @@ export function parseRSSFeed(xml: string, config: FeedConfig): Article[] {
     const slug = extractSlug(link);
 
     if (!title || !link || !slug) continue;
+
+    // Estimate reading time from content (225 wpm)
+    let readingTime: number | undefined;
+    if (contentEncoded) {
+      const text = contentEncoded.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      const wordCount = text.split(' ').filter(Boolean).length;
+      readingTime = Math.max(1, Math.round(wordCount / 225));
+    }
 
     const article: Article = {
       title: decodeEntities(title),
@@ -94,6 +106,7 @@ export function parseRSSFeed(xml: string, config: FeedConfig): Article[] {
       imageUrl,
       source: config.source,
       sourceName: config.sourceName,
+      readingTime,
     };
 
     if (isArticle(article)) {

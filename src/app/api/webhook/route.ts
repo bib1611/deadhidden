@@ -187,7 +187,7 @@ export async function POST(request: NextRequest) {
           const isVault = VAULT_SLUGS.includes(productSlug);
           const baseUrl =
             process.env.NEXT_PUBLIC_URL || 'https://deadhidden.org';
-          const downloadUrl = `${baseUrl}/store/${productSlug}/success?session_id=${session.id}`;
+          const downloadUrl = `${baseUrl}/success?session_id=${session.id}`;
 
           emailPromise = sendPurchaseEmail({
             customerEmail,

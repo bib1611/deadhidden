@@ -26,6 +26,7 @@ export function Navbar() {
     { label: 'THE ARCHIVE', path: '/store' },
     { label: 'WHERE TO BEGIN', path: '/where-to-begin' },
     { label: 'READ', path: '/read' },
+    { label: 'BLOG', path: '/blog' },
     { label: 'WATCH', path: '/watch' },
     { label: 'PUBLICATIONS', path: '/publications' },
     { label: 'ABOUT', path: '/about' },

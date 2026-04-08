@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory } from '@/data/products';
-import { EmailSignup } from '@/components/EmailSignup';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import { MobileCTA } from '@/components/MobileCTA';
+import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
+import { HomepageEmailForm } from '@/components/HomepageEmailForm';
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();
@@ -11,6 +12,7 @@ export default function Home() {
 
   return (
     <main className="bg-[#0a0a0a] text-[#e8e0d0]">
+      <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
 
       {/* 1. HERO — clear visual hierarchy: brand → headline → support → CTA */}
@@ -132,7 +134,7 @@ export default function Home() {
                   </p>
 
                   <div className="flex items-center justify-between pt-4 border-t border-[#222]">
-                    <span className="text-[#8b0000] font-bold">{product.priceLabel}</span>
+                    <span className="text-[#8b0000] font-bold">{product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel}</span>
                     <span
                       className="text-xs uppercase tracking-[0.15em] text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors font-bold"
                       style={{ fontFamily: 'var(--font-heading)' }}
@@ -605,7 +607,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. EMAIL SIGNUP */}
+      {/* 10. EMAIL SIGNUP — primary on-site capture */}
       <section className="py-16 md:py-24 border-t border-[#222]">
         <div className="container max-w-xl mx-auto px-4">
           <h2
@@ -615,11 +617,18 @@ export default function Home() {
             GET THE SIGNAL
           </h2>
 
-          <p className="text-[#888] mb-8 text-sm">
-            Most of what I publish gets throttled by platforms. The email list is the only line they can&apos;t cut.
+          <p className="text-[#888] mb-2 text-sm">
+            Most of what I publish gets throttled by platforms.
+          </p>
+          <p className="text-[#e8e0d0] mb-8 text-sm font-bold">
+            The email list is the only line they can&apos;t cut.
           </p>
 
-          <EmailSignup />
+          <HomepageEmailForm />
+
+          <p className="text-xs text-[#555] mt-4">
+            No spam. No selling your data. Just the things they tried to bury.
+          </p>
         </div>
       </section>
 

@@ -8,6 +8,7 @@ import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
 import { MobileProductCTA } from '@/components/MobileProductCTA';
 import { ProductFAQ } from '@/components/ProductFAQ';
+import { ProductViewTracker } from '@/components/ProductViewTracker';
 
 // Generate static params from all product slugs for SSG
 export function generateStaticParams() {
@@ -25,6 +26,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   const product = getProductBySlug(slug);
   if (!product) return { title: 'Product Not Found' };
 
+  const ogImage = `https://deadhidden.org/api/og?title=${encodeURIComponent(product.name)}&type=product&price=${encodeURIComponent(product.priceLabel)}${product.tagline ? `&subtitle=${encodeURIComponent(product.tagline)}` : ''}`;
+
   return {
     title: `${product.name} | Dead Hidden`,
     description: product.description.substring(0, 160),
@@ -34,25 +37,33 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
       description: product.tagline,
       url: `https://deadhidden.org/store/${slug}`,
       type: 'website',
-      images: [
-        {
-          url: '/images/og-default.jpg',
-          width: 1200,
-          height: 630,
-          alt: product.name,
-        },
-      ],
+      images: [{
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: product.name,
+      }],
     },
     twitter: {
       card: 'summary_large_image',
       title: product.name,
       description: product.tagline,
-      images: ['/images/og-default.jpg'],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://deadhidden.org/store/${slug}`,
     },
   };
+}
+
+/**
+ * Format price labels: convert "$37+" to "Starting at $37" for clarity
+ */
+function formatPrice(priceLabel: string): { prefix: string | null; price: string } {
+  if (priceLabel.endsWith('+')) {
+    return { prefix: 'Starting at', price: priceLabel.slice(0, -1) };
+  }
+  return { prefix: null, price: priceLabel };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -64,6 +75,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   }
 
   const isVaultProduct = product.slug === 'the-vault' || product.slug === 'essential-arsenal';
+  const { prefix: pricePrefix, price: priceDisplay } = formatPrice(product.priceLabel);
 
   // Get related products from same category
   const relatedProducts = getProductsByCategory(product.category)
@@ -93,6 +105,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
+      <ProductViewTracker slug={product.slug} price={product.priceLabel} />
       <ProductJsonLd
         name={product.name}
         description={product.description}
@@ -133,12 +146,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-4 p-6 bg-[#111] border border-[#222]" style={{ borderLeft: '3px solid #8b0000' }}>
           <div className="flex-grow">
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{product.priceLabel}</span>
+              {pricePrefix && (
+                <span className="text-sm text-[#888] uppercase tracking-wide">{pricePrefix}</span>
+              )}
+              <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{priceDisplay}</span>
               {product.slug === 'the-vault' && (
                 <span className="text-sm text-[#777] line-through">$1,500+</span>
               )}
               {product.isFree && (
-                <span className="text-sm text-[#4ade80] font-bold uppercase">No email required</span>
+                <span className="text-sm text-[#4ade80] font-bold uppercase">Free download</span>
               )}
             </div>
             {product.slug === 'how-to-study-bible' && (
@@ -152,6 +168,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="sm:w-48 flex-shrink-0">
             <BuyButton
               productSlug={product.slug}
+              productName={product.name}
               priceLabel={product.priceLabel}
               isFree={product.isFree}
               isSubscription={false}
@@ -274,14 +291,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {/* Price and Buy Button */}
         <div className="border-t border-[#222] pt-12 mb-16">
           <div className="text-sm tracking-[0.12em] uppercase text-[#888] mb-3">
-            PRICE
+            {pricePrefix ? `${pricePrefix}`.toUpperCase() : 'PRICE'}
           </div>
           <div className="text-5xl md:text-6xl font-bold text-[#e8e0d0] mb-8">
-            {product.priceLabel}
+            {priceDisplay}
           </div>
 
           <BuyButton
             productSlug={product.slug}
+            productName={product.name}
             priceLabel={product.priceLabel}
             isFree={product.isFree}
             isSubscription={false}
@@ -365,7 +383,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   >
                     {relatedProduct.name}
                   </h4>
-                  <p className="text-xs text-[#888]">{relatedProduct.priceLabel}</p>
+                  <p className="text-xs text-[#888]">{relatedProduct.priceLabel.endsWith('+') ? relatedProduct.priceLabel.slice(0, -1) : relatedProduct.priceLabel}</p>
                 </Link>
               ))}
             </div>
@@ -396,7 +414,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   >
                     {cp.name}
                   </h4>
-                  <p className="text-xs text-[#888]">{cp.priceLabel}</p>
+                  <p className="text-xs text-[#888]">{cp.priceLabel.endsWith('+') ? cp.priceLabel.slice(0, -1) : cp.priceLabel}</p>
                 </Link>
               ))}
             </div>
@@ -418,6 +436,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       {/* Sticky mobile buy bar */}
       <MobileProductCTA
         productSlug={product.slug}
+        productName={product.name}
         priceLabel={product.priceLabel}
         isFree={product.isFree}
         stripePaymentLink={product.stripePaymentLink}

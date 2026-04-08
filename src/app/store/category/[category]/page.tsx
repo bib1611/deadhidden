@@ -454,7 +454,7 @@ export default async function CategoryPillarPage({ params }: CategoryPageProps) 
                       {product.isFree ? (
                         <span className="text-[#5cb85c]">FREE</span>
                       ) : (
-                        product.priceLabel
+                        product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel
                       )}
                     </span>
                     <span className="text-xs tracking-[0.15em] uppercase text-[#8b0000]">

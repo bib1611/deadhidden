@@ -5,7 +5,11 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { RadioPlayer } from '@/components/RadioPlayer';
-import { ExitIntentPopup } from '@/components/ExitIntentPopup';
+import { SmartNudge } from '@/components/SmartNudge';
+import { CheckoutRecovery } from '@/components/CheckoutRecovery';
+import { TwoStepPopup } from '@/components/TwoStepPopup';
+import { MobileSlideIn } from '@/components/MobileSlideIn';
+import { DesktopExitIntent } from '@/components/DesktopExitIntent';
 import './globals.css';
 
 const oswald = Oswald({
@@ -62,7 +66,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/images/og-default.jpg',
+        url: '/api/og?title=BIBLICAL+TRUTH+THEY+TRIED+TO+BURY.&subtitle=deadhidden.org',
         width: 1200,
         height: 630,
         alt: 'Dead Hidden Ministries — Bible Study Resources for Christians, Families & Churches',
@@ -108,7 +112,11 @@ export default function RootLayout({
         {children}
         <Footer />
         <RadioPlayer />
-        <ExitIntentPopup />
+        <TwoStepPopup />
+        <MobileSlideIn />
+        <DesktopExitIntent />
+        <SmartNudge />
+        <CheckoutRecovery />
         <Analytics />
         <SpeedInsights />
       </body>

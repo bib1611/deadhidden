@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { blogPosts, BLOG_CATEGORIES } from '@/data/blog-posts';
+import { blogPosts, BLOG_CATEGORIES, AUTHOR_DISPLAY } from '@/data/blog-posts';
 
 export function BlogContent() {
   const searchParams = useSearchParams();
@@ -19,25 +19,30 @@ export function BlogContent() {
   const postCount = displayedPosts.length;
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-16">
+    <main className="min-h-screen bg-[#0a0a0a]">
+      {/* Header — matches /read page styling */}
+      <div className="border-b border-[#222] px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        <div className="max-w-5xl mx-auto">
           <div className="text-xs tracking-[0.2em] uppercase text-[#8b0000] font-semibold mb-4">
             DEEP STUDY
           </div>
           <h1
-            className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-12"
+            className="text-4xl sm:text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-6"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             BLOG
           </h1>
+          <p className="text-base md:text-lg text-[#888] leading-relaxed max-w-2xl">
+            Articles on Scripture, marriage, masculinity, and the Christian life. Written to go deep — not to get likes.
+          </p>
+        </div>
+      </div>
 
+      {/* Filter + Grid */}
+      <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-5xl mx-auto">
           {/* Category Filter Tabs */}
-          <div
-            className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+          <div className="flex flex-wrap gap-1 mb-2 border-b border-[#222] pb-4">
             {categoryList.map((cat) => {
               const isAll = cat === 'all';
               const isActive = activeCategory === cat;
@@ -49,11 +54,12 @@ export function BlogContent() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 text-xs tracking-[0.12em] uppercase whitespace-nowrap transition-colors ${
+                  className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold transition-colors ${
                     isActive
-                      ? 'bg-[#8b0000] text-[#e8e0d0]'
-                      : 'border border-[#222] text-[#888] hover:text-[#e8e0d0]'
+                      ? 'text-[#e8e0d0] bg-[#8b0000]/20 border border-[#8b0000]/40'
+                      : 'text-[#777] hover:text-[#888] border border-transparent'
                   }`}
+                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {label}
                 </button>
@@ -62,73 +68,76 @@ export function BlogContent() {
           </div>
 
           {/* Post Count */}
-          <div className="mt-6 text-sm tracking-[0.1em] uppercase text-[#888]">
-            {postCount} ARTICLES FOUND
+          <div className="mb-10 text-xs tracking-[0.1em] uppercase text-[#666] pt-2">
+            {postCount} {postCount === 1 ? 'ARTICLE' : 'ARTICLES'}
           </div>
-        </div>
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {displayedPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="border border-[#222] bg-[#111] p-6 flex flex-col h-full hover:border-[#8b0000] transition-colors group"
-            >
-              {/* Top row: Category + Featured Badge */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="text-xs tracking-[0.12em] uppercase text-[#777]">
-                  {BLOG_CATEGORIES[post.category as keyof typeof BLOG_CATEGORIES]?.label ||
-                    post.category}
-                </div>
-                {post.featured && (
-                  <span
-                    className="text-xs px-2 py-0.5 bg-[#8b0000]/20 text-[#a50000] tracking-[0.1em] uppercase font-bold"
+          {/* Blog Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {displayedPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group block border border-[#222] bg-[#111] hover:border-[#8b0000] transition-all duration-300"
+              >
+                <div className="p-5 sm:p-6">
+                  {/* Category + Featured Badge */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[10px] tracking-[0.15em] uppercase font-semibold px-2 py-0.5 bg-[#8b0000]/20 text-[#cc3333]">
+                      {BLOG_CATEGORIES[post.category as keyof typeof BLOG_CATEGORIES]?.label ||
+                        post.category}
+                    </span>
+                    {post.featured && (
+                      <span className="text-[10px] tracking-[0.15em] uppercase font-semibold px-2 py-0.5 bg-[#1a1a1a] text-[#a50000]">
+                        FEATURED
+                      </span>
+                    )}
+                    <span className="text-[11px] text-[#777]">
+                      {new Date(post.publishDate).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                      })}
+                    </span>
+                    <span className="text-[11px] text-[#777]">
+                      · {post.readingTime} min
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h2
+                    className="text-lg sm:text-xl font-bold text-[#e8e0d0] mb-2 group-hover:text-[#8b0000] transition-colors leading-tight"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
-                    FEATURED
-                  </span>
-                )}
-              </div>
+                    {post.title}
+                  </h2>
 
-              {/* Title */}
-              <h2
-                className="text-lg md:text-xl uppercase font-bold text-[#e8e0d0] mb-2 line-clamp-2 group-hover:text-[#8b0000] transition-colors"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {post.title}
-              </h2>
+                  {/* Description */}
+                  <p className="text-sm text-[#888] leading-relaxed line-clamp-2 mb-4">
+                    {post.metaDescription}
+                  </p>
 
-              {/* Description */}
-              <p className="text-sm text-[#888] line-clamp-3 mb-4 flex-grow">
-                {post.metaDescription}
-              </p>
-
-              {/* Metadata Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-[#222] text-xs text-[#666]">
-                <div className="flex gap-2">
-                  <span>{post.author}</span>
-                  <span>•</span>
-                  <span>
-                    {new Date(post.publishDate).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </span>
+                  {/* Footer */}
+                  <div className="flex items-center justify-between pt-3 border-t border-[#1a1a1a]">
+                    <span className="text-[11px] text-[#666]">
+                      By {AUTHOR_DISPLAY[post.author]}
+                    </span>
+                    <span className="text-xs tracking-[0.15em] uppercase text-[#777] group-hover:text-[#8b0000] transition-colors">
+                      READ →
+                    </span>
+                  </div>
                 </div>
-                <span className="text-[#555]">{Math.ceil(post.wordCount / 200)} min read</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {displayedPosts.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-[#888] text-lg">No articles in this category yet.</p>
+              </Link>
+            ))}
           </div>
-        )}
+
+          {/* Empty State */}
+          {displayedPosts.length === 0 && (
+            <div className="text-center py-20 text-[#777]">
+              <p className="text-lg">No articles in this category yet.</p>
+            </div>
+          )}
+        </div>
       </div>
     </main>
   );
