@@ -151,6 +151,82 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "biblical-man-field-manual",
+    name: "BIBLICAL MAN FIELD MANUAL",
+    tagline: "You built an entire life so no one could question you. It worked. Now you're hollow and you can't name why.",
+    seoKeywords: [
+      "biblical man field manual",
+      "christian men's guide",
+      "masculine wound diagnosis",
+      "KJV bible reading for men",
+      "christian men spiritual growth",
+      "biblical masculinity PDF",
+      "broken christian men resources",
+      "good man alibi",
+    ],
+    description: "Thirteen chapters. Three sections. One sequence that does not let you hide. The Masculine Wound Diagnosis names the five specific wounds respectable Christian men carry — the father wound, the provision mask, performance religion, the good man alibi, and emotional exile. Reading the Bible Like a Man strips out the borrowed light and gives you a direct, repeatable way to engage the KJV without commentary crutches. Breaking the Good Man Loop maps the exact cycle you have been running and hands you a daily interruption pattern. Includes three bonuses: the 5-Wound Self-Audit, the Read-the-Text Like a Man Card, and the Good Man Loop Interrupt Sheet. This is not a devotional. It is a mirror and a blade and a pattern for what comes after.",
+    priceCents: 9700,
+    priceLabel: "$97",
+    category: "masculinity",
+    isFeatured: true,
+    isFree: false,
+    badge: "NEW",
+    purchaseType: "stripe",
+    legacyGumroadSlug: "",
+    ctaText: "GET THE MANUAL →",
+    comparisonLine: "You have spent more than $97 on things that left you exactly where you are.",
+    extendedContent: {
+      whoIsThisFor: [
+        "men 30-55 who have done everything a decent man is supposed to do and still feel hollow",
+        "you can do the doctrine, the attendance, the provision — and cannot name what is wrong",
+        "you have been reading around the Bible for years without letting it read you",
+        "you are running a loop you can see but cannot stop",
+        "you want a closed system — diagnosis, weapon, daily pattern — not another devotional",
+      ],
+      whatsInside: [
+        "Chapter 1 — The Father Wound You Built a Life Around (Psalm 27:10)",
+        "Chapter 2 — The Provision Mask: How a Man Hides Behind Being Useful (Matthew 16:26)",
+        "Chapter 3 — Performance Religion: The Clean Shirt Version of Deadness (2 Timothy 3:5)",
+        "Chapter 4 — The Good Man Alibi: Why Decency Is Not Righteousness (Isaiah 64:6)",
+        "Chapter 5 — Emotional Exile: The Numb Life of the Respectable Man (Psalm 62:8)",
+        "Chapter 6 — Put the Crutch Down: Why Borrowed Light Keeps a Man Weak (2 Timothy 2:15)",
+        "Chapter 7 — Read What Is There Before You Read Into It (1 Corinthians 2:13)",
+        "Chapter 8 — Mark the Words, Track the Pattern, Follow the Thread (Psalm 119:130)",
+        "Chapter 9 — Let the Book Cut You Before You Explain It Away (Hebrews 4:12)",
+        "Chapter 10 — A Name That Thou Livest: The Respectable Man's Death Spiral (Revelation 3:1)",
+        "Chapter 11 — Man Looketh on the Outward Appearance: Why Presence Is Not the Same as Heart (1 Samuel 16:7)",
+        "Chapter 12 — Stop Covering: Confession That Actually Costs You Something (Proverbs 28:13)",
+        "Chapter 13 — Do the Next True Thing: The Daily Rule That Breaks the Loop (James 1:22)",
+        "BONUS 1: The 5-Wound Self-Audit — scored worksheet, identify your primary wound and mask",
+        "BONUS 2: The Read-the-Text Like a Man Card — printable 7-question reading guide, keep it in your Bible",
+        "BONUS 3: The Good Man Loop Interrupt Sheet — 5-step emergency sequence for when the numb comes back",
+      ],
+      longDescription: "This is not a devotional. It will not make you feel better about yourself. If you read it honestly, it will name something you have been managing for years. After it names it, you will have to decide what to do. That is the only question this book ends with. A post says you may be doing this. The manual says this is the exact loop, this is the cost, this is the verse, this is the drill, and this is what you do tomorrow morning.",
+      faq: [
+        {
+          q: "Is this a study Bible or commentary?",
+          a: "No. This is a field manual. It uses KJV exclusively and teaches you to read the Bible directly — no commentary dependency, no Greek/Hebrew required. You and the text."
+        },
+        {
+          q: "Who is this for?",
+          a: "Men 30-55 who are respectable, functional, and hollow. Men who have been in church for years and cannot name what is wrong. Men who have been providing, showing up, and staying — and feel nothing for it."
+        },
+        {
+          q: "How long is it?",
+          a: "13 chapters, approximately 120-160 formatted pages. Dense. Direct. Built to be re-read under pressure, not consumed once and shelved."
+        },
+        {
+          q: "What are the bonuses?",
+          a: "Three documents: a scored 5-Wound Self-Audit worksheet, a printable one-page Bible reading card (7 questions for any passage), and a 2-page Good Man Loop Interrupt Sheet for when the numb comes back."
+        },
+        {
+          q: "Is there a refund policy?",
+          a: "See our refund policy at deadhidden.org/refund-policy."
+        },
+      ],
+    },
+  },
+  {
     slug: "kings-marriage-manual-red",
     name: "THE KING'S MARRIAGE MANUAL (RED VERSION)",
     tagline: "The uncut, uncensored marriage manual your pastor didn't write — because he was afraid to. Biblical headship, sexual intimacy, and covenant conflict handled the way Scripture actually handles them.",

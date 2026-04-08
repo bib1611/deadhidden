@@ -12,7 +12,7 @@ const TIER_VAULT = 36500;  // $365 = Vault
 
 // Slugs that map to specific products for tagging
 const VAULT_SLUGS = ['the-vault', 'thanksgiving-marriage-vault'];
-const ARSENAL_SLUGS = ['essential-arsenal'];
+const ARSENAL_SLUGS = ['essential-arsenal', 'biblical-man-field-manual'];
 const TABLE_SLUGS = ['the-table'];
 
 export const runtime = 'nodejs';
