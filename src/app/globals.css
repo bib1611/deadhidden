@@ -155,3 +155,42 @@ hr {
 .animate-slideUp {
   animation: slideUp 0.35s ease-out forwards;
 }
+
+/* Spinner for loading states */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 0.6s linear infinite;
+}
+
+/* Button press feedback — tactile click feel */
+.btn-press {
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.btn-press:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btn-press:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Card hover lift — subtle border highlight on clickable cards */
+a[class*="border"][class*="hover\\:border"] {
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+/* Skeleton loader for empty states */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

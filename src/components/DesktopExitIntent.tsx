@@ -132,7 +132,7 @@ export function DesktopExitIntent() {
                   setStep(2);
                   track('desktop_exit_intent', { action: 'yes_clicked' });
                 }}
-                className="bg-[#8b0000] text-[#e8e0d0] px-8 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors min-h-[44px]"
+                className="btn-press bg-[#8b0000] text-[#e8e0d0] px-8 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all min-h-[44px]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 YES, SEND IT TO ME

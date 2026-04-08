@@ -1,18 +1,55 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { track } from '@vercel/analytics';
+
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 export function Footer() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [validationError, setValidationError] = useState('');
+  const [touched, setTouched] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleBlur = () => {
+    setTouched(true);
+    if (email && !isValidEmail(email)) {
+      setValidationError('Enter a valid email');
+    } else {
+      setValidationError('');
+    }
+  };
+
+  const handleFocus = () => {
+    setValidationError('');
+    if (status === 'error') {
+      setStatus('idle');
+      setErrorMessage('');
+    }
+  };
+
+  const handleChange = (val: string) => {
+    setEmail(val);
+    if (touched && validationError && isValidEmail(val)) {
+      setValidationError('');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isValidEmail(email)) {
+      setValidationError('Enter a valid email');
+      inputRef.current?.focus();
+      return;
+    }
+
     setStatus('loading');
     setErrorMessage('');
+    setValidationError('');
 
     try {
       const response = await fetch('/api/email-signup', {
@@ -29,12 +66,11 @@ export function Footer() {
 
       setStatus('success');
       setEmail('');
+      setTouched(false);
       track('email_signup', { source: 'footer' });
-      setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
       setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'An error occurred');
-      setTimeout(() => setStatus('idle'), 3000);
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Try again.');
     }
   };
 
@@ -50,30 +86,47 @@ export function Footer() {
           >
             GET THE SIGNAL
           </h3>
-          <form onSubmit={handleSubmit} className="flex gap-2 max-w-md">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={status === 'loading'}
-              className="flex-1 bg-[#1a1a1a] border border-[#333] px-4 py-2 text-sm text-[#e8e0d0] placeholder-[#666] focus:outline-none focus:border-[#8b0000] disabled:opacity-50"
-            />
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="bg-[#8b0000] hover:bg-[#a50000] disabled:opacity-50 px-6 py-2 text-sm tracking-[0.12em] uppercase text-[#e8e0d0] transition-colors"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              {status === 'loading' ? 'SENDING...' : 'SUBSCRIBE'}
-            </button>
-          </form>
-          {status === 'success' && (
-            <p className="text-sm text-[#8b0000] mt-2">Check your email to confirm.</p>
-          )}
-          {status === 'error' && (
-            <p className="text-sm text-[#8b0000] mt-2">{errorMessage}</p>
+          {status === 'success' ? (
+            <div className="flex items-center gap-2 max-w-md animate-fadeIn">
+              <p className="text-sm text-[#e8e0d0] font-bold uppercase tracking-[0.08em]" style={{ fontFamily: 'var(--font-heading)' }}>
+                You&apos;re in.
+              </p>
+              <p className="text-sm text-[#888]">Check your email to confirm.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="max-w-md" noValidate>
+              <div className="flex gap-2">
+                <input
+                  ref={inputRef}
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => handleChange(e.target.value)}
+                  onBlur={handleBlur}
+                  onFocus={handleFocus}
+                  required
+                  disabled={status === 'loading'}
+                  className={`flex-1 bg-[#1a1a1a] border ${validationError ? 'border-[#a50000]' : 'border-[#333]'} px-4 py-2 text-sm text-[#e8e0d0] placeholder-[#666] focus:outline-none focus:border-[#8b0000] disabled:opacity-50 transition-colors`}
+                />
+                <button
+                  type="submit"
+                  disabled={status === 'loading' || !email}
+                  className="btn-press bg-[#8b0000] hover:bg-[#a50000] disabled:opacity-50 disabled:cursor-not-allowed px-6 py-2 text-sm tracking-[0.12em] uppercase text-[#e8e0d0] transition-all flex items-center gap-2"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {status === 'loading' && (
+                    <span className="inline-block w-3.5 h-3.5 border-2 border-[#e8e0d0] border-r-transparent animate-spin" style={{ borderRadius: '50%' }} />
+                  )}
+                  {status === 'loading' ? 'SENDING...' : 'SUBSCRIBE'}
+                </button>
+              </div>
+              {validationError && (
+                <p className="text-[#a50000] text-xs mt-1.5 animate-fadeIn">{validationError}</p>
+              )}
+              {status === 'error' && errorMessage && (
+                <p className="text-[#a50000] text-xs mt-1.5 animate-fadeIn">{errorMessage}</p>
+              )}
+            </form>
           )}
         </div>
 

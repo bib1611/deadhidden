@@ -49,7 +49,7 @@ export default function Home() {
           {/* CTA — one primary button, nothing competing */}
           <Link
             href="/where-to-begin"
-            className="inline-block bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors text-sm md:text-base"
+            className="inline-block btn-press bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all text-sm md:text-base"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             WHERE TO BEGIN

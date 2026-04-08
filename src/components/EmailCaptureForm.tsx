@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { track } from '@vercel/analytics';
 
 export type EmailCaptureVariant = 'inline' | 'popup' | 'slide-in' | 'fullscreen';
@@ -17,6 +17,8 @@ interface EmailCaptureFormProps {
   placeholder?: string;
 }
 
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 export function EmailCaptureForm({
   variant,
   source,
@@ -29,11 +31,50 @@ export function EmailCaptureForm({
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [validationError, setValidationError] = useState('');
+  const [touched, setTouched] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleBlur = () => {
+    setTouched(true);
+    if (email && !isValidEmail(email)) {
+      setValidationError('Enter a valid email');
+    } else {
+      setValidationError('');
+    }
+  };
+
+  const handleFocus = () => {
+    setValidationError('');
+    if (status === 'error') {
+      setStatus('idle');
+      setErrorMessage('');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    // Clear validation error as user types if they've already been warned
+    if (touched && validationError && isValidEmail(e.target.value)) {
+      setValidationError('');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side validation before submit
+    if (!isValidEmail(email)) {
+      setValidationError('Enter a valid email');
+      inputRef.current?.focus();
+      return;
+    }
+
     setLoading(true);
     setStatus('idle');
+    setErrorMessage('');
+    setValidationError('');
 
     try {
       const res = await fetch('/api/email-signup', {
@@ -45,6 +86,7 @@ export function EmailCaptureForm({
       if (res.ok) {
         setStatus('success');
         setEmail('');
+        setTouched(false);
         track('email_signup', { source, leadMagnet: leadMagnet || '' });
         try {
           localStorage.setItem('dh_subscribed', '1');
@@ -54,9 +96,11 @@ export function EmailCaptureForm({
         onSuccess?.();
       } else {
         setStatus('error');
+        setErrorMessage('Something went wrong. Try again.');
       }
     } catch {
       setStatus('error');
+      setErrorMessage('Connection failed. Check your internet and try again.');
     } finally {
       setLoading(false);
     }
@@ -64,7 +108,7 @@ export function EmailCaptureForm({
 
   if (status === 'success') {
     return (
-      <div className={successWrapperClass(variant)}>
+      <div className={`${successWrapperClass(variant)} animate-fadeIn`}>
         <div className="h-1 bg-[#8b0000] w-12 mx-auto mb-4" />
         <p
           className="text-lg uppercase tracking-[0.08em] text-[#e8e0d0] font-bold"
@@ -78,34 +122,52 @@ export function EmailCaptureForm({
   }
 
   const isCompact = variant === 'inline' || variant === 'slide-in';
+  const hasError = validationError || (status === 'error' && errorMessage);
+  const inputBorderClass = validationError
+    ? 'border-[#a50000]'
+    : touched && email && isValidEmail(email)
+    ? 'border-[#2a5a2a]'
+    : 'border-[#222]';
 
   return (
     <form
       onSubmit={handleSubmit}
       className={formClass(variant)}
+      noValidate
     >
       <div className={isCompact ? 'flex flex-col sm:flex-row gap-3' : 'space-y-3'}>
-        <input
-          type="email"
-          placeholder={placeholder}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          disabled={loading}
-          className="flex-1 px-4 py-3 bg-[#0a0a0a] border border-[#222] text-[#e8e0d0] placeholder-[#555] focus:outline-none focus:border-[#8b0000] transition-colors disabled:opacity-50 min-h-[44px]"
-        />
+        <div className="flex-1 relative">
+          <input
+            ref={inputRef}
+            type="email"
+            placeholder={placeholder}
+            value={email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            required
+            disabled={loading}
+            className={`w-full px-4 py-3 bg-[#0a0a0a] border ${inputBorderClass} text-[#e8e0d0] placeholder-[#555] focus:outline-none focus:border-[#8b0000] transition-colors disabled:opacity-50 min-h-[44px]`}
+          />
+          {validationError && (
+            <p className="text-[#a50000] text-xs mt-1.5 animate-fadeIn">{validationError}</p>
+          )}
+        </div>
         <button
           type="submit"
           disabled={loading || !email}
-          className="bg-[#8b0000] text-[#e8e0d0] px-6 py-3 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap min-h-[44px] min-w-[44px]"
+          className="btn-press bg-[#8b0000] text-[#e8e0d0] px-6 py-3 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap min-h-[44px] min-w-[44px] flex items-center justify-center gap-2"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
+          {loading && (
+            <span className="inline-block w-4 h-4 border-2 border-[#e8e0d0] border-r-transparent animate-spin" style={{ borderRadius: '50%' }} />
+          )}
           {loading ? 'SENDING...' : buttonText}
         </button>
       </div>
 
-      {status === 'error' && (
-        <p className="text-red-500 text-xs mt-3">Something went wrong. Try again.</p>
+      {status === 'error' && errorMessage && (
+        <p className="text-[#a50000] text-xs mt-3 animate-fadeIn">{errorMessage}</p>
       )}
     </form>
   );
