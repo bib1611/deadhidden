@@ -17,6 +17,12 @@ export const MULTI_PART_PRODUCTS: Record<
     { slug: 'loneliness-lie-part-3', name: 'The Loneliness Lie — Part 3' },
     { slug: 'loneliness-lie-part-4', name: 'The Loneliness Lie — Part 4' },
   ],
+  'biblical-man-field-manual': [
+    { slug: 'biblical-man-field-manual', name: 'Biblical Man Field Manual' },
+    { slug: 'biblical-man-field-manual-bonus-01', name: 'Bonus 1 — The 5-Wound Self-Audit' },
+    { slug: 'biblical-man-field-manual-bonus-02', name: 'Bonus 2 — Read-the-Text Like a Man Card' },
+    { slug: 'biblical-man-field-manual-bonus-03', name: 'Bonus 3 — The Good Man Loop Interrupt Sheet' },
+  ],
 };
 
 /**

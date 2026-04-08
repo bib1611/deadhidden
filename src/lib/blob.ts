@@ -8,9 +8,13 @@ import { list } from '@vercel/blob';
 export async function getBlobUrl(slug: string): Promise<string | null> {
   try {
     const result = await list({ prefix: `${slug}` });
-    const match = result.blobs.find(
-      (b) => b.pathname.startsWith(slug) && b.pathname.endsWith('.pdf')
-    );
+    const match = result.blobs.find((b) => {
+      if (!b.pathname.endsWith('.pdf')) return false;
+      // Strip .pdf, then check that the remaining name is exactly the slug
+      // or the slug followed by a Vercel Blob hash suffix (dash + alphanumeric)
+      const name = b.pathname.replace('.pdf', '');
+      return name === slug || /^-[A-Za-z0-9]+$/.test(name.slice(slug.length));
+    });
     return match?.url || null;
   } catch (error) {
     console.error(`Blob lookup failed for ${slug}:`, error);
