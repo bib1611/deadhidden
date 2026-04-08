@@ -142,6 +142,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
           {CATEGORIES[product.category].label}
         </div>
 
+        {/* Sale urgency banner */}
+        {product.saleLabel && product.salePriceCents && (
+          <div className="mb-6 p-4 bg-[#8b0000] border border-[#a50000]">
+            <p
+              className="text-sm md:text-base font-bold text-[#e8e0d0] uppercase tracking-[0.06em]"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              {product.saleLabel} — ${product.salePriceCents / 100} (Reg. ${product.originalPriceCents ? product.originalPriceCents / 100 : product.priceCents / 100}). This price does not hold.
+            </p>
+          </div>
+        )}
+
         {/* Price + Quick Buy — visible immediately, no scrolling */}
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-4 p-6 bg-[#111] border border-[#222]" style={{ borderLeft: '3px solid #8b0000' }}>
           <div className="flex-grow">
@@ -149,7 +161,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {pricePrefix && (
                 <span className="text-sm text-[#888] uppercase tracking-wide">{pricePrefix}</span>
               )}
-              <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{priceDisplay}</span>
+              {product.salePriceCents ? (
+                <>
+                  <span className="text-xl text-[#777] line-through">{priceDisplay}</span>
+                  <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">${product.salePriceCents / 100}</span>
+                </>
+              ) : (
+                <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">{priceDisplay}</span>
+              )}
               {product.slug === 'the-vault' && (
                 <span className="text-sm text-[#777] line-through">$1,500+</span>
               )}
@@ -293,9 +312,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="text-sm tracking-[0.12em] uppercase text-[#888] mb-3">
             {pricePrefix ? `${pricePrefix}`.toUpperCase() : 'PRICE'}
           </div>
-          <div className="text-5xl md:text-6xl font-bold text-[#e8e0d0] mb-8">
-            {priceDisplay}
-          </div>
+          {product.salePriceCents ? (
+            <div className="flex items-baseline gap-4 mb-8">
+              <span className="text-3xl text-[#777] line-through">{priceDisplay}</span>
+              <span className="text-5xl md:text-6xl font-bold text-[#e8e0d0]">${product.salePriceCents / 100}</span>
+            </div>
+          ) : (
+            <div className="text-5xl md:text-6xl font-bold text-[#e8e0d0] mb-8">
+              {priceDisplay}
+            </div>
+          )}
 
           <BuyButton
             productSlug={product.slug}

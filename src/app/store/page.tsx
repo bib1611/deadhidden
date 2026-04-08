@@ -73,21 +73,23 @@ function StoreContent() {
                 <div className="text-xs tracking-[0.12em] uppercase text-[#777]">
                   {CATEGORIES[product.category].label}
                 </div>
-                {product.category === 'vault' && (
+                {product.saleLabel ? (
+                  <span className="text-xs px-2 py-0.5 bg-[#8b0000] text-[#e8e0d0] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {product.saleLabel}
+                  </span>
+                ) : product.category === 'vault' ? (
                   <span className="text-xs px-2 py-0.5 bg-[#8b0000]/20 text-[#a50000] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
                     FULL ACCESS
                   </span>
-                )}
-                {product.isFree && (
+                ) : product.isFree ? (
                   <span className="text-xs px-2 py-0.5 bg-[#1a3a1a] text-[#4ade80] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
                     FREE
                   </span>
-                )}
-                {product.slug === 'how-to-study-bible' && (
+                ) : product.slug === 'how-to-study-bible' ? (
                   <span className="text-xs px-2 py-0.5 bg-[#1a3a1a] text-[#4ade80] tracking-[0.1em] uppercase font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
                     MOST POPULAR
                   </span>
-                )}
+                ) : null}
               </div>
 
               {/* Title */}
@@ -107,6 +109,11 @@ function StoreContent() {
               <div className="flex items-center justify-between pt-4 border-t border-[#222]">
                 {product.isFree ? (
                   <span className="text-lg font-bold text-[#4ade80]">FREE</span>
+                ) : product.salePriceCents ? (
+                  <span className="flex items-baseline gap-2">
+                    <span className="text-sm text-[#777] line-through">${product.originalPriceCents ? product.originalPriceCents / 100 : product.priceCents / 100}</span>
+                    <span className="text-lg font-bold text-[#e8e0d0]">${product.salePriceCents / 100}</span>
+                  </span>
                 ) : (
                   <span className="text-lg font-bold text-[#e8e0d0]">{product.priceLabel.endsWith('+') ? product.priceLabel.slice(0, -1) : product.priceLabel}</span>
                 )}

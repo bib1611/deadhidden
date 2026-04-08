@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory } from '@/data/products';
+import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory, getProductBySlug } from '@/data/products';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import { MobileCTA } from '@/components/MobileCTA';
 import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
@@ -98,6 +98,77 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {/* LAUNCH SPECIAL — dual field manual feature banner */}
+      {(() => {
+        const manManual = getProductBySlug('biblical-man-field-manual');
+        const womanManual = getProductBySlug('biblical-woman-field-manual');
+        if (!manManual || !womanManual) return null;
+        const manuals = [manManual, womanManual];
+        return (
+          <section className="py-12 md:py-20 bg-black border-b-2 border-[#8b0000]">
+            <div className="container max-w-5xl mx-auto px-4">
+              <div className="text-center mb-10">
+                <p
+                  className="text-xs tracking-[0.3em] text-[#8b0000] uppercase font-bold mb-3"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  LIMITED TIME
+                </p>
+                <h2
+                  className="text-3xl md:text-5xl text-[#e8e0d0] uppercase tracking-[0.06em] font-bold mb-4"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  LAUNCH SPECIAL
+                </h2>
+                <p className="text-[#a09888] text-base md:text-lg">
+                  Both field manuals. One for him. One for her.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {manuals.map((product) => (
+                  <Link
+                    key={product.slug}
+                    href={`/store/${product.slug}`}
+                    className="border border-[#222] bg-[#0a0a0a] p-6 flex flex-col h-full hover:border-[#8b0000] transition-colors group relative"
+                    style={{ borderTop: '3px solid #8b0000' }}
+                  >
+                    <div
+                      className="absolute top-4 right-4 bg-[#8b0000] text-[#e8e0d0] text-xs px-2 py-1 uppercase font-bold tracking-[0.08em]"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      LAUNCH SPECIAL
+                    </div>
+
+                    <h3
+                      className="text-lg md:text-xl text-[#e8e0d0] uppercase tracking-[0.08em] font-bold mb-2 pr-28 group-hover:text-[#8b0000] transition-colors"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {product.name}
+                    </h3>
+
+                    <p className="text-xs text-[#888] mb-4">{product.tagline}</p>
+
+                    <div className="mt-auto pt-4 border-t border-[#222] flex items-center justify-between">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-sm text-[#777] line-through">$97</span>
+                        <span className="text-2xl font-bold text-[#e8e0d0]">$77</span>
+                      </div>
+                      <span
+                        className="text-xs uppercase tracking-[0.15em] text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors font-bold"
+                        style={{ fontFamily: 'var(--font-heading)' }}
+                      >
+                        GET IT NOW →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* 2. FEATURED PRODUCTS — immediately after hero, first thing mobile users see */}
       <section className="py-12 md:py-20">

@@ -20,6 +20,9 @@ export type Product = {
   isFeatured: boolean;
   isFree: boolean;
   badge?: string;
+  originalPriceCents?: number;
+  salePriceCents?: number;
+  saleLabel?: string;
   purchaseType: "stripe";
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
   // Direct Stripe payment link — bypasses /api/checkout (used for Christie's products on her Stripe account)
@@ -167,10 +170,13 @@ export const products: Product[] = [
     description: "Thirteen chapters. Three sections. One sequence that does not let you hide. The Masculine Wound Diagnosis names the five specific wounds respectable Christian men carry — the father wound, the provision mask, performance religion, the good man alibi, and emotional exile. Reading the Bible Like a Man strips out the borrowed light and gives you a direct, repeatable way to engage the KJV without commentary crutches. Breaking the Good Man Loop maps the exact cycle you have been running and hands you a daily interruption pattern. Includes three bonuses: the 5-Wound Self-Audit, the Read-the-Text Like a Man Card, and the Good Man Loop Interrupt Sheet. This is not a devotional. It is a mirror and a blade and a pattern for what comes after.",
     priceCents: 9700,
     priceLabel: "$97",
+    originalPriceCents: 9700,
+    salePriceCents: 7700,
+    saleLabel: "LAUNCH SPECIAL",
     category: "masculinity",
     isFeatured: true,
     isFree: false,
-    badge: "NEW",
+    badge: "LAUNCH SPECIAL",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
     ctaText: "GET THE MANUAL →",
@@ -234,10 +240,13 @@ export const products: Product[] = [
     description: "13 chapters. 25,000 words. For the complementarian Christian woman who has done everything right and is still bleeding. This is not a devotional. It is a surgical instrument — for the woman who poured herself into home, marriage, and faith, and is still waiting for the peace she was promised. Christie names the wound. She does not flatter you. She does not fix your husband. She hands you the truth and what to do with it.",
     priceCents: 9700,
     priceLabel: "$97",
+    originalPriceCents: 9700,
+    salePriceCents: 7700,
+    saleLabel: "LAUNCH SPECIAL",
     category: "women" as Category,
     isFeatured: true,
     isFree: false,
-    badge: "NEW",
+    badge: "LAUNCH SPECIAL",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
     ctaText: "GET THE FIELD MANUAL →",
