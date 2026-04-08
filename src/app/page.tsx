@@ -13,64 +13,69 @@ export default function Home() {
     <main className="bg-[#0a0a0a] text-[#e8e0d0]">
       <OrganizationJsonLd />
 
-      {/* 1. HERO — shorter, punchier, both CTAs go somewhere that converts */}
-      <section className="flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/40 to-[#0a0a0a] bg-black py-16 md:py-24">
-        <div className="container max-w-3xl mx-auto px-4 text-center">
-          <Image
-            src="/images/logo.png"
-            alt="Dead Hidden"
-            width={112}
-            height={112}
-            className="w-20 h-20 md:w-28 md:h-28 mx-auto mb-6 opacity-90"
-            priority
-          />
+      {/* 1. HERO — clear visual hierarchy: brand → headline → support → CTA */}
+      <section className="relative overflow-hidden bg-[#0a0a0a] pt-12 pb-16 md:pt-20 md:pb-28 border-b border-[#222]">
+        {/* Subtle background grain */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")' }} />
 
+        <div className="container max-w-4xl mx-auto px-4 relative">
+          {/* Brand — prominent logo */}
+          <div className="mb-8 md:mb-12">
+            <Image
+              src="/images/logo.png"
+              alt="Dead Hidden Ministries"
+              width={160}
+              height={160}
+              className="w-24 h-24 md:w-36 md:h-36 opacity-95"
+              priority
+            />
+          </div>
+
+          {/* Headline — largest text, answers "What is this?" */}
           <h1
-            className="text-3xl md:text-5xl lg:text-6xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-4"
+            className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.95] text-[#e8e0d0] uppercase tracking-[0.04em] font-bold mb-5 max-w-3xl"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            BIBLICAL TRUTH THEY TRIED TO BURY.
+            BIBLICAL TRUTH<br className="hidden md:block" /> THEY TRIED TO BURY.
           </h1>
 
-          <p className="text-sm md:text-base text-[#888] max-w-2xl mx-auto mb-4 leading-relaxed">
-            A Bible study ministry for Christians, families, and churches. 50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
+          {/* Supporting line — one sentence, answers "Why should I care?" */}
+          <p className="text-lg md:text-xl text-[#a09888] max-w-xl mb-10 leading-relaxed">
+            50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
           </p>
 
-          <p className="text-xs tracking-[0.2em] uppercase text-[#777] mb-8">
-            A FRIEND TO CHURCHES · 70,000+ SUBSCRIBERS · THREE PUBLICATIONS
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          {/* CTA — one primary button */}
+          <div className="flex flex-col sm:flex-row items-start gap-4">
             <Link
               href="/where-to-begin"
-              className="bg-[#8b0000] text-[#e8e0d0] px-8 py-3.5 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors"
+              className="bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors text-sm md:text-base"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               WHERE TO BEGIN
             </Link>
             <Link
               href="/store"
-              className="border border-[#e8e0d0]/30 text-[#e8e0d0] px-8 py-3.5 uppercase tracking-[0.15em] font-bold hover:border-[#e8e0d0]/60 transition-colors"
+              className="text-[#888] hover:text-[#e8e0d0] transition-colors text-sm uppercase tracking-[0.15em] font-bold py-4"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              ENTER THE ARCHIVE
+              BROWSE ALL 76 RESOURCES →
             </Link>
           </div>
         </div>
       </section>
 
       {/* 2. FEATURED PRODUCTS — immediately after hero, first thing mobile users see */}
-      <section className="py-12 md:py-20 border-t border-[#222]">
+      <section className="py-12 md:py-20">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               MOST POPULAR
             </p>
             <h2
-              className="text-3xl md:text-4xl lg:text-5xl text-[#e8e0d0] uppercase tracking-[0.08em]"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               START HERE
@@ -146,7 +151,7 @@ export default function Home() {
       <section className="py-12 md:py-16 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
           <p
-            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase text-center mb-8 font-bold"
+            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-8 font-bold"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             FROM THE FRONT LINES
@@ -178,15 +183,15 @@ export default function Home() {
       {/* 4. WHERE TO BEGIN — discovery system, reduces overwhelm for new visitors */}
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-4xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               DON&apos;T KNOW WHERE TO START?
             </p>
             <h2
-              className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               PICK YOUR BATTLE
@@ -234,18 +239,18 @@ export default function Home() {
       {/* 5. FREE RESOURCES — low-commitment entry point */}
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               DECLASSIFIED
             </p>
             <h2
-              className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              FREE. NO EMAIL. JUST READ.
+              FREE DOWNLOADS
             </h2>
           </div>
 
@@ -303,7 +308,7 @@ export default function Home() {
       <section id="splinter" className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-3xl mx-auto px-4">
           <p
-            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase text-center mb-8 font-bold"
+            className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-8 font-bold"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             WHAT IS DEAD HIDDEN?
@@ -369,15 +374,15 @@ export default function Home() {
       {/* 7b. WATCH — embedded YouTube videos to increase time on site */}
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               VIDEO ARCHIVE
             </p>
             <h2
-              className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               WATCH. LEARN. FIGHT.
@@ -466,20 +471,20 @@ export default function Home() {
       {/* 8. THE ARCHIVE - CATEGORIES GRID */}
       <section className="py-12 md:py-20 border-t border-[#222]">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               THE ARCHIVE
             </p>
             <h2
-              className="text-3xl md:text-4xl lg:text-5xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              66 DOCUMENTS. NINE CATEGORIES.
+              76 RESOURCES. NINE CATEGORIES.
             </h2>
-            <p className="text-[#888]">The things they buried.</p>
+            <p className="text-[#888] text-sm">The things they buried.</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
@@ -518,15 +523,15 @@ export default function Home() {
       {/* 9. THE SIGNAL - PUBLICATIONS */}
       <section className="py-12 md:py-20 border-t border-[#222] bg-[#111]">
         <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="mb-10">
             <p
-              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-3 font-bold"
+              className="text-xs tracking-[0.3em] text-[#8b0000] uppercase mb-2 font-bold"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               THE SIGNAL
             </p>
             <h2
-              className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-3"
+              className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               MULTIPLE FREQUENCIES. ONE MISSION.
@@ -602,16 +607,16 @@ export default function Home() {
 
       {/* 10. EMAIL SIGNUP */}
       <section className="py-16 md:py-24 border-t border-[#222]">
-        <div className="container max-w-xl mx-auto px-4 text-center">
+        <div className="container max-w-xl mx-auto px-4">
           <h2
-            className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.08em] mb-4"
+            className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em] mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             GET THE SIGNAL
           </h2>
 
           <p className="text-[#888] mb-8 text-sm">
-            Most of what I publish gets throttled by platforms. The email list is the only line they can't cut.
+            Most of what I publish gets throttled by platforms. The email list is the only line they can&apos;t cut.
           </p>
 
           <EmailSignup />
