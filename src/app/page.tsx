@@ -6,6 +6,8 @@ import { OrganizationJsonLd } from '@/components/JsonLd';
 import { MobileCTA } from '@/components/MobileCTA';
 import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
 import { HomepageEmailForm } from '@/components/HomepageEmailForm';
+import { SubstackFeed } from '@/components/SubstackFeed';
+import { LeadMagnetCapture } from '@/components/LeadMagnetCapture';
 
 export const metadata: Metadata = {
   title: 'Dead Hidden Ministries — Biblical Truth They Tried to Bury',
@@ -169,6 +171,9 @@ export default function Home() {
           </section>
         );
       })()}
+
+      {/* FROM THE FIELD — latest Substack posts */}
+      <SubstackFeed />
 
       {/* 2. FEATURED PRODUCTS — immediately after hero, first thing mobile users see */}
       <section className="py-12 md:py-20">
@@ -599,6 +604,28 @@ export default function Home() {
               <p className="text-xs text-[#888]">Daily signal. 45K followers.</p>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* THE THREE ALIBIS — free lead magnet capture */}
+      <section id="three-alibis" className="py-16 md:py-24 border-t border-[#222] bg-[#111]">
+        <div className="container max-w-xl mx-auto px-4 text-center">
+          <h2
+            className="text-3xl md:text-4xl text-[#e8e0d0] uppercase tracking-[0.06em] font-bold mb-4"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            THE THREE ALIBIS
+          </h2>
+
+          <p className="text-[#a09888] mb-8 leading-relaxed">
+            Each of us runs one. Most of us have never named it. Free PDF — for the man and for the woman.
+          </p>
+
+          <LeadMagnetCapture />
+
+          <p className="text-xs text-[#555] mt-4">
+            Free. One email. No spam. Just the truth you&apos;ve been avoiding.
+          </p>
         </div>
       </section>
 
