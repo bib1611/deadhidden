@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { getStripe } from '@/lib/stripe';
 import AdminLogin from './login';
 
-const ADMIN_PASSWORD = 'deadhidden2026';
+const ADMIN_PASSWORD = 'Blakedylan2025!?';
 const ADMIN_COOKIE = 'admin_auth';
 
 async function getStripeCharges() {

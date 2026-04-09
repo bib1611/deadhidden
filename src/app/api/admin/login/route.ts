@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const ADMIN_PASSWORD = 'deadhidden2026';
+const ADMIN_PASSWORD = 'Blakedylan2025!?';
 
 export async function POST(request: NextRequest) {
   const { password } = await request.json();
