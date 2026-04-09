@@ -29,6 +29,7 @@ export function Navbar() {
   // Max 5 nav items — reflects the user journey: What → Why → How → Browse
   const navLinks = [
     { label: 'RESOURCES', path: '/store' },
+    { label: 'FOR WOMEN', path: '/for-women' },
     { label: 'READ', path: '/read' },
     { label: 'BLOG', path: '/blog' },
     { label: 'ABOUT', path: '/about' },
