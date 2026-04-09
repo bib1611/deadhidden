@@ -362,6 +362,40 @@ export const blogPosts: BlogPost[] = [
     content: '<p>Content coming soon.</p>',
   },
   {
+    slug: 'watchmans-warning-podcast-interview',
+    title:
+      "Why Men Are Leaving Church (And Why Catholicism Isn't the Answer) — Watchman's Warning Interview",
+    metaDescription:
+      "I sat down with Randy Keener of Watchman's Warning to talk about the feminization of the church, the conspiracy rabbit hole pulling men away from local bodies, and what real masculine Christianity actually looks like. This conversation gets into things most podcasts won't touch.",
+    primaryKeyword: 'biblical masculinity podcast',
+    secondaryKeywords: [
+      'men leaving church podcast',
+      'feminization of the church',
+      'conspiracy Christianity',
+      'lone wolf Christian',
+    ],
+    keywords: [
+      'biblical masculinity podcast',
+      'men leaving church podcast',
+      'feminization of the church',
+      'conspiracy Christianity',
+      'lone wolf Christian',
+      'watchmans warning',
+    ],
+    category: 'biblical-masculinity',
+    publishDate: '2026-04-09',
+    author: 'adam',
+    linkedProducts: ['biblical-man-field-manual', 'the-essential-arsenal'],
+    productLinks: [
+      { slug: 'biblical-man-field-manual', placement: 'inline' },
+      { slug: 'the-essential-arsenal', placement: 'end' },
+    ],
+    wordCount: 820,
+    readingTime: 5,
+    featured: false,
+    content: '<p>Content coming soon.</p>',
+  },
+  {
     slug: 'god-feels-distant-what-to-do',
     title: "God Feels Distant: What to Do When You Can't Feel Him Anymore",
     metaDescription:
