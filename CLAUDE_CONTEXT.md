@@ -57,7 +57,10 @@ This file bridges Perplexity Computer (strategy, content, deployments, email, X,
 ### WriteStack
 - **Tool**: writestack.io — Substack Notes scheduler + analytics
 - **API Key**: `ws_e0973134c525fe15596ca9b8bbef5c43f861e7c07336c6dd831e7bd3b5f330de`
-- **MCP**: In private beta — endpoint not yet public. Orel (founder) granting access manually. Once live, add MCP URL here and wire into Claude Code workflow.
+- **MCP Endpoint**: `https://www.writestack.io/api/mcp/mcp` (POST, SSE transport)
+- **MCP Config**: `{"mcpServers":{"writestack":{"command":"npx","args":["-y","mcp-remote","https://writestack.io/api/mcp/mcp","--header","Authorization: Bearer ws_e0973134c525fe15596ca9b8bbef5c43f861e7c07336c6dd831e7bd3b5f330de"]}}}`
+- **Available tools (12)**: list_notes, get_note, create_note, create_many_notes, update_note, get_schedule, get_queue, get_next_available_slots, schedule_notes, list_tags, delete_note (browser only), unschedule_notes (browser only)
+- **Usage**: POST JSON-RPC 2.0 to endpoint with `Authorization: Bearer {key}` and `Accept: application/json, text/event-stream`. Response comes as SSE `data:` event.
 - **Use case**: Schedule Substack Notes, analytics on what converts, activity center for engagement
 
 ### Analytics
