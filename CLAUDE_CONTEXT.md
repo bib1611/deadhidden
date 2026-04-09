@@ -54,6 +54,12 @@ This file bridges Perplexity Computer (strategy, content, deployments, email, X,
 - **Known conflict**: `send.deadhidden.org` is delegated to Klaviyo nameservers — do NOT remove those NS records
 - **Vercel CLI**: requires `NODE_TLS_REJECT_UNAUTHORIZED=0` in sandbox
 
+### WriteStack
+- **Tool**: writestack.io — Substack Notes scheduler + analytics
+- **API Key**: `ws_12acff9b966a1e900b9c1875dd5af578f0407fb05e8926f618d64dc6c6213581`
+- **MCP**: In private beta — endpoint not yet public. Orel (founder) granting access manually. Once live, add MCP URL here and wire into Claude Code workflow.
+- **Use case**: Schedule Substack Notes, analytics on what converts, activity center for engagement
+
 ### Analytics
 - Vercel Analytics (built-in)
 - Custom events tracked: `scroll_depth`, `smart_nudge`, `twostep_popup`, `mobile_slidein`, `product_view`, `email_signup`
