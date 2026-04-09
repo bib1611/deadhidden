@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       mode,
+      customer_creation: mode === 'subscription' ? undefined : 'always',
       line_items: [
         {
           price_data: {
@@ -72,6 +73,7 @@ export async function POST(request: NextRequest) {
       cancel_url: `${process.env.NEXT_PUBLIC_URL}/store/${productSlug}`,
       metadata: {
         productSlug,
+        slug: productSlug,
         productName: product.name,
       },
       ...(email && { customer_email: email }),
