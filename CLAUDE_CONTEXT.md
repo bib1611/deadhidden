@@ -56,7 +56,7 @@ This file bridges Perplexity Computer (strategy, content, deployments, email, X,
 
 ### WriteStack
 - **Tool**: writestack.io — Substack Notes scheduler + analytics
-- **API Key**: `ws_12acff9b966a1e900b9c1875dd5af578f0407fb05e8926f618d64dc6c6213581`
+- **API Key**: `ws_e0973134c525fe15596ca9b8bbef5c43f861e7c07336c6dd831e7bd3b5f330de`
 - **MCP**: In private beta — endpoint not yet public. Orel (founder) granting access manually. Once live, add MCP URL here and wire into Claude Code workflow.
 - **Use case**: Schedule Substack Notes, analytics on what converts, activity center for engagement
 
