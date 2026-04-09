@@ -3,9 +3,9 @@ import { getResend } from '@/lib/email';
 
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '853ea354-ef8b-4781-86cd-1b1032ad247e';
 
-const GUIDE_1_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-01-idol-of-expectation.pdf';
-const GUIDE_2_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-02-the-subtle-takeover.pdf';
-const GUIDE_3_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-03-performing-for-the-pew.pdf';
+const GUIDE_1_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-01-idol-of-expectation-kXgGarpLSfSA6fIgawDCEQz8RVfwLm.pdf';
+const GUIDE_2_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-02-subtle-takeover-FTp4uX1F5GVL68jd7IlVuqXmBhQ5gi.pdf';
+const GUIDE_3_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/womens-guide-03-performing-for-pew-Pp5oBQZnHz7wGsI5y14ete6WgFguw1.pdf';
 
 export async function POST(req: NextRequest) {
   try {

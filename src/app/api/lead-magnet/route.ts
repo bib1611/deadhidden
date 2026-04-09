@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getResend } from '@/lib/email';
 
 const AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '853ea354-ef8b-4781-86cd-1b1032ad247e';
-const PDF_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/three-alibis-lead-magnet.pdf';
+const PDF_URL = 'https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/three-alibis-lead-magnet-DLwXc6A6Sdgg5bxDAmHc9NZS8BRCpe.pdf';
 
 export async function POST(req: NextRequest) {
   try {
