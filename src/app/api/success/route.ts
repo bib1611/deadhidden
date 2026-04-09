@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStripe } from '@/lib/stripe';
 import { products } from '@/data/products';
+import { MULTI_PART_PRODUCTS } from '@/lib/multi-part';
 
 export const runtime = 'nodejs';
 
@@ -106,9 +107,18 @@ export async function GET(request: NextRequest) {
 
     if (isVault) {
       // Vault buyers get everything except bundles and non-downloadable items
+      // Multi-part products are expanded into their individual parts
       files = products
         .filter((p) => !p.isFree && !BUNDLE_SLUGS.has(p.slug))
-        .map((p) => ({ name: p.name, slug: p.slug }));
+        .flatMap((p) => {
+          if (MULTI_PART_PRODUCTS[p.slug]) {
+            return MULTI_PART_PRODUCTS[p.slug].map((part) => ({
+              name: part.name,
+              slug: part.slug,
+            }));
+          }
+          return [{ name: p.name, slug: p.slug }];
+        });
     } else if (isVaultSampler) {
       files = products
         .filter((p) => VAULT_SAMPLER_SLUGS.has(p.slug))
@@ -121,6 +131,12 @@ export async function GET(request: NextRequest) {
       files = products
         .filter((p) => WOMANHOOD_BUNDLE_SLUGS.has(p.slug))
         .map((p) => ({ name: p.name, slug: p.slug }));
+    } else if (MULTI_PART_PRODUCTS[productSlug]) {
+      // Multi-part products (e.g. field manuals) expand into multiple PDFs
+      files = MULTI_PART_PRODUCTS[productSlug].map((part) => ({
+        name: part.name,
+        slug: part.slug,
+      }));
     } else {
       files = [{ name: product.name, slug: product.slug }];
     }
@@ -137,7 +153,7 @@ export async function GET(request: NextRequest) {
         slug: product.slug,
       },
       customerEmail: session.customer_email || session.customer_details?.email,
-      isVault: isVault || isVaultSampler || isEssentialArsenal || isWomanhoodBundle,
+      isVault: isVault || isVaultSampler || isEssentialArsenal || isWomanhoodBundle || !!MULTI_PART_PRODUCTS[productSlug],
       files: downloadFiles,
     });
   } catch (error) {

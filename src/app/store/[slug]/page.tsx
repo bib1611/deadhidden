@@ -464,6 +464,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         productSlug={product.slug}
         productName={product.name}
         priceLabel={product.priceLabel}
+        salePriceCents={product.salePriceCents}
         isFree={product.isFree}
         stripePaymentLink={product.stripePaymentLink}
         ctaText={product.ctaText}

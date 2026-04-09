@@ -250,7 +250,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "",
     ctaText: "GET THE FIELD MANUAL →",
-    comparisonLine: "One counseling session costs $150–$250 and leaves you with more questions. This is $97 and it starts naming the wound tonight.",
+    comparisonLine: "One counseling session costs $150–$250 and leaves you with more questions. This is $77 and it starts naming the wound tonight.",
     extendedContent: {
       whoIsThisFor: [
         "you have been faithful to God's design and the peace still hasn't come",
