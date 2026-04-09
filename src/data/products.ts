@@ -33,6 +33,8 @@ export type Product = {
   ctaText?: string;
   // Comparison line shown below the buy button (objection-handling one-liner)
   comparisonLine?: string;
+  // Cover image URL (optional — displayed on product detail page)
+  coverImage?: string;
   // Extended SEO content (optional — renders on product detail page for 500+ word pages)
   extendedContent?: {
     whoIsThisFor: string[];      // bullet points for "WHO THIS IS FOR" section
@@ -156,7 +158,8 @@ export const products: Product[] = [
   {
     slug: "biblical-man-field-manual",
     name: "BIBLICAL MAN FIELD MANUAL",
-    tagline: "You built an entire life so no one could question you. It worked. Now you're hollow and you can't name why.",
+    tagline: "For the man who has checked every box and still feels hollow.",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/biblical-man-manual-cover-aBhprRcKU6Jx99Pbf1Awf2n2AE2A0x.png",
     seoKeywords: [
       "biblical man field manual",
       "christian men's guide",
@@ -236,6 +239,7 @@ export const products: Product[] = [
     slug: "biblical-woman-field-manual",
     name: "BIBLICAL WOMAN FIELD MANUAL",
     tagline: "A field manual for the woman who has been faithful and is still bleeding.",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/biblical-woman-manual-cover-i9u4L2n7M7WCaGK3jNYLHDQY8k7J5h.png",
     seoKeywords: ["biblical womanhood guide", "complementarian christian woman", "christian woman field manual", "biblical womanhood pdf", "christian woman devotional guide", "proverbs 31 woman guide"],
     description: "13 chapters. 25,000 words. For the complementarian Christian woman who has done everything right and is still bleeding. This is not a devotional. It is a surgical instrument — for the woman who poured herself into home, marriage, and faith, and is still waiting for the peace she was promised. Christie names the wound. She does not flatter you. She does not fix your husband. She hands you the truth and what to do with it.",
     priceCents: 7700,

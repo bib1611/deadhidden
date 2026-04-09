@@ -48,6 +48,22 @@ export default function WhereToBeginPage() {
           <p className="text-lg text-muted leading-relaxed">
             If you&apos;ve been checking every box and still feel dead inside — you&apos;re in the right place.
           </p>
+
+          {/* Path Selector CTAs */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/store/biblical-man-field-manual"
+              className="flex-1 text-center px-8 py-5 bg-[#111] border-2 border-[#8b0000] text-white font-oswald text-lg md:text-xl tracking-wider font-bold hover:bg-[#8b0000] transition-colors"
+            >
+              I&apos;M A MAN →
+            </Link>
+            <Link
+              href="/for-women"
+              className="flex-1 text-center px-8 py-5 bg-[#111] border-2 border-[#8b0000] text-white font-oswald text-lg md:text-xl tracking-wider font-bold hover:bg-[#8b0000] transition-colors"
+            >
+              I&apos;M A WOMAN →
+            </Link>
+          </div>
         </div>
       </section>
 

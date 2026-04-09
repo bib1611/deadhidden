@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
 import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory, getProductBySlug } from '@/data/products';
 import { OrganizationJsonLd } from '@/components/JsonLd';
@@ -65,18 +64,6 @@ export default function Home() {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")' }} />
 
         <div className="container max-w-4xl mx-auto px-4 relative">
-          {/* Brand — prominent logo */}
-          <div className="mb-8 md:mb-12">
-            <Image
-              src="/images/logo.png"
-              alt="Dead Hidden Ministries"
-              width={160}
-              height={160}
-              className="w-24 h-24 md:w-36 md:h-36 opacity-95"
-              priority
-            />
-          </div>
-
           {/* Headline — largest text, answers "What is this?" */}
           <h1
             className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.95] text-[#e8e0d0] uppercase tracking-[0.04em] font-bold mb-5 max-w-3xl"
@@ -87,7 +74,7 @@ export default function Home() {
 
           {/* Supporting line — one sentence, answers "Why should I care?" */}
           <p className="text-lg md:text-xl text-[#a09888] max-w-xl mb-10 leading-relaxed">
-            50+ resources on Scripture, marriage, parenting, and spiritual warfare — built in the fire, not a seminary classroom.
+            For the man who has performed long enough. For the woman who has done everything right and is still bleeding. The truth they buried is here.
           </p>
 
           {/* CTA — one primary button, nothing competing */}
@@ -243,7 +230,7 @@ export default function Home() {
                       className="text-xs uppercase tracking-[0.15em] text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors font-bold"
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
-                      VIEW →
+                      GET THIS →
                     </span>
                   </div>
                 </Link>

@@ -6,6 +6,7 @@ import { BuyButton } from '@/components/BuyButton';
 import { ShareButtons } from '@/components/ShareButtons';
 import { ProductJsonLd } from '@/components/JsonLd';
 import VaultValueStack from '@/components/VaultValueStack';
+import Image from 'next/image';
 import { MobileProductCTA } from '@/components/MobileProductCTA';
 import { ProductFAQ } from '@/components/ProductFAQ';
 import { ProductViewTracker } from '@/components/ProductViewTracker';
@@ -141,6 +142,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="text-xs tracking-[0.12em] uppercase text-[#777] mb-6">
           {CATEGORIES[product.category].label}
         </div>
+
+        {/* Cover Image */}
+        {product.coverImage && (
+          <div className="mb-8 flex justify-center md:justify-start">
+            <Image
+              src={product.coverImage}
+              alt={`${product.name} cover`}
+              width={400}
+              height={520}
+              className="max-w-[300px] md:max-w-[400px] w-full h-auto shadow-lg border border-[#222]"
+            />
+          </div>
+        )}
 
         {/* Sale urgency banner */}
         {product.saleLabel && product.salePriceCents && (

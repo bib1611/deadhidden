@@ -22,14 +22,15 @@ function StoreContent() {
         {/* Header */}
         <div className="mb-16">
           <div className="text-xs tracking-[0.2em] uppercase text-[#8b0000] font-semibold mb-4">
-            RESTRICTED ACCESS
+            DEAD HIDDEN STORE
           </div>
           <h1
-            className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-12"
+            className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             THE ARCHIVE
           </h1>
+          <p className="text-sm text-[#888] mb-12">Instant download. No subscription required.</p>
 
           {/* Category Filter Tabs */}
           <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
@@ -121,7 +122,7 @@ function StoreContent() {
                   className="text-xs tracking-[0.15em] uppercase font-bold text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  {product.isFree ? 'DOWNLOAD →' : 'VIEW →'}
+                  {product.isFree ? 'DOWNLOAD →' : 'GET THIS →'}
                 </span>
               </div>
             </Link>
@@ -171,14 +172,15 @@ export default function StorePage() {
       <main className="min-h-screen bg-[#0a0a0a] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-xs tracking-[0.2em] uppercase text-[#8b0000] font-semibold mb-4">
-            RESTRICTED ACCESS
+            DEAD HIDDEN STORE
           </div>
           <h1
-            className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-12"
+            className="text-5xl md:text-7xl uppercase font-bold text-[#e8e0d0] mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             THE ARCHIVE
           </h1>
+          <p className="text-sm text-[#888] mb-12">Instant download. No subscription required.</p>
           <div className="text-sm text-[#888]">Loading documents...</div>
         </div>
       </main>
