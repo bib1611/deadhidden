@@ -109,6 +109,13 @@ function buildThreeAlibisEmail(pdfUrl: string): string {
             </td>
           </tr>
 
+          <!-- Resend downloads -->
+          <tr>
+            <td>
+              <p style="margin:16px 0 0;color:#888;font-size:13px;">Lost this email or need to re-download? Go to <a href="https://deadhidden.org/resend-downloads" style="color:#cc2200;">deadhidden.org/resend-downloads</a> — enter your email and your files will be resent instantly.</p>
+            </td>
+          </tr>
+
           <!-- Footer -->
           <tr>
             <td>
