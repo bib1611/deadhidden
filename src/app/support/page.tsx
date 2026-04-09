@@ -33,6 +33,33 @@ export default function SupportPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-[#e8e0d0]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-24 md:py-32">
+        {/* Download Recovery */}
+        <div className="border border-[#222] bg-[#111] p-8 mb-16">
+          <h2
+            className="text-xl uppercase font-bold mb-3"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            LOST YOUR DOWNLOADS?
+          </h2>
+          <p className="text-[#c0b8a8] text-base leading-relaxed mb-4">
+            Enter your email at{' '}
+            <a
+              href="/resend-downloads"
+              className="text-[#8b0000] underline hover:text-[#a00000] transition-colors"
+            >
+              deadhidden.org/resend-downloads
+            </a>{' '}
+            and we&apos;ll resend them instantly. No waiting. No support ticket.
+          </p>
+          <a
+            href="/resend-downloads"
+            className="inline-block bg-[#8b0000] text-[#e8e0d0] text-sm font-bold uppercase tracking-[2px] px-6 py-3 hover:bg-[#a00000] transition-colors"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            GET MY FILES &rarr;
+          </a>
+        </div>
+
         {/* Title */}
         <h1
           className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold mb-6"
