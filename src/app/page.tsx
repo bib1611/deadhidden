@@ -115,7 +115,7 @@ export default function Home() {
                 Adam &amp; Christie Johnson
               </p>
               <p className="mt-1 text-xs text-[#6b6560] max-w-[400px] mx-auto leading-relaxed">
-                Married 24 years. Five kids. He drove garbage trucks and conducted trains before he picked up the Book and never put it down.
+                Married 24 years. Five kids. Saved at 12, preaching since 15. Christie saved at 11, homeschool mother and helpmeet for two decades. He drove garbage trucks and conducted trains before he picked up the Book and never put it down.
               </p>
             </div>
           </div>
