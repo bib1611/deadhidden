@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers';
 import { getStripe } from '@/lib/stripe';
+import { getAllCalls, type VoiceCall } from '@/lib/voice-calls';
 import AdminLogin from './login';
 
 const ADMIN_PASSWORD = 'Blakedylan2025!?';
@@ -118,6 +119,19 @@ async function getWriteStackQueue() {
   }
 }
 
+async function getVoiceCalls() {
+  try {
+    const calls = await getAllCalls(10);
+    const now = new Date();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const callsToday = calls.filter((c) => new Date(c.timestamp) >= startOfDay).length;
+    return { calls, callsToday };
+  } catch (e) {
+    console.error('Voice calls fetch error:', e);
+    return { calls: [], callsToday: 0 };
+  }
+}
+
 export default async function AdminPage() {
   const cookieStore = await cookies();
   const authCookie = cookieStore.get(ADMIN_COOKIE);
@@ -126,10 +140,11 @@ export default async function AdminPage() {
     return <AdminLogin />;
   }
 
-  const [stripe, resend, writeStackQueue] = await Promise.all([
+  const [stripe, resend, writeStackQueue, voiceCalls] = await Promise.all([
     getStripeCharges(),
     getResendContacts(),
     getWriteStackQueue(),
+    getVoiceCalls(),
   ]);
 
   const now = new Date().toLocaleString('en-US', {
@@ -164,6 +179,7 @@ export default async function AdminPage() {
             <StatCard label="NEW SIGNUPS TODAY" value={resend.todaySignups} />
             <StatCard label="TOTAL EMAIL LIST" value={resend.total.toLocaleString()} />
             <StatCard label="REVENUE TODAY" value={`$${(stripe.revenueToday / 100).toFixed(2)}`} />
+            <StatCard label="CALLS TODAY" value={voiceCalls.callsToday} />
           </div>
 
           {/* RECENT SALES */}
@@ -191,6 +207,64 @@ export default async function AdminPage() {
                         <span style={{ color: c.status === 'succeeded' ? '#4ade80' : '#f87171', fontSize: 12, textTransform: 'uppercase' }}>
                           {c.status}
                         </span>
+                      </Td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {/* RECENT CALLS */}
+          <SectionTitle>RECENT CALLS</SectionTitle>
+          <div style={{ overflowX: 'auto', marginBottom: 48 }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid #333' }}>
+                  <Th>CALLER</Th>
+                  <Th>DATE</Th>
+                  <Th>DURATION</Th>
+                  <Th>STATUS</Th>
+                  <Th>SUMMARY</Th>
+                  <Th>PRODUCTS</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {voiceCalls.calls.length === 0 ? (
+                  <tr><td colSpan={6} style={{ padding: 16, color: '#666', textAlign: 'center' }}>No calls recorded</td></tr>
+                ) : (
+                  voiceCalls.calls.map((c: VoiceCall, i: number) => (
+                    <tr key={c.id || i} style={{ background: i % 2 === 0 ? '#111' : '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
+                      <Td>{c.caller}</Td>
+                      <Td>{new Date(c.timestamp).toLocaleString('en-US', { timeZone: 'America/Chicago' })}</Td>
+                      <Td>{`${Math.floor(c.duration / 60)}:${String(c.duration % 60).padStart(2, '0')}`}</Td>
+                      <Td>
+                        <span style={{
+                          color: c.status === 'successful' || c.status === 'done' ? '#4ade80' : '#f87171',
+                          fontSize: 12,
+                          textTransform: 'uppercase',
+                        }}>
+                          {c.status}
+                        </span>
+                      </Td>
+                      <Td>{c.summary.length > 100 ? c.summary.slice(0, 100) + '…' : c.summary || '—'}</Td>
+                      <Td>
+                        {c.products_mentioned.length > 0 ? (
+                          <span style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
+                            {c.products_mentioned.map((p) => (
+                              <span key={p} style={{
+                                background: '#1a1a1a',
+                                border: '1px solid #333',
+                                borderRadius: 3,
+                                padding: '2px 6px',
+                                fontSize: 11,
+                                color: '#8b0000',
+                              }}>
+                                {p}
+                              </span>
+                            ))}
+                          </span>
+                        ) : '—'}
                       </Td>
                     </tr>
                   ))
