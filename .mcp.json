@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "agent_handler": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@latest",
+        "https://agent-proxy.perplexity.ai/merge_mcp",
+        "--header",
+        "Authorization: Bearer ${AUTH_TOKEN}"
+      ],
+      "env": {
+        "AUTH_TOKEN": "agp_019d78a5-d171-77f3-b8d0-e8dbbadf7c1c"
+      }
+    }
+  }
+}

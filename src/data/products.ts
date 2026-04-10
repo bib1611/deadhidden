@@ -647,6 +647,7 @@ export const products: Product[] = [
   },
   {
     slug: "blood-and-bandwidth",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-blood-bandwidth.jpg",
     name: "BLOOD AND BANDWIDTH",
     tagline: "The digital age of Christian martyrdom.",
     seoKeywords: ["modern christian persecution", "christian censorship social media", "christians being silenced", "digital age persecution of christians", "christian deplatforming", "war on christianity"],
@@ -682,6 +683,7 @@ export const products: Product[] = [
   },
   {
     slug: "exposing-the-enemy",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-exposing-enemy.jpg",
     name: "EXPOSING THE ENEMY: SATAN'S 5 DEADLIEST LIES TO CHRISTIAN MEN",
     tagline: "Know your enemy or become his casualty.",
     seoKeywords: ["spiritual warfare guide for christians", "satans lies to christian men", "how to fight spiritual attacks", "spiritual warfare prayers and strategies", "overcoming spiritual deception bible", "christian spiritual warfare book"],
@@ -1043,6 +1045,7 @@ export const products: Product[] = [
   },
   {
     slug: "before-the-world-does",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-before-world-does.jpg",
     name: "BEFORE THE WORLD DOES",
     tagline: "The culture is already in your child's classroom, phone, and friend group. This is the resource for parents — mothers and fathers — who refuse to let someone else answer the questions that matter most.",
     seoKeywords: ["christian parenting guide protect children", "how to talk to kids about gender biblically", "protect children from secular culture", "biblical parenting book", "christian family guide against woke culture", "teaching kids about bodies bible"],
@@ -1623,6 +1626,7 @@ export const products: Product[] = [
   },
   {
     slug: "counterfeit-kingdom-starter-guide",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-counterfeit-kingdom.jpg",
     name: "The Counterfeit Kingdom Starter Guide",
     tagline: "The shortest, sharpest introduction to the Dead Hidden worldview.",
     description: "The entry point. Five lessons on the dispensational framework that drives everything on this site — rightly dividing the word of truth, recognizing counterfeit authority in religious language, reading prophecy without getting sloppy, and the remnant mindset that refuses to flatten the Bible into one comfortable reading. Includes scripture index and printable doctrine map.",
