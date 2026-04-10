@@ -58,7 +58,123 @@ export default function Home() {
       <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
 
-      {/* NEW RELEASES — three new guides banner */}
+      {/* SUBSTACK OFFERS — primary cold-traffic hook */}
+      <section className="bg-[#111] border-t-2 border-b-2 border-red-700 py-10 md:py-14">
+        <div className="container max-w-5xl mx-auto px-4 text-center">
+          <h2
+            className="text-3xl md:text-4xl lg:text-5xl text-white uppercase tracking-[0.06em] font-bold mb-3"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            START HERE
+          </h2>
+          <p className="text-[#a09888] text-base md:text-lg mb-10">
+            Three ways into Dead Hidden. Pick the door that fits.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Column 1: Free 30-day trial */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                FREE FOR 30 DAYS
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                Full paid Dead Hidden access. No charge for 30 days.
+              </p>
+              <a
+                href="https://followme419.substack.com/c04ebb6b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                START FREE TRIAL →
+              </a>
+            </div>
+
+            {/* Column 2: 25% off annual */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                25% OFF ANNUAL
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                Lock in a full year of Dead Hidden. $72 instead of $96.
+              </p>
+              <a
+                href="https://followme419.substack.com/5332d28e"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                GET 25% OFF →
+              </a>
+            </div>
+
+            {/* Column 3: 7-day trial */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                7-DAY TRIAL
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                Same access. Shorter window.
+              </p>
+              <a
+                href="https://followme419.substack.com/57776267"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                START 7-DAY TRIAL →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 1. HERO — clear visual hierarchy: brand → headline → support → CTA */}
+      <section className="relative overflow-hidden bg-[#0a0a0a] pt-12 pb-16 md:pt-20 md:pb-28 border-b border-[#222]">
+        {/* Subtle background grain */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")' }} />
+
+        <div className="container max-w-4xl mx-auto px-4 relative">
+          {/* Headline — largest text, answers "What is this?" */}
+          <h1
+            className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.95] text-[#e8e0d0] uppercase tracking-[0.04em] font-bold mb-5 max-w-3xl"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            BIBLICAL TRUTH<br className="hidden md:block" /> THEY TRIED TO BURY.
+          </h1>
+
+          {/* Supporting line — one sentence, answers "Why should I care?" */}
+          <p className="text-lg md:text-xl text-[#a09888] max-w-xl mb-10 leading-relaxed">
+            For the man who has performed long enough. For the woman who has done everything right and is still bleeding. The truth they buried is here.
+          </p>
+
+          {/* CTA — one primary button, nothing competing */}
+          <Link
+            href="/where-to-begin"
+            className="inline-block btn-press bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all text-sm md:text-base"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            WHERE TO BEGIN
+          </Link>
+        </div>
+      </section>
+
+      {/* FROM THE FIELD — latest Substack posts */}
+      <SubstackFeed />
+
+      {/* NEW FROM DEAD HIDDEN — three new guides */}
       <section className="bg-[#111] border-t-2 border-b-2 border-red-700 py-10 md:py-14">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <h2
@@ -135,36 +251,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 1. HERO — clear visual hierarchy: brand → headline → support → CTA */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] pt-12 pb-16 md:pt-20 md:pb-28 border-b border-[#222]">
-        {/* Subtle background grain */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")' }} />
-
-        <div className="container max-w-4xl mx-auto px-4 relative">
-          {/* Headline — largest text, answers "What is this?" */}
-          <h1
-            className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] leading-[0.95] text-[#e8e0d0] uppercase tracking-[0.04em] font-bold mb-5 max-w-3xl"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            BIBLICAL TRUTH<br className="hidden md:block" /> THEY TRIED TO BURY.
-          </h1>
-
-          {/* Supporting line — one sentence, answers "Why should I care?" */}
-          <p className="text-lg md:text-xl text-[#a09888] max-w-xl mb-10 leading-relaxed">
-            For the man who has performed long enough. For the woman who has done everything right and is still bleeding. The truth they buried is here.
-          </p>
-
-          {/* CTA — one primary button, nothing competing */}
-          <Link
-            href="/where-to-begin"
-            className="inline-block btn-press bg-[#8b0000] text-[#e8e0d0] px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all text-sm md:text-base"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            WHERE TO BEGIN
-          </Link>
-        </div>
-      </section>
-
       {/* THE COMPLETE HOUSEHOLD — bundle feature */}
       {(() => {
         const bundle = getProductBySlug('household-order-bundle');
@@ -222,10 +308,7 @@ export default function Home() {
         );
       })()}
 
-      {/* FROM THE FIELD — latest Substack posts */}
-      <SubstackFeed />
-
-      {/* 2. FEATURED PRODUCTS — immediately after hero, first thing mobile users see */}
+      {/* FEATURED PRODUCTS */}
       <section className="py-12 md:py-20">
         <div className="container max-w-6xl mx-auto px-4">
           <div className="mb-10">
