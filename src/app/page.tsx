@@ -126,7 +126,7 @@ export default function Home() {
       <section className="py-6 border-t border-[#e8e3dc] border-b border-b-[#e8e3dc]">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <p className="text-sm text-[#6b6560] tracking-wide">
-            Trusted by 25,000+ subscribers across two publications.
+            Trusted by 131,000+ across X and three Substack publications.
           </p>
         </div>
       </section>
