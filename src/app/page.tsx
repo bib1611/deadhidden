@@ -58,86 +58,80 @@ export default function Home() {
       <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
 
-      {/* MEGA MONEY DAY — three offers, one banner */}
+      {/* NEW RELEASES — three new guides banner */}
       <section className="bg-[#111] border-t-2 border-b-2 border-red-700 py-10 md:py-14">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <h2
             className="text-3xl md:text-4xl lg:text-5xl text-white uppercase tracking-[0.06em] font-bold mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            THIS WEEK ONLY
+            NEW FROM DEAD HIDDEN
           </h2>
           <p className="text-[#a09888] text-base md:text-lg mb-10">
-            Three ways in. Pick the door that fits.
+            Three new guides. Built verse by verse from the King James Bible.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {/* Column 1: Free Trial */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Column 1: Map of the Dead */}
             <div className="flex flex-col items-center">
               <p
                 className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                FREE FOR 30 DAYS
+                THE MAP OF THE DEAD — $17
               </p>
               <p className="text-sm text-[#a09888] mb-4">
-                Full paid Dead Hidden access. No charge for 30 days.
-              </p>
-              <a
-                href="https://followme419.substack.com/c04ebb6b"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                START FREE TRIAL →
-              </a>
-            </div>
-
-            {/* Column 2: 25% Off Annual */}
-            <div className="flex flex-col items-center">
-              <p
-                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                25% OFF ANNUAL
-              </p>
-              <p className="text-sm text-[#a09888] mb-4">
-                Lock in a full year of Dead Hidden. $72 instead of $96.
-              </p>
-              <a
-                href="https://followme419.substack.com/5332d28e"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                GET 25% OFF →
-              </a>
-            </div>
-
-            {/* Column 3: Bundle */}
-            <div className="flex flex-col items-center">
-              <p
-                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                BOTH MANUALS — $127
-              </p>
-              <p className="text-sm text-[#a09888] mb-4">
-                His + Hers field manuals. Study guide included. Save $27.
+                54 pages. 21 diagrams. The complete geography of death, paradise, hell, and final judgment.
               </p>
               <Link
-                href="/store/household-order-bundle"
+                href="/store/map-of-the-dead"
                 className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                GET THE BUNDLE →
+                GET THE MAP →
+              </Link>
+            </div>
+
+            {/* Column 2: Battle Notes */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                CHRISTIAN SOLDIER&apos;S BATTLE NOTES — $17
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                362 pages. 28 chapters. Doctrinal ammunition for every battle a Bible believer faces.
+              </p>
+              <Link
+                href="/store/christian-soldiers-battle-notes"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                GET THE BATTLE NOTES →
+              </Link>
+            </div>
+
+            {/* Column 3: Counterfeit Kingdom Starter Guide */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                COUNTERFEIT KINGDOM STARTER GUIDE — $17
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                5 lessons on the dispensational framework most churches never taught you.
+              </p>
+              <Link
+                href="/store/counterfeit-kingdom-starter-guide"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                START HERE →
               </Link>
             </div>
           </div>
-
-          <p className="text-xs text-[#555]">Offers expire April 17th.</p>
         </div>
       </section>
 
@@ -171,72 +165,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* LAUNCH SPECIAL — dual field manual feature banner */}
+      {/* THE COMPLETE HOUSEHOLD — bundle feature */}
       {(() => {
-        const manManual = getProductBySlug('biblical-man-field-manual');
-        const womanManual = getProductBySlug('biblical-woman-field-manual');
-        if (!manManual || !womanManual) return null;
-        const manuals = [manManual, womanManual];
+        const bundle = getProductBySlug('household-order-bundle');
+        if (!bundle) return null;
         return (
           <section className="py-12 md:py-20 bg-black border-b-2 border-[#8b0000]">
-            <div className="container max-w-5xl mx-auto px-4">
+            <div className="container max-w-3xl mx-auto px-4">
               <div className="text-center mb-10">
-                <p
-                  className="text-xs tracking-[0.3em] text-[#8b0000] uppercase font-bold mb-3"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  LIMITED TIME
-                </p>
                 <h2
                   className="text-3xl md:text-5xl text-[#e8e0d0] uppercase tracking-[0.06em] font-bold mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  LAUNCH SPECIAL
+                  THE COMPLETE HOUSEHOLD
                 </h2>
                 <p className="text-[#a09888] text-base md:text-lg">
-                  Both field manuals. One for him. One for her.
+                  Both field manuals. His + hers. 26 chapters. 6 bonus documents.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {manuals.map((product) => (
-                  <Link
-                    key={product.slug}
-                    href={`/store/${product.slug}`}
-                    className="border border-[#222] bg-[#0a0a0a] p-6 flex flex-col h-full hover:border-[#8b0000] transition-colors group relative"
-                    style={{ borderTop: '3px solid #8b0000' }}
-                  >
-                    <div
-                      className="absolute top-4 right-4 bg-[#8b0000] text-[#e8e0d0] text-xs px-2 py-1 uppercase font-bold tracking-[0.08em]"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      LAUNCH SPECIAL
-                    </div>
+              <Link
+                href="/store/household-order-bundle"
+                className="block border border-[#222] bg-[#0a0a0a] p-8 hover:border-[#8b0000] transition-colors group relative text-center"
+                style={{ borderTop: '3px solid #8b0000' }}
+              >
+                <div
+                  className="absolute top-4 right-4 bg-[#8b0000] text-[#e8e0d0] text-xs px-3 py-1 uppercase font-bold tracking-[0.08em]"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  SAVE $27
+                </div>
 
-                    <h3
-                      className="text-lg md:text-xl text-[#e8e0d0] uppercase tracking-[0.08em] font-bold mb-2 pr-28 group-hover:text-[#8b0000] transition-colors"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      {product.name}
-                    </h3>
+                <h3
+                  className="text-xl md:text-2xl text-[#e8e0d0] uppercase tracking-[0.08em] font-bold mb-3 group-hover:text-[#8b0000] transition-colors"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {bundle.name}
+                </h3>
 
-                    <p className="text-xs text-[#888] mb-4">{product.tagline}</p>
+                <p className="text-sm text-[#888] mb-6 max-w-lg mx-auto">{bundle.tagline}</p>
 
-                    <div className="mt-auto pt-4 border-t border-[#222] flex items-center justify-between">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-sm text-[#777] line-through">$97</span>
-                        <span className="text-2xl font-bold text-[#e8e0d0]">$77</span>
-                      </div>
-                      <span
-                        className="text-xs uppercase tracking-[0.15em] text-[#8b0000] group-hover:text-[#e8e0d0] transition-colors font-bold"
-                        style={{ fontFamily: 'var(--font-heading)' }}
-                      >
-                        GET IT NOW →
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <span className="text-sm text-[#777] line-through">$154</span>
+                  <span className="text-3xl font-bold text-[#e8e0d0]">$127</span>
+                </div>
+
+                <span
+                  className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  GET THE BUNDLE →
+                </span>
+              </Link>
             </div>
           </section>
         );
@@ -253,13 +233,18 @@ export default function Home() {
               className="text-2xl md:text-3xl text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              THE 4 RESOURCES THAT CHANGE EVERYTHING
+              FEATURED
             </h2>
-            <p className="text-[#888] text-sm mt-2">Most purchased. Most highlighted. Most dog-eared.</p>
+            <p className="text-[#888] text-sm mt-2">The resources people keep coming back for.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {featuredProducts.slice(0, 4).map((product) => {
+            {([
+              getProductBySlug('christian-soldiers-battle-notes'),
+              getProductBySlug('map-of-the-dead'),
+              getProductBySlug('biblical-man-field-manual'),
+              getProductBySlug('biblical-woman-field-manual'),
+            ].filter((p): p is NonNullable<typeof p> => Boolean(p))).map((product) => {
               const isVault = product.slug === 'the-vault';
 
               return (
