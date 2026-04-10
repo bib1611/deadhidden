@@ -356,6 +356,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </p>
           )}
 
+          {/* Support phone number */}
+          <p className="text-sm text-[#888] mt-4">
+            Questions? Call{' '}
+            <a href="tel:+17014144725" className="text-[#e8e0d0] font-bold">
+              (701) 414-4725
+            </a>
+          </p>
+
           {/* Comparison line — objection-handling one-liner */}
           {product.comparisonLine && (
             <div className="mt-6 p-4 border-l-2 border-[#8b0000] bg-[#111]">

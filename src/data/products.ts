@@ -73,6 +73,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "huyrp",
     ctaText: "CLAIM THE FULL ARSENAL →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-the-vault.jpg",
     comparisonLine: "Most couples spend $365 on a single weekend retreat and come home with a notebook full of notes they never open again. The Vault is still working five years from now.",
     extendedContent: {
       whoIsThisFor: [
@@ -128,6 +129,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "",
     ctaText: "DEPLOY THE ESSENTIAL 10 →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-essential-arsenal.jpg",
     comparisonLine: "One counseling session runs $150–$250 and often sends you home with more questions. The Essential Arsenal gives you 10 proven tools and a framework to use them — for $97.",
     extendedContent: {
       whoIsThisFor: [
@@ -300,6 +302,7 @@ export const products: Product[] = [
     purchaseType: "stripe" as const,
     legacyGumroadSlug: "",
     ctaText: "GET THE MAP →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/map-of-dead-promo.jpg",
     comparisonLine: "Most Bible study guides give you 10 pages of text and call it deep. This is 54 pages with 21 diagrams that map the entire geography of death from Genesis to Revelation.",
     extendedContent: {
       whoIsThisFor: [
@@ -348,6 +351,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "jkfak",
     ctaText: "GET THE FIELD MANUAL →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-kings-marriage.jpg",
     comparisonLine: "Marriage counseling at $200/session will average 12 sessions before you see a shift — if the counselor even believes what the Bible says about marriage. This is $47 and it starts tonight.",
     extendedContent: {
       whoIsThisFor: [
@@ -388,6 +392,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "xpect",
     ctaText: "TAKE THE MANUAL →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-headship-manual.jpg",
     comparisonLine: "Modern Christianity tells men to be \"servant leaders\" — which usually means letting everyone else decide. This is $37 for the doctrine that tells you what you were actually designed for.",
     extendedContent: {
       whoIsThisFor: [
@@ -520,6 +525,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "ellmoq",
     ctaText: "START STUDYING FOR $7 →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-how-to-study-bible.jpg",
     comparisonLine: "A 12-week Bible study group will cost you $40–$60 and leave you dependent on a study guide written by someone else. This is $7 and it teaches you to dig the gold yourself.",
     extendedContent: {
       whoIsThisFor: [
@@ -1612,6 +1618,7 @@ export const products: Product[] = [
     purchaseType: "stripe",
     legacyGumroadSlug: "",
     ctaText: "GET THE BUNDLE →",
+    coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-household-bundle.jpg",
     comparisonLine: "Both manuals separately: $154. Bundle: $127.",
   },
   {

@@ -60,6 +60,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: product.name,
               description: product.tagline,
+              ...(product.coverImage && { images: [product.coverImage] }),
             },
             unit_amount: product.priceCents,
             recurring: mode === 'subscription'

@@ -3,6 +3,7 @@
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { products, CATEGORIES, getProductsByCategory, type Category } from '@/data/products';
 import { useScrollDepth } from '@/hooks/useScrollDepth';
 
@@ -75,8 +76,21 @@ function StoreContent() {
             <Link
               key={product.slug}
               href={`/store/${product.slug}`}
-              className="border border-[#222] bg-[#111] p-6 flex flex-col h-full hover:border-[#8b0000] transition-colors group"
+              className="border border-[#222] bg-[#111] flex flex-col h-full hover:border-[#8b0000] transition-colors group overflow-hidden"
             >
+              {/* Cover Image */}
+              {product.coverImage && (
+                <div className="relative w-full h-[200px] border-b border-[#222]">
+                  <Image
+                    src={product.coverImage}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
+              )}
+              <div className="p-6 flex flex-col flex-grow">
               {/* Top row: Category + Badge */}
               <div className="flex items-center justify-between mb-3">
                 <div className="text-xs tracking-[0.12em] uppercase text-[#777]">
@@ -132,6 +146,7 @@ function StoreContent() {
                 >
                   {product.isFree ? 'DOWNLOAD →' : 'GET THIS →'}
                 </span>
+              </div>
               </div>
             </Link>
           ))}

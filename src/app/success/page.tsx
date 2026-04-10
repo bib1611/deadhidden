@@ -168,8 +168,15 @@ export default function SuccessPage() {
             <p className="text-sm text-[#777] mt-6 mb-2">
               A copy has also been sent to your email.
             </p>
-            <p className="text-xs text-[#666] mb-12">
+            <p className="text-xs text-[#666] mb-8">
               Download now — this link expires in 7 days. Contact us if you need a fresh link.
+            </p>
+            <p className="text-sm text-[#888] mb-12">
+              Need help with your download? Call{' '}
+              <a href="tel:+17014144725" className="text-[#e8e0d0] font-bold">
+                (701) 414-4725
+              </a>{' '}
+              <span className="text-[#666]">(voice only)</span>
             </p>
 
             <div className="mt-4">
