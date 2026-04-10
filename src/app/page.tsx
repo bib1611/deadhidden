@@ -101,8 +101,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: photo */}
-            <div className="flex-shrink-0">
+            {/* Right: photo + intro */}
+            <div className="flex-shrink-0 text-center">
               <Image
                 src="/images/adam-christie.jpg"
                 alt="Adam and Christie Johnson"
@@ -111,6 +111,12 @@ export default function Home() {
                 className="rounded-lg w-[280px] md:w-[400px] lg:w-[460px] h-auto"
                 priority
               />
+              <p className="mt-4 text-sm font-bold text-[#1a1a1a]">
+                Adam &amp; Christie Johnson
+              </p>
+              <p className="mt-1 text-xs text-[#6b6560] max-w-[400px] mx-auto leading-relaxed">
+                Married 24 years. Five kids. He drove garbage trucks and conducted trains before he picked up the Book and never put it down.
+              </p>
             </div>
           </div>
         </div>
