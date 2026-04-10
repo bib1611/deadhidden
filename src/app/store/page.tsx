@@ -61,6 +61,14 @@ function StoreContent() {
           </div>
         </div>
 
+        {/* Starter Guide Callout */}
+        <p className="text-sm text-[#888] mb-8">
+          Not sure where to start?{' '}
+          <Link href="/store/counterfeit-kingdom-starter-guide" className="text-[#8b0000] hover:text-[#e8e0d0] transition-colors font-bold">
+            The Counterfeit Kingdom Starter Guide is $17. →
+          </Link>
+        </p>
+
         {/* Product Grid — every card is fully clickable */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {displayedProducts.map((product) => (

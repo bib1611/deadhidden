@@ -58,6 +58,89 @@ export default function Home() {
       <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
 
+      {/* MEGA MONEY DAY — three offers, one banner */}
+      <section className="bg-[#111] border-t-2 border-b-2 border-red-700 py-10 md:py-14">
+        <div className="container max-w-5xl mx-auto px-4 text-center">
+          <h2
+            className="text-3xl md:text-4xl lg:text-5xl text-white uppercase tracking-[0.06em] font-bold mb-3"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            THIS WEEK ONLY
+          </h2>
+          <p className="text-[#a09888] text-base md:text-lg mb-10">
+            Three ways in. Pick the door that fits.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Column 1: Free Trial */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                FREE FOR 30 DAYS
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                Full paid Dead Hidden access. No charge for 30 days.
+              </p>
+              <a
+                href="https://followme419.substack.com/c04ebb6b"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                START FREE TRIAL →
+              </a>
+            </div>
+
+            {/* Column 2: 25% Off Annual */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                25% OFF ANNUAL
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                Lock in a full year of Dead Hidden. $72 instead of $96.
+              </p>
+              <a
+                href="https://followme419.substack.com/5332d28e"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                GET 25% OFF →
+              </a>
+            </div>
+
+            {/* Column 3: Bundle */}
+            <div className="flex flex-col items-center">
+              <p
+                className="text-sm tracking-[0.2em] text-[#8b0000] uppercase font-bold mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                BOTH MANUALS — $127
+              </p>
+              <p className="text-sm text-[#a09888] mb-4">
+                His + Hers field manuals. Study guide included. Save $27.
+              </p>
+              <Link
+                href="/store/household-order-bundle"
+                className="inline-block bg-[#8b0000] text-white px-8 py-3 uppercase tracking-[0.12em] font-bold text-sm hover:bg-[#a50000] transition-colors"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                GET THE BUNDLE →
+              </Link>
+            </div>
+          </div>
+
+          <p className="text-xs text-[#555]">Offers expire April 17th.</p>
+        </div>
+      </section>
+
       {/* 1. HERO — clear visual hierarchy: brand → headline → support → CTA */}
       <section className="relative overflow-hidden bg-[#0a0a0a] pt-12 pb-16 md:pt-20 md:pb-28 border-b border-[#222]">
         {/* Subtle background grain */}

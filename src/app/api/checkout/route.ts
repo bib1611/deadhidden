@@ -9,6 +9,8 @@ const STRIPE_PRICE_MAP: Record<string, string> = {
   'biblical-man-field-manual': 'price_1TKPZaLN6IypHVMVm3pWCndL',
   'biblical-woman-field-manual': 'price_1TKPZaLN6IypHVMVB1OD6r1G',
   'the-essential-arsenal': 'price_1TKPZaLN6IypHVMVNgBjEJol',
+  'household-order-bundle': 'price_1TKiEtLN6IypHVMVNM9edHgZ',
+  'counterfeit-kingdom-starter-guide': 'price_1TKiEtLN6IypHVMVEBq4xsPp',
 };
 
 type CheckoutRequestBody = {
