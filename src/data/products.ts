@@ -1599,8 +1599,8 @@ export const products: Product[] = [
   {
     slug: "household-order-bundle",
     name: "The Household Order Bundle",
-    tagline: "Both field manuals. One marriage. Everything you need.",
-    description: "The Biblical Man Field Manual + The Biblical Woman Field Manual + the Household Order Study Guide (4-week couples reading plan with diagnostic worksheet) + a private teaching recording. For the marriage that needs both sides of the equation.",
+    tagline: "Both field manuals. One price. The complete household framework.",
+    description: "The Biblical Man Field Manual + The Biblical Woman Field Manual. 26 chapters. 6 bonus documents. The masculine wound diagnosis and the feminine wound diagnosis side by side. For the household that is ready to stop performing and start rebuilding.",
     priceCents: 12700,
     priceLabel: "$127",
     originalPriceCents: 15400,
@@ -1617,8 +1617,8 @@ export const products: Product[] = [
   {
     slug: "counterfeit-kingdom-starter-guide",
     name: "The Counterfeit Kingdom Starter Guide",
-    tagline: "If you are not ready for the larger products, start here.",
-    description: "35-page PDF guide. 5 lessons on recognizing counterfeit authority in religious language, reading prophecy without getting sloppy, and the remnant mindset. Includes scripture index, printable doctrine map, and audio walkthrough from Adam.",
+    tagline: "The shortest, sharpest introduction to the Dead Hidden worldview.",
+    description: "The entry point. Five lessons on the dispensational framework that drives everything on this site — rightly dividing the word of truth, recognizing counterfeit authority in religious language, reading prophecy without getting sloppy, and the remnant mindset that refuses to flatten the Bible into one comfortable reading. Includes scripture index and printable doctrine map.",
     priceCents: 1700,
     priceLabel: "$17",
     category: "bible-study",
