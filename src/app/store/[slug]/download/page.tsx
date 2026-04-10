@@ -62,10 +62,11 @@ export default async function DownloadPage({ params }: DownloadPageProps) {
               File is being prepared. Please try again in a moment.
             </p>
             <p className="text-sm text-[#777]">
-              If the problem persists, call or text us at{' '}
-              <a href="tel:+17014262175" className="text-[#8b0000] underline">
-                (701) 426-2175
+              If the problem persists, call us at{' '}
+              <a href="tel:+17014144725" className="text-[#8b0000] underline">
+                (701) 414-4725
               </a>{' '}
+              <span className="text-[#666]">(voice only, no text)</span>{' '}
               or email{' '}
               <a href="mailto:thebiblicalman1611@gmail.com" className="text-[#8b0000] underline">
                 thebiblicalman1611@gmail.com

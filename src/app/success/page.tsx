@@ -81,10 +81,10 @@ export default function SuccessPage() {
             <p className="text-[#888] text-lg mb-8">{error}</p>
             <p className="text-[#888] text-sm mb-12">
               Having trouble? Contact us at{' '}
-              <a href="tel:7014262175" className="text-[#8b0000] underline">
-                (701) 426-2175
+              <a href="tel:+17014144725" className="text-[#8b0000] underline">
+                (701) 414-4725
               </a>{' '}
-              or{' '}
+              (voice only, no text) or{' '}
               <a href="mailto:thebiblicalman1611@gmail.com" className="text-[#8b0000] underline">
                 thebiblicalman1611@gmail.com
               </a>{' '}
@@ -266,9 +266,10 @@ export default function SuccessPage() {
             <div className="text-center mt-8">
               <p className="text-xs text-[#666] mb-8">
                 Having trouble? Call{' '}
-                <a href="tel:7014262175" className="text-[#8b0000] underline">
-                  (701) 426-2175
+                <a href="tel:+17014144725" className="text-[#8b0000] underline">
+                  (701) 414-4725
                 </a>{' '}
+                <span className="text-[#666]">(voice only)</span>{' '}
                 or email{' '}
                 <a href="mailto:thebiblicalman1611@gmail.com" className="text-[#8b0000] underline">
                   thebiblicalman1611@gmail.com

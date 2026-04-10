@@ -192,9 +192,10 @@ export function CheckoutRecovery() {
 
           <p className="text-xs text-[#555] mt-4">
             Having trouble?{' '}
-            <a href="tel:7014262175" className="text-[#8b0000] hover:text-[#a50000] transition-colors">
-              (701) 426-2175
-            </a>
+            <a href="tel:+17014144725" className="text-[#8b0000] hover:text-[#a50000] transition-colors">
+              (701) 414-4725
+            </a>{' '}
+            <span className="text-[#666]">(voice only)</span>
           </p>
         </div>
       </div>

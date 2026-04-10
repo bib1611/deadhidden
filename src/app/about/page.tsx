@@ -207,15 +207,16 @@ export default function AboutPage() {
             QUESTIONS OR INQUIRIES
           </p>
           <p className="text-[#888] text-sm mb-2">
-            Call or text us directly.
+            Call us directly.
           </p>
           <a
-            href="tel:+17014262175"
+            href="tel:+17014144725"
             className="text-xl md:text-2xl text-[#e8e0d0] font-bold hover:text-[#8b0000] transition-colors"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            (701) 426-2175
+            (701) 414-4725
           </a>
+          <p className="text-[#666] text-xs mt-1">Voice only. No text.</p>
         </div>
       </div>
 

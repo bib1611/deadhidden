@@ -140,15 +140,16 @@ export default function SupportPage() {
             QUESTIONS? CALL US.
           </h2>
           <p className="text-[#888] text-sm mb-4">
-            If you have questions about a purchase, need help with a download, or just want to talk — call or text.
+            If you have questions about a purchase, need help with a download, or just want to talk — call us.
           </p>
           <a
-            href="tel:+17014262175"
+            href="tel:+17014144725"
             className="text-2xl text-[#e8e0d0] font-bold hover:text-[#8b0000] transition-colors"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            (701) 426-2175
+            (701) 414-4725
           </a>
+          <p className="text-[#666] text-xs mt-2">Voice only. No text.</p>
         </div>
 
         {/* The Verse */}
