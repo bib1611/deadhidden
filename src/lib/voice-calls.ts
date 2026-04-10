@@ -1,5 +1,3 @@
-import { readFile, writeFile } from 'fs/promises';
-
 const CALLS_FILE = '/tmp/voice-calls.json';
 
 const AGENT_ID = 'agent_1501knw0hm63fecrvxeh8e7jh66z';
@@ -37,6 +35,7 @@ export function scanForProducts(transcript: { role: string; message: string }[])
 
 export async function getStoredCalls(): Promise<VoiceCall[]> {
   try {
+    const { readFile } = await import('fs/promises');
     const raw = await readFile(CALLS_FILE, 'utf-8');
     return JSON.parse(raw);
   } catch {
@@ -45,7 +44,14 @@ export async function getStoredCalls(): Promise<VoiceCall[]> {
 }
 
 export async function appendCall(call: VoiceCall): Promise<void> {
-  const calls = await getStoredCalls();
+  const { readFile, writeFile } = await import('fs/promises');
+  const calls: VoiceCall[] = [];
+  try {
+    const raw = await readFile(CALLS_FILE, 'utf-8');
+    calls.push(...JSON.parse(raw));
+  } catch {
+    // File doesn't exist yet
+  }
   calls.push(call);
   await writeFile(CALLS_FILE, JSON.stringify(calls, null, 2));
 }
