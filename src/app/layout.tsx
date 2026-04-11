@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: '%s | Dead Hidden Ministries',
   },
   description:
-    'A Bible study ministry and friend to churches. Bible study guides, biblical masculinity, biblical womanhood, marriage, spiritual warfare, and parenting resources. 50+ guides by Adam & Christie Johnson.',
+    'Dead Hidden offers 50+ KJV-only Bible study resources for marriage, parenting, biblical masculinity, and spiritual warfare. Start 30 days free.',
   keywords: [
     'KJV bible study',
     'biblical masculinity',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'A Bible study ministry and friend to churches. 50+ guides on marriage, parenting, spiritual warfare, and Scripture by Adam & Christie Johnson.',
+      'Dead Hidden offers 50+ KJV-only Bible study resources for marriage, parenting, biblical masculinity, and spiritual warfare. Start 30 days free.',
     url: 'https://deadhidden.org',
     siteName: 'Dead Hidden Ministries',
     type: 'website',
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     creator: '@SlayStupidity',
     title: 'Dead Hidden Ministries — Bible Study, Biblical Truth & Spiritual Warfare',
     description:
-      'A Bible study ministry and friend to churches. 50+ resources by Adam & Christie Johnson.',
+      'Dead Hidden offers 50+ KJV-only Bible study resources for marriage, parenting, biblical masculinity, and spiritual warfare. Start 30 days free.',
   },
   robots: {
     index: true,
