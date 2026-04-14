@@ -131,6 +131,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* WARS AND RUMORS PREVIEW BANNER */}
+      <section className="py-10 md:py-14 border-t border-[#e8e3dc] bg-[#0a0a0a]">
+        <div className="container max-w-5xl mx-auto px-4 text-center">
+          <div
+            className="text-[10px] tracking-[0.2em] uppercase text-[#8b0000] font-medium mb-3"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            Free Chapter Preview
+          </div>
+          <h2
+            className="text-3xl md:text-4xl uppercase font-bold text-[#e8e0d0] mb-3"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            Wars and Rumors of Wars
+          </h2>
+          <p className="text-[#c0b8a8] mb-6 max-w-lg mx-auto">
+            Daniel 10. Territorial spirits. The invisible hierarchy behind every nation.
+            Chapter 5 is free.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/wars-and-rumors-preview"
+              className="btn-press bg-[#8b0000] text-[#e8e0d0] text-xs tracking-[0.1em] uppercase font-bold px-8 py-3 hover:bg-[#a50000] transition-all"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Download Free Chapter →
+            </Link>
+            <Link
+              href="/wars-and-rumors-preview"
+              className="text-xs tracking-[0.1em] uppercase text-[#888] hover:text-[#e8e0d0] transition-colors"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Learn More
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 3. FROM THE FIELD — latest Substack posts (light mode overrides) */}
       <div className="homepage-light-feed [&_section]:border-t-0 [&_section]:border-[#e8e3dc] [&_h2]:text-[#1a1a1a] [&_p.text-\\[\\#888\\]]:text-[#6b6560] [&_a.block]:bg-white [&_a.block]:border-[#e8e3dc] [&_a.block]:border-l-2 [&_a.block]:border-l-[#8b0000] [&_a.block:hover]:border-[#d0cbc4] [&_h3]:text-[#1a1a1a] [&_p.text-\\[\\#777\\]]:text-[#6b6560] [&_p.text-\\[\\#555\\]]:text-[#9a9590]">
         <SubstackFeed />
