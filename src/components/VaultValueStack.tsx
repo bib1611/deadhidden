@@ -7,7 +7,7 @@ export default function VaultValueStack() {
     'essential-arsenal',
     'thanksgiving-marriage-vault',
     'the-table',
-    'penguin',
+    'wars-and-rumors-of-wars',
     'warrior-bundle',
   ]);
 

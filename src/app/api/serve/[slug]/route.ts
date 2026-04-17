@@ -8,6 +8,9 @@ export const runtime = 'nodejs';
 
 // Download links expire after 7 days — prevents permanent link sharing
 const MAX_SESSION_AGE_DAYS = 7;
+const STATIC_PRODUCT_FILES: Record<string, string> = {
+  'wars-and-rumors-of-wars': '/product-files/wars-and-rumors-of-wars.pdf',
+};
 
 /**
  * Serve a PDF file after verifying Stripe session.
@@ -103,7 +106,11 @@ export async function GET(
     }
 
     // Look up the actual blob URL (handles hash suffixes)
-    const fileUrl = await getBlobUrl(slug);
+    let fileUrl = await getBlobUrl(slug);
+
+    if (!fileUrl && STATIC_PRODUCT_FILES[slug]) {
+      fileUrl = new URL(STATIC_PRODUCT_FILES[slug], request.nextUrl.origin).toString();
+    }
 
     if (!fileUrl) {
       return new NextResponse(

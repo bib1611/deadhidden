@@ -131,14 +131,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WARS AND RUMORS PREVIEW BANNER */}
+      {/* WARS AND RUMORS LAUNCH BANNER */}
       <section className="py-10 md:py-14 border-t border-[#e8e3dc] bg-[#0a0a0a]">
         <div className="container max-w-5xl mx-auto px-4 text-center">
           <div
             className="text-[10px] tracking-[0.2em] uppercase text-[#8b0000] font-medium mb-3"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Free Chapter Preview
+            Now Live
           </div>
           <h2
             className="text-3xl md:text-4xl uppercase font-bold text-[#e8e0d0] mb-3"
@@ -147,23 +147,23 @@ export default function Home() {
             Wars and Rumors of Wars
           </h2>
           <p className="text-[#c0b8a8] mb-6 max-w-lg mx-auto">
-            Daniel 10. Territorial spirits. The invisible hierarchy behind every nation.
-            Chapter 5 is free.
+            A comprehensive Bible study on Revelation and Daniel&apos;s 70th Week.
+            Twelve chapters. Ninety-three pages. Built from the text up.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/wars-and-rumors-preview"
+              href="/wars-and-rumors-of-wars"
               className="btn-press bg-[#8b0000] text-[#e8e0d0] text-xs tracking-[0.1em] uppercase font-bold px-8 py-3 hover:bg-[#a50000] transition-all"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Download Free Chapter →
+              Read the Launch Page →
             </Link>
             <Link
-              href="/wars-and-rumors-preview"
+              href="/store/wars-and-rumors-of-wars"
               className="text-xs tracking-[0.1em] uppercase text-[#888] hover:text-[#e8e0d0] transition-colors"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Learn More
+              View in the Archive
             </Link>
           </div>
         </div>

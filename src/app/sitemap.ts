@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/refund-policy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     { url: `${base}/where-to-begin`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${base}/support`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${base}/wars-and-rumors-of-wars`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
   ];
 
   // Product pages
