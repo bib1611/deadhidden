@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { track } from '@vercel/analytics';
+import { trackConversion } from '@/lib/conversion-events';
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -13,6 +13,13 @@ export function Footer() {
   const [validationError, setValidationError] = useState('');
   const [touched, setTouched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const startedRef = useRef(false);
+
+  const trackFormStart = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackConversion('email_form_start', { source: 'footer', variant: 'footer' });
+  };
 
   const handleBlur = () => {
     setTouched(true);
@@ -24,6 +31,7 @@ export function Footer() {
   };
 
   const handleFocus = () => {
+    trackFormStart();
     setValidationError('');
     if (status === 'error') {
       setStatus('idle');
@@ -32,6 +40,7 @@ export function Footer() {
   };
 
   const handleChange = (val: string) => {
+    trackFormStart();
     setEmail(val);
     if (touched && validationError && isValidEmail(val)) {
       setValidationError('');
@@ -67,10 +76,12 @@ export function Footer() {
       setStatus('success');
       setEmail('');
       setTouched(false);
-      track('email_signup', { source: 'footer' });
+      trackConversion('lead_submitted', { source: 'footer', variant: 'footer' });
+      trackConversion('email_signup', { source: 'footer', variant: 'footer' });
     } catch (error) {
       setStatus('error');
       setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Try again.');
+      trackConversion('lead_submit_failed', { source: 'footer', variant: 'footer' });
     }
   };
 
