@@ -153,6 +153,8 @@ export async function GET(request: NextRequest) {
         slug: product.slug,
       },
       customerEmail: session.customer_email || session.customer_details?.email,
+      amountTotal: session.amount_total,
+      currency: session.currency || 'usd',
       isVault: isVault || isVaultSampler || isEssentialArsenal || isWomanhoodBundle || !!MULTI_PART_PRODUCTS[productSlug],
       files: downloadFiles,
     });

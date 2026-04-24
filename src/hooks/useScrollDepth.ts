@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { track } from '@vercel/analytics';
+import { trackConversion } from '@/lib/conversion-events';
 
 export function useScrollDepth(page: string) {
   const firedRef = useRef<Set<string>>(new Set());
@@ -16,11 +16,11 @@ export function useScrollDepth(page: string) {
       const percent = Math.round((window.scrollY / scrollHeight) * 100);
 
       for (const threshold of thresholds) {
-        const key = `${threshold}`;
-        if (percent >= threshold && !firedRef.current.has(key)) {
-          firedRef.current.add(key);
-          track('scroll_depth', { depth: key, page });
-        }
+          const key = `${threshold}`;
+          if (percent >= threshold && !firedRef.current.has(key)) {
+            firedRef.current.add(key);
+            trackConversion('scroll_depth', { depth: key, page });
+          }
       }
     };
 

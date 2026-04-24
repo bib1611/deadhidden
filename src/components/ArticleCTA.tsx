@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { track } from '@vercel/analytics';
+import { numericPrice, trackConversion } from '@/lib/conversion-events';
 
 type ArticleSource = 'dead-hidden' | 'biblical-man' | 'biblical-womanhood';
 
@@ -156,10 +156,10 @@ export function ArticleCTA({
         <Link
           href={`/store/${product.slug}`}
           onClick={() => {
-            track('cta_click', {
+            trackConversion('product_card_click', {
               product: product.slug,
               location: `article_${position}`,
-              price: product.price.replace('$', ''),
+              price: numericPrice(product.price),
             });
           }}
           className="bg-[#8b0000] text-[#e8e0d0] px-6 py-2.5 text-xs uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors"
@@ -193,10 +193,10 @@ export function VaultBanner() {
       <Link
         href="/store/the-vault"
         onClick={() => {
-          track('cta_click', {
+          trackConversion('product_card_click', {
             product: 'the-vault',
             location: 'article_vault_banner',
-            price: '365',
+            price: 365,
           });
         }}
         className="inline-block bg-[#8b0000] text-[#e8e0d0] px-8 py-3 text-xs uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors"

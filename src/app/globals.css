@@ -194,3 +194,30 @@ a[class*="border"][class*="hover\\:border"] {
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
+
+/* Light-mode treatment for the homepage Substack feed. Kept in CSS so the build
+   does not choke on escaped arbitrary Tailwind child selectors. */
+.homepage-light-feed section {
+  border-top-width: 0;
+  border-color: #e8e3dc;
+}
+
+.homepage-light-feed h2,
+.homepage-light-feed h3 {
+  color: #1a1a1a;
+}
+
+.homepage-light-feed p {
+  color: #6b6560;
+}
+
+.homepage-light-feed a.block {
+  background-color: #fff;
+  border-color: #e8e3dc;
+  border-left-width: 2px;
+  border-left-color: #8b0000;
+}
+
+.homepage-light-feed a.block:hover {
+  border-color: #d0cbc4;
+}

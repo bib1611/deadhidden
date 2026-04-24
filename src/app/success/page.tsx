@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { trackConversion } from '@/lib/conversion-events';
 
 interface DownloadFile {
   name: string;
@@ -12,6 +13,8 @@ interface DownloadFile {
 interface SuccessData {
   product: { name: string; slug: string };
   customerEmail: string | null;
+  amountTotal: number | null;
+  currency: string;
   isVault: boolean;
   files: DownloadFile[];
 }
@@ -21,13 +24,15 @@ export default function SuccessPage() {
   const sessionId = searchParams.get('session_id');
 
   const [data, setData] = useState<SuccessData | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(
+    sessionId
+      ? null
+      : 'No session ID found. If you just made a purchase, check your email for the download link.',
+  );
+  const [loading, setLoading] = useState(Boolean(sessionId));
 
   useEffect(() => {
     if (!sessionId) {
-      setError('No session ID found. If you just made a purchase, check your email for the download link.');
-      setLoading(false);
       return;
     }
 
@@ -38,6 +43,19 @@ export default function SuccessPage() {
           setError(result.error);
         } else {
           setData(result);
+          trackConversion('purchase', {
+            product: result.product?.slug,
+            product_name: result.product?.name,
+            value: typeof result.amountTotal === 'number' ? result.amountTotal / 100 : undefined,
+            currency: result.currency || 'usd',
+            file_count: Array.isArray(result.files) ? result.files.length : 0,
+            is_bundle: Boolean(result.isVault),
+          });
+          trackConversion('checkout_completed', {
+            product: result.product?.slug,
+            value: typeof result.amountTotal === 'number' ? result.amountTotal / 100 : undefined,
+            currency: result.currency || 'usd',
+          });
           // Mark as purchased so smart nudges stop showing
           try { sessionStorage.setItem('dh_purchased', '1'); } catch {}
           // Clear abandoned checkout state

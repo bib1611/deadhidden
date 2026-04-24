@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { track } from '@vercel/analytics';
+import { trackConversion } from '@/lib/conversion-events';
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -11,6 +11,17 @@ export function WomensGuideCapture() {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const startedRef = useRef(false);
+
+  const trackFormStart = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackConversion('email_form_start', {
+      source: 'women_guides',
+      lead_magnet: 'women-guides-3',
+      variant: 'inline',
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +46,16 @@ export function WomensGuideCapture() {
       if (res.ok) {
         setStatus('success');
         setEmail('');
-        track('email_signup', { source: 'women_guides', leadMagnet: 'women-guides-3' });
+        trackConversion('lead_submitted', {
+          source: 'women_guides',
+          lead_magnet: 'women-guides-3',
+          variant: 'inline',
+        });
+        trackConversion('email_signup', {
+          source: 'women_guides',
+          lead_magnet: 'women-guides-3',
+          variant: 'inline',
+        });
         try {
           localStorage.setItem('dh_subscribed', '1');
         } catch {
@@ -45,10 +65,20 @@ export function WomensGuideCapture() {
         const data = await res.json().catch(() => ({}));
         setStatus('error');
         setErrorMessage(data.error || 'Something went wrong. Try again.');
+        trackConversion('lead_submit_failed', {
+          source: 'women_guides',
+          lead_magnet: 'women-guides-3',
+          reason: 'api_error',
+        });
       }
     } catch {
       setStatus('error');
       setErrorMessage('Connection failed. Check your internet and try again.');
+      trackConversion('lead_submit_failed', {
+        source: 'women_guides',
+        lead_magnet: 'women-guides-3',
+        reason: 'network_error',
+      });
     } finally {
       setLoading(false);
     }
@@ -80,6 +110,7 @@ export function WomensGuideCapture() {
           placeholder="Your email"
           value={email}
           onChange={(e) => {
+            trackFormStart();
             setEmail(e.target.value);
             if (errorMessage) setErrorMessage('');
           }}

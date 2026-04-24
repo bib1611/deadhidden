@@ -1,13 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { track } from '@vercel/analytics';
+import { useRef, useState } from 'react';
+import { trackConversion } from '@/lib/conversion-events';
 
 export function EmailSignup() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const startedRef = useRef(false);
+
+  const trackFormStart = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackConversion('email_form_start', { source: 'homepage', variant: 'inline' });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,15 +32,18 @@ export function EmailSignup() {
         setStatus('success');
         setMessage('Check your email. The signal is on its way.');
         setEmail('');
-        track('email_signup', { source: 'homepage' });
+        trackConversion('lead_submitted', { source: 'homepage', variant: 'inline' });
+        trackConversion('email_signup', { source: 'homepage', variant: 'inline' });
       } else {
         const data = await res.json();
         setStatus('error');
         setMessage(data.error || 'Something went wrong. Try again.');
+        trackConversion('lead_submit_failed', { source: 'homepage', variant: 'inline', reason: 'api_error' });
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setMessage('Something went wrong. Try again.');
+      trackConversion('lead_submit_failed', { source: 'homepage', variant: 'inline', reason: 'network_error' });
     } finally {
       setLoading(false);
     }
@@ -46,7 +56,10 @@ export function EmailSignup() {
           type="email"
           placeholder="Your email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            trackFormStart();
+            setEmail(e.target.value);
+          }}
           required
           disabled={loading}
           className="px-4 py-3 bg-[#0a0a0a] border border-[#222] text-[#e8e0d0] placeholder-[#555] focus:outline-none focus:border-[#8b0000] transition-colors disabled:opacity-50"

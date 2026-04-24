@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { track } from '@vercel/analytics';
 import { EmailGateModal } from '@/components/EmailGateModal';
+import { numericPrice, trackConversion } from '@/lib/conversion-events';
 
 interface BuyButtonProps {
   productSlug: string;
@@ -24,29 +24,33 @@ export function BuyButton({
   ctaText,
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showEmailGate, setShowEmailGate] = useState(false);
 
   const handleClick = async () => {
     // Free products — show email gate modal
     if (isFree) {
-      track('free_download_click', { resource: productSlug });
+      trackConversion('free_download', {
+        product: productSlug,
+        source: 'buy_button',
+      });
       setShowEmailGate(true);
       return;
     }
 
+    const price = numericPrice(priceLabel);
+
     // Direct Stripe payment link — skip /api/checkout entirely
     if (stripePaymentLink) {
-      track('checkout_click', {
+      trackConversion('checkout_started', {
         product: productSlug,
-        price: priceLabel.replace('$', '').replace('+', ''),
+        price,
+        checkout_type: 'direct_payment_link',
       });
       window.location.href = stripePaymentLink;
       return;
     }
 
     setLoading(true);
-    setError(null);
 
     try {
       const response = await fetch('/api/checkout', {
@@ -66,15 +70,20 @@ export function BuyButton({
 
       // For paid products, redirect to Stripe
       if (data.url) {
-        track('checkout_click', {
+        trackConversion('checkout_started', {
           product: productSlug,
-          price: priceLabel.replace('$', '').replace('+', ''),
+          price,
+          checkout_type: isSubscription ? 'subscription' : 'checkout_session',
         });
         window.location.href = data.url;
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'An unknown error occurred';
-      setError(message);
+      trackConversion('checkout_failed', {
+        product: productSlug,
+        price,
+        message,
+      });
       alert(`Error: ${message}`);
     } finally {
       setLoading(false);

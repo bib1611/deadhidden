@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { track } from '@vercel/analytics';
 import { EmailCaptureForm } from '@/components/EmailCaptureForm';
+import { trackConversion } from '@/lib/conversion-events';
 
 interface EmailGateModalProps {
   productName: string;
@@ -72,7 +72,10 @@ export function EmailGateModal({ productName, productSlug, onClose }: EmailGateM
               href={`/store/${productSlug}/download`}
               className="inline-block bg-[#8b0000] text-[#e8e0d0] px-8 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors min-h-[44px]"
               style={{ fontFamily: 'var(--font-heading)' }}
-              onClick={() => track('email_gate', { action: 'download_clicked', product: productSlug })}
+              onClick={() => trackConversion('free_download_unlocked', {
+                product: productSlug,
+                source: 'email_gate',
+              })}
             >
               DOWNLOAD PDF
             </a>
@@ -104,7 +107,7 @@ export function EmailGateModal({ productName, productSlug, onClose }: EmailGateM
               successMessage={`${productName} is ready for download.`}
               onSuccess={() => {
                 setUnlocked(true);
-                track('email_gate', { action: 'submitted', product: productSlug });
+                trackConversion('email_gate_submitted', { product: productSlug });
               }}
             />
 

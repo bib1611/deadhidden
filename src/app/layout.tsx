@@ -10,6 +10,7 @@ import { CheckoutRecovery } from '@/components/CheckoutRecovery';
 import { TwoStepPopup } from '@/components/TwoStepPopup';
 import { MobileSlideIn } from '@/components/MobileSlideIn';
 import { DesktopExitIntent } from '@/components/DesktopExitIntent';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import './globals.css';
 
 const oswald = Oswald({
@@ -118,6 +119,7 @@ export default function RootLayout({
         <DesktopExitIntent />
         <SmartNudge />
         <CheckoutRecovery />
+        <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { track } from '@vercel/analytics';
+import { trackConversion } from '@/lib/conversion-events';
 
 export type EmailCaptureVariant = 'inline' | 'popup' | 'slide-in' | 'fullscreen';
 
@@ -35,6 +35,17 @@ export function EmailCaptureForm({
   const [validationError, setValidationError] = useState('');
   const [touched, setTouched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const startedRef = useRef(false);
+
+  const trackFormStart = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackConversion('email_form_start', {
+      source,
+      lead_magnet: leadMagnet || '',
+      variant,
+    });
+  };
 
   const handleBlur = () => {
     setTouched(true);
@@ -46,6 +57,7 @@ export function EmailCaptureForm({
   };
 
   const handleFocus = () => {
+    trackFormStart();
     setValidationError('');
     if (status === 'error') {
       setStatus('idle');
@@ -54,6 +66,7 @@ export function EmailCaptureForm({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    trackFormStart();
     setEmail(e.target.value);
     // Clear validation error as user types if they've already been warned
     if (touched && validationError && isValidEmail(e.target.value)) {
@@ -87,7 +100,16 @@ export function EmailCaptureForm({
         setStatus('success');
         setEmail('');
         setTouched(false);
-        track('email_signup', { source, leadMagnet: leadMagnet || '' });
+        trackConversion('lead_submitted', {
+          source,
+          lead_magnet: leadMagnet || '',
+          variant,
+        });
+        trackConversion('email_signup', {
+          source,
+          lead_magnet: leadMagnet || '',
+          variant,
+        });
         try {
           localStorage.setItem('dh_subscribed', '1');
         } catch {
@@ -97,10 +119,22 @@ export function EmailCaptureForm({
       } else {
         setStatus('error');
         setErrorMessage('Something went wrong. Try again.');
+        trackConversion('lead_submit_failed', {
+          source,
+          lead_magnet: leadMagnet || '',
+          variant,
+          reason: 'api_error',
+        });
       }
     } catch {
       setStatus('error');
       setErrorMessage('Connection failed. Check your internet and try again.');
+      trackConversion('lead_submit_failed', {
+        source,
+        lead_magnet: leadMagnet || '',
+        variant,
+        reason: 'network_error',
+      });
     } finally {
       setLoading(false);
     }
@@ -122,7 +156,6 @@ export function EmailCaptureForm({
   }
 
   const isCompact = variant === 'inline' || variant === 'slide-in';
-  const hasError = validationError || (status === 'error' && errorMessage);
   const inputBorderClass = validationError
     ? 'border-[#a50000]'
     : touched && email && isValidEmail(email)

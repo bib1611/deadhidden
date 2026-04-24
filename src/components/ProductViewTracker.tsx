@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { track } from '@vercel/analytics';
+import { numericPrice, trackConversion } from '@/lib/conversion-events';
 import { useScrollDepth } from '@/hooks/useScrollDepth';
 
 export function ProductViewTracker({ slug, price }: { slug: string; price: string }) {
@@ -12,9 +12,9 @@ export function ProductViewTracker({ slug, price }: { slug: string; price: strin
   useEffect(() => {
     if (!trackedRef.current) {
       trackedRef.current = true;
-      track('product_view', {
+      trackConversion('product_view', {
         product: slug,
-        price: price.replace('$', '').replace('+', ''),
+        price: numericPrice(price),
       });
     }
   }, [slug, price]);
