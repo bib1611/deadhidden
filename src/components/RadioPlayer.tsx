@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { trackConversion } from '@/lib/conversion-events';
 
 const STREAM_URL = 'https://c13.radioboss.fm:8639/stream';
 
@@ -12,12 +13,12 @@ export function RadioPlayer() {
   const [isDismissed, setIsDismissed] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Check sessionStorage on mount — must read browser API in effect
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+  // Check sessionStorage on mount — must read browser API in effect.
   useEffect(() => {
     try {
       if (sessionStorage.getItem('dh_radio_dismissed') === '1') {
-        setIsDismissed(true);
+        const frame = requestAnimationFrame(() => setIsDismissed(true));
+        return () => cancelAnimationFrame(frame);
       }
     } catch {
       // sessionStorage not available
@@ -32,6 +33,7 @@ export function RadioPlayer() {
     audio.addEventListener('playing', () => {
       setIsPlaying(true);
       setIsLoading(false);
+      trackConversion('radio_play', { station: 'ffbr' });
     });
 
     audio.addEventListener('pause', () => {
@@ -59,9 +61,11 @@ export function RadioPlayer() {
     if (!audio) return;
 
     if (isPlaying) {
+      trackConversion('radio_pause', { station: 'ffbr' });
       audio.pause();
       audio.src = '';
     } else {
+      trackConversion('radio_play_clicked', { station: 'ffbr' });
       setIsLoading(true);
       audio.src = STREAM_URL;
       audio.load();
@@ -72,6 +76,7 @@ export function RadioPlayer() {
   };
 
   const handleDismiss = () => {
+    trackConversion('radio_dismissed', { station: 'ffbr', was_playing: isPlaying });
     setIsDismissed(true);
     if (isPlaying) {
       const audio = audioRef.current;
