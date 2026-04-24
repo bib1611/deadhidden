@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { CATEGORIES, getFeaturedProducts, getFreeProducts, getProductsByCategory, getProductBySlug } from '@/data/products';
+import { CATEGORIES, getFreeProducts, getProductsByCategory, getProductBySlug, type Category } from '@/data/products';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import { MobileCTA } from '@/components/MobileCTA';
 import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
 import { HomepageEmailForm } from '@/components/HomepageEmailForm';
 import { SubstackFeed } from '@/components/SubstackFeed';
 import { LeadMagnetCapture } from '@/components/LeadMagnetCapture';
+import { TrackedAnchor, TrackedLink } from '@/components/TrackedLink';
 
 export const metadata: Metadata = {
   title: 'Dead Hidden Ministries — Biblical Truth They Tried to Bury',
@@ -51,7 +52,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const featuredProducts = getFeaturedProducts();
   const freeProducts = getFreeProducts();
 
   return (
@@ -81,22 +81,26 @@ export default function Home() {
                 For the man who has performed long enough. For the woman who has done everything right and is still bleeding. The truth they buried is here.
               </p>
               <div>
-                <Link
+                <TrackedLink
                   href="/where-to-begin"
+                  eventName="quiz_start"
+                  eventProperties={{ location: 'home_hero' }}
                   className="inline-block btn-press bg-[#8b0000] text-white px-10 py-4 uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-all text-sm md:text-base rounded-sm"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   WHERE TO BEGIN →
-                </Link>
+                </TrackedLink>
                 <div className="mt-4">
-                  <a
+                  <TrackedAnchor
                     href="https://followme419.substack.com/c04ebb6b"
                     target="_blank"
                     rel="noopener noreferrer"
+                    eventName="substack_trial_click"
+                    eventProperties={{ location: 'home_hero', offer: '30_day_free' }}
                     className="text-sm text-[#8b0000] hover:text-[#a50000] transition-colors"
                   >
                     Or start with 30 days free →
-                  </a>
+                  </TrackedAnchor>
                 </div>
               </div>
             </div>
@@ -170,7 +174,7 @@ export default function Home() {
       </section>
 
       {/* 3. FROM THE FIELD — latest Substack posts (light mode overrides) */}
-      <div className="homepage-light-feed [&_section]:border-t-0 [&_section]:border-[#e8e3dc] [&_h2]:text-[#1a1a1a] [&_p.text-\\[\\#888\\]]:text-[#6b6560] [&_a.block]:bg-white [&_a.block]:border-[#e8e3dc] [&_a.block]:border-l-2 [&_a.block]:border-l-[#8b0000] [&_a.block:hover]:border-[#d0cbc4] [&_h3]:text-[#1a1a1a] [&_p.text-\\[\\#777\\]]:text-[#6b6560] [&_p.text-\\[\\#555\\]]:text-[#9a9590]">
+      <div className="homepage-light-feed">
         <SubstackFeed />
       </div>
 
@@ -717,13 +721,14 @@ export default function Home() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3">
             {Object.entries(CATEGORIES).map(([slug, category]) => {
-              const count = getProductsByCategory(slug as any).length;
-              const isVault = slug === 'vault';
+              const categorySlug = slug as Category;
+              const count = getProductsByCategory(categorySlug).length;
+              const isVault = categorySlug === 'vault';
 
               return (
                 <Link
                   key={slug}
-                  href={`/store?category=${slug}`}
+                  href={`/store?category=${categorySlug}`}
                   className="border border-[#e8e3dc] hover:border-[#d0cbc4] bg-white p-4 md:p-6 transition-colors group rounded-sm"
                   style={{
                     borderTop: '2px solid #8b0000',
