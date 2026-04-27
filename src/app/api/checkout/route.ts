@@ -57,10 +57,10 @@ export async function POST(request: NextRequest) {
       throw new Error('NEXT_PUBLIC_URL environment variable is not defined');
     }
 
-    // Determine checkout mode — Dead Hidden Pro and legacy "the-table" are
-    // subscriptions. Everything else is a one-time payment.
+    // Determine checkout mode — subscription products go recurring.
+    // Legacy "the-table" remains subscription. Everything else is one-time payment.
     const mode: 'payment' | 'subscription' =
-      product.slug === deadHiddenProProduct.slug || product.slug === 'the-table'
+      ('isSubscription' in product && product.isSubscription) || product.slug === 'the-table'
         ? 'subscription'
         : 'payment';
 

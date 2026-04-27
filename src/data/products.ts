@@ -24,6 +24,8 @@ export type Product = {
   salePriceCents?: number;
   saleLabel?: string;
   purchaseType: "stripe";
+  // True for monthly subscription products (Stripe `subscription` mode)
+  isSubscription?: boolean;
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
   // Direct Stripe payment link — bypasses /api/checkout (used for Christie's products on her Stripe account)
   stripePaymentLink?: string;
@@ -1743,6 +1745,23 @@ export const products: Product[] = [
     ctaText: "GET THE STARTER GUIDE →",
     comparisonLine: "Launch price: $17. Goes to $27 after launch week.",
     saleLabel: "LAUNCH PRICE",
+  },
+  {
+    slug: "dead-hidden-pro",
+    name: "DEAD HIDDEN PRO",
+    tagline: "$29/month. One guide token every month. The paid Substack tier. Cancel anytime.",
+    description: "A monthly subscription for the believer who wants the full arsenal on a steady cadence. Every month: one Guide Token, redeemable for any single Dead Hidden paid guide ($17–$127). Plus the paid tier on Dead Hidden and The Biblical Man Substacks. Tokens do not roll over — use it or lose it. The Vault is excluded so flagship pricing stays intact. Cancel anytime; access ends at the close of your billing cycle.",
+    priceCents: 2900,
+    priceLabel: "$29/mo",
+    category: "vault",
+    isFeatured: false,
+    isFree: false,
+    badge: "NEW",
+    purchaseType: "stripe",
+    isSubscription: true,
+    legacyGumroadSlug: "",
+    ctaText: "JOIN PRO — $29/MO →",
+    comparisonLine: "One token a month at $29 vs. one $77 manual every month. The math runs in your favor on month one.",
   },
 ];
 
