@@ -169,9 +169,80 @@ export async function POST(request: NextRequest) {
       });
 
       if (customerEmail) {
+        const firstName = customerName ? customerName.split(' ')[0] : undefined;
+
+        // ─── Dead Hidden Pro — v1 manual fulfillment branch ───
+        // Pro is a subscription. There is no immediate file delivery — Adam
+        // grants Substack comp + first guide token by hand. We send a Pro
+        // welcome to the buyer and a notification to Adam, then exit early.
+        if (productSlug === 'dead-hidden-pro') {
+          const resend = getResend();
+          const fromAddress =
+            process.env.EMAIL_FROM ||
+            'Dead Hidden <noreply@deadhidden.org>';
+
+          // Buyer welcome
+          const proWelcome = resend.emails
+            .send({
+              from: fromAddress,
+              to: customerEmail,
+              subject: 'You’re in. Welcome to Dead Hidden Pro.',
+              html: `
+                <div style="font-family:Georgia,'Times New Roman',serif;background:#0a0a0a;color:#e8e0d0;padding:40px 24px;max-width:600px;margin:0 auto;">
+                  <h1 style="font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:0.04em;color:#e8e0d0;font-size:28px;line-height:1.1;margin:0 0 16px;">Welcome to Dead Hidden Pro.</h1>
+                  <p style="color:#8b0000;font-style:italic;margin:0 0 24px;">No retreats. Only advancement.</p>
+                  <p style="line-height:1.7;margin:0 0 16px;">You're in. Here is what happens next.</p>
+                  <ol style="line-height:1.8;padding-left:20px;">
+                    <li><strong>Substack access</strong> &mdash; within 24 hours you'll be granted complimentary paid access to <a href="https://deadhidden.substack.com" style="color:#8b0000;">Dead Hidden</a> and <a href="https://thebiblicalman.substack.com" style="color:#8b0000;">The Biblical Man</a>. Watch your inbox for a Substack confirmation.</li>
+                    <li><strong>Your first Guide Token</strong> &mdash; reply to this email with the guide you want this month (any paid guide except The Vault). I will send the secure download link within 24 hours.</li>
+                    <li><strong>Every month</strong> &mdash; your subscription renews. A new Guide Token issues automatically. Tokens do not roll over &mdash; redeem each one within the month.</li>
+                  </ol>
+                  <p style="line-height:1.7;margin:24px 0 0;">Read the full catalog of guides at <a href="https://deadhidden.org/store" style="color:#8b0000;">deadhidden.org/store</a>.</p>
+                  <p style="line-height:1.7;margin:16px 0 0;color:#888;font-size:14px;">Cancel anytime &mdash; access ends at the close of your billing cycle. Reply to this email for any support.</p>
+                </div>
+              `,
+            })
+            .then(() => console.log('Pro welcome sent to:', customerEmail))
+            .catch((err) => console.error('Pro welcome send failed:', err));
+
+          // Admin notification — drives manual Substack comp + token delivery
+          const adminPing = resend.emails
+            .send({
+              from: fromAddress,
+              to: 'thebiblicalman1611@gmail.com',
+              subject: `[PRO] New subscriber: ${customerEmail}`,
+              html: `
+                <p><strong>New Dead Hidden Pro subscriber.</strong></p>
+                <p><strong>Email:</strong> ${customerEmail}</p>
+                <p><strong>Name:</strong> ${customerName || '(not provided)'}</p>
+                <p><strong>Stripe session:</strong> ${session.id}</p>
+                <hr/>
+                <p><strong>Manual fulfillment checklist:</strong></p>
+                <ol>
+                  <li>Open Substack admin for <strong>Dead Hidden</strong> &rarr; Subscribers &rarr; Add comp subscription for <code>${customerEmail}</code> (1-month renewable).</li>
+                  <li>Open Substack admin for <strong>The Biblical Man</strong> &rarr; same comp subscription.</li>
+                  <li>Wait for buyer reply with their first Guide Token redemption.</li>
+                  <li>Send the secure download link from <code>/api/serve/[slug]?session_id=${session.id}</code> via Resend reply.</li>
+                </ol>
+              `,
+            })
+            .catch((err) => console.error('Pro admin ping failed:', err));
+
+          // Tag the buyer for downstream automation
+          const proTag = tagResendContact(
+            customerEmail,
+            ['purchase_any', 'member_pro'],
+            productSlug,
+            firstName
+          ).catch((err) => console.error('Pro tagging failed:', err));
+
+          await Promise.allSettled([proWelcome, adminPing, proTag]);
+          return NextResponse.json({ received: true });
+        }
+
+        // ─── Standard one-time purchase flow ───
         // 1. Tag the contact in Resend for automation sequences
         const purchaseTags = getPurchaseTags(productSlug, amountTotal);
-        const firstName = customerName ? customerName.split(' ')[0] : undefined;
 
         // Run tagging and email in parallel — neither should block the other
         const tagPromise = tagResendContact(
