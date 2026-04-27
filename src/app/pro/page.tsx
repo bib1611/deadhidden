@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BuyButton } from '@/components/BuyButton';
-import { getProductBySlug } from '@/data/products';
 
 export const metadata: Metadata = {
   title: 'Dead Hidden Pro — $29/mo. One Guide Every Month.',
@@ -56,13 +55,13 @@ const faqs = [
   },
 ];
 
+const product = {
+  slug: 'dead-hidden-pro',
+  name: 'DEAD HIDDEN PRO',
+  priceLabel: '$29/mo',
+};
+
 export default function ProPage() {
-  const product = getProductBySlug('dead-hidden-pro');
-
-  if (!product) {
-    return null;
-  }
-
   return (
     <main className="bg-[#0a0a0a] min-h-screen text-[#e8e0d0]">
       {/* ─── HERO ─── */}
