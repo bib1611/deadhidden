@@ -9,6 +9,14 @@ type CheckoutRequestBody = {
   email?: string;
 };
 
+const deadHiddenProProduct = {
+  slug: 'dead-hidden-pro',
+  name: 'DEAD HIDDEN PRO',
+  tagline:
+    '$29/month. One guide token every month. The paid Substack tier. Cancel anytime.',
+  priceCents: 2900,
+};
+
 export async function POST(request: NextRequest) {
   try {
     const body: CheckoutRequestBody = await request.json();
@@ -21,8 +29,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Look up product from products data
-    const product = products.find((p) => p.slug === productSlug);
+    // Look up product from products data. Dead Hidden Pro lives at /pro and is
+    // intentionally handled here so checkout can launch without touching the
+    // main store catalog.
+    const product =
+      productSlug === deadHiddenProProduct.slug
+        ? deadHiddenProProduct
+        : products.find((p) => p.slug === productSlug);
 
     if (!product) {
       return NextResponse.json(
@@ -32,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     // If free product, return download redirect URL
-    if (product.isFree) {
+    if ('isFree' in product && product.isFree) {
       return NextResponse.json({
         url: `/store/${product.slug}/download`,
         isFree: true,
@@ -44,10 +57,10 @@ export async function POST(request: NextRequest) {
       throw new Error('NEXT_PUBLIC_URL environment variable is not defined');
     }
 
-    // Determine checkout mode — any product with isSubscription:true goes recurring,
-    // plus legacy "the-table" slug. Everything else is one-time payment.
+    // Determine checkout mode — Dead Hidden Pro and legacy "the-table" are
+    // subscriptions. Everything else is a one-time payment.
     const mode: 'payment' | 'subscription' =
-      product.isSubscription || product.slug === 'the-table'
+      product.slug === deadHiddenProProduct.slug || product.slug === 'the-table'
         ? 'subscription'
         : 'payment';
 
@@ -63,7 +76,9 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: product.name,
               description: product.tagline,
-              ...(product.coverImage && { images: [product.coverImage] }),
+              ...('coverImage' in product && product.coverImage
+                ? { images: [product.coverImage] }
+                : {}),
             },
             unit_amount: product.priceCents,
             recurring: mode === 'subscription'
