@@ -44,9 +44,12 @@ export async function POST(request: NextRequest) {
       throw new Error('NEXT_PUBLIC_URL environment variable is not defined');
     }
 
-    // Determine checkout mode (subscription for "the-table", payment for everything else)
+    // Determine checkout mode — any product with isSubscription:true goes recurring,
+    // plus legacy "the-table" slug. Everything else is one-time payment.
     const mode: 'payment' | 'subscription' =
-      product.slug === 'the-table' ? 'subscription' : 'payment';
+      product.isSubscription || product.slug === 'the-table'
+        ? 'subscription'
+        : 'payment';
 
     // Create Stripe Checkout Session
     const stripe = getStripe();
