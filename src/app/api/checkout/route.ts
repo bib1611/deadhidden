@@ -66,6 +66,11 @@ export async function POST(request: NextRequest) {
 
     // Create Stripe Checkout Session
     const stripe = getStripe();
+    const coverImage =
+      'coverImage' in product && typeof product.coverImage === 'string'
+        ? product.coverImage
+        : undefined;
+
     const session = await stripe.checkout.sessions.create({
       mode,
       customer_creation: mode === 'subscription' ? undefined : 'always',
@@ -76,9 +81,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: product.name,
               description: product.tagline,
-              ...('coverImage' in product && product.coverImage
-                ? { images: [product.coverImage] }
-                : {}),
+              ...(coverImage ? { images: [coverImage] } : {}),
             },
             unit_amount: product.priceCents,
             recurring: mode === 'subscription'
