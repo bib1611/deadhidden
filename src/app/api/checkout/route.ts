@@ -70,6 +70,8 @@ export async function POST(request: NextRequest) {
       'coverImage' in product && typeof product.coverImage === 'string'
         ? product.coverImage
         : undefined;
+    const cancelPath =
+      product.slug === deadHiddenProProduct.slug ? '/pro' : `/store/${productSlug}`;
 
     const session = await stripe.checkout.sessions.create({
       mode,
@@ -92,7 +94,7 @@ export async function POST(request: NextRequest) {
         },
       ],
       success_url: `${process.env.NEXT_PUBLIC_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_URL}/store/${productSlug}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}${cancelPath}`,
       metadata: {
         productSlug,
         slug: productSlug,
