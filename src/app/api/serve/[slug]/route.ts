@@ -10,6 +10,7 @@ export const runtime = 'nodejs';
 const MAX_SESSION_AGE_DAYS = 7;
 const STATIC_PRODUCT_FILES: Record<string, string> = {
   'wars-and-rumors-of-wars': '/product-files/wars-and-rumors-of-wars.pdf',
+  'the-dog-at-the-kings-table': '/product-files/the-dog-at-the-kings-table.pdf',
 };
 
 /**

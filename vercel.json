@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/dog-table-followup",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}

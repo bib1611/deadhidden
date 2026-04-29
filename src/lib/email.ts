@@ -388,15 +388,18 @@ interface PurchaseEmailParams {
  */
 export async function sendPurchaseEmail(params: PurchaseEmailParams) {
   const resend = getResend();
-  const { customerEmail, productName, isVault, downloadUrl, amountPaid } = params;
+  const { customerEmail, productName, productSlug, isVault, downloadUrl, amountPaid } = params;
 
   const amountFormatted = `$${(amountPaid / 100).toFixed(2)}`;
-  const subject = isVault
-    ? 'The Vault Is Open — Your Downloads Are Ready'
-    : `${productName} — Your Download Is Ready`;
+  const subject = productSlug === 'the-dog-at-the-kings-table'
+    ? 'The Table Is Open — Your Download Is Ready'
+    : isVault
+      ? 'The Vault Is Open — Your Downloads Are Ready'
+      : `${productName} — Your Download Is Ready`;
 
   const html = buildPurchaseEmailHtml({
     productName,
+    productSlug,
     isVault,
     downloadUrl,
     amountFormatted,
@@ -414,16 +417,38 @@ export async function sendPurchaseEmail(params: PurchaseEmailParams) {
 
 function buildPurchaseEmailHtml(params: {
   productName: string;
+  productSlug: string;
   isVault: boolean;
   downloadUrl: string;
   amountFormatted: string;
 }): string {
-  const { productName, isVault, downloadUrl, amountFormatted } = params;
+  const { productName, productSlug, isVault, downloadUrl, amountFormatted } = params;
+  const isDogTable = productSlug === 'the-dog-at-the-kings-table';
 
-  const headline = isVault ? 'THE VAULT IS OPEN.' : "IT'S YOURS.";
-  const description = isVault
+  const headline = isDogTable ? 'THE TABLE IS OPEN.' : isVault ? 'THE VAULT IS OPEN.' : "IT'S YOURS.";
+  const description = isDogTable
+    ? '<strong>The Dog At The King\'s Table</strong> is ready. Seven mornings. KJV only. Do not save it for someday. Start tomorrow before the house wakes up.'
+    : isVault
     ? 'Every guide, manual, protocol, and framework. All of it. Yours.'
     : `<strong>${productName}</strong> is ready for download.`;
+  const nextStepHtml = isDogTable
+    ? `
+          <!-- Next Step -->
+          <tr>
+            <td style="padding-bottom:24px;">
+              <p style="color:#8b0000; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin:0 0 8px;">
+                AFTER THE SEVEN MORNINGS
+              </p>
+              <p style="color:#888888; font-size:14px; line-height:1.7; margin:0 0 16px;">
+                If this put a Bible back on your table, the next step is the wider arsenal. Start with the Essential Arsenal if you want the ten core weapons. Open the Vault if you are done buying one piece at a time.
+              </p>
+              <a href="${process.env.NEXT_PUBLIC_URL || 'https://deadhidden.org'}/store/essential-arsenal" style="display:inline-block; border:1px solid #8b0000; color:#8b0000; text-decoration:none; font-size:12px; font-weight:700; letter-spacing:2px; padding:12px 22px; text-transform:uppercase; font-family:Georgia,'Times New Roman',serif;">
+                SEE THE ESSENTIAL ARSENAL &rarr;
+              </a>
+            </td>
+          </tr>
+`
+    : '';
 
   return `
 <!DOCTYPE html>
@@ -503,6 +528,8 @@ function buildPurchaseEmailHtml(params: {
               <div style="height:1px; background-color:#222222;"></div>
             </td>
           </tr>
+
+          ${nextStepHtml}
 
           <!-- Receipt -->
           <tr>

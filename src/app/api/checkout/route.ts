@@ -70,6 +70,11 @@ export async function POST(request: NextRequest) {
       'coverImage' in product && typeof product.coverImage === 'string'
         ? product.coverImage
         : undefined;
+    const checkoutImage = coverImage
+      ? coverImage.startsWith('http')
+        ? coverImage
+        : `${process.env.NEXT_PUBLIC_URL}${coverImage}`
+      : undefined;
     const cancelPath =
       product.slug === deadHiddenProProduct.slug ? '/pro' : `/store/${productSlug}`;
 
@@ -83,7 +88,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: product.name,
               description: product.tagline,
-              ...(coverImage ? { images: [coverImage] } : {}),
+              ...(checkoutImage ? { images: [checkoutImage] } : {}),
             },
             unit_amount: product.priceCents,
             recurring: mode === 'subscription'

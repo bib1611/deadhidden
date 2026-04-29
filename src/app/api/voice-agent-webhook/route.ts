@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { AGENT_ID, appendCall, scanForProducts } from '@/lib/voice-calls';
 
-const RESEND_API_KEY = 're_82qZ6ss7_7vM8i9B2ZYSwW3XQrYWP61mb';
-const RESEND_AUDIENCE_ID = '853ea354-ef8b-4781-86cd-1b1032ad247e';
+const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID || '853ea354-ef8b-4781-86cd-1b1032ad247e';
 
 export async function POST(request: Request) {
   try {
@@ -35,7 +34,7 @@ export async function POST(request: Request) {
     await appendCall(call);
 
     // Add caller to Resend audience
-    if (callerNumber && callerNumber !== 'unknown') {
+    if (callerNumber && callerNumber !== 'unknown' && process.env.RESEND_API_KEY) {
       const placeholderEmail = `${callerNumber.replace(/[^0-9+]/g, '')}@voice.deadhidden.org`;
       try {
         await fetch(
@@ -43,7 +42,7 @@ export async function POST(request: Request) {
           {
             method: 'POST',
             headers: {
-              Authorization: `Bearer ${RESEND_API_KEY}`,
+              Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({

@@ -14,6 +14,9 @@ const TIER_VAULT = 36500;  // $365 = Vault
 const VAULT_SLUGS = ['the-vault', 'thanksgiving-marriage-vault'];
 const ARSENAL_SLUGS = ['essential-arsenal', 'biblical-man-field-manual', 'biblical-woman-field-manual'];
 const TABLE_SLUGS = ['the-table'];
+// Per-product custom drip tags — let buyers of specific products get a tailored sequence
+// in addition to the standard tier-based tag. Each slug here triggers its own Resend automation.
+const DOG_TABLE_SLUGS = ['the-dog-at-the-kings-table'];
 
 export const runtime = 'nodejs';
 
@@ -50,6 +53,11 @@ function getPurchaseTags(slug: string, amountCents: number): string[] {
   // $7 tier (anything under $20 that isn't free)
   if (amountCents > 0 && amountCents <= TIER_7_MAX) {
     tags.push('purchase_7');
+  }
+
+  // Per-product custom drip — runs in parallel to tier-based sequences
+  if (DOG_TABLE_SLUGS.includes(slug)) {
+    tags.push('dog_table_buyer');
   }
 
   return tags;
