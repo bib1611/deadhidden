@@ -71,6 +71,8 @@ export function TwoStepPopup() {
   }, [step]);
 
   useEffect(() => {
+    // Do not cover the rebuilt homepage hero/sampler offer.
+    if (pathname === '/') return;
     if (EXCLUDED_PATHS.some((p) => pathname.startsWith(p))) return;
     if (isDismissed() || isSubscribed()) return;
 
