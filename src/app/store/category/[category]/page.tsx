@@ -559,7 +559,7 @@ export default async function CategoryPillarPage({ params }: CategoryPageProps) 
             className="inline-block px-8 py-4 bg-[#8b0000] text-[#e8e0d0] font-semibold tracking-[0.15em] uppercase hover:bg-[#a80000] transition-colors"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            GET THE VAULT — $365
+            GET THE VAULT — $297
           </Link>
         </div>
       </div>

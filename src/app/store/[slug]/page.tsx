@@ -75,7 +75,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const isVaultProduct = product.slug === 'the-vault' || product.slug === 'essential-arsenal';
   const { prefix: pricePrefix, price: priceDisplay } = formatPrice(product.priceLabel);
 
   // Get related products from same category
@@ -129,22 +128,66 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
 
       {/* Product Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className={`${product.slug === 'the-vault' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto px-4 sm:px-6 lg:px-8 py-24`}>
         {/* Title */}
-        <h1
-          className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold text-[#e8e0d0] mb-4"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
-          {product.name}
-        </h1>
+        {product.slug === 'the-vault' ? (
+          <div className="relative mb-10 overflow-hidden border border-[#2a211d] bg-[#0d0b0a] p-5 sm:p-8 lg:p-10 shadow-2xl">
+            <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_20%_20%,#8b0000_0,transparent_28%),linear-gradient(90deg,transparent_0,rgba(232,224,208,.18)_50%,transparent_100%)]" />
+            <div className="relative grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+              <div>
+                <div className="mb-4 inline-flex border border-[#8b0000]/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-[#a45b43]">
+                  Declassified field file — final sale digital archive
+                </div>
+                <h1
+                  className="text-4xl sm:text-5xl lg:text-7xl uppercase font-bold leading-[0.9] tracking-[0.03em] text-[#e8e0d0]"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Your marriage is bleeding.<br />
+                  Your son is softening.<br />
+                  Your Bible gathers dust.
+                </h1>
+                <p className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-[#c0b8a8]">
+                  76 recovered documents. One field package. For the believer done playing church.
+                </p>
+                <div className="mt-6 grid gap-3 text-xs uppercase tracking-[0.16em] text-[#888] sm:grid-cols-3">
+                  <span className="border border-[#222] bg-[#111] px-3 py-2">Bestselling Dead Hidden archive</span>
+                  <span className="border border-[#222] bg-[#111] px-3 py-2">Instant PDF access</span>
+                  <span className="border border-[#222] bg-[#111] px-3 py-2">No refunds. No subscription.</span>
+                </div>
+              </div>
+              {product.coverImage && (
+                <div className="relative mx-auto w-full max-w-sm">
+                  <div className="absolute -right-3 -top-3 z-10 rotate-6 border-2 border-[#8b0000] px-4 py-2 font-mono text-xs uppercase tracking-[0.22em] text-[#8b0000] opacity-80">
+                    Recovered
+                  </div>
+                  <Image
+                    src={product.coverImage}
+                    alt={`${product.name} cover`}
+                    width={400}
+                    height={520}
+                    className="w-full h-auto border border-[#2a211d] shadow-2xl grayscale-[15%]"
+                    priority
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl uppercase font-bold text-[#e8e0d0] mb-4"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            {product.name}
+          </h1>
+        )}
 
         {/* Category Badge */}
         <div className="text-xs tracking-[0.12em] uppercase text-[#777] mb-6">
-          {CATEGORIES[product.category].label}
+          {product.slug === 'the-vault' ? 'THE FIELD PACKAGE / 76 DOCUMENT MANIFEST' : CATEGORIES[product.category].label}
         </div>
 
         {/* Cover Image */}
-        {product.coverImage && (
+        {product.coverImage && product.slug !== 'the-vault' && (
           <div className="mb-8 flex justify-center md:justify-start">
             <Image
               src={product.coverImage}
@@ -163,7 +206,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               className="text-sm md:text-base font-bold text-[#e8e0d0] uppercase tracking-[0.06em]"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              {product.saleLabel} — ${product.salePriceCents / 100} (Reg. ${product.originalPriceCents ? product.originalPriceCents / 100 : product.priceCents / 100}). This price does not hold.
+              {product.slug === 'the-vault'
+                ? `${product.saleLabel} — $${product.salePriceCents / 100}. Instant PDF archive. All sales final.`
+                : `${product.saleLabel} — $${product.salePriceCents / 100} (Reg. ${product.originalPriceCents ? product.originalPriceCents / 100 : product.priceCents / 100}). This price does not hold.`}
             </p>
           </div>
         )}
@@ -177,7 +222,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               )}
               {product.salePriceCents ? (
                 <>
-                  <span className="text-xl text-[#777] line-through">{priceDisplay}</span>
+                  <span className="text-xl text-[#777] line-through">{product.originalPriceCents ? `$${product.originalPriceCents / 100}` : priceDisplay}</span>
                   <span className="text-3xl md:text-4xl font-bold text-[#e8e0d0]">${product.salePriceCents / 100}</span>
                 </>
               ) : (
@@ -194,9 +239,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <p className="text-xs text-[#4ade80] font-bold mt-1">318 believers bought this</p>
             )}
             {product.slug === 'the-vault' && (
-              <p className="text-xs text-[#4ade80] font-bold mt-1">Save 76% — all 50+ resources, one price</p>
+              <p className="text-xs text-[#4ade80] font-bold mt-1">76 resources — every field manual, one price</p>
             )}
-            <p className="text-xs text-[#888] mt-1">Instant PDF download. Buy once, keep forever.</p>
+            <p className="text-xs text-[#888] mt-1">
+              {product.slug === 'the-vault'
+                ? 'Instant PDF download. All sales final. Start with the $7 sampler if you are unsure.'
+                : 'Instant PDF download. Buy once, keep forever.'}
+            </p>
           </div>
           <div className="sm:w-48 flex-shrink-0">
             <BuyButton
@@ -254,6 +303,36 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </li>
               ))}
             </ul>
+            {product.slug === 'the-vault' && (
+              <div className="mt-10 grid gap-4 md:grid-cols-2">
+                <div className="border border-[#222] bg-[#0d0d0d] p-5">
+                  <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-[#e8e0d0]" style={{ fontFamily: 'var(--font-heading)' }}>
+                    This is not for you if
+                  </h3>
+                  <ul className="space-y-3 text-sm text-[#aaa]">
+                    <li>→ You want comfort. Buy a pillow.</li>
+                    <li>→ You want three easy steps. Buy a magazine.</li>
+                    <li>→ You want to collect PDFs and stay the same.</li>
+                  </ul>
+                </div>
+                <div className="border border-[#8b0000]/40 bg-[#120d0d] p-5">
+                  <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-[#e8e0d0]" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Not ready for the full archive?
+                  </h3>
+                  <p className="mb-4 text-sm leading-relaxed text-[#aaa]">
+                    Start smaller. The $7 sampler lets you taste the arsenal. The $97 Essential Arsenal gives you the ten highest-impact field manuals.
+                  </p>
+                  <div className="flex flex-col gap-3 sm:flex-row">
+                    <Link href="/store/vault-sampler" className="border border-[#333] px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#e8e0d0] hover:border-[#8b0000]">
+                      Taste the Vault — $7
+                    </Link>
+                    <Link href="/store/essential-arsenal" className="bg-[#8b0000] px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-[#a50000]">
+                      Deploy the 10 — $97
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -315,6 +394,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         )}
 
+        {/* Final Sale Trust Box — digital product clarity, not refund theater */}
+        {product.slug === 'the-vault' && (
+          <div className="mb-12 border border-[#8b0000]/40 bg-[#120d0d] p-6">
+            <div className="mb-2 text-xs uppercase tracking-[0.2em] text-[#8b0000]">Final sale. Clear terms. No games.</div>
+            <h2 className="mb-4 text-2xl uppercase font-bold text-[#e8e0d0]" style={{ fontFamily: 'var(--font-heading)' }}>
+              Digital archive. Instant delivery. No refunds.
+            </h2>
+            <p className="max-w-3xl text-sm leading-relaxed text-[#aaa]">
+              You get the full archive immediately after purchase. Because the files are delivered in full and can be downloaded instantly, all sales are final. If you are unsure, start with the $7 Vault Sampler or the $97 Essential Arsenal first. If there is a delivery or access problem, contact us and we will get your files to you.
+            </p>
+          </div>
+        )}
+
         {/* FAQ Section */}
         {product.extendedContent?.faq && product.extendedContent.faq.length > 0 && (
           <ProductFAQ items={product.extendedContent.faq} />
@@ -327,7 +419,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
           {product.salePriceCents ? (
             <div className="flex items-baseline gap-4 mb-8">
-              <span className="text-3xl text-[#777] line-through">{priceDisplay}</span>
+              <span className="text-3xl text-[#777] line-through">{product.originalPriceCents ? `$${product.originalPriceCents / 100}` : priceDisplay}</span>
               <span className="text-5xl md:text-6xl font-bold text-[#e8e0d0]">${product.salePriceCents / 100}</span>
             </div>
           ) : (
@@ -392,7 +484,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 href="/store/the-vault"
                 className="text-[#8b0000] hover:text-[#e8e0d0] text-sm font-bold uppercase tracking-wide transition-colors"
               >
-                GET THE FULL VAULT — ALL 50+ RESOURCES FOR $365 →
+                GET THE FULL VAULT — ALL 76 RESOURCES FOR $297 →
               </Link>
             </div>
           )}
@@ -485,8 +577,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
         productName={product.name}
         priceLabel={product.priceLabel}
         salePriceCents={product.salePriceCents}
+        originalPriceCents={product.originalPriceCents}
         isFree={product.isFree}
         ctaText={product.ctaText}
+        showOnDesktop={product.slug === 'the-vault'}
       />
     </main>
   );

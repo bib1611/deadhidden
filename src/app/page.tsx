@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dead Hidden Ministries — Biblical Truth They Tried to Bury',
     description:
-      '50+ resources on Scripture, marriage, parenting, and spiritual warfare. 70,000+ subscribers. KJV only.',
+      '76 resources on Scripture, marriage, parenting, and spiritual warfare. 70,000+ subscribers. KJV only.',
     type: 'website',
     url: 'https://deadhidden.org',
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dead Hidden Ministries — Biblical Truth They Tried to Bury',
     description:
-      '50+ resources on Scripture, marriage, parenting, and spiritual warfare. KJV only.',
+      '76 resources on Scripture, marriage, parenting, and spiritual warfare. KJV only.',
     creator: '@Biblicalman',
   },
   alternates: {
@@ -741,7 +741,7 @@ export default function Home() {
                     {category.label}
                   </h3>
                   <p className="text-xs text-[#6b6560] mb-3">
-                    {isVault ? '$365 — FULL CLEARANCE' : `${count} DOCUMENT${count !== 1 ? 'S' : ''}`}
+                    {isVault ? '$297 — FULL CLEARANCE' : `${count} DOCUMENT${count !== 1 ? 'S' : ''}`}
                   </p>
                   <div className="text-right text-[#8b0000] group-hover:text-[#1a1a1a] transition-colors text-sm">
                     →

@@ -57,7 +57,7 @@ function detectProduct(): { name: string; price: string; slug: string } {
     // Check pages in reverse order (most recent first)
     for (let i = pages.length - 1; i >= 0; i--) {
       const page = pages[i];
-      if (page === '/store/the-vault') return { name: 'THE BIBLICAL MAN VAULT', price: '$365', slug: 'the-vault' };
+      if (page === '/store/the-vault') return { name: 'THE BIBLICAL MAN VAULT', price: '$297', slug: 'the-vault' };
       if (page === '/store/essential-arsenal') return { name: 'THE ESSENTIAL ARSENAL', price: '$97', slug: 'essential-arsenal' };
       if (page === '/store/kings-marriage-manual-red') return { name: "THE KING'S MARRIAGE MANUAL", price: '$47', slug: 'kings-marriage-manual-red' };
       if (page === '/store/blood-and-bandwidth') return { name: 'BLOOD AND BANDWIDTH', price: '$50', slug: 'blood-and-bandwidth' };

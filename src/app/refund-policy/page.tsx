@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Refund Policy — Dead Hidden',
   description:
-    'Refund policy for Dead Hidden digital products. 100% satisfaction guarantee on all downloadable Bible study resources, marriage guides, and spiritual warfare protocols.',
+    'Refund policy for Dead Hidden digital products. All sales are final because downloadable Bible study resources, marriage guides, and spiritual warfare protocols are delivered instantly.',
   robots: { index: false, follow: true },
   alternates: {
     canonical: 'https://deadhidden.org/refund-policy',
