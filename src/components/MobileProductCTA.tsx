@@ -9,11 +9,10 @@ interface MobileProductCTAProps {
   priceLabel: string;
   salePriceCents?: number;
   isFree: boolean;
-  stripePaymentLink?: string;
   ctaText?: string;
 }
 
-export function MobileProductCTA({ productSlug, productName, priceLabel, salePriceCents, isFree, stripePaymentLink, ctaText }: MobileProductCTAProps) {
+export function MobileProductCTA({ productSlug, productName, priceLabel, salePriceCents, isFree, ctaText }: MobileProductCTAProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -50,7 +49,6 @@ export function MobileProductCTA({ productSlug, productName, priceLabel, salePri
             priceLabel={priceLabel}
             isFree={isFree}
             isSubscription={false}
-            stripePaymentLink={stripePaymentLink}
             ctaText={ctaText || 'GET THE MANUAL →'}
           />
         </div>

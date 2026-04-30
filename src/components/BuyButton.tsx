@@ -10,7 +10,6 @@ interface BuyButtonProps {
   priceLabel: string;
   isFree: boolean;
   isSubscription: boolean;
-  stripePaymentLink?: string;
   ctaText?: string;
 }
 
@@ -20,10 +19,10 @@ export function BuyButton({
   priceLabel,
   isFree,
   isSubscription,
-  stripePaymentLink,
   ctaText,
 }: BuyButtonProps) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [showEmailGate, setShowEmailGate] = useState(false);
 
   const handleClick = async () => {
@@ -39,18 +38,8 @@ export function BuyButton({
 
     const price = numericPrice(priceLabel);
 
-    // Direct Stripe payment link — skip /api/checkout entirely
-    if (stripePaymentLink) {
-      trackConversion('checkout_started', {
-        product: productSlug,
-        price,
-        checkout_type: 'direct_payment_link',
-      });
-      window.location.href = stripePaymentLink;
-      return;
-    }
-
     setLoading(true);
+    setError(null);
 
     try {
       const response = await fetch('/api/checkout', {
@@ -68,7 +57,8 @@ export function BuyButton({
 
       const data = await response.json();
 
-      // For paid products, redirect to Stripe
+      // For paid products, redirect to Stripe Checkout Session.
+      // Do not bypass /api/checkout with hardcoded Payment Links; fulfillment depends on session metadata.
       if (data.url) {
         trackConversion('checkout_started', {
           product: productSlug,
@@ -79,6 +69,7 @@ export function BuyButton({
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'An unknown error occurred';
+      setError(message);
       trackConversion('checkout_failed', {
         product: productSlug,
         price,
@@ -101,6 +92,12 @@ export function BuyButton({
       >
         {loading ? 'PROCESSING...' : buttonText}
       </button>
+
+      {error && (
+        <p className="mt-3 text-sm text-red-400" role="alert">
+          {error}
+        </p>
+      )}
 
       {showEmailGate && (
         <EmailGateModal

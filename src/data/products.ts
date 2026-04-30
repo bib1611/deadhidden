@@ -25,8 +25,7 @@ export type Product = {
   saleLabel?: string;
   purchaseType: "stripe";
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
-  // Direct Stripe payment link — bypasses /api/checkout (used for Christie's products on her Stripe account)
-  stripePaymentLink?: string;
+  // Purchases are routed through /api/checkout so webhook/download fulfillment stays unified.
   // SEO keywords for meta tags and search targeting
   seoKeywords?: string[];
   // Custom CTA button text (overrides default "BUY NOW" / "GET FREE")
@@ -679,7 +678,6 @@ export const products: Product[] = [
     badge: "PREORDER",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/bJe6oI73K6MQfsG0cTc3m04",
     ctaText: "PREORDER \u2014 LOCK IN $25 \u2192",
     comparisonLine: "A deliverance weekend with a traveling minister runs $300\u2013$800. This is the field manual for $25, delivered the day it ships, price locked until release.",
     extendedContent: {
@@ -1555,7 +1553,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/5kQ5kEc9a6bM82E1IWfrW0P",
     seoKeywords: ["women of the bible study", "biblical womanhood character study", "virtuous woman bible", "KJV women study"],
   },
   {
@@ -1570,7 +1567,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28EfZi8WY43E2Ik5ZcfrW0Q",
     seoKeywords: ["scriptural prayer guide", "how to pray scripture", "KJV prayer journal", "biblical prayer for women"],
   },
   {
@@ -1585,7 +1581,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/dRmaEYflmdEe3Mo1IWfrW0R",
     seoKeywords: ["proverbs devotional for women", "31 days in proverbs", "KJV proverbs study", "biblical wisdom for women"],
   },
   {
@@ -1600,7 +1595,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIfZi8Jab4R0nKgAmcMM2d",
     seoKeywords: ["titus 2 woman study", "older woman bible study", "biblical mentoring women", "KJV titus 2"],
   },
   {
@@ -1615,7 +1609,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIfZi8Ja6OBc6sabYcMM2e",
     seoKeywords: ["christian motherhood book", "seasons of motherhood", "exhausted mom devotional", "biblical encouragement mothers"],
   },
   {
@@ -1630,7 +1623,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28EeVe1gIgpbgmI3NAcMM2f",
     seoKeywords: ["christian student workbook", "bible study for kids", "before the world does workbook", "parenting bible resource"],
   },
   {
@@ -1645,7 +1637,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/aFa8wQ9Ne7SF7Qcbg2cMM2g",
     seoKeywords: ["mother daughter devotional", "christian devotional for moms", "30 day mother daughter bible study", "biblical womanhood devotional"],
   },
   {
@@ -1660,7 +1651,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIaEY6B20qd7Qc57UcMM2h",
     seoKeywords: ["2026 bible reading plan", "KJV reading plan for women", "biblical womanhood reading plan", "christian women bible plan"],
   },
 
@@ -1678,7 +1668,6 @@ export const products: Product[] = [
     badge: "SAVE 51%",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28E14odde8jUer24V8frW0S",
     seoKeywords: ["biblical womanhood bundle", "christian women resources", "KJV women study bundle", "biblical femininity resources"],
     ctaText: "TAKE THE FULL LIBRARY →",
     comparisonLine: "A women's Bible study group can run 12 weeks and cover one book with a study guide that cost $18. This is $97 for Christie's complete library — every tool, every season, no schedule required.",

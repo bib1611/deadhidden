@@ -205,7 +205,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               priceLabel={product.priceLabel}
               isFree={product.isFree}
               isSubscription={false}
-              stripePaymentLink={product.stripePaymentLink}
               ctaText={product.ctaText}
             />
           </div>
@@ -343,7 +342,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             priceLabel={product.priceLabel}
             isFree={product.isFree}
             isSubscription={false}
-            stripePaymentLink={product.stripePaymentLink}
             ctaText={product.ctaText}
           />
 
@@ -488,7 +486,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         priceLabel={product.priceLabel}
         salePriceCents={product.salePriceCents}
         isFree={product.isFree}
-        stripePaymentLink={product.stripePaymentLink}
         ctaText={product.ctaText}
       />
     </main>
