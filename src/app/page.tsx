@@ -100,18 +100,18 @@ export default function Home() {
                   className="inline-block btn-press bg-[#8b0000] text-white px-8 py-4 uppercase tracking-[0.14em] font-black hover:bg-[#a50000] transition-all text-sm md:text-base rounded-sm text-center"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  START HERE — GET THE $7 SAMPLER →
+                  GET THE $7 SAMPLER →
                 </TrackedLink>
                 <Link
                   href="/store/the-vault"
                   className="inline-block border border-[#2a211d] px-8 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-[#c8b99e] hover:border-[#8b0000] hover:text-[#f3ead7] transition-colors"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  Or see the full arsenal
+                  SEE THE FULL VAULT
                 </Link>
               </div>
               <p className="text-lg md:text-xl text-[#c8b99e] max-w-2xl mb-3 leading-relaxed">
-                Adam and Christie Johnson. Married 24 years. Five children. Teaching what the modern church stopped saying.
+                Garbage trucks. Trains. Five kids. 24 years married. KJV only.
               </p>
               <p className="text-base md:text-lg text-[#9f9380] max-w-2xl leading-relaxed">
                 Adam drove garbage trucks and conducted trains before going full-time. This is what happened next.

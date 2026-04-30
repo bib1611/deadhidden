@@ -95,7 +95,7 @@ export function Navbar() {
               className="btn-press bg-[#8b0000] text-[#e8e0d0] text-[10px] tracking-[0.1em] uppercase font-bold px-3 py-1.5 hover:bg-[#a50000] transition-all"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              $7 SAMPLER
+              GET $7 SAMPLER
             </Link>
 
             {/* Hamburger */}

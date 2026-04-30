@@ -26,7 +26,7 @@ export function MobileCTA() {
           className="flex-1 bg-[#8b0000] text-[#e8e0d0] text-center py-3 uppercase tracking-[0.1em] text-xs font-bold hover:bg-[#a50000] transition-colors"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          $7 SAMPLER
+          GET $7 SAMPLER
         </Link>
         <Link
           href="/store/the-vault"
