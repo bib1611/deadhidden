@@ -77,6 +77,228 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const { prefix: pricePrefix, price: priceDisplay } = formatPrice(product.priceLabel);
 
+  if (product.slug === 'vault-sampler') {
+    const samplerResources = [
+      {
+        number: '01',
+        name: "THE WARRIOR'S BIBLE CONQUEST",
+        description: 'A 30/60/90-day Scripture immersion challenge for believers who are done treating the Bible like background noise.',
+      },
+      {
+        number: '02',
+        name: "THE KING'S MARRIAGE MANUAL — RED VERSION",
+        description: 'The uncut marriage manual. Biblical headship, intimacy, conflict, and covenant without the pastor-safe padding.',
+      },
+      {
+        number: '03',
+        name: 'BREAK FREE FROM MODERN DEMONS IN 7 DAYS',
+        description: 'Seven days. Seven chains. Seven keys. A direct fight against the cycles keeping you weak.',
+      },
+      {
+        number: '04',
+        name: "THE WARRIOR'S BIBLE BLUEPRINT",
+        description: 'A battle plan for approaching the Bible with strategy, discipline, and intent to conquer.',
+      },
+    ];
+
+    const readerQuotes = [
+      {
+        quote: "I'm sending this to my husband — you have opened my eyes and heart in so many ways! We would love to support you.",
+        name: 'JO',
+        handle: '@JOANNA953534211',
+      },
+      {
+        quote: "This is so smart, and so true. It would have saved my marriage that ended years ago.",
+        name: 'JELLENNE',
+        handle: '@JELLENNE',
+      },
+      {
+        quote: "Amen and this has changed my life and my wife's life. It's incredible.",
+        name: 'TREBOR',
+        handle: '@ROBERTROLLTIDE1',
+      },
+    ];
+
+    return (
+      <main className="min-h-screen bg-[#080706] pb-24 text-[#e8e0d0]">
+        <ProductViewTracker slug={product.slug} price={product.priceLabel} />
+        <ProductJsonLd
+          name={product.name}
+          description={product.description}
+          slug={product.slug}
+          price={product.priceCents}
+        />
+
+        <section className="border-b border-[#241d19] bg-[#0b0908] px-4 py-4 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#b7aa95] sm:flex-row sm:items-center sm:justify-between">
+            <div className="text-[#e8e0d0]">DEAD HIDDEN</div>
+            <div>TRUSTED BY 131,000+ READERS ACROSS X AND SUBSTACK · KJV ONLY · NO COMPROMISE</div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden border-b border-[#241d19] px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_18%_18%,#8b0000_0,transparent_25%),radial-gradient(circle_at_82%_20%,#a45b43_0,transparent_22%),linear-gradient(90deg,transparent_0,rgba(232,224,208,.16)_50%,transparent_100%)]" />
+          <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.08fr_.72fr] lg:items-center">
+            <div>
+              <div className="mb-5 inline-flex border border-[#8b0000]/50 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-[#a45b43]">
+                Vault entry file / instant digital access
+              </div>
+              <h1 className="text-5xl font-black uppercase leading-[0.86] tracking-[0.02em] text-[#f3ead7] sm:text-6xl lg:text-7xl" style={{ fontFamily: 'var(--font-heading)' }}>
+                The Vault Sampler
+              </h1>
+              <p className="mt-5 max-w-3xl text-xl font-bold uppercase leading-tight tracking-[0.08em] text-[#c8b99e]">
+                Taste the arsenal before you buy it.
+              </p>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#b8ad9b] sm:text-lg">
+                Seven dollars. Four handpicked resources from The Vault — KJV Bible study, marriage, spiritual warfare, and disciplined Scripture immersion. If this does not light a fire under you, nothing will.
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <BuyButton
+                  productSlug={product.slug}
+                  productName={product.name}
+                  priceLabel={product.priceLabel}
+                  isFree={product.isFree}
+                  isSubscription={false}
+                  ctaText="GET THE SAMPLER →"
+                />
+                <p className="text-xs uppercase tracking-[0.16em] text-[#837868]">Instant PDF download · Buy once, keep forever</p>
+              </div>
+            </div>
+
+            <div className="border border-[#2f2620] bg-[#100d0b] p-6 shadow-2xl" style={{ borderLeft: '3px solid #8b0000' }}>
+              <div className="text-xs uppercase tracking-[0.18em] text-[#8d8170]">One-time price</div>
+              <div className="mt-2 text-7xl font-black text-[#f3ead7]" style={{ fontFamily: 'var(--font-heading)' }}>$7</div>
+              <p className="mt-4 text-sm leading-relaxed text-[#aaa]">Four resources. Instant access. The cleanest way to test the Vault before stepping into the full archive.</p>
+              <div className="mt-6 border-t border-[#2a211d] pt-5 text-xs uppercase tracking-[0.16em] text-[#c8b99e]">
+                No subscription. No filler. No watered-down versions.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#8b0000]">Who this is for</div>
+            <h2 className="mt-3 text-3xl font-black uppercase text-[#f3ead7] sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>
+              This is for the man who already suspects something is missing.
+            </h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {[
+              'You have been in church for years but still feel the hard truths being sidestepped.',
+              'You want to lead your family with authority, but nobody around you can show you how from Scripture.',
+              'You are hungry for KJV-grounded study that does not water things down to keep people comfortable.',
+              'You have heard of The Vault and want to see if the material is the real thing before going all in.',
+            ].map((item, index) => (
+              <div key={item} className="border border-[#241d19] bg-[#0d0b0a] p-5">
+                <div className="mb-3 font-mono text-xs text-[#8b0000]">0{index + 1}</div>
+                <p className="text-base leading-relaxed text-[#c8b99e]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-[#241d19] bg-[#0b0908] px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8">
+              <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#8b0000]">What's inside</div>
+              <h2 className="mt-3 text-3xl font-black uppercase text-[#f3ead7] sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>
+                Four actual resources from the full arsenal.
+              </h2>
+            </div>
+            <div className="grid gap-4">
+              {samplerResources.map((resource) => (
+                <div key={resource.name} className="grid gap-4 border border-[#2a211d] bg-[#100d0b] p-5 sm:grid-cols-[70px_1fr] sm:p-6">
+                  <div className="font-mono text-3xl font-black text-[#8b0000]">{resource.number}</div>
+                  <div>
+                    <h3 className="text-xl font-black uppercase tracking-[0.04em] text-[#f3ead7]" style={{ fontFamily: 'var(--font-heading)' }}>
+                      {resource.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[#aaa]">{resource.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mb-8 text-center">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#8b0000]">From the community</div>
+            <h2 className="mt-3 text-3xl font-black uppercase text-[#f3ead7] sm:text-4xl" style={{ fontFamily: 'var(--font-heading)' }}>
+              Real words from real readers.
+            </h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {readerQuotes.map((item) => (
+              <figure key={item.handle} className="border border-[#2a211d] bg-[#100d0b] p-6">
+                <blockquote className="text-lg font-bold leading-relaxed text-[#f3ead7]">“{item.quote}”</blockquote>
+                <figcaption className="mt-6 border-t border-[#2a211d] pt-4 text-xs uppercase tracking-[0.16em] text-[#8d8170]">
+                  — {item.name} · {item.handle}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-[#241d19] bg-[#110b0b] px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_.65fr] lg:items-center">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#8b0000]">Get the sampler</div>
+              <h2 className="mt-3 text-4xl font-black uppercase leading-tight text-[#f3ead7] sm:text-5xl" style={{ fontFamily: 'var(--font-heading)' }}>
+                $7. Four resources. One clean test.
+              </h2>
+              <ul className="mt-6 space-y-3 text-sm text-[#c8b99e]">
+                <li>✓ Instant PDF download — access in minutes</li>
+                <li>✓ Buy once, keep forever — no subscription</li>
+                <li>✓ Secure checkout via Stripe</li>
+                <li>✓ KJV-grounded. No watered-down versions.</li>
+              </ul>
+            </div>
+            <div className="border border-[#2a211d] bg-[#090807] p-6">
+              <div className="mb-5 text-6xl font-black text-[#f3ead7]" style={{ fontFamily: 'var(--font-heading)' }}>$7</div>
+              <BuyButton
+                productSlug={product.slug}
+                productName={product.name}
+                priceLabel={product.priceLabel}
+                isFree={product.isFree}
+                isSubscription={false}
+                ctaText="GET THE VAULT SAMPLER — $7 →"
+              />
+              <p className="mt-4 text-xs leading-relaxed text-[#837868]">Digital product. Instant access. All sales are final. If there is a delivery issue, contact Dead Hidden and we will get your files to you.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl border border-[#8b0000]/50 bg-[#0d0b0a] p-6 sm:p-10">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#8b0000]">Once you have tasted it</div>
+            <h2 className="mt-3 text-4xl font-black uppercase leading-tight text-[#f3ead7] sm:text-5xl" style={{ fontFamily: 'var(--font-heading)' }}>
+              The full Vault is the next step.
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#c8b99e]">
+              The Sampler gives you four weapons. The full Vault gives you the archive: 76 resources covering biblical masculinity, marriage, spiritual warfare, parenting, KJV Bible study, and household order. If the Sampler hits you in the chest, stop buying one at a time.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link href="/store/the-vault" className="bg-[#8b0000] px-6 py-4 text-center text-xs font-black uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#a50000]">
+                Get the full Vault — $297 →
+              </Link>
+              <span className="text-xs uppercase tracking-[0.16em] text-[#837868]">Complete archive · Instant digital access · All sales final</span>
+            </div>
+          </div>
+        </section>
+
+        <MobileProductCTA
+          productSlug={product.slug}
+          productName={product.name}
+          priceLabel={product.priceLabel}
+          isFree={product.isFree}
+          ctaText="GET IT — $7"
+        />
+      </main>
+    );
+  }
+
   // Get related products from same category
   const relatedProducts = getProductsByCategory(product.category)
     .filter((p) => p.slug !== product.slug)
