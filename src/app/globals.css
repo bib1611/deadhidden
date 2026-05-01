@@ -11,7 +11,41 @@
   --color-card: #111111;
   --color-border: #222222;
   --color-subtle: #555555;
+
+  /* Kimi CRO palette — extends brand without replacing it */
+  --color-void: #050505;
+  --color-ink: #0a0a0a;
+  --color-charcoal: #141414;
+  --color-steel: #1a1a1a;
+  --color-iron: #2a2a2a;
+  --color-ash: #888888;
+  --color-smoke: #b0b0b0;
+  --color-bone: #e8e4dc;
+  --color-parchment: #f5f0e8;
+  --color-crimson: #8B0000;
+  --color-flame: #D94F00;
+  --color-ember: #FF6B35;
+  --color-gold: #C9A84C;
+  --color-moss: #3A7D44;
+  --color-ice: #4ECDC4;
+  --color-error: #D92B2B;
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px rgba(217,79,0,0.2); }
+  50% { box-shadow: 0 0 50px rgba(217,79,0,0.4); }
+}
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-badge-pulse { animation: badge-pulse 2s ease-in-out infinite; }
 
 html {
   scroll-behavior: smooth;
