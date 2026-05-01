@@ -188,7 +188,7 @@ export function VaultBanner() {
         THE BIBLICAL MAN VAULT
       </h4>
       <p className="text-sm text-[#888] mb-4">
-        76 resources. Every guide, manual, and protocol. One price. <span className="text-[#e8e0d0] font-semibold">$365</span>
+        76 resources. Every guide, manual, and protocol. One price. <span className="text-[#e8e0d0] font-semibold">$297</span>
       </p>
       <Link
         href="/store/the-vault"
@@ -202,7 +202,7 @@ export function VaultBanner() {
         className="inline-block bg-[#8b0000] text-[#e8e0d0] px-8 py-3 text-xs uppercase tracking-[0.15em] font-bold hover:bg-[#a50000] transition-colors"
         style={{ fontFamily: 'var(--font-heading)' }}
       >
-        CLAIM THE FULL ARSENAL →
+        ARM YOUR HOUSEHOLD →
       </Link>
     </div>
   );

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:store-routing": "node scripts/audit-store-routing.mjs"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.0.1",

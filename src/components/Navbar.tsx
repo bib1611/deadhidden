@@ -77,13 +77,13 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* Primary CTA — visually distinct filled button */}
+            {/* Primary CTA — low-ticket sampler */}
             <Link
-              href="/where-to-begin"
+              href="/store/vault-sampler"
               className="btn-press bg-[#8b0000] text-[#e8e0d0] text-xs tracking-[0.12em] uppercase font-bold px-5 py-2 hover:bg-[#a50000] transition-all ml-2"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              GET STARTED
+              GET $7 SAMPLER
             </Link>
           </div>
 
@@ -91,11 +91,11 @@ export function Navbar() {
           <div className="flex md:hidden items-center gap-3">
             {/* Primary CTA stays outside hamburger on mobile */}
             <Link
-              href="/where-to-begin"
+              href="/store/vault-sampler"
               className="btn-press bg-[#8b0000] text-[#e8e0d0] text-[10px] tracking-[0.1em] uppercase font-bold px-3 py-1.5 hover:bg-[#a50000] transition-all"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              GET STARTED
+              GET $7 SAMPLER
             </Link>
 
             {/* Hamburger */}

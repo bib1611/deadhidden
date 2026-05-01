@@ -8,12 +8,13 @@ interface MobileProductCTAProps {
   productName?: string;
   priceLabel: string;
   salePriceCents?: number;
+  originalPriceCents?: number;
   isFree: boolean;
-  stripePaymentLink?: string;
   ctaText?: string;
+  showOnDesktop?: boolean;
 }
 
-export function MobileProductCTA({ productSlug, productName, priceLabel, salePriceCents, isFree, stripePaymentLink, ctaText }: MobileProductCTAProps) {
+export function MobileProductCTA({ productSlug, productName, priceLabel, salePriceCents, originalPriceCents, isFree, ctaText, showOnDesktop = false }: MobileProductCTAProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -29,14 +30,15 @@ export function MobileProductCTA({ productSlug, productName, priceLabel, salePri
   if (!visible) return null;
 
   const displayPrice = priceLabel.endsWith('+') ? priceLabel.slice(0, -1) : priceLabel;
+  const compareAtPrice = originalPriceCents ? `$${originalPriceCents / 100}` : displayPrice;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#111] border-t-2 border-[#8b0000] px-4 py-3" style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
-      <div className="flex items-center gap-3">
+    <div className={`fixed bottom-14 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur border-t-2 border-[#8b0000] px-4 py-3 ${showOnDesktop ? '' : 'md:hidden'}`} style={{ paddingBottom: 'max(12px, env(safe-area-inset-bottom))' }}>
+      <div className="mx-auto flex max-w-4xl items-center gap-3">
         <div className="flex-shrink-0">
           {salePriceCents ? (
             <div className="flex items-baseline gap-2">
-              <span className="text-sm text-[#777] line-through">{displayPrice}</span>
+              <span className="text-sm text-[#777] line-through">{compareAtPrice}</span>
               <span className="text-xl font-bold text-[#e8e0d0]">${salePriceCents / 100}</span>
             </div>
           ) : (
@@ -50,7 +52,6 @@ export function MobileProductCTA({ productSlug, productName, priceLabel, salePri
             priceLabel={priceLabel}
             isFree={isFree}
             isSubscription={false}
-            stripePaymentLink={stripePaymentLink}
             ctaText={ctaText || 'GET THE MANUAL →'}
           />
         </div>

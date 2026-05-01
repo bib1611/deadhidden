@@ -206,7 +206,7 @@ export default function WhereToBeginPage() {
             PICK YOUR BATTLE
           </h2>
           <p className="text-sm text-muted mb-8">
-            50+ resources. Every category has a free starting point.
+            76 resources. Every category has a free starting point.
           </p>
 
           <div className="grid gap-4 md:grid-cols-2">

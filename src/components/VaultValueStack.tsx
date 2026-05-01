@@ -46,7 +46,7 @@ export default function VaultValueStack() {
     grandTotal += categoryTotal;
   });
 
-  const discountPrice = 36500;
+  const discountPrice = 29700;
   const savingsAmount = grandTotal - discountPrice;
   const discountPercent = Math.round((savingsAmount / grandTotal) * 100);
 
@@ -133,7 +133,7 @@ export default function VaultValueStack() {
               THE VAULT PRICE
             </span>
             <span className="text-4xl font-bold text-[#8b0000] tabular-nums">
-              $365
+              $297
             </span>
           </div>
 

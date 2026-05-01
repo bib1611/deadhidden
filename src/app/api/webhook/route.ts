@@ -8,7 +8,7 @@ const AUDIENCE_ID = '853ea354-ef8b-4781-86cd-1b1032ad247e';
 // Price tier thresholds in cents
 const TIER_7_MAX = 2000;   // up to $20 = $7 tier
 const TIER_97 = 9700;      // $97 = Essential Arsenal
-const TIER_VAULT = 36500;  // $365 = Vault
+const TIER_VAULT = 29700;  // $297 = Vault
 
 // Slugs that map to specific products for tagging
 const VAULT_SLUGS = ['the-vault', 'thanksgiving-marriage-vault'];
@@ -24,7 +24,7 @@ export const runtime = 'nodejs';
  * Determine purchase tier tags based on amount and product slug.
  * These tags drive Resend automation sequences:
  *   - purchase_7        → triggers Seq 1 ($7 → $97 upsell)
- *   - purchase_97       → triggers Seq 2 ($97 → $365 upsell), suppresses Seq 1
+ *   - purchase_97       → triggers Seq 2 ($97 → $297 upsell), suppresses Seq 1
  *   - purchased_vault   → suppresses Seq 2
  *   - member_table      → suppresses Seq 3
  *   - purchase_any      → triggers Seq 3 (any → Table)

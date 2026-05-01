@@ -27,8 +27,7 @@ export type Product = {
   // True for monthly subscription products (Stripe `subscription` mode)
   isSubscription?: boolean;
   legacyGumroadSlug: string; // kept for migration reference — use slug for new purchases
-  // Direct Stripe payment link — bypasses /api/checkout (used for Christie's products on her Stripe account)
-  stripePaymentLink?: string;
+  // Purchases are routed through /api/checkout so webhook/download fulfillment stays unified.
   // SEO keywords for meta tags and search targeting
   seoKeywords?: string[];
   // Custom CTA button text (overrides default "BUY NOW" / "GET FREE")
@@ -63,47 +62,48 @@ export const products: Product[] = [
   {
     slug: "the-vault",
     name: "THE BIBLICAL MAN VAULT",
-    tagline: "The complete armory. 76 resources. Everything Adam & Christie built. One price. No retreats — only advancement.",
+    tagline: "76 recovered documents. One field package. For the believer done playing church.",
     seoKeywords: ["christian resources bundle", "biblical guides for men and women", "KJV bible study collection", "christian marriage parenting resources", "biblical masculinity womanhood library", "digital christian resources download"],
-    description: "Every PDF, guide, framework, protocol, and manual I've ever created — all in one place. This is the complete arsenal for the believer who's done playing church and ready to wage war for their family, their faith, and their future. Over $1,500 worth of resources for a fraction of the cost.",
+    description: "Your marriage is bleeding. Your son is softening. Your Bible gathers dust. The Vault puts every PDF, guide, framework, protocol, and manual in one field package — 76 recovered documents for the believer who is done playing church and ready to arm his household.",
     priceCents: 29700,
     priceLabel: "$297",
     originalPriceCents: 36500,
     salePriceCents: 29700,
-    saleLabel: "TODAY ONLY",
+    saleLabel: "FIELD DEPLOYMENT",
     category: "vault",
     isFeatured: true,
     isFree: false,
     badge: "BESTSELLER",
     purchaseType: "stripe",
     legacyGumroadSlug: "huyrp",
-    ctaText: "CLAIM THE FULL ARSENAL →",
+    ctaText: "ARM YOUR HOUSEHOLD →",
     coverImage: "https://vpfbq42gh0ucnfvw.public.blob.vercel-storage.com/product-cover-the-vault.jpg",
-    comparisonLine: "Most couples spend $365 on a single weekend retreat and come home with a notebook full of notes they never open again. The Vault is still working five years from now.",
+    comparisonLine: "Most couples spend $365 on one weekend retreat and come home with a notebook they never open again. The Vault is still sitting on your device five years from now — ready when the next war starts.",
     extendedContent: {
       whoIsThisFor: [
-        "you've read the devotionals, you've attended the conferences, and none of it moved the needle",
-        "spiritually passive, biblically illiterate, and running out of time to fix it",
-        "not just one guide, not a sampler, but every weapon in the arsenal in a single mission package",
-        "the Vault saves you hundreds of dollars over buying individually",
+        "you read the devotionals, attended the conferences, and none of it moved the needle",
+        "your wife stopped asking you to lead because she got tired of hearing silence",
+        "your children are being catechized by a culture you keep underestimating",
+        "you can quote Scripture but cannot always explain why you believe what you believe",
+        "you are done performing faithfulness and ready to become useful",
       ],
       whatsInside: [
-        "All 76 resources across every category — marriage, headship, parenting, Bible study, spiritual warfare, biblical womanhood, and more",
-        "Every framework, protocol, and field manual ever published by The Biblical Man and Biblical Womanhood — nothing held back",
+        "76 resources across marriage, headship, parenting, Bible study, spiritual warfare, biblical womanhood, and more",
+        "Every framework, protocol, and field manual published by The Biblical Man and Biblical Womanhood — nothing held back",
         "Christie's complete women's library included — Traditional Homemaking, the Womanhood Bundle, devotionals, and beyond",
-        "The marriage manuals that have rebuilt covenants other resources couldn't touch — including the uncut Red Version",
-        "Bible study systems that don't require a seminary degree — just a willingness to pick up the sword",
+        "The marriage manuals that have rebuilt covenants other resources could not touch — including the uncut Red Version",
+        "Bible study systems that do not require a seminary degree — just a willingness to pick up the sword",
         "Parenting resources that equip you to build a household the culture cannot penetrate",
-        "Instant digital access to everything — no waiting, no shipping, no gatekeeping",
+        "Instant PDF access. Download immediately. No subscription. No cloud lock. All sales final.",
       ],
-      longDescription: "The Vault exists because I got tired of watching men buy one guide, apply it halfway, then come back six months later broken in a different area. Your marriage is connected to your masculinity. Your masculinity is connected to your spiritual warfare. Your spiritual warfare is connected to your Bible study. You cannot fix one and ignore the rest.\n\nThis is over $1,500 worth of resources — every single product on Dead Hidden — for a fraction of that cost. I built each one of these from personal experience. Twenty-four years of marriage. Five children. Seventeen years of Sunday School. A career driving garbage trucks and conducting trains before going full-time as a creator. Every guide in The Vault was forged in the fire of real life, not seminary theory.\n\nWhen you purchase The Vault, you get instant access to everything. Every PDF downloads immediately. No drip content. No waiting. No upsells. The complete arsenal, delivered to your inbox the moment you hit purchase.",
-      socialProof: "The Vault is the bestselling product on Dead Hidden. Believers keep buying it because it works — and because buying everything separately costs over four times as much.",
+      longDescription: "You bought the devotional. You attended the retreat. You still do not know what you believe. The modern church sold you comfort. You needed a sword.\n\nThe Vault exists because I got tired of watching believers buy one guide, apply it halfway, then come back six months later broken in a different area. Your marriage is connected to your masculinity. Your masculinity is connected to your spiritual warfare. Your spiritual warfare is connected to your Bible study. You cannot fix one and ignore the rest.\n\nThis is over $1,500 worth of resources — every single product on Dead Hidden — for a fraction of that cost. I built these from real life: twenty-four years of marriage, five children, seventeen years teaching Sunday School, garbage trucks, trains, and scars. Not seminary theory.\n\nWhen you purchase The Vault, you get instant PDF access. No drip content. No waiting. No subscription. Download the files and keep them local. Because delivery is instant and the full digital product is transferred immediately, all sales are final.",
+      socialProof: "The Vault is the bestselling product on Dead Hidden because it answers the real problem: believers do not break in only one place. Marriage, parenting, Bible study, spiritual warfare, masculinity, womanhood — the wars are connected.",
       faq: [
         { q: "This is a lot of content. Will I actually use it all?", a: "Probably not all at once — and that's the point. This is a reference library, not a reading marathon. You pull what you need for the battle in front of you today, and you come back when the next one starts." },
         { q: "Is this only for men?", a: "No. The Vault contains both Adam's complete Biblical Man library and Christie's complete Biblical Womanhood library. Husbands and wives have bought this together. It is the full household arsenal." },
-        { q: "Why $365 when I can piece it together myself?", a: "You could. Individual resources total well over $1,500. The Vault saves you 76% — and it's all there the day you need it, not when you finally get around to buying it." },
+        { q: "Why $297 when I can piece it together myself?", a: "You could. Individual resources total well over $1,500. The Vault puts the sequence in one place — and it is there the day you need it, not when you finally get around to buying it." },
         { q: "What format are the resources?", a: "All digital. Instant delivery. PDFs, guides, and manuals you can access on any device — no apps, no subscriptions, no expiration." },
-        { q: "Is there a guarantee?", a: "The guarantee is the Word of God: \"The entrance of thy words giveth light; it giveth understanding unto the simple\" (Psalm 119:130). Buy it, open it, work it. If you do that and get nothing, contact us." },
+        { q: "Can I get a refund?", a: "No. This is a digital product with instant access. Once purchased, the full archive is delivered immediately. All sales are final. If you are unsure, start with the $7 Vault Sampler or the $97 Essential Arsenal." },
       ],
     },
   },
@@ -212,7 +212,7 @@ export const products: Product[] = [
         "A curated entry point that won't overwhelm — 10 weapons, properly sequenced, ready to deploy",
         "Instant digital access — the same day you decide you're serious",
       ],
-      longDescription: "I built The Essential Arsenal because people kept asking me the same question: 'Where do I start?'\n\nThe full Vault has over 50 resources. That's the complete arsenal. But some believers don't need everything — they need the right things. The ten resources in this collection are the ones that get mentioned most in my DMs. The ones people say saved their marriage. Changed how they read their Bible. Woke them up as parents.\n\nIf you buy this and it works — and it will — the Vault is waiting. And I'll credit this $97 toward your Vault purchase. No risk. Just results.",
+      longDescription: "I built The Essential Arsenal because people kept asking me the same question: 'Where do I start?'\n\nThe full Vault has over 50 resources. That's the complete arsenal. But some believers don't need everything — they need the right things. The ten resources in this collection are the ones that get mentioned most in my DMs. The ones people say saved their marriage. Changed how they read their Bible. Woke them up as parents.\n\nIf you buy this and it works — and it will — the Vault is waiting. And I'll credit this $97 toward your Vault purchase. Clear terms. Instant access. All sales final.",
       socialProof: "These 10 resources represent the most purchased and most recommended guides on Dead Hidden. They cover marriage, masculinity, womanhood, Bible study, spiritual warfare, and parenting — the pillars every Christian needs.",
       faq: [
         { q: "How do I know these are actually the best 10?", a: "Buyer behavior decides it. These are the resources that get purchased most, referenced most, and mentioned most in testimonials. The market voted." },
@@ -741,7 +741,6 @@ export const products: Product[] = [
     badge: "PREORDER",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/bJe6oI73K6MQfsG0cTc3m04",
     ctaText: "PREORDER \u2014 LOCK IN $25 \u2192",
     comparisonLine: "A deliverance weekend with a traveling minister runs $300\u2013$800. This is the field manual for $25, delivered the day it ships, price locked until release.",
     extendedContent: {
@@ -1617,7 +1616,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/5kQ5kEc9a6bM82E1IWfrW0P",
     seoKeywords: ["women of the bible study", "biblical womanhood character study", "virtuous woman bible", "KJV women study"],
   },
   {
@@ -1632,7 +1630,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28EfZi8WY43E2Ik5ZcfrW0Q",
     seoKeywords: ["scriptural prayer guide", "how to pray scripture", "KJV prayer journal", "biblical prayer for women"],
   },
   {
@@ -1647,7 +1644,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/dRmaEYflmdEe3Mo1IWfrW0R",
     seoKeywords: ["proverbs devotional for women", "31 days in proverbs", "KJV proverbs study", "biblical wisdom for women"],
   },
   {
@@ -1662,7 +1658,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIfZi8Jab4R0nKgAmcMM2d",
     seoKeywords: ["titus 2 woman study", "older woman bible study", "biblical mentoring women", "KJV titus 2"],
   },
   {
@@ -1677,7 +1672,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIfZi8Ja6OBc6sabYcMM2e",
     seoKeywords: ["christian motherhood book", "seasons of motherhood", "exhausted mom devotional", "biblical encouragement mothers"],
   },
   {
@@ -1692,7 +1686,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28EeVe1gIgpbgmI3NAcMM2f",
     seoKeywords: ["christian student workbook", "bible study for kids", "before the world does workbook", "parenting bible resource"],
   },
   {
@@ -1707,7 +1700,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/aFa8wQ9Ne7SF7Qcbg2cMM2g",
     seoKeywords: ["mother daughter devotional", "christian devotional for moms", "30 day mother daughter bible study", "biblical womanhood devotional"],
   },
   {
@@ -1722,7 +1714,6 @@ export const products: Product[] = [
     isFree: false,
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/3cIaEY6B20qd7Qc57UcMM2h",
     seoKeywords: ["2026 bible reading plan", "KJV reading plan for women", "biblical womanhood reading plan", "christian women bible plan"],
   },
 
@@ -1740,7 +1731,6 @@ export const products: Product[] = [
     badge: "SAVE 51%",
     purchaseType: "stripe",
     legacyGumroadSlug: "",
-    stripePaymentLink: "https://buy.stripe.com/28E14odde8jUer24V8frW0S",
     seoKeywords: ["biblical womanhood bundle", "christian women resources", "KJV women study bundle", "biblical femininity resources"],
     ctaText: "TAKE THE FULL LIBRARY →",
     comparisonLine: "A women's Bible study group can run 12 weeks and cover one book with a study guide that cost $18. This is $97 for Christie's complete library — every tool, every season, no schedule required.",

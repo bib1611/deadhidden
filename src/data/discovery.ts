@@ -128,6 +128,6 @@ export const discoveryCategories: DiscoveryCategory[] = [
       'warriors-bible-conquest', 'essential-arsenal', 'warrior-bundle',
       'biblical-womanhood-bundle', 'the-vault',
     ],
-    entryPoint: "Start with the 'Vault Sampler' (free) to see what's inside. Then the 'Essential Arsenal' ($97) for the 10 core resources. When you're ready — The Vault ($365) for everything.",
+    entryPoint: "Start with the 'Vault Sampler' (free) to see what's inside. Then the 'Essential Arsenal' ($97) for the 10 core resources. When you're ready — The Vault ($297) for everything.",
   },
 ];

@@ -19,7 +19,7 @@ export function ArticleEmailCapture() {
           GET THE FULL ARMORY &mdash; FREE.
         </p>
         <p className="text-sm text-[#888]">
-          50+ biblical resources. Free PDFs. Straight to your inbox.
+          Free biblical resources. Straight to your inbox.
         </p>
       </div>
 

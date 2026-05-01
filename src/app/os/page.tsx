@@ -95,7 +95,7 @@ const faqs = [
   },
   {
     q: 'Refund policy?',
-    a: 'If you read it honestly and it does not name what you have been managing, refund. See deadhidden.org/refund-policy.',
+    a: 'This is a digital product with instant access. All sales are final. See deadhidden.org/refund-policy.',
   },
 ];
 

@@ -306,7 +306,7 @@ export function SmartNudge() {
                 >
                   THE VAULT
                 </span>
-                <span className="text-[#e8e0d0] font-bold">$365</span>
+                <span className="text-[#e8e0d0] font-bold">$297</span>
               </div>
               <p className="text-xs text-[#888] mb-2">The complete arsenal. 76 resources. Everything.</p>
               <button

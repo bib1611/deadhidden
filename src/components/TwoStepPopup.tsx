@@ -71,6 +71,8 @@ export function TwoStepPopup() {
   }, [step]);
 
   useEffect(() => {
+    // Do not cover the rebuilt homepage hero/sampler offer.
+    if (pathname === '/') return;
     if (EXCLUDED_PATHS.some((p) => pathname.startsWith(p))) return;
     if (isDismissed() || isSubscribed()) return;
 
@@ -138,7 +140,7 @@ export function TwoStepPopup() {
                 WANT THE FULL DEAD HIDDEN ARMORY?
               </h3>
               <p className="text-sm text-[#888] mb-8 leading-relaxed max-w-sm mx-auto">
-                50+ biblical resources. Free downloads. Kingdom-building blueprints.
+                Free biblical resources. Field notes. Kingdom-building blueprints.
               </p>
 
               <div className="flex flex-col gap-3 max-w-xs mx-auto">
