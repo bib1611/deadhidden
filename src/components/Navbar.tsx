@@ -26,12 +26,12 @@ export function Navbar() {
 
   const isActive = (path: string) => pathname === path;
 
-  // Max 5 nav items — reflects the user journey: What → Why → How → Browse
+  // Max 5 nav items - reflects the user journey: What, Why, How, Browse
   const navLinks = [
     { label: 'RESOURCES', path: '/store' },
+    { label: 'FAITHWALL', path: '/faithwall' },
     { label: 'FOR WOMEN', path: '/for-women' },
     { label: 'READ', path: '/read' },
-    { label: 'BLOG', path: '/blog' },
     { label: 'ABOUT', path: '/about' },
   ];
 
@@ -77,7 +77,7 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* Primary CTA — low-ticket sampler */}
+            {/* Primary CTA - low-ticket sampler */}
             <Link
               href="/store/vault-sampler"
               className="btn-press bg-[#8b0000] text-[#e8e0d0] text-xs tracking-[0.12em] uppercase font-bold px-5 py-2 hover:bg-[#a50000] transition-all ml-2"
