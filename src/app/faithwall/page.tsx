@@ -97,7 +97,7 @@ export default function FaithWallPage() {
                   <Smartphone size={14} /> Web room live
                 </span>
                 <span className="inline-flex items-center gap-1">
-                  <Lock size={14} /> Blocking app next
+                  <Lock size={14} /> Phone blocking next
                 </span>
               </div>
             </div>
