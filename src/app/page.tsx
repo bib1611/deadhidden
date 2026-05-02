@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { OrganizationJsonLd } from '@/components/JsonLd';
 import { ScrollDepthTracker } from '@/components/ScrollDepthTracker';
 import HomepageBody from '@/components/cro/HomepageBody';
+import { FaithWallHomeFeature } from '@/components/FaithWallHomeFeature';
 
 export const metadata: Metadata = {
   title: 'Dead Hidden Ministries — Biblical Truth They Tried to Bury',
@@ -49,6 +50,7 @@ export default function Home() {
     <main className="bg-ink text-bone">
       <ScrollDepthTracker page="/" />
       <OrganizationJsonLd />
+      <FaithWallHomeFeature />
       <HomepageBody />
     </main>
   );
